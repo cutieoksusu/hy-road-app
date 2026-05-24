@@ -1,0 +1,1426 @@
+import React, { useState, useEffect, useMemo } from 'react';
+import { 
+  Home, Map, Settings, Bell, ChevronRight, Calendar, User, Briefcase, GraduationCap, 
+  Clock, LogOut, ShieldCheck, BookOpen, CheckCircle2, TrendingUp, Search, 
+  AlertCircle, ChevronLeft, Building, Target, Check, Sparkles, ExternalLink, Link as LinkIcon, Edit3, XCircle, Info, Award, FileText, Globe, Hourglass, Plus, Trash2, Loader2, Camera, PenTool, Image as ImageIcon
+} from 'lucide-react';
+
+const CAMPUS_DATA = {
+  SEOUL: {
+    name: '서울캠퍼스',
+    colleges: {
+      '공과대학': ['건축학부', '건축공학부', '건설환경공학과', '도시공학과', '자원환경공학과', '융합전자공학부', '컴퓨터소프트웨어학부', '정보시스템학과', '전기공학전공', '생체공학전공', '신소재공학부', '화학공학과', '생명공학과', '유기나노공학과', '에너지공학과', '기계공학부', '원자력공학과', '산업공학과', '미래자동차공학과', '반도체공학과', '데이터사이언스전공', '심리뇌과학전공'],
+      '인문과학대학': ['국어국문학과', '중어중문학과', '영어영문학과', '독어독문학과', '사학과', '철학과'],
+      '사회과학대학': ['정치외교학과', '사회학과', '미디어커뮤니케이션학과', '관광학부'],
+      '자연과학대학': ['수학과', '물리학과', '화학과', '생명과학과'],
+      '정책과학대학': ['정책학과', '행정학과'],
+      '경제금융대학': ['경제금융학부'],
+      '경영대학': ['경영학부', '파이낸스경영학과'],
+      '사범대학': ['교육학과', '교육공학과', '국어교육과', '영어교육과', '수학교육과', '응용미술교육과'],
+      '생활과학대학': ['식품영양학과', '실내건축디자인학과', '의류학과'],
+      '음악대학': ['관현악과', '국악과', '성악과', '작곡과', '피아노과'],
+      '예술·체육대학': ['무용학과', '스포츠매니지먼트전공', '스포츠사이언스전공', '연극영화학과', '체육학과'],
+      '국제학부': ['국제학전공', '글로벌한국학전공', '글로벌콘텐츠융합학부'],
+      '간호학부': ['간호학과'],
+      '산업융합학부': ['응용시스템전공', '경영공학전공', '정보융합전공', '정보공학전공'],
+      '융합전공대학': ['데이터융합서비스디자인융합전공', '디지털혁신전략융합전공', '미래자동차기술융합전공', '중국경제통상전공', '창업융합전공', '고전읽기융합전공', '미래인문학융합전공', '인문소프트웨어융합전공', '인문공공행정전공', 'Sts(과학기술학) 전공', '공공수행인문학전공', '미디어문화전공', '영어커뮤니케이션전공', '한중통번역전공', '통상한국어커뮤니케이션전공', '글로벌비즈니스문화전공(영어전용)', '자동차-Sw융합전공', '사회혁신융합전공', '빅데이터융합전공', '예술융합소프트웨어 융합전공', '글로벌 Ceo 창업 융합전공', '글로벌 리더십 융합전공', '바이오소프트웨어융합전공', '미래전기에너지신기술융합전공', '배터리융합전공']
+    }
+  },
+  ERICA: {
+    name: 'ERICA캠퍼스',
+    colleges: {
+      '공학대학': ['건축학전공', '건축공학전공', '건설환경공학과', '교통·물류공학과', '전자공학부', '배터리소재화학공학과', '기계공학과', '산업경영공학과', '로봇공학과', '융합시스템공학과', '지능형로봇학과'],
+      '스마트융합공학부': ['소재·부품융합전공', '로봇융합전공', '스마트Ict융합전공', '건축It융합전공', '지속가능건축융합전공', '스마트컨스트럭션융합전공', '스마트건축구조시공융합전공'],
+      '소프트웨어융합대학': ['소프트웨어학부', '인공지능학과'],
+      '경상대학': ['경제학부', '경영학부', '보험계리학과', '회계세무학과'],
+      '커뮤니케이션&컬처대학': ['광고홍보학과', '문화인류학과', '문화콘텐츠학과', '미디어학과'],
+      '융합전공대학': ['디자인공학전공', '글로벌전략커뮤니케이션전공', '신산업소프트웨어전공', '산업인공지능전공', '비즈니스애널리틱스전공'],
+      'Lions칼리지': ['Lions자율전공학부(전계열)', 'Lions자율전공학부(자연계열)', 'Lions자율전공학부(인문사회계열)', '학생설계전공학부'],
+      '예체능대학': ['스포츠과학부', '스포츠문화전공', '스포츠코칭전공', '무용예술학과', '실용음악학과'],
+      '디자인대학': ['디자인계열', '주얼리·패션디자인학과', '융합디자인학부', '영상디자인학과']
+    }
+  }
+};
+
+const getGradReqs = (dept, majorType) => {
+  const db = {
+    // 서울캠
+    '건축학부': { total: 162, major100_300: 90, major400: 18, group: 'arch' },
+    '건축공학부': { total: 130, major100_300: 69, major400: 12, group: 'eng' },
+    '컴퓨터소프트웨어학부': { total: 130, major100_300: 69, major400: 12, group: 'eng' },
+    '기계공학부': { total: 130, major100_300: 69, major400: 12, group: 'eng' },
+    '데이터사이언스전공': { total: 120, major100_300: 48, major400: 12, group: 'ds' },
+    '국어국문학과': { total: 126, major100_300: 48, major400: 12, group: 'humanities' },
+    '영어영문학과': { total: 126, major100_300: 48, major400: 12, group: 'humanities' },
+    '정책학과': { total: 126, major100_300: 48, major400: 12, group: 'policy' },
+    // 에리카캠
+    '건축학전공': { total: 162, major100_300: 90, major400: 18, group: 'arch' },
+    '건축공학전공': { total: 130, major100_300: 69, major400: 12, group: 'eng' },
+    '전자공학부': { total: 130, major100_300: 69, major400: 12, group: 'eng' },
+    '경영학부': { total: 126, major100_300: 48, major400: 12, group: 'biz' },
+    '경제학부': { total: 126, major100_300: 48, major400: 12, group: 'biz' },
+  };
+
+  let req = db[dept] || { total: 126, major100_300: 48, major400: 12, group: 'general' };
+  req = { ...req }; 
+  req.secondMajor = 0;
+
+  if (majorType === '다중/복수전공' || majorType === '융합전공') {
+      if (req.group === 'eng') { req.major100_300 = 51; req.major400 = 6; }
+      else if (req.group === 'arch') { req.major100_300 = 90; req.major400 = 18; }
+      else if (req.group === 'ds') { req.major100_300 = 44; req.major400 = 6; }
+      else { req.major100_300 = 39; req.major400 = 6; }
+      req.secondMajor = 36;
+  } else if (majorType === '부전공') {
+      if (req.group === 'eng') { req.major100_300 = 57; req.major400 = 6; }
+      else if (req.group === 'arch') { req.major100_300 = 90; req.major400 = 18; }
+      else if (req.group === 'ds') { req.major100_300 = 44; req.major400 = 6; }
+      else { req.major100_300 = 39; req.major400 = 6; }
+      req.secondMajor = 21;
+  } else if (majorType === '마이크로전공') {
+      req.secondMajor = 12;
+  }
+
+  req.majorTotal = req.major100_300 + req.major400;
+  req.englishAvg = 5; req.prerequisite = 'Y'; req.gpa = 1.75;
+  req.requiredCourses = 'Y'; req.volunteer = 1; req.internship = 'Y';
+  req.coreElective = 8; req.classicReading = 2; req.globalLang = 2;
+  req.sw = 2; req.futureStartup = 2; req.scienceTech = 2; req.icpbl = 4;
+  return req;
+};
+
+const CAREER_GOALS = {
+  INDUSTRY: { id: 'industry', name: '산업체 취업', sub: ['IT/소프트웨어', '기획/마케팅', '금융/은행', '반도체/엔지니어링', '식품/F&B', '패션/의류'] },
+  PUBLIC: { id: 'public', name: '공직/공공기관', sub: ['공기업 (NCS)', '5급 행정고시', '5급 기술고시'] },
+  PROFESSIONAL: { id: 'professional', name: '전문직 (고시)', sub: ['로스쿨 (법조인)', 'CPA (공인회계사)'] },
+  MEDIA: { id: 'media', name: '미디어/언론', sub: ['언론고시 (기자/PD)'] },
+  GRAD_SCHOOL: { id: 'grad_school', name: '대학원 진학', sub: ['자대 대학원', '타대 대학원'] }
+};
+
+// 💡 [기능 반영] 실시간 D-day 계산을 위한 타겟 날짜 명시 데이터베이스
+const CAREER_SPEC_MAP = {
+  'IT/소프트웨어': [
+    { cat: 'lang', title: 'OPIc', targetScore: 'IM2', source: 'OPIc', targetDate: '2026-06-25', desc: '개발자 대기업 서류 패스 기본 요건입니다.', url: 'https://www.opic.or.kr/' },
+    { cat: 'lang', title: 'TOEIC', targetScore: '800', source: 'YBM', targetDate: '2026-06-14', desc: '공통 필수 어학 스탯입니다.', url: 'https://exam.toeic.co.kr/' },
+    { cat: 'cert', title: '정보처리기사', source: 'Q-Net', targetDate: '2026-07-05', desc: 'IT 직무의 가장 기본이 되는 국가공인자격증.', url: 'https://www.q-net.or.kr/' },
+    { cat: 'cert', title: 'SQLD', source: '데이터자격검정', targetDate: '2026-08-24', desc: '백엔드/데이터 직무 지원자라면 필수.', url: 'https://www.dataq.or.kr/' },
+    { cat: 'activity', title: 'IT 연합동아리 (SOPT/NEXTERS)', source: '캠퍼스픽', targetDate: '2026-05-30', desc: '기획/디자인/개발자가 모여 협업 프로젝트를 진행하는 대장급 동아리.', url: 'https://sopt.org/' },
+    { cat: 'project', title: '네이버 부스트캠프 / 우테코', source: '링커리어', targetDate: '2026-06-10', desc: '수료 시 네카라쿠배 합격률 최상위인 초고퀄리티 부트캠프.', url: 'https://woowacourse.github.io/' },
+    { cat: 'intern', title: '카카오/네이버 하계 인턴십', source: '채용 홈페이지', targetDate: '2026-06-01', desc: '최고의 실무 스펙. 코딩테스트 통과가 핵심입니다.', url: 'https://careers.kakao.com/' },
+  ],
+  '기획/마케팅': [
+    { cat: 'lang', title: 'OPIc', targetScore: 'IH', source: 'YBM/OPIc', targetDate: '2026-06-25', desc: '기획/마케팅 직무의 필수 어학 컷. 커뮤니케이션 역량을 어필하세요.', url: 'https://exam.toeic.co.kr/' },
+    { cat: 'lang', title: 'TOEIC', targetScore: '900', source: 'YBM', targetDate: '2026-06-14', desc: '고고익선 어학 성적입니다.', url: 'https://exam.toeic.co.kr/' },
+    { cat: 'cert', title: 'GA4 (구글 애널리틱스)', source: 'Google Skillshop', targetDate: '2026-05-28', desc: '데이터 기반 퍼포먼스 마케팅을 위한 필수 자격증입니다.', url: 'https://skillshop.exceedlms.com/' },
+    { cat: 'cert', title: '컴퓨터활용능력 1급', source: '대한상공회의소', targetDate: '2026-06-10', desc: '기획/사무직의 기본 엑셀/데이터 활용 능력 증명입니다.', url: 'https://license.korcham.net/' },
+    { cat: 'activity', title: '경영전략/마케팅 학회', source: '교내', targetDate: '2026-09-05', desc: '실제 기업과 산학협력 프로젝트를 진행하며 실무 기획력을 배양합니다.', url: '#' },
+    { cat: 'activity', title: 'KT&G 상상유니브 마케팅스쿨', source: '상상유니브', targetDate: '2026-07-20', desc: '전국 최대 규모 마케팅 실무 대외활동.', url: 'https://www.sangsanguniv.com/' },
+    { cat: 'project', title: '제일기획 아이디어 페스티벌', source: '제일기획', targetDate: '2026-05-31', desc: '광고/기획 분야 최고 권위 공모전. 입상 시 대행사 취업에 유리합니다.', url: 'https://ideafestival.cheil.co.kr/' },
+  ],
+  '식품/F&B': [
+    { cat: 'lang', title: 'TOEIC', targetScore: '800', source: 'YBM', targetDate: '2026-06-14', desc: '식품 및 소비재 대기업 지원의 필수 어학 요건입니다.', url: 'https://exam.toeic.co.kr/' },
+    { cat: 'cert', title: '식품기사', source: 'Q-Net', targetDate: '2026-07-05', desc: '식품 연구개발(R&D) 및 품질관리(QC) 필수 자격증.', url: 'https://www.q-net.or.kr/' },
+    { cat: 'cert', title: '위생사 / 영양사', source: '한국보건의료인국가시험원', targetDate: '2026-11-20', desc: '식품영양학과 특화 국가면허. 급식, 단체급식, 식품위생 직무 필수.', url: 'https://www.kuksiwon.or.kr/' },
+    { cat: 'cert', title: '품질경영기사', source: 'Q-Net', targetDate: '2026-07-05', desc: '식품공장 생산관리/품질보증(QA) 지원 시 엄청난 무기가 됩니다.', url: 'https://www.q-net.or.kr/' },
+    { cat: 'activity', title: '식품/외식기업 대학생 서포터즈', source: '위비티/링커리어', targetDate: '2026-06-05', desc: '오뚜기, 농심, CJ제일제당 등 타겟 기업의 프로슈머/서포터즈 활동 필수.', url: 'https://www.wevity.com/' },
+    { cat: 'intern', title: '식품 기업 R&D/품질관리 인턴', source: '기업별 채용공고', targetDate: '2026-06-10', desc: '실제 식품 공정 및 연구 보조 경험을 쌓을 수 있는 핵심 스펙.', url: '#' },
+  ],
+  '패션/의류': [
+    { cat: 'lang', title: 'OPIc', targetScore: 'IH', source: 'OPIc', targetDate: '2026-06-25', desc: '글로벌 패션 브랜드(벤더) 및 해외 영업/소싱 지원 시 필수 요건.', url: 'https://www.opic.or.kr/' },
+    { cat: 'cert', title: '패션머천다이징산업기사', source: 'Q-Net', targetDate: '2026-07-05', desc: '패션 MD 및 기획 직무를 희망한다면 전공 지식을 증명하는 가장 확실한 자격증.', url: 'https://www.q-net.or.kr/' },
+    { cat: 'cert', title: 'GTQ / 컴퓨터그래픽스운용기능사', source: 'KPC 자격', targetDate: '2026-06-20', desc: '의류 디자인 및 VMD 보조를 위한 포토샵/일러스트레이터 활용 능력 증명.', url: 'https://license.kpc.or.kr/' },
+    { cat: 'activity', title: '패션 브랜드 대외활동/앰버서더', source: '캠퍼스픽', targetDate: '2026-05-30', desc: '의류 브랜드 마케터, 패션 매거진 에디터 등 실무 경험 축적.', url: 'https://www.campuspick.com/' },
+    { cat: 'project', title: '졸업작품전/교내 패션쇼 위원회', source: '교내', targetDate: '2026-09-01', desc: '컬렉션 기획, 원단 소싱, 패턴 제작 등 패션 실무 사이클을 통째로 경험합니다.', url: '#' },
+    { cat: 'intern', title: '의류 벤더/브랜드 MD 체험형 인턴', source: '각 패션기업', targetDate: '2026-06-05', desc: '영원무역, 한세실업, LF 등 패션 기업 실무 인턴십.', url: '#' },
+  ],
+  '금융/은행': [
+    { cat: 'lang', title: 'TOEIC', targetScore: '850', source: 'YBM', targetDate: '2026-06-14', desc: '은행권 및 금융공기업 서류 통과를 위한 기본 어학 컷입니다.', url: 'https://exam.toeic.co.kr/' },
+    { cat: 'cert', title: '신용분석사', source: '한국금융연수원', targetDate: '2026-06-13', desc: '기업금융 직무 목표 시 가장 파괴력 있는 자격증입니다.', url: 'https://www.kbi.or.kr/' },
+    { cat: 'cert', title: 'AFPK (개인재무설계사)', source: '한국FPSB', targetDate: '2026-07-25', desc: '은행권(개인금융, WM) 지원자 다수가 보유한 필수 자격증입니다.', url: 'https://www.fpsbkorea.org/' },
+    { cat: 'activity', title: '신한은행 / 국민은행 대학생 홍보대사', source: '각 은행', targetDate: '2026-07-01', desc: '금융권 취업을 위한 최고의 네트워킹 대외활동.', url: 'https://www.kbcampusstar.com/' },
+    { cat: 'activity', title: '교내 가치투자/금융 학회', source: '교내', targetDate: '2026-09-05', desc: '산업 분석 및 기업 밸류에이션 등 금융권 실무 지식을 쌓는 필수 코스.', url: '#' }
+  ],
+  'CPA (공인회계사)': [
+    { cat: 'lang', title: 'TOEIC', targetScore: '700', source: 'YBM', targetDate: '2026-06-14', desc: '공인회계사 1차 시험 응시를 위한 필수 어학 요건입니다.', url: 'https://exam.toeic.co.kr/' },
+    { cat: 'cert', title: '학점이수제도 (회계 12, 경영 9, 경제 3)', source: '금융감독원', targetDate: '2026-12-31', desc: 'CPA 응시를 위한 필수 이수 학점 (학교 교과목 또는 학점은행제로 충족).', url: 'https://cpa.fss.or.kr/' },
+    { cat: 'activity', title: '교내 고시반 / 회계동아리', source: '교내', targetDate: '2026-09-01', desc: '회계사 시험 준비생들이 모여 정보 공유 및 체계적인 스터디 진행.', url: '#' },
+    { cat: 'project', title: '공인회계사(CPA) 1차 시험', source: '금융감독원', targetDate: '2027-02-28', desc: '재무회계, 원가관리, 세법, 상법 등 심도 있는 지식을 요구하는 고시.', url: 'https://cpa.fss.or.kr/' }
+  ],
+  '로스쿨 (법조인)': [
+    { cat: 'lang', title: 'TOEIC', targetScore: '950', source: 'YBM', targetDate: '2026-06-14', desc: '로스쿨 지원의 절대적 기본 스탯. 고고익선이며 1~2학년 때 조기 달성 필수입니다.', url: 'https://exam.toeic.co.kr/' },
+    { cat: 'cert', title: 'KBS한국어능력시험', targetScore: '2+', source: 'KBS', targetDate: '2026-08-16', desc: '정량평가 가산점 획득 및 LEET 언어이해 파트 감각 유지를 위한 필수 스펙.', url: 'http://www.klt.or.kr/' },
+    { cat: 'activity', title: '소외계층 장기 봉사활동 (멘토링 등)', source: 'VMS', targetDate: '2026-06-30', desc: '로스쿨 정성평가(자소서)에서 공익적 마인드를 어필하는 강력한 요소입니다.', url: 'https://www.vms.or.kr/' },
+    { cat: 'activity', title: '교내 법학/토론 동아리', source: '교내', targetDate: '2026-09-05', desc: '리걸 마인드와 논리적 사고력을 기르는 학술 동아리.', url: '#' },
+    { cat: 'intern', title: '대한법률구조공단 실무 수습', source: '법률구조공단', targetDate: '2026-11-01', desc: '공익 법무 실무 경험. 로스쿨 합격자 다수가 거쳐가는 엘리트 코스입니다.', url: 'https://www.klac.or.kr/' },
+    { cat: 'project', title: 'LEET (법학적성시험)', source: '법학적성시험', targetDate: '2026-07-19', desc: '입시의 알파와 오메가. 실전 시간 배분 연습이 핵심.', url: 'https://leet.uwayapply.com/' },
+  ],
+  '반도체/엔지니어링': [
+    { cat: 'lang', title: 'OPIc', targetScore: 'IM2', source: 'OPIc', targetDate: '2026-06-25', desc: '삼성전자(DS), 하이닉스 등 주요 기업은 영어 회화 커트라인 미충족 시 지원 불가.', url: 'https://www.opic.or.kr/' },
+    { cat: 'cert', title: '일반기계/전기기사', source: 'Q-Net', targetDate: '2026-07-05', desc: '엔지니어링 직무의 꽃. 전공 기초 역량을 증명하며 졸업 전 1개 취득 권장.', url: 'https://www.q-net.or.kr/' },
+    { cat: 'activity', title: '학부 연구생 (랩실 인턴)', source: '교내 연구실', targetDate: '2026-06-10', desc: '석박사 연구 보조 및 공정 장비 활용 경험을 쌓을 수 있는 최고의 스펙.', url: '#' },
+    { cat: 'activity', title: '반도체 공정실습 (SPTA 등)', source: 'SPTA / 교내', targetDate: '2026-06-20', desc: 'FAB 출입 및 실제 웨이퍼 공정 경험 유무가 합격을 가릅니다.', url: 'https://spta.co.kr/' },
+    { cat: 'intern', title: '삼성전자 DS 대학생 인턴', source: '삼성커리어스', targetDate: '2026-09-10', desc: '엔지니어가 거칠 수 있는 최고의 실무 체험.', url: 'https://www.samsungcareers.com/' }
+  ],
+  '공기업 (NCS)': [
+    { cat: 'lang', title: 'TOEIC', targetScore: '850', source: 'YBM', targetDate: '2026-06-14', desc: '주요 공기업 서류전형 어학 가점 만점을 위한 필수 컷.', url: 'https://exam.toeic.co.kr/' },
+    { cat: 'cert', title: '한국사능력검정시험 (1급)', source: '국사편찬위원회', targetDate: '2026-08-08', desc: '모든 공기업/공공기관 서류 전형 필수 가산점 1순위.', url: 'https://www.historyexam.go.kr/' },
+    { cat: 'cert', title: '컴퓨터활용능력 1급', source: '대한상공회의소', targetDate: '2026-06-10', desc: '사무/기술직 공통 가산점 자격증. 실기 기출 반복 훈련이 필수.', url: 'https://license.korcham.net/' },
+    { cat: 'activity', title: '공공기관 서포터즈/기자단', source: '링커리어', targetDate: '2026-06-05', desc: '한국전력, 인권위 등 공공기관의 직무관련 활동으로 조직 적합성을 어필합니다.', url: 'https://linkareer.com/' },
+    { cat: 'intern', title: '국민건강보험공단 등 청년인턴', source: '잡알리오', targetDate: '2026-07-01', desc: '공공기관 실무 경험의 프리패스이자 면접 최고의 소스.', url: 'https://job.alio.go.kr/' }
+  ],
+  '5급 행정고시': [
+    { cat: 'lang', title: 'TOEIC', targetScore: '700', source: 'YBM', targetDate: '2026-06-14', desc: '5급 공채 응시를 위한 필수 어학 요건 (토익 700점 이상).', url: 'https://exam.toeic.co.kr/' },
+    { cat: 'cert', title: '한국사능력검정시험 (2급 이상)', source: '국사편찬위원회', targetDate: '2026-08-08', desc: '5급 공채 응시를 위한 필수 한국사 요건.', url: 'https://www.historyexam.go.kr/' },
+    { cat: 'activity', title: '교내 행정고시반 (국가고시센터)', source: '교내', targetDate: '2026-09-01', desc: 'PSAT 모의고사, 특강, 2차 논술 대비 그룹 스터디가 이루어지는 최적의 환경.', url: '#' },
+    { cat: 'project', title: 'PSAT (1차) 시험', source: '인사혁신처', targetDate: '2027-02-28', desc: '경제학, 행정법, 행정학 등 방대한 분량의 2차 논문형 시험 대비가 핵심.', url: 'https://www.gosi.kr/' }
+  ],
+  '5급 기술고시': [
+    { cat: 'lang', title: 'TOEIC', targetScore: '700', source: 'YBM', targetDate: '2026-06-14', desc: '5급 기술직 응시를 위한 필수 어학 요건.', url: 'https://exam.toeic.co.kr/' },
+    { cat: 'cert', title: '한국사능력검정시험 (2급 이상)', source: '국사편찬위원회', targetDate: '2026-08-08', desc: '필수 한국사 요건.', url: 'https://www.historyexam.go.kr/' },
+    { cat: 'activity', title: '교내 기술고시반', source: '교내', targetDate: '2026-09-01', desc: '기출문제 풀이, PSAT 스터디 및 모의고사 응시 혜택 지원.', url: '#' },
+    { cat: 'project', title: 'PSAT 및 기술직 2차 시험', source: '인사혁신처', targetDate: '2027-02-28', desc: '토목, 기계, 화공, 전산 등 직렬별 전공 심화 논술 대비.', url: 'https://www.gosi.kr/' }
+  ],
+  '언론고시 (기자/PD)': [
+    { cat: 'lang', title: 'TOEIC', targetScore: '850', source: 'YBM', targetDate: '2026-06-14', desc: '주요 언론사(KBS, MBC, 주요 일간지) 서류 및 필기 전형의 기본 요건.', url: 'https://exam.toeic.co.kr/' },
+    { cat: 'cert', title: 'KBS한국어능력시험', targetScore: '2+', source: 'KBS', targetDate: '2026-08-16', desc: '언론사 지원자 필수 스펙. 서류 및 필기 평가 시 강력한 가산점.', url: 'http://www.klt.or.kr/' },
+    { cat: 'activity', title: '교내 학보사 / 방송국(HUBS)', source: '교내', targetDate: '2026-09-05', desc: '취재, 기사 작성, 영상 기획/편집 등 실무 경험을 쌓는 최고의 대외활동.', url: '#' },
+    { cat: 'activity', title: '언론고시 실전 스터디 (아랑)', source: '다음 카페 아랑', targetDate: '2026-06-01', desc: 'PD/기자 지망생의 성지. 논술, 상식, 시사 이슈 토론 스터디 필수.', url: 'https://cafe.daum.net/forjournalists' },
+    { cat: 'intern', title: '주요 언론사 하계 인턴십', source: '각 언론사', targetDate: '2026-06-20', desc: '현장 취재 및 방송 제작 실무를 직접 경험하며 포트폴리오를 채웁니다.', url: '#' }
+  ],
+  'default': [
+    { cat: 'lang', title: 'TOEIC', targetScore: '850', source: 'YBM', targetDate: '2026-06-14', desc: '취업의 가장 기본 스펙. 방학을 활용해 미리 점수를 만들어두세요.', url: 'https://exam.toeic.co.kr/' },
+    { cat: 'activity', title: '직무 연관 연합동아리 가입', source: '에브리타임/캠퍼스픽', targetDate: '2026-09-01', desc: '어떤 직무든 협업 경험은 필수입니다.', url: 'https://everytime.kr/' },
+    { cat: 'intern', title: '한양대학교 현장실습(HY-WEP)', source: 'HY-in 포털', targetDate: '2026-06-10', desc: '학교와 연계된 기업에서 실무 경험을 쌓고 학점을 충족하는 최적의 프로그램.', url: 'https://portal.hanyang.ac.kr/' },
+  ]
+};
+
+// 💡 학년별 진로 로드맵 데이터베이스 (Map UI 생성용)
+const YEARLY_ROADMAP_DB = {
+  'IT/소프트웨어': [
+    { grade: 1, title: '기초 탐색 및 어학', items: ['교내 코딩 동아리(멋쟁이사자처럼 등) 가입', '1인 1프로그래밍 언어 마스터 (Python, Java)'] },
+    { grade: 2, title: '직무 설정 및 스터디', items: ['IT 연합동아리(SOPT, NEXTERS) 가입 및 활동', '개인 토이 프로젝트 시작 및 깃허브 잔디 관리'] },
+    { grade: 3, title: '실무 스펙 및 공모전', items: ['정보처리기사 필기 합격 및 해커톤 출전', '네이버 D2 등 테크 기업 서포터즈 활동'] },
+    { grade: 4, title: '취업 실전 및 포트폴리오', items: ['네카라쿠배 등 IT 기업 채용형 인턴십 지원', '코딩테스트 스터디 및 개인 포트폴리오 웹 배포'] }
+  ],
+  '기획/마케팅': [
+    { grade: 1, title: '기초 탐색 및 어학', items: ['경영전략/마케팅 교내 학회 가입', '개인 블로그/SNS 채널 운영 시작 및 컴활 취득'] },
+    { grade: 2, title: '직무 설정 및 스터디', items: ['상상유니브 등 연합 마케팅 대외활동 참여', 'GA4 및 포토샵/피그마 기초 툴 학습'] },
+    { grade: 3, title: '실무 스펙 및 공모전', items: ['제일기획/대홍기획 등 메이저 공모전 출전', '대기업(현대차, 아모레 등) 공식 서포터즈 활동'] },
+    { grade: 4, title: '취업 실전 및 포트폴리오', items: ['마케팅 직무 체험형 인턴십 수료', '노션 포트폴리오 사이트 완성'] }
+  ],
+  '금융/은행': [
+    { grade: 1, title: '기초 탐색 및 어학', items: ['가치투자/금융 교내 학회 가입', '경제 신문 스크랩 및 토익 850점 조기 달성'] },
+    { grade: 2, title: '직무 설정 및 스터디', items: ['테셋 또는 매경TEST 최우수 취득', '금융감독원 등 공공기관 대학생 기자단'] },
+    { grade: 3, title: '실무 스펙 및 공모전', items: ['시중은행(KB, 신한) 대학생 홍보대사 활동', 'AFPK 자격증 교육 수료 및 정규시험 합격'] },
+    { grade: 4, title: '취업 실전 및 포트폴리오', items: ['금융권/신보 청년인턴 수료', '신용분석사 자격증 취득 및 디지털 역량(SQL) 보완'] }
+  ],
+  'CPA (공인회계사)': [
+    { grade: 1, title: '기본 요건 충족', items: ['토익 700점 또는 지텔프 65점 조기 달성', '경영학, 회계학, 경제학 전공기초 학점 이수'] },
+    { grade: 2, title: '본격 고시 진입', items: ['중급회계, 재무관리 수강 및 기본 강의 완강', '교내 고시반(회계동아리) 입반 테스트 및 합격'] },
+    { grade: 3, title: '1차 시험 올인', items: ['객관식 문제풀이 스터디 진행', '전국 모의고사 응시 및 2월 1차 시험 합격'] },
+    { grade: 4, title: '2차 시험 및 취업', items: ['유예/동차 2차 주관식 시험 집중 대비', '최종 합격 후 4대 회계법인(Big4) 입사 지원'] }
+  ],
+  '로스쿨 (법조인)': [
+    { grade: 1, title: '기초 탐색 및 어학', items: ['학점(GPA) 4.0 이상 절대적 유지', '법학/토론 동아리 가입 및 토익 950+ 조기 달성'] },
+    { grade: 2, title: '정성 스펙 및 스터디', items: ['소외계층 대상 장기 멘토링 봉사활동 시작', '법학 관련 교양/전공기초 집중 수강'] },
+    { grade: 3, title: '실무 스펙 및 공모전', items: ['대한법률구조공단 등 공익/법률 인턴십', 'LEET 기출 분석 스터디 및 KBS한국어 고득점'] },
+    { grade: 4, title: '입시 실전 및 포트폴리오', items: ['LEET 전국 모의고사 지속 응시', '로스쿨 자기소개서 작성 및 면접 스터디'] }
+  ],
+  '반도체/엔지니어링': [
+    { grade: 1, title: '기초 수학/과학 완성', items: ['공업수학, 일반물리/화학 학점 A 이상 달성', '토익 800+ 및 OPIc 기본 등급 취득'] },
+    { grade: 2, title: '전공 기초 및 스터디', items: ['전공 핵심(열역학, 전자기학 등) 집중 학습', '학부 연구생 지원을 위한 교내 랩실 탐색'] },
+    { grade: 3, title: '실무 스펙 및 공모전', items: ['SPTA 등 외부 반도체 공정실습 이수', '쌍기사(기계, 전기 등) 필기/실기 응시'] },
+    { grade: 4, title: '취업 실전 및 포트폴리오', items: ['삼성전자 DS부문/SK하이닉스 인턴십 지원', '캡스톤디자인 전공 프로젝트 포트폴리오 완성'] }
+  ],
+  '공기업 (NCS)': [
+    { grade: 1, title: '기초 탐색 및 어학', items: ['가산점 필수 자격증(한국사 1급, 컴활 1급) 취득', '목표 직무(사무/기술) 및 희망 공기업 리스트 탐색'] },
+    { grade: 2, title: '직무 설정 및 스터디', items: ['한국전력/인권위 등 공공기관 서포터즈 활동', '전공 기사(기술직) 또는 한국어능력시험(사무직) 준비'] },
+    { grade: 3, title: '실무 스펙 및 공모전', items: ['NCS 직업기초능력평가 스터디 시작', '국민건강보험공단 등 희망 공기업 체험형 청년인턴 지원'] },
+    { grade: 4, title: '취업 실전 및 포트폴리오', items: ['전공 필기 심화 완성 및 NCS 모의고사 풀이', '채용형 인턴 수료 및 블라인드 면접 스터디'] }
+  ],
+  '5급 행정고시': [
+    { grade: 1, title: '자격 요건 충족', items: ['토익 700+ 및 한국사 2급 조기 달성', '경제학원론, 행정학개론 등 기초 전공 수강'] },
+    { grade: 2, title: '본격 고시 진입', items: ['교내 행정고시반(국가고시센터) 입반', '미시/거시경제학 및 행정법 예비순환 수강'] },
+    { grade: 3, title: '1차 PSAT 및 2차 대비', items: ['방학 중 PSAT 기출 훈련 및 모의고사 응시', '2차 과목(경제학, 행정학, 정치학) 1~2순환 및 답안 스터디'] },
+    { grade: 4, title: '합격 및 면접 준비', items: ['3순환 모의고사반 실전 답안 작성 훈련', '1, 2차 합격 후 교내 모의 면접 스터디 참여'] }
+  ],
+  '5급 기술고시': [
+    { grade: 1, title: '자격 요건 충족', items: ['토익 700+ 및 한국사 2급 조기 달성', '미적분학, 일반물리 등 전공 기초 탄탄히 다지기'] },
+    { grade: 2, title: '전공 심화 및 진입', items: ['교내 기술고시반 입반 및 정보 수집', '응시 직렬(토목/건축/전산 등) 2차 전공 과목 기본기 수강'] },
+    { grade: 3, title: '1차 PSAT 및 2차 대비', items: ['방학 중 PSAT(언어, 자료, 상황) 훈련', '전공 과목 서브노트 단권화 및 기출문제 분석 스터디'] },
+    { grade: 4, title: '합격 및 면접 준비', items: ['실전 논문형 답안 작성 연습 극대화', '최종 합격 후 직무 역량 및 공직 가치관 면접 대비'] }
+  ],
+  '언론고시 (기자/PD)': [
+    { grade: 1, title: '미디어 경험 및 독서', items: ['교내 방송국, 학보사, 영자신문사 가입 및 활동', '정치/경제/사회 전반의 폭넓은 독서 및 스크랩'] },
+    { grade: 2, title: '어학 및 기초 역량', items: ['토익 850+ 및 KBS한국어능력시험 고득점 취득', '사회/문화 이슈에 대한 본인만의 칼럼 작성 연습'] },
+    { grade: 3, title: '인턴십 및 스터디', items: ['다음 카페 [아랑] 등 작문/논술/시사 스터디 참여', '방학 중 메이저 언론사(방송/신문) 체험형 인턴 수료'] },
+    { grade: 4, title: '실무 평가 및 공채', items: ['각 언론사별 필기(논술/작문) 맞춤형 실전 대비', '카메라테스트, 합숙 면접 등 실무 전형 집중 훈련'] }
+  ],
+  'default': [
+    { grade: 1, title: '진로 탐색', items: ['교내외 다양한 동아리 및 학회 활동', '기본 어학 점수 취득 및 직무 적성 검사'] },
+    { grade: 2, title: '역량 개발', items: ['관심 분야의 단기 자격증 취득', '연합동아리, 단기 서포터즈, 봉사활동 참여'] },
+    { grade: 3, title: '실무 경험', items: ['직무 연관 공모전 및 팀 프로젝트 출전', '교내 현장실습(HY-WEP)을 통한 인턴십 이수'] },
+    { grade: 4, title: '취업 준비', items: ['자기소개서 초안 작성 및 포트폴리오 정리', '실전 면접 스터디 및 목표 기업 공채 지원'] }
+  ]
+};
+
+const SPEC_DB = [
+  { id: 'toeic', name: 'TOEIC', type: 'lang', validity: 24, placeholder: '점수 (예: 850)' },
+  { id: 'opic', name: 'OPIc', type: 'lang', validity: 24, placeholder: '등급 (예: IM2)' },
+  { id: 'tos', name: 'TOEIC Speaking', type: 'lang', validity: 24, placeholder: '등급 (예: IH)' },
+  { id: 'teps', name: 'TEPS', type: 'lang', validity: 24, placeholder: '점수' },
+  { id: 'toefl', name: 'TOEFL', type: 'lang', validity: 24, placeholder: '점수' },
+  { id: 'kbs', name: 'KBS한국어능력시험', type: 'lang', validity: 24, placeholder: '등급 (예: 2+)' },
+  { id: 'history', name: '한국사능력검정시험', type: 'cert', validity: 'permanent', placeholder: '급수 (예: 1급)' },
+  { id: 'com', name: '컴퓨터활용능력 1급', type: 'cert', validity: 'permanent', placeholder: '합격' },
+  { id: 'com2', name: '컴퓨터활용능력 2급', type: 'cert', validity: 'permanent', placeholder: '합격' },
+  { id: 'qnet_it', name: '정보처리기사', type: 'cert', validity: 'permanent', placeholder: '합격' },
+  { id: 'sqld', name: 'SQLD', type: 'cert', validity: 'permanent', placeholder: '합격' },
+  { id: 'adsp', name: 'ADsP', type: 'cert', validity: 'permanent', placeholder: '합격' },
+  { id: 'credit', name: '신용분석사', type: 'cert', validity: 'permanent', placeholder: '합격' },
+  { id: 'afpk', name: 'AFPK', type: 'cert', validity: 36, placeholder: '합격' },
+  { id: 'cpa', name: 'CPA (공인회계사)', type: 'cert', validity: 'permanent', placeholder: '합격' },
+  { id: 'custom', name: '직접 입력', type: 'custom', validity: 'custom', placeholder: '점수/등급/합격여부' }
+];
+
+const CURRICULUM_DB = {
+  // 서울캠퍼스
+  '컴퓨터소프트웨어학부': [
+    { name: '자료구조론', type: '전공 100~300단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '2학년 1학기', ownerDept: '컴소부', reason: '코딩테스트의 근간이 되는 필수 전공입니다.' },
+    { name: '시스템프로그래밍', type: '전공 100~300단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '2학년 2학기', ownerDept: '컴소부', reason: '운영체제 이해를 위한 전공 심화 과목입니다.' },
+    { name: '병렬프로그래밍', type: '전공 400단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '4학년 1학기', ownerDept: '컴소부', reason: '고성능 컴퓨팅 역량을 증명합니다.' }
+  ],
+  '정보시스템학과': [
+    { name: '전산학개론', type: '전공 100~300단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '1학년 1학기', ownerDept: '정보시스템', reason: 'IT 융합 인재의 기초가 되는 컴퓨터 공학의 전반을 이해합니다.' },
+    { name: '정보시스템분석', type: '전공 100~300단위', credits: 3, target: '기획/마케팅', gradeTerm: '2학년 2학기', ownerDept: '정보시스템', reason: 'IT 서비스 기획 및 시스템 설계 역량을 기르는 핵심 과목입니다.' },
+    { name: 'It와경영전략', type: '전공 400단위', credits: 3, target: '기획/마케팅', gradeTerm: '4학년 1학기', ownerDept: '정보시스템', reason: '기술과 비즈니스를 결합하여 전략 컨설팅 역량을 증명하는 심화 과목입니다.' },
+    { name: '전자상거래이론', type: '전공 400단위', credits: 3, target: '기획/마케팅', gradeTerm: '3학년 2학기', ownerDept: '정보시스템', reason: '이커머스 도메인의 IT 기획 및 PM 직무 준비용.' }
+  ],
+  '데이터사이언스전공': [
+    { name: '데이터사이언스기초', type: '전공 100~300단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '1학년 2학기', ownerDept: '데사전', reason: '데이터 전처리와 분석의 기본을 다지는 필수 전공입니다.' },
+    { name: '머신러닝1', type: '전공 100~300단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '3학년 1학기', ownerDept: '데사전', reason: 'AI와 데이터분석 핵심 알고리즘을 학습합니다.' },
+    { name: '인공지능프로젝트1', type: '전공 400단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '4학년 1학기', ownerDept: '데사전', reason: '400단위 프로젝트로 실무적인 AI 파이프라인을 구축해볼 수 있습니다.' }
+  ],
+  '심리뇌과학전공': [
+    { name: '인지과학기초', type: '전공 100~300단위', credits: 3, target: '기획/마케팅', gradeTerm: '2학년 1학기', ownerDept: '심리뇌과학', reason: '인간의 심리와 인지 모델을 이해하여 UX 기획에 접목합니다.' },
+    { name: '계산인지과학', type: '전공 100~300단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '3학년 1학기', ownerDept: '심리뇌과학', reason: '뇌과학과 컴퓨터 모델링을 융합하는 핵심 전공입니다.' },
+    { name: '뉴로이미징', type: '전공 400단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '4학년 1학기', ownerDept: '심리뇌과학', reason: '뇌 영상 데이터를 처리하고 분석하는 심화 기술을 배웁니다.' }
+  ],
+  '기계공학부': [
+    { name: '정역학', type: '전공 100~300단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '2학년 1학기', ownerDept: '기계공', reason: '엔지니어링의 기본이 되는 역학 필수 과목입니다.' },
+    { name: '열역학1', type: '전공 100~300단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '2학년 2학기', ownerDept: '기계공', reason: '에너지 시스템의 기초를 다루는 핵심 전공입니다.' },
+    { name: '로보트공학', type: '전공 400단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '4학년 1학기', ownerDept: '기계공', reason: '메카트로닉스와 로봇 제어 시스템을 구축합니다.' }
+  ],
+  '반도체공학과': [
+    { name: '시스템반도체소자', type: '전공 100~300단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '2학년 2학기', ownerDept: '반도체공', reason: '메모리 및 비메모리 시스템 반도체의 동작 원리를 다룹니다.' },
+    { name: '양자역학개론', type: '전공 100~300단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '3학년 1학기', ownerDept: '반도체공', reason: '나노 스케일 소자 분석을 위한 물리적 기초.' },
+    { name: '나노전자공학', type: '전공 400단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '4학년 1학기', ownerDept: '반도체공', reason: '차세대 반도체 공정을 다루는 심화 전공.' }
+  ],
+  '화학공학과': [
+    { name: '화학공학개론', type: '전공 100~300단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '1학년 2학기', ownerDept: '화공', reason: '화학공정 전반을 이해하는 기초 과목.' },
+    { name: '반응공학', type: '전공 100~300단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '3학년 1학기', ownerDept: '화공', reason: '플랜트 설계 핵심 전공.' },
+    { name: '분리공정', type: '전공 400단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '4학년 1학기', ownerDept: '화공', reason: '플랜트의 꽃인 분리 기술 심화 학습.' }
+  ],
+  '생명과학과': [
+    { name: '일반생물학1', type: '전공 100~300단위', credits: 3, target: '대학원 진학', gradeTerm: '1학년 1학기', ownerDept: '생명과학과', reason: '생명 현상의 기초.' },
+    { name: '생물정보학', type: '전공 400단위', credits: 2, target: 'IT/소프트웨어', gradeTerm: '4학년 1학기', ownerDept: '생명과학과', reason: '빅데이터를 생물학에 적용하는 융합 심화전공.' }
+  ],
+  '생명공학과': [
+    { name: '일반생물학', type: '전공 100~300단위', credits: 3, target: '대학원 진학', gradeTerm: '1학년 1학기', ownerDept: '생명공학과', reason: '생명 현상의 기초.' },
+    { name: '단백질효소공학', type: '전공 400단위', credits: 3, target: '대학원 진학', gradeTerm: '4학년 1학기', ownerDept: '생명공학과', reason: '바이오 신약 기술 실무.' }
+  ],
+  '유기나노공학과': [
+    { name: '유기나노공학개론', type: '전공 100~300단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '1학년 2학기', ownerDept: '유기나노공', reason: '나노 소재 기초.' },
+    { name: '유기광학소재', type: '전공 400단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '4학년 1학기', ownerDept: '유기나노공', reason: 'OLED 등 차세대 광학 소재 심화.' }
+  ],
+  '에너지공학과': [
+    { name: '에너지과학과기술', type: '전공 100~300단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '1학년 2학기', ownerDept: '에너지공', reason: '에너지 시스템 기초.' },
+    { name: '이차전지기초설계', type: '전공 400단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '4학년 1학기', ownerDept: '에너지공', reason: '배터리 산업 핵심 역량.' }
+  ],
+  '미래자동차공학과': [
+    { name: '미래자동차공학개론', type: '전공 100~300단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '1학년 1학기', ownerDept: '미래차', reason: '자율주행 및 EV 시스템 기초.' },
+    { name: 'E-파워트레인', type: '전공 400단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '4학년 2학기', ownerDept: '미래차', reason: '친환경 전기차 모터 구동계 심화.' }
+  ],
+  '원자력공학과': [
+    { name: '핵공학개론', type: '전공 100~300단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '1학년 2학기', ownerDept: '원자력공', reason: '방사선 공학 기본.' },
+    { name: '원자력공학종합설계', type: '전공 400단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '4학년 1학기', ownerDept: '원자력공', reason: '원전 시스템 통합 캡스톤.' }
+  ],
+  '산업공학과': [
+    { name: '산업공학개론', type: '전공 100~300단위', credits: 3, target: '기획/마케팅', gradeTerm: '1학년 2학기', ownerDept: '산업공학과', reason: '물류 및 시스템 최적화 입문.' },
+    { name: '스마트제조데이터분석', type: '전공 400단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '4학년 1학기', ownerDept: '산업공학과', reason: 'AI 공정 데이터 분석 심화.' }
+  ],
+  '건축학부': [
+    { name: '건축계획', type: '전공 100~300단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '2학년 1학기', ownerDept: '건축학부', reason: '공간 구성 기초.' },
+    { name: '디지털디자인스튜디오', type: '전공 400단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '4학년 1학기', ownerDept: '건축학부', reason: '포트폴리오 완성용 심화 스튜디오.' }
+  ],
+  '의예과': [
+    { name: '의과학기초실습', type: '전공 100~300단위', credits: 1, target: '전문직 (고시)', gradeTerm: '2학년 2학기', ownerDept: '의예과', reason: '의학 연구 기초 술기.' }
+  ],
+  '의학과': [
+    { name: '인체의구조', type: '전공 100~300단위', credits: 7, target: '전문직 (고시)', gradeTerm: '1학년 1학기', ownerDept: '의학과', reason: '해부학 필수.' },
+    { name: '임상종합실습', type: '전공 400단위', credits: 2, target: '전문직 (고시)', gradeTerm: '4학년 1학기', ownerDept: '의학과', reason: '현장 임상 술기 배양.' }
+  ],
+  '정치외교학과': [
+    { name: '정치학개론', type: '전공 100~300단위', credits: 3, target: '공직/공공기관', gradeTerm: '1학년 1학기', ownerDept: '정치외교학과', reason: '정치 제도 이해 기초.' },
+    { name: '국제정치경제론', type: '전공 400단위', credits: 3, target: '공직/공공기관', gradeTerm: '4학년 1학기', ownerDept: '정치외교학과', reason: '정치/경제 상호작용 분석 심화.' }
+  ],
+  '사회학과': [
+    { name: '사회조사방법의이해', type: '전공 100~300단위', credits: 3, target: '기획/마케팅', gradeTerm: '2학년 1학기', ownerDept: '사회학과', reason: '통계 분석 기초.' },
+    { name: '현대사회와빅데이터', type: '전공 400단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '4학년 1학기', ownerDept: '사회학과', reason: '빅데이터 활용 사회 분석 심화.' }
+  ],
+  '미디어커뮤니케이션학과': [
+    { name: '미디어커뮤니케이션과사회', type: '전공 100~300단위', credits: 3, target: '미디어/언론', gradeTerm: '1학년 2학기', ownerDept: '미디어학과', reason: '미디어 기능 기초 및 언론/방송 직무 대비.' },
+    { name: '대중문화와문화산업', type: '전공 400단위', credits: 3, target: '기획/마케팅', gradeTerm: '4학년 1학기', ownerDept: '미디어학과', reason: '콘텐츠 비즈니스 심화 분석.' }
+  ],
+  '관광학부': [
+    { name: '관광론', type: '전공 100~300단위', credits: 3, target: '기획/마케팅', gradeTerm: '1학년 1학기', ownerDept: '관광학부', reason: '비즈니스 생태계 기초.' },
+    { name: '글로벌서비스론', type: '전공 400단위', credits: 3, target: '기획/마케팅', gradeTerm: '4학년 1학기', ownerDept: '관광학부', reason: '서비스 실무 심화.' }
+  ],
+  '수학과': [
+    { name: '선형대수1', type: '전공 100~300단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '2학년 1학기', ownerDept: '수학과', reason: 'AI 학습 핵심 전공.' },
+    { name: '암호론Pbl', type: '전공 400단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '4학년 1학기', ownerDept: '수학과', reason: '정보보안 및 암호화 심화.' }
+  ],
+  '물리학과': [
+    { name: '일반물리학및실험Ⅰ', type: '전공 100~300단위', credits: 4, target: '반도체/엔지니어링', gradeTerm: '1학년 1학기', ownerDept: '물리학과', reason: '역학과 전자기 기초.' },
+    { name: '양자광학', type: '전공 400단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '4학년 1학기', ownerDept: '물리학과', reason: '물질 양자역학 심화.' }
+  ],
+  '화학과': [
+    { name: '물리화학1', type: '전공 100~300단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '2학년 1학기', ownerDept: '화학과', reason: '화학 열역학 기초.' },
+    { name: '표면화학', type: '전공 400단위', credits: 2, target: '반도체/엔지니어링', gradeTerm: '4학년 1학기', ownerDept: '화학과', reason: '반도체 디스플레이 공정 직결 심화.' }
+  ],
+  '식품영양학과': [
+    { name: '기초영양학', type: '전공 100~300단위', credits: 3, target: '식품/F&B', gradeTerm: '1학년 2학기', ownerDept: '식품영양', reason: '영양소 대사 및 식품 기초.' },
+    { name: '식품위생학', type: '전공 100~300단위', credits: 3, target: '식품/F&B', gradeTerm: '2학년 2학기', ownerDept: '식품영양', reason: '식품 품질관리(QC/QA) 및 위생사 자격증 필수 과목.' },
+    { name: '임상영양학', type: '전공 400단위', credits: 3, target: '식품/F&B', gradeTerm: '4학년 1학기', ownerDept: '식품영양', reason: '병원/기업 영양사 실무 심화.' }
+  ],
+  '의류학과': [
+    { name: '의류소재학', type: '전공 100~300단위', credits: 3, target: '패션/의류', gradeTerm: '1학년 2학기', ownerDept: '의류학과', reason: '패션 벤더/MD 직무의 핵심인 원단/소재 기초.' },
+    { name: '패션마케팅', type: '전공 100~300단위', credits: 3, target: '기획/마케팅', gradeTerm: '3학년 1학기', ownerDept: '의류학과', reason: '패션 브랜드 기획 및 마케팅 전략 수립.' },
+    { name: '패션머천다이징', type: '전공 400단위', credits: 3, target: '패션/의류', gradeTerm: '4학년 1학기', ownerDept: '의류학과', reason: '패션 MD 실무의 꽃, 상품 기획 및 바잉 심화.' }
+  ],
+  '경제금융학부': [
+    { name: '계량경제', type: '전공 100~300단위', credits: 3, target: '금융/은행', gradeTerm: '3학년 1학기', ownerDept: '경금대', reason: '경제 데이터 통계 분석 핵심.' },
+    { name: '시장미시구조론과핀테크', type: '전공 400단위', credits: 3, target: '금융/은행', gradeTerm: '4학년 1학기', ownerDept: '경금대', reason: '핀테크 알고리즘 심화 전공.' }
+  ],
+  '파이낸스경영학과': [
+    { name: '기업가치평가', type: '전공 100~300단위', credits: 3, target: '금융/은행', gradeTerm: '3학년 1학기', ownerDept: '파경', reason: 'IB 핵심 밸류에이션 실무.' },
+    { name: '행동재무론', type: '전공 400단위', credits: 3, target: '금융/은행', gradeTerm: '4학년 2학기', ownerDept: '파경', reason: '투자자 심리 분석 심화 전공.' }
+  ],
+  '영어영문학과': [
+    { name: '영어어법연습', type: '전공 100~300단위', credits: 3, target: '공통', gradeTerm: '1학년 2학기', ownerDept: '영문과', reason: '영어학 기초.' },
+    { name: '셰익스피어', type: '전공 400단위', credits: 3, target: '대학원 진학', gradeTerm: '4학년 1학기', ownerDept: '영문과', reason: '영문학 정수 심화 분석.' }
+  ],
+  '정책학과': [ 
+    { name: '법학통론', type: '전공 100~300단위', credits: 3, target: '로스쿨 (법조인)', gradeTerm: '1학년 1학기', ownerDept: '정책학과', reason: '리걸마인드 기초.' },
+    { name: '헌법1', type: '전공 100~300단위', credits: 3, target: '로스쿨 (법조인)', gradeTerm: '2학년 1학기', ownerDept: '정책학과', reason: '로스쿨 공법 선행학습.' }
+  ],
+  '경영학부': [
+    { name: '회계원리', type: '전공 100~300단위', credits: 3, target: 'CPA (공인회계사)', gradeTerm: '1학년 2학기', ownerDept: '경영학부', reason: '회계사 준비를 위한 필수 이수 과목입니다.' },
+    { name: '재무관리', type: '전공 100~300단위', credits: 3, target: '금융/은행', gradeTerm: '2학년 2학기', ownerDept: '경영학부', reason: '금융권 취업 필수 과목.' },
+    { name: '투자론', type: '전공 400단위', credits: 3, target: '금융/은행', gradeTerm: '4학년 1학기', ownerDept: '경영학부', reason: '증권사/IB 면접 직결 심화.' }
+  ],
+  '데이터융합서비스디자인융합전공': [
+    { name: '인간-Ai상호작용디자인', type: '전공 100~300단위', credits: 3, target: '기획/마케팅', gradeTerm: '2학년 1학기', ownerDept: '융합전공대학', reason: 'AI UI/UX 디자인 기초입니다.' },
+    { name: '디지털프로토타이핑', type: '전공 100~300단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '3학년 2학기', ownerDept: '융합전공대학', reason: '실제 동작하는 프로토타입 개발 심화.' }
+  ],
+  '디지털혁신전략융합전공': [
+    { name: '데이터애널리틱스입문', type: '전공 100~300단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '2학년 1학기', ownerDept: '융합전공대학', reason: 'Python 등 데이터 분석 기초.' },
+    { name: '디지털정책트렌드', type: '전공 400단위', credits: 3, target: '기획/마케팅', gradeTerm: '4학년 1학기', ownerDept: '융합전공대학', reason: '최신 IT 정책 기조 분석.' }
+  ],
+  '미래자동차기술융합전공': [
+    { name: '자동차커넥티비티', type: '전공 100~300단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '3학년 1학기', ownerDept: '융합전공대학', reason: '자율주행 네트워크 기초.' },
+    { name: '미래자동차공학종합설계1', type: '전공 400단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '4학년 1학기', ownerDept: '융합전공대학', reason: '미래차 시스템 캡스톤.' }
+  ],
+  '중국경제통상전공': [
+    { name: '중국경제론', type: '전공 100~300단위', credits: 3, target: '기획/마케팅', gradeTerm: '2학년 2학기', ownerDept: '융합전공대학', reason: 'G2 시장 통상 환경 연구.' },
+    { name: '중국문화콘텐츠의이해', type: '전공 400단위', credits: 3, target: '기획/마케팅', gradeTerm: '4학년 1학기', ownerDept: '융합전공대학', reason: '중국 콘텐츠 산업 심화.' }
+  ],
+  '창업융합전공': [
+    { name: '창업기초:창업과기업가정신', type: '전공 100~300단위', credits: 3, target: '기획/마케팅', gradeTerm: '2학년 1학기', ownerDept: '융합전공대학', reason: '스타트업 모델링 마인드셋.' },
+    { name: '창업실습:캡스톤디자인', type: '전공 400단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '4학년 1학기', ownerDept: '융합전공대학', reason: '테크 스타트업 실무 기획.' }
+  ],
+  '고전읽기융합전공': [
+    { name: '사회클래식:국가발전의원리', type: '전공 100~300단위', credits: 3, target: '공직/공공기관', gradeTerm: '2학년 1학기', ownerDept: '융합전공대학', reason: '정책 원리 통찰.' },
+    { name: '과학클래식:과학기술의문화사', type: '전공 100~300단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '3학년 1학기', ownerDept: '융합전공대학', reason: '기술 혁신 인문학적 융합.' }
+  ],
+  '미래인문학융합전공': [
+    { name: '디지털스토리텔링의이해', type: '전공 100~300단위', credits: 3, target: '기획/마케팅', gradeTerm: '2학년 2학기', ownerDept: '융합전공대학', reason: '뉴미디어 서사 기획.' },
+    { name: '인문학으로기술읽기', type: '전공 400단위', credits: 3, target: '기획/마케팅', gradeTerm: '4학년 1학기', ownerDept: '융합전공대학', reason: '첨단 기술 비판적 심화 기획.' }
+  ],
+  '인문소프트웨어융합전공': [
+    { name: '데이터과학트렌드', type: '전공 100~300단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '2학년 1학기', ownerDept: '융합전공대학', reason: '비전공자 맞춤 데이터 분석 입문.' },
+    { name: '인문학기반디지털콘텐츠구축을위한캡스톤디자인', type: '전공 400단위', credits: 3, target: '기획/마케팅', gradeTerm: '4학년 1학기', ownerDept: '융합전공대학', reason: '웹/앱 서비스 직접 기획 캡스톤.' }
+  ],
+  '인문공공행정전공': [
+    { name: '동서양사상을통해본정의', type: '전공 100~300단위', credits: 3, target: '공직/공공기관', gradeTerm: '2학년 1학기', ownerDept: '융합전공대학', reason: '올바른 공직 윤리관 확립.' },
+    { name: '현대정책학이론', type: '전공 400단위', credits: 3, target: '공직/공공기관', gradeTerm: '4학년 1학기', ownerDept: '융합전공대학', reason: '행정부 정책 수립 프로세스 실무.' }
+  ],
+  'Sts(과학기술학) 전공': [
+    { name: '과학기술학의새로운지평', type: '전공 100~300단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '3학년 1학기', ownerDept: '융합전공대학', reason: 'STS 이론 기반 미래 기술 조망.' }
+  ],
+  '공공수행인문학전공': [
+    { name: '신문론', type: '전공 100~300단위', credits: 3, target: '미디어/언론', gradeTerm: '2학년 2학기', ownerDept: '융합전공대학', reason: '공공 저널리즘 및 언론사 필기/실무 대비 기초.' }
+  ],
+  '미디어문화전공': [
+    { name: '영상언어의이해', type: '전공 100~300단위', credits: 3, target: '미디어/언론', gradeTerm: '3학년 1학기', ownerDept: '융합전공대학', reason: 'PD 및 영상 매체 시각적 표현 분석 필수.' }
+  ],
+  '영어커뮤니케이션전공': [
+    { name: '비판적생각과영어쓰기1', type: '전공 100~300단위', credits: 3, target: '공통', gradeTerm: '2학년 1학기', ownerDept: '융합전공대학', reason: '영문 에세이 작성법.' }
+  ],
+  '한중통번역전공': [
+    { name: '한중프레젠테이션', type: '전공 100~300단위', credits: 3, target: '기획/마케팅', gradeTerm: '3학년 2학기', ownerDept: '융합전공대학', reason: '중화권 실무 PT 역량 제고.' }
+  ],
+  '통상한국어커뮤니케이션전공': [
+    { name: '미디어로보는한국경제', type: '전공 100~300단위', credits: 3, target: '금융/은행', gradeTerm: '3학년 1학기', ownerDept: '융합전공대학', reason: '한국 경제 동향 분석.' }
+  ],
+  '글로벌비즈니스문화전공(영어전용)': [
+    { name: 'Global Business Communication', type: '전공 100~300단위', credits: 3, target: '기획/마케팅', gradeTerm: '2학년 2학기', ownerDept: '융합전공대학', reason: '글로벌 영어 비즈니스 실무.' }
+  ],
+  '자동차-Sw융합전공': [
+    { name: '알고리즘및문제해결기법', type: '전공 100~300단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '2학년 1학기', ownerDept: '융합전공대학', reason: '차량 임베디드 개발 필수.' },
+    { name: '자동차임베디드Ai', type: '전공 100~300단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '3학년 2학기', ownerDept: '융합전공대학', reason: '자율주행 엣지 컴퓨팅 심화.' }
+  ],
+  '사회혁신융합전공': [
+    { name: '사회혁신을위한시스템사고', type: '전공 100~300단위', credits: 3, target: '기획/마케팅', gradeTerm: '2학년 1학기', ownerDept: '융합전공대학', reason: '사회 문제 기획력 제고.' }
+  ],
+  '빅데이터융합전공': [
+    { name: '기초확률및통계', type: '전공 100~300단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '2학년 1학기', ownerDept: '융합전공대학', reason: '데이터사이언스 기반 확립.' },
+    { name: '빅데이터마이닝', type: '전공 100~300단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '3학년 2학기', ownerDept: '융합전공대학', reason: '패턴 추출 기법 심화 실습.' }
+  ],
+  '예술융합소프트웨어 융합전공': [
+    { name: '가상/증강현실의예술', type: '전공 100~300단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '3학년 1학기', ownerDept: '융합전공대학', reason: 'VR/AR 예술 전시 적용.' }
+  ],
+  '글로벌 Ceo 창업 융합전공': [
+    { name: '비즈니스행동경제학', type: '전공 100~300단위', credits: 3, target: '금융/은행', gradeTerm: '3학년 2학기', ownerDept: '융합전공대학', reason: '소비자 행동 패턴 분석.' }
+  ],
+  '글로벌 리더십 융합전공': [
+    { name: 'Global Politics And Economy', type: '전공 100~300단위', credits: 3, target: '공직/공공기관', gradeTerm: '3학년 1학기', ownerDept: '융합전공대학', reason: '글로벌 경제 심층 분석 (행시/외시 대비).' }
+  ],
+  '바이오소프트웨어융합전공': [
+    { name: '지능형생물정보학', type: '전공 400단위', credits: 3, target: 'IT/소프트웨어', gradeTerm: '4학년 1학기', ownerDept: '융합전공대학', reason: '신약 개발 딥러닝 캡스톤.' }
+  ],
+  '미래전기에너지신기술융합전공': [
+    { name: '스마트그리드', type: '전공 400단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '4학년 1학기', ownerDept: '융합전공대학', reason: '지능형 전력망 설계 심화.' }
+  ],
+  '배터리융합전공': [
+    { name: '이차전지공정개론', type: '전공 400단위', credits: 3, target: '반도체/엔지니어링', gradeTerm: '4학년 1학기', ownerDept: '융합전공대학', reason: '배터리 팩/셀 제조 실무.' }
+  ],
+  '공통/교양': [
+    { name: '말과글', type: '핵심교양', credits: 3, target: '공통', gradeTerm: '1학년 1학기', ownerDept: '교양', reason: '공통 필수 이수 요건입니다.' },
+    { name: '전문학술영어', type: '핵심교양', credits: 3, target: '공통', gradeTerm: '1학년 2학기', ownerDept: '교양', reason: '영어 커뮤니케이션 능력 필수.' },
+    { name: '사회봉사1', type: '사회봉사', credits: 1, target: '공통', gradeTerm: '상시', ownerDept: '교양', reason: '졸업 필수 봉사 학점입니다.' },
+    { name: '창의적컴퓨팅', type: '소프트웨어영역', credits: 3, target: 'IT/소프트웨어', gradeTerm: '1학년 2학기', ownerDept: '교양', reason: '소프트웨어 기초 필수 교양입니다.' }
+  ]
+};
+
+// 💡 [에리카 데이터 파싱기] 
+const ERICA_COMPRESSED_DATA = {
+  '영상디자인학과': "Ai+X인문사회융합프로젝트,교양필수,2,2학년 1학기|Ic-Pbl과취창업을위한진로탐색,교양필수,1,2학년 1학기|무빙타이포그라피1,전공핵심,3,2학년 1학기|베이직비주얼미디어,전공핵심,3,2학년 1학기|애니메이션워크샵1,전공핵심,3,2학년 1학기|영상디자인스튜디오1,전공핵심,3,2학년 1학기|영상미디어세미나,전공핵심,3,2학년 1학기|크리에이티브코딩1,전공핵심,3,2학년 1학기|게임스튜디오,전공핵심,3,2학년 2학기|멀티미디어워크샵,전공핵심,3,2학년 2학기|무빙타이포그라피2,전공핵심,3,2학년 2학기|애니메이션워크샵2,전공핵심,3,2학년 2학기|영상디자인스튜디오2,전공핵심,3,2학년 2학기|크리에이티브코딩2,전공핵심,3,2학년 2학기|학술영어,교양필수,2,2학년 2학기|3d디자인스튜디오1,전공핵심,3,3학년 1학기|Ai디자인,전공핵심,3,3학년 1학기|스테이지미디어프로덕션,전공핵심,3,3학년 1학기|영상미디어스타트업,전공핵심,3,3학년 1학기|캡스톤디자인1,전공핵심,2,3학년 1학기|프로토타이핑워크룸,전공핵심,3,3학년 1학기|3d디자인스튜디오2,전공심화,3,3학년 2학기|Ic-Pbl과역량계발,교양필수,1,3학년 2학기|디자인과창업,전공심화,2,3학년 2학기|미디어사운드디자인,전공핵심,3,3학년 2학기|미디어스토리텔링,전공심화,3,3학년 2학기|이머시브미디어스튜디오,전공핵심,3,3학년 2학기|캡스톤디자인2,전공핵심,2,3학년 2학기|디지털미디어퍼스펙티브,전공심화,3,4학년 1학기|영상프로젝트1,전공심화,3,4학년 1학기|인터랙티브&내러티브프로젝트1,전공심화,3,4학년 1학기|취업진로세미나,교양필수,1,4학년 1학기|디지털프로젝트디벨롭먼트,전공심화,3,4학년 2학기|영상프로젝트2,전공심화,3,4학년 2학기|인터랙티브&내러티브프로젝트2,전공심화,3,4학년 2학기",
+  '경제학부': "Ai리터러시,교양필수,2,1학년 1학기|Ic-Pbl과비전설계,교양필수,1,1학년 1학기|경영학원론,전공기초,3,1학년 1학기|경제원론1,전공기초,3,1학년 1학기|경제학입문,전공핵심,3,1학년 1학기|아카데믹글쓰기,교양필수,2,1학년 1학기|Esg와Sdgs이해,교양필수,2,1학년 2학기|경제수학,전공기초,3,1학년 2학기|경제원론2,전공기초,3,1학년 2학기|기업가정신과관계역량,전공핵심,1,1학년 2학기|파이썬과데이터분석,교양필수,3,1학년 2학기|Ai+X인문사회융합프로젝트,교양필수,2,2학년 1학기|Ic-Pbl과취창업을위한진로탐색,교양필수,1,2학년 1학기|거시경제학1,전공핵심,3,2학년 1학기|경제통계학,전공기초,3,2학년 1학기|미시경제학1,전공핵심,3,2학년 1학기|회계정보의이해,전공핵심,3,2학년 1학기|거시경제학2,전공핵심,3,2학년 2학기|국제경제학,전공핵심,3,2학년 2학기|노동경제학,전공핵심,3,2학년 2학기|미시경제학2,전공핵심,3,2학년 2학기|학술영어,교양필수,2,2학년 2학기|경제연구실심화실습1,전공심화,1,3학년 1학기|경제캡스톤디자인1,전공심화,2,3학년 1학기|계량경제학,전공핵심,3,3학년 1학기|공공경제학,전공핵심,3,3학년 1학기|교과교육론(일반사회),전공심화,3,3학년 1학기|국제금융과자본시장,전공핵심,3,3학년 1학기|금융경제학,전공핵심,3,3학년 1학기|도시경제학,전공핵심,3,3학년 1학기|산업조직론,전공핵심,3,3학년 1학기|수리경제학,전공핵심,3,3학년 1학기|프로젝트경제성분석,전공심화,3,3학년 1학기|Ic-Pbl과역량계발,교양필수,1,3학년 2학기|게임이론,전공핵심,3,3학년 2학기|경제데이터애널리틱스,전공심화,3,3학년 2학기|경제시사토론,전공심화,3,3학년 2학기|경제연구실심화실습2,전공심화,1,3학년 2학기|경제캡스톤디자인2,전공심화,2,3학년 2학기|계량경제모델링과예측,전공핵심,3,3학년 2학기|논리및논술(일반사회),전공심화,2,3학년 2학기|부동산경제학,전공핵심,3,3학년 2학기|부동산금융론,전공심화,3,3학년 2학기|사이버무역입문,전공심화,3,3학년 2학기|재무경제학,전공핵심,3,3학년 2학기|경제데이터마이닝과머신러닝,전공심화,3,4학년 1학기|경제사상사,전공심화,3,4학년 1학기|경제연구실심화실습3,전공심화,1,4학년 1학기|교과교재연구및지도(일반사회),전공심화,3,4학년 1학기|국제통상워크샾,전공심화,3,4학년 1학기|재무경제학2,전공심화,3,4학년 1학기|취업진로세미나,교양필수,1,4학년 1학기|환경경제학,전공심화,3,4학년 1학기|경제개발정책론,전공심화,3,4학년 2학기|경제연구실심화실습4,전공심화,1,4학년 2학기|공공정책평가실증분석론,전공심화,3,4학년 2학기|법과경제학,전공심화,3,4학년 2학기|조세론,전공심화,3,4학년 2학기|한국경제의이해,전공심화,3,4학년 2학기|행동경제학,전공심화,3,4학년 2학기",
+  '경영학부': "Ai리터러시,교양필수,2,1학년 1학기|Ic-Pbl과비전설계,교양필수,1,1학년 1학기|경영통계분석1,전공기초,3,1학년 1학기|경영학원론,전공기초,3,1학년 1학기|경제원론1,전공기초,3,1학년 1학기|아카데믹글쓰기,교양필수,2,1학년 1학기|Esg와Sdgs이해,교양필수,2,1학년 2학기|파이썬과데이터분석,교양필수,3,1학년 2학기|회계정보의이해,전공기초,3,1학년 2학기|Ic-Pbl과취창업을위한진로탐색,교양필수,1,2학년 1학기|계량경영,전공핵심,3,2학년 1학기|글로벌비지니스커뮤니케이션,전공심화,3,2학년 1학기|기업윤리와사회적책임,전공핵심,3,2학년 1학기|마케팅관리,전공핵심,3,2학년 1학기|비즈니스분석프로그래밍,전공핵심,3,2학년 1학기|재무관리,전공핵심,3,2학년 1학기|중급회계1,전공핵심,3,2학년 1학기|경영자료분석,전공핵심,3,2학년 2학기|경영통계분석2,전공기초,3,2학년 2학기|기업법,전공심화,3,2학년 2학기|생산운영관리,전공핵심,3,2학년 2학기|소비자행동,전공핵심,3,2학년 2학기|조직행동론,전공핵심,3,2학년 2학기|중급회계2,전공핵심,3,2학년 2학기|증권투자론,전공핵심,3,2학년 2학기|창의역량,전공핵심,1,2학년 2학기|학술영어,교양필수,2,2학년 2학기|Ai기반고객경험디자인,전공심화,3,3학년 1학기|경영연구실심화실습1,전공심화,1,3학년 1학기|경영정보시스템,전공핵심,3,3학년 1학기|경영캡스톤디자인1,전공심화,2,3학년 1학기|교과교육론(상업),전공심화,3,3학년 1학기|기업재무론,전공심화,3,3학년 1학기|마케팅조사론,전공심화,3,3학년 1학기|세무회계,전공심화,3,3학년 1학기|운영시스템시뮬레이션,전공심화,3,3학년 1학기|원가관리회계1,전공핵심,3,3학년 1학기|전략경영론,전공핵심,3,3학년 1학기|전략적인적자원관리론,전공핵심,3,3학년 1학기|Ic-Pbl과역량계발,교양필수,1,3학년 2학기|경영연구실심화실습2,전공심화,1,3학년 2학기|경영캡스톤디자인2,전공심화,2,3학년 2학기|교수법(상업),전공심화,3,3학년 2학기|국제경영전략,전공심화,3,3학년 2학기|기술경영,전공핵심,3,3학년 2학기|기업가치평가론,전공심화,3,3학년 2학기|논리및논술(상업),전공심화,2,3학년 2학기|디지털비즈니스경영,전공심화,3,3학년 2학기|마케팅애널리틱스,전공심화,3,3학년 2학기|마케팅전략,전공심화,3,3학년 2학기|선물옵션,전공심화,3,3학년 2학기|애널리틱스와Ai,전공심화,3,3학년 2학기|원가관리회계2,전공핵심,3,3학년 2학기|전략적브랜드관리,전공심화,3,3학년 2학기|전사적품질경영,전공핵심,3,3학년 2학기|조직혁신론,전공심화,3,3학년 2학기|경영연구실심화실습3,전공심화,1,4학년 1학기|경영혁신과Sdg,전공심화,3,4학년 1학기|고용관계론,전공심화,3,4학년 1학기|교과교재연구및지도(상업),전공심화,3,4학년 1학기|로지스틱스관리,전공심화,3,4학년 1학기|사회적기업경영론,전공심화,3,4학년 1학기|서비스마케팅,전공심화,3,4학년 1학기|재무제표분석,전공심화,3,4학년 1학기|전략경영특강,전공심화,3,4학년 1학기|창업과비즈니스컨설팅,전공심화,3,4학년 1학기|취업진로세미나,교양필수,1,4학년 1학기|경영연구실심화실습4,전공심화,1,4학년 2학기|금융기관과금융시장,전공심화,3,4학년 2학기|회계감사,전공심화,3,4학년 2학기",
+  '보험계리학과': "Ai리터러시,교양필수,2,1학년 1학기|Ic-Pbl과비전설계,교양필수,1,1학년 1학기|경제원론1,전공핵심,3,1학년 1학기|미적분학1,전공기초,3,1학년 1학기|아카데믹글쓰기,교양필수,2,1학년 1학기|통계프로그래밍,전공기초,3,1학년 1학기|Esg와Sdgs이해,교양필수,2,1학년 2학기|경제원론2,전공핵심,3,1학년 2학기|계리프로그래밍,전공기초,3,1학년 2학기|미적분학2,전공기초,3,1학년 2학기|보험원론,전공핵심,3,1학년 2학기|파이썬과데이터분석,교양필수,3,1학년 2학기|회계정보의이해,전공기초,3,1학년 2학기|Ic-Pbl과취창업을위한진로탐색,교양필수,1,2학년 1학기|논리역량,전공핵심,1,2학년 1학기|보험법,전공핵심,3,2학년 1학기|보험수리학1,전공핵심,3,2학년 1학기|수리통계이론1,전공핵심,3,2학년 1학기|중급회계학1,전공핵심,3,2학년 1학기|보험수리학2,전공핵심,3,2학년 2학기|수리통계이론2,전공핵심,3,2학년 2학기|중급회계학2,전공핵심,3,2학년 2학기|학술영어,교양필수,2,2학년 2학기|보험수리학연구,전공심화,3,3학년 1학기|연금수리학,전공심화,3,3학년 1학기|중급보험수리학,전공심화,3,3학년 1학기|Ic-Pbl과역량계발,교양필수,1,3학년 2학기|계리모형론,전공핵심,3,3학년 2학기|금융공학1,전공핵심,3,3학년 2학기|다변량통계분석,전공심화,3,3학년 2학기|회귀분석론,전공핵심,3,3학년 2학기|계리리스크관리,전공심화,3,4학년 1학기|금융공학2,전공심화,3,4학년 1학기|범주형자료분석,전공심화,3,4학년 1학기|비모수통계,전공심화,3,4학년 1학기|손해보험수리학,전공심화,3,4학년 1학기|취업진로세미나,교양필수,1,4학년 1학기|데이터마이닝이론,전공심화,3,4학년 2학기|보험계리모델링,전공심화,3,4학년 2학기|보험데이터분석,전공심화,2,4학년 2학기",
+  '회계세무학과': "Ic-Pbl과비전설계,교양필수,1,1학년 1학기|경영통계분석1,전공기초,3,1학년 1학기|경제원론1,전공기초,3,1학년 1학기|아카데믹글쓰기,교양필수,2,1학년 1학기|회계정보의이해1,전공기초,3,1학년 1학기|Esg와Sdgs이해,교양필수,2,1학년 2학기|경영통계분석2,전공핵심,3,1학년 2학기|경영학원론,전공기초,3,1학년 2학기|경제원론2,전공핵심,3,1학년 2학기|회계정보의이해2,전공기초,3,1학년 2학기|Ai리터러시,교양필수,2,2학년 1학기|세법개론,전공핵심,3,2학년 1학기|원가관리회계1,전공핵심,3,2학년 1학기|전략경영론,전공심화,3,2학년 1학기|중급회계1,전공핵심,3,2학년 1학기|기업법,전공핵심,3,2학년 2학기|소득세법,전공핵심,3,2학년 2학기|원가관리회계2,전공핵심,3,2학년 2학기|중급회계2,전공핵심,3,2학년 2학기|학술영어,교양필수,2,2학년 2학기|경영정보시스템,전공심화,3,3학년 1학기|부가가치세법,전공핵심,3,3학년 1학기|원가관리회계3,전공핵심,3,3학년 1학기|중급회계3,전공핵심,3,3학년 1학기|고급회계1,전공핵심,3,3학년 2학기|관리회계세미나,전공심화,3,3학년 2학기|법인세법1,전공핵심,3,3학년 2학기|재무관리,전공핵심,3,3학년 2학기|재정학,전공심화,3,3학년 2학기|중급회계4,전공핵심,3,3학년 2학기|고급회계2,전공핵심,3,4학년 1학기|법인세법2,전공핵심,3,4학년 1학기|재무제표분석,전공핵심,3,4학년 1학기|전산세무,전공심화,3,4학년 1학기|취업진로세미나,교양필수,1,4학년 1학기|회계감사,전공핵심,3,4학년 1학기|회계캡스톤디자인1,전공심화,2,4학년 1학기|법인세법3,전공핵심,3,4학년 2학기|상속증여세법,전공핵심,3,4학년 2학기|세무회계세미나,전공심화,3,4학년 2학기|재무회계세미나,전공심화,3,4학년 2학기|회계캡스톤디자인2,전공심화,2,4학년 2학기",
+  '광고홍보학과': "Ai리터러시,교양필수,2,1학년 1학기|Ic-Pbl과비전설계,교양필수,1,1학년 1학기|광고원론,전공기초,3,1학년 1학기|아카데믹글쓰기,교양필수,2,1학년 1학기|커뮤니케이션론,전공기초,3,1학년 1학기|Esg와Sdgs이해,교양필수,2,1학년 2학기|전략적커뮤니케이션,전공기초,3,1학년 2학기|컴퓨터그래픽응용,전공핵심,2,1학년 2학기|크리에이티브디자인,전공기초,3,1학년 2학기|파이썬과데이터분석,교양필수,3,1학년 2학기|홍보원론,전공기초,3,1학년 2학기|Ai+X인문사회융합프로젝트,교양필수,2,2학년 1학기|Ic-Pbl과취창업을위한진로탐색,교양필수,1,2학년 1학기|디지털카피&스토리텔링,전공핵심,3,2학년 1학기|브랜드커뮤니케이션,전공핵심,3,2학년 1학기|여론과트렌드,전공핵심,3,2학년 1학기|전략적기획론,전공핵심,3,2학년 1학기|광고홍보연구방법론,전공핵심,3,2학년 2학기|설득커뮤니케이션,전공핵심,3,2학년 2학기|소셜미디어캠페인,전공핵심,3,2학년 2학기|학술영어,교양필수,2,2학년 2학기|Ad&Pr프로젝트,전공핵심,3,3학년 1학기|광고홍보캡스톤디자인1,전공심화,2,3학년 1학기|데이터드리븐디지털마케팅,전공심화,3,3학년 1학기|데이터애널리틱스,전공심화,3,3학년 1학기|디지털미디어광고제작,전공심화,3,3학년 1학기|디지털미디어플래닝,전공핵심,3,3학년 1학기|디지털사이니지론,전공심화,3,3학년 1학기|디지털페르소나,전공핵심,3,3학년 1학기|혁신적사고와기업가정신,전공핵심,3,3학년 1학기|Ad/Pr과사회적책임,전공핵심,3,3학년 2학기|Ic-Pbl과역량계발,교양필수,1,3학년 2학기|광고홍보캡스톤디자인2,전공심화,2,3학년 2학기|메타인사이트,전공심화,3,3학년 2학기|소비자심리,전공핵심,3,3학년 2학기|스타트업비지니스프랙티컴,전공심화,3,3학년 2학기|이노베이션마케팅,전공핵심,3,3학년 2학기|창업과비즈니스모델혁신,전공심화,3,3학년 2학기|퍼포먼스애드버타이징,전공심화,3,3학년 2학기|헬스커뮤니케이션,전공심화,3,3학년 2학기|디지털광고실습,전공심화,3,4학년 1학기|사회마케팅,전공심화,3,4학년 1학기|스타트업비지니스프랙티컴2,전공심화,3,4학년 1학기|취업진로세미나,교양필수,1,4학년 1학기|광고홍보특별주제,전공심화,3,4학년 2학기",
+  '문화인류학과': "Ai리터러시,교양필수,2,1학년 1학기|Ai시대인류학의도전,전공기초,3,1학년 1학기|Ic-Pbl과비전설계,교양필수,1,1학년 1학기|문화유산과고고학의세계,전공기초,3,1학년 1학기|아카데믹글쓰기,교양필수,2,1학년 1학기|Esg와Sdgs이해,교양필수,2,1학년 2학기|무형유산과한국학의이해,전공기초,3,1학년 2학기|야외고고학,전공기초,3,1학년 2학기|이주시대세계문화의이해,전공기초,3,1학년 2학기|파이썬과데이터분석,교양필수,3,1학년 2학기|Ai+X인문사회융합프로젝트,교양필수,2,2학년 1학기|Ic-Pbl과취창업을위한진로탐색,교양필수,1,2학년 1학기|고고학현지조사및실습,전공핵심,3,2학년 1학기|생물학적인류학과문화,전공핵심,3,2학년 1학기|양적조사방법1,전공핵심,3,2학년 1학기|의례,종교,소셜네트워크,전공심화,3,2학년 1학기|인류학현지조사및실습,전공핵심,3,2학년 1학기|글로벌인류학과지역의이해,전공핵심,3,2학년 2학기|문화기술지와문화분석,전공핵심,3,2학년 2학기|문화유산답사및실습,전공핵심,3,2학년 2학기|소수자와문화다양성,전공핵심,3,2학년 2학기|양적조사방법2,전공핵심,3,2학년 2학기|학술영어,교양필수,2,2학년 2학기|디지털문화의이해,전공심화,3,3학년 1학기|문화・기억・역사,전공심화,3,3학년 1학기|문화인류학과캡스톤디자인1,전공심화,2,3학년 1학기|박물관큐레이션실습,전공심화,3,3학년 1학기|생물고고학과법의인류학,전공심화,3,3학년 1학기|한국선사고고학,전공핵심,3,3학년 1학기|Ic-Pbl과역량계발,교양필수,1,3학년 2학기|고고과학이론과방법,전공심화,3,3학년 2학기|공간과문화,전공심화,3,3학년 2학기|문화인류학과캡스톤디자인2,전공심화,2,3학년 2학기|미디어인류학,전공심화,3,3학년 2학기|세계도시와문화다양성이해,전공심화,3,3학년 2학기|한국역사고고학,전공핵심,3,3학년 2학기|고고학의이론과역사,전공핵심,3,4학년 1학기|문화유산학개론및실습,전공심화,3,4학년 1학기|인류무형문화유산세미나,전공핵심,3,4학년 1학기|인류학의이론과역사,전공핵심,3,4학년 1학기|취업진로세미나,교양필수,1,4학년 1학기|K-컬쳐의글로벌화전략기획실습,전공심화,3,4학년 2학기|문화유산기획실습,전공심화,3,4학년 2학기",
+  '문화콘텐츠학과': "Ai리터러시,교양필수,2,1학년 1학기|Ic-Pbl과비전설계,교양필수,1,1학년 1학기|문화콘텐츠의기초,전공기초,3,1학년 1학기|아카데믹글쓰기,교양필수,2,1학년 1학기|창의적발상법,전공기초,3,1학년 1학기|콘텐츠스토리텔링기초,전공기초,3,1학년 1학기|프리젠테이션기술과피칭전략,전공핵심,3,1학년 1학기|Esg와Sdgs이해,교양필수,2,1학년 2학기|멀티미디어저작실습,전공핵심,3,1학년 2학기|문화콘텐츠기획론,전공핵심,3,1학년 2학기|문화콘텐츠마케팅,전공기초,3,1학년 2학기|문화콘텐츠인문학,전공기초,3,1학년 2학기|파이썬과데이터분석,교양필수,3,1학년 2학기|Ai+X인문사회융합프로젝트,교양필수,2,2학년 1학기|Ic-Pbl과취창업을위한진로탐색,교양필수,1,2학년 1학기|Ui/Ux디자인,전공핵심,3,2학년 1학기|문화콘텐츠미디어전략,전공핵심,3,2학년 1학기|문화콘텐츠비즈니스,전공핵심,3,2학년 1학기|게임기획과퍼블리싱,전공핵심,3,2학년 2학기|동영상플랫폼기획과개발,전공핵심,3,2학년 2학기|신화와문화콘텐츠개발,전공핵심,3,2학년 2학기|영상콘텐츠스토리텔링분석전략,전공핵심,3,2학년 2학기|학술영어,교양필수,2,2학년 2학기|문화콘텐츠데이터분석,전공핵심,3,3학년 1학기|문화콘텐츠창작소재개발론,전공핵심,3,3학년 1학기|문화콘텐츠학과캡스톤디자인1,전공심화,2,3학년 1학기|웹소설과Ip,전공핵심,3,3학년 1학기|플랫폼과콘텐츠,전공핵심,3,3학년 1학기|Ic-Pbl과역량계발,교양필수,1,3학년 2학기|Ip개발과라이선싱,전공심화,3,3학년 2학기|글로벌콘텐츠산업전략,전공핵심,3,3학년 2학기|문화콘텐츠스타트업프로젝트,전공핵심,3,3학년 2학기|문화콘텐츠저작권,전공심화,3,3학년 2학기|문화콘텐츠학과캡스톤디자인2,전공심화,2,3학년 2학기|인터랙티브스토리텔링,전공핵심,3,3학년 2학기|문화콘텐츠팬덤세미나,전공심화,3,4학년 1학기|브랜드스토리텔링,전공심화,3,4학년 1학기|엔터테인먼트전략,전공심화,3,4학년 1학기|취업진로세미나,교양필수,1,4학년 1학기|콘텐츠기업전략분석,전공심화,3,4학년 1학기|콘텐츠산업필드프로젝트,전공심화,3,4학년 1학기|디지털콘텐츠마케팅,전공심화,3,4학년 2학기|인터랙티브콘텐츠세미나,전공심화,3,4학년 2학기|콘텐츠와문화연구,전공심화,3,4학년 2학기",
+  '미디어학과': "Ai리터러시,교양필수,2,1학년 1학기|Ic-Pbl과비전설계,교양필수,1,1학년 1학기|미디어제작의이해,전공기초,3,1학년 1학기|아카데믹글쓰기,교양필수,2,1학년 1학기|커뮤니케이션학의이해,전공기초,3,1학년 1학기|Esg와Sdgs이해,교양필수,2,1학년 2학기|디지털미디어사회의이해,전공기초,3,1학년 2학기|스피치커뮤니케이션의이해,전공기초,3,1학년 2학기|파이썬과데이터분석,교양필수,3,1학년 2학기|Ai+X인문사회융합프로젝트,교양필수,2,2학년 1학기|Ic-Pbl과취창업을위한진로탐색,교양필수,1,2학년 1학기|미디어와사회,전공핵심,3,2학년 1학기|인간커뮤니케이션의이해,전공핵심,3,2학년 1학기|인터랙티브미디어,전공핵심,3,2학년 1학기|일상생활공공장소그리고미디어,전공핵심,3,2학년 1학기|데이터사이언스의이해,전공기초,3,2학년 2학기|매스커뮤니케이션론,전공핵심,3,2학년 2학기|미디어윤리와리터러시,전공핵심,3,2학년 2학기|영상촬영실습,전공핵심,3,2학년 2학기|온라인저널리즘,전공핵심,3,2학년 2학기|학술영어,교양필수,2,2학년 2학기|Xr커뮤니케이션,전공핵심,3,3학년 1학기|뉴미디어론,전공핵심,3,3학년 1학기|미디어캡스톤디자인1,전공심화,2,3학년 1학기|언론과대중문화,전공심화,3,3학년 1학기|영상커뮤니케이션,전공심화,3,3학년 1학기|커뮤니케이션연구방법,전공핵심,3,3학년 1학기|Ic-Pbl과역량계발,교양필수,1,3학년 2학기|미디어창작:위키데이터,전공핵심,3,3학년 2학기|미디어캡스톤디자인2,전공심화,2,3학년 2학기|미디어트랜드와글로벌라이제이션,전공심화,3,3학년 2학기|엔터테인먼트비즈니스,전공심화,3,3학년 2학기|커뮤니케이션측정과통계분석,전공핵심,3,3학년 2학기|미디어정책과규제,전공심화,3,4학년 1학기|미디어창작:위키백과,전공심화,3,4학년 1학기|미디어콘텐츠기획론,전공심화,3,4학년 1학기|사회연결망이론과네트워크분석,전공심화,3,4학년 1학기|취업진로세미나,교양필수,1,4학년 1학기|글로컬영상콘텐츠제작,전공심화,3,4학년 2학기|미디어기업분석,전공심화,3,4학년 2학기|융복합미디어콘텐츠제작,전공핵심,3,4학년 2학기",
+  '디자인공학전공': "기초디자인1,전공핵심,3,1학년 1학기|크리에이티브디자인워크샵,전공핵심,2,1학년 1학기|타이포그래피1,전공핵심,3,1학년 1학기|3d디자인,전공핵심,3,1학년 2학기|3d스페이셜디자인,전공기초,3,1학년 2학기|Cadd,전공핵심,3,1학년 2학기|건축구조시스템,전공핵심,3,1학년 2학기|기초디자인2,전공핵심,3,1학년 2학기|오브젝트디자인스튜디오,전공핵심,3,1학년 2학기|타이포그래피2,전공핵심,3,1학년 2학기|3d프로덕트디자인,전공핵심,3,2학년 1학기|감성미학,전공핵심,3,2학년 1학기|건축구조의기본,전공핵심,3,2학년 1학기|공학과심리,전공심화,3,2학년 1학기|기계공학입문설계,전공핵심,3,2학년 1학기|디자인공학기초드로잉실습,전공핵심,3,2학년 1학기|디자인컨셉과컨텍스트,전공핵심,3,2학년 1학기|스페큘레이티브디자인,전공핵심,3,2학년 1학기|오픈소스Sw,전공핵심,3,2학년 1학기|크로스미디어그래픽스,전공핵심,3,2학년 1학기|크리에이티브코딩1,전공핵심,3,2학년 1학기|건축재료,전공핵심,3,2학년 2학기|구조역학,전공핵심,3,2학년 2학기|데이터구조론,전공핵심,3,2학년 2학기|디자인공학제품드로잉실습,전공핵심,3,2학년 2학기|디자인에쓰노그래피와인사이트,전공핵심,3,2학년 2학기|브랜드디자인프랙티스,전공핵심,3,2학년 2학기|유니버설디자인,전공핵심,3,2학년 2학기|인간공학과실습,전공핵심,3,2학년 2학기|인간중심디자인,전공핵심,3,2학년 2학기|인더스트리얼디자인워크샵,전공핵심,3,2학년 2학기|일반구조,전공핵심,3,2학년 2학기|프로덕트디자인2,전공핵심,3,2학년 2학기|Caid튜토리얼,전공핵심,3,3학년 1학기|기계설계,전공핵심,3,3학년 1학기|디자인가공학2,전공핵심,3,3학년 1학기|디지털페브리케이션,전공핵심,3,3학년 1학기|모빌리티디자인,전공핵심,3,3학년 1학기|오토모티브디자인,전공핵심,3,3학년 1학기|인터랙티브미디어디자인,전공핵심,3,3학년 1학기|제품엔지니어링디자인,전공심화,3,3학년 1학기|창의캡스톤디자인1,전공핵심,3,3학년 1학기|컴퓨터지원설계,전공핵심,3,3학년 1학기|프로토타이핑워크룸,전공심화,3,3학년 1학기|피지컬인터랙션디자인,전공핵심,3,3학년 1학기|미디어사운드디자인,전공심화,3,3학년 2학기|운송기기디자인2,전공핵심,3,3학년 2학기|인더스트리얼디자인프로젝트,전공심화,3,3학년 2학기|인터랙션디자인,전공심화,3,3학년 2학기|제품색채응용,전공핵심,3,3학년 2학기|창의캡스톤디자인2,전공핵심,3,3학년 2학기|디자인공학캡스톤디자인1,전공심화,3,4학년 1학기|디자인공학캡스톤디자인2,전공심화,3,4학년 2학기",
+  '글로벌전략커뮤니케이션전공': "데이터사이언스를위한기초수학과통계,전공핵심,3,2학년 1학기|여론과트렌드,전공핵심,3,2학년 1학기|매체원론,전공핵심,3,2학년 2학기|소셜미디어캠페인,전공핵심,3,2학년 2학기|데이터예측모델과기계학습의응용,전공핵심,3,3학년 1학기|디지털사이니지론,전공심화,3,3학년 1학기|영상커뮤니케이션,전공심화,3,3학년 1학기|위기와재난대응커뮤니케이션,전공핵심,3,3학년 1학기|커뮤니케이션연구방법,전공핵심,3,3학년 1학기|Ad/Pr과사회적책임,전공핵심,3,3학년 2학기|수용자와미디어전략,전공핵심,3,3학년 2학기|커뮤니케이션측정과통계분석,전공핵심,3,3학년 2학기|디지털미디어광고제작,전공심화,3,4학년 1학기|미디어콘텐츠기획론,전공심화,3,4학년 1학기|사회마케팅,전공심화,3,4학년 1학기|사회연결망이론과네트워크분석,전공핵심,3,4학년 1학기|집단지성,전공심화,3,4학년 1학기|미디어벤처기획론,전공심화,3,4학년 2학기|빅데이터시각화와인포그래픽스,전공핵심,3,4학년 2학기|인터렉티브캠페인,전공심화,3,4학년 2학기|지식경영과혁신,전공심화,3,4학년 2학기",
+  '신산업소프트웨어전공': "컴퓨터개론,전공핵심,3,1학년 1학기|3d디자인,전공핵심,3,1학년 2학기|디지털커뮤니케이션론,전공핵심,3,1학년 2학기|시스템프로그래밍기초,전공핵심,3,1학년 2학기|오픈소스Sw기초,전공핵심,2,1학년 2학기|파이썬과데이터분석,교양필수,3,1학년 2학기|프로그램설계방법론,전공핵심,3,1학년 2학기|3d프로덕트디자인,전공핵심,3,2학년 1학기|Iot이해와활용,전공핵심,2,2학년 1학기|Java모바일앱프로그래밍,전공핵심,2,2학년 1학기|Spark와빅데이터(클러스터),전공핵심,2,2학년 1학기|Ui/Ux디자인,전공핵심,3,2학년 1학기|가상확장현실의이해,전공핵심,2,2학년 1학기|게임디자인,전공핵심,3,2학년 1학기|계량경영,전공핵심,3,2학년 1학기|고급컴퓨터활용,전공핵심,2,2학년 1학기|데이터베이스기초,전공핵심,2,2학년 1학기|데이터베이스기초입문,전공핵심,2,2학년 1학기|데이터사이언스활용,전공핵심,2,2학년 1학기|디지탈논리설계,전공핵심,3,2학년 1학기|디지털모델링1,전공핵심,3,2학년 1학기|디지털콘텐츠기획,교양필수,2,2학년 1학기|디지털콘텐츠와게임제작입문,교양필수,2,2학년 1학기|모바일프로그래밍입문,전공핵심,2,2학년 1학기|뮤직테크놀로지,전공핵심,3,2학년 1학기|빅데이터와머신러닝,전공핵심,2,2학년 1학기|선형대수,전공핵심,3,2학년 1학기|신산업과소프트웨어,전공핵심,3,2학년 1학기|엑셀을이용한데이터분석,전공핵심,2,2학년 1학기|오토마타와형식언어론,전공핵심,3,2학년 1학기|운영체제기초(클러스터),전공핵심,3,2학년 1학기|웹퍼블리싱,전공핵심,2,2학년 1학기|웹프레임워크개발,전공핵심,2,2학년 1학기|웹프로그래밍의이해와활용,전공핵심,2,2학년 1학기|인공지능과딥러닝의이해,전공핵심,2,2학년 1학기|인공지능과머신러닝의이해,전공핵심,2,2학년 1학기|인공지능기초프로그래밍,전공핵심,2,2학년 1학기|인공지능의이해,전공핵심,3,2학년 1학기|자료구조론,전공핵심,3,2학년 1학기|자바스크립트프로그래밍,전공핵심,2,2학년 1학기|전산통계학기초,전공핵심,2,2학년 1학기|지능형로봇프로그래밍의이해,전공핵심,2,2학년 1학기|컴퓨터그래픽응용,전공핵심,2,2학년 1학기|컴퓨팅과데이터처리,전공핵심,2,2학년 1학기|크리에이티브비디오,전공핵심,2,2학년 1학기|크리에이티브코딩1,전공핵심,3,2학년 1학기|텐서프로그래밍,전공핵심,3,2학년 1학기|프로그램설계방법론기초,전공핵심,2,2학년 1학기|확률통계론,전공핵심,3,2학년 1학기|4차산업과문화융합혁신프로젝트,전공핵심,3,2학년 2학기|게임기획과퍼블리싱,전공핵심,3,2학년 2학기|공학프로그래밍1,전공핵심,3,2학년 2학기|데이터구조론,전공핵심,3,2학년 2학기|데이터베이스,전공핵심,4,2학년 2학기|데이터분석과시각화,전공핵심,2,2학년 2학기|데이터처리,전공핵심,3,2학년 2학기|드론Sw제작,전공핵심,2,2학년 2학기|디지털포트폴리오,전공핵심,2,2학년 2학기|딥러닝응용,전공핵심,3,2학년 2학기|로봇프로그래밍,전공핵심,3,2학년 2학기|모바일게임프로그래밍,전공핵심,3,2학년 2학기|모바일앱개발,전공핵심,3,2학년 2학기|소셜미디어캠페인,전공핵심,3,2학년 2학기|소프트웨어개발실무,전공핵심,4,2학년 2학기|소프트웨어융합캡스톤디자인1,전공핵심,3,2학년 2학기|수치해석,전공핵심,3,2학년 2학기|신산업융합디자인,전공핵심,3,2학년 2학기|안드로이드앱프로그래밍,전공핵심,2,2학년 2학기|알고리즘설계와분석,전공핵심,3,2학년 2학기|웹디자인1,전공핵심,3,2학년 2학기|웹서비스구축,전공핵심,2,2학년 2학기|음악프로그래밍,전공핵심,3,2학년 2학기|크리에이티브코딩2,전공핵심,3,2학년 2학기|프로그래밍1,전공핵심,3,2학년 2학기|프로그래밍과알고리즘,전공핵심,3,2학년 2학기|Bim통합설계,전공심화,3,3학년 1학기|건설프로그래밍,전공핵심,3,3학년 1학기|게임개발론,전공심화,3,3학년 1학기|게임프로그래밍언어,전공핵심,3,3학년 1학기|경영정보시스템,전공핵심,3,3학년 1학기|고급프로그래밍,전공심화,3,3학년 1학기|공학프로그래밍2,전공심화,3,3학년 1학기|교통물류빅데이터마이닝,전공핵심,3,3학년 1학기|데이터애널리틱스,전공심화,3,3학년 1학기|데이터예측모델과기계학습의응용,전공핵심,3,3학년 1학기|디지털모델링2,전공심화,3,3학년 1학기|마이크로프로세서응용,전공핵심,3,3학년 1학기|빅데이터검색,전공심화,3,3학년 1학기|소프트웨어융합캡스톤디자인2,전공핵심,3,3학년 1학기|수치계산,전공핵심,3,3학년 1학기|운영체제론,전공핵심,4,3학년 1학기|웹디자인2,전공핵심,3,3학년 1학기|웹애플리케이션개발,전공핵심,3,3학년 1학기|융합기술과이노베이션디자인,전공심화,3,3학년 1학기|정보서비스디자인,전공핵심,3,3학년 1학기|제품엔지니어링디자인,전공심화,3,3학년 1학기|컴퓨터구조,전공핵심,3,3학년 1학기|컴퓨터구조론,전공심화,3,3학년 1학기|컴퓨터네트워크,전공핵심,3,3학년 1학기|컴퓨터비전,전공핵심,3,3학년 1학기|컴퓨터지원설계,전공심화,3,3학년 1학기|프로그래밍2,전공핵심,3,3학년 1학기|프로토타이핑워크룸,전공핵심,3,3학년 1학기|E-Business론,전공심화,3,3학년 2학기|객체지향개발론,전공심화,3,3학년 2학기|교통물류데이터과학및인공지능,전공핵심,3,3학년 2학기|그림으로배우는컴퓨터구조기초,전공핵심,2,3학년 2학기|기계학습론,전공핵심,3,3학년 2학기|내장형시스템설계,전공심화,3,3학년 2학기|데이터마이닝,전공핵심,3,3학년 2학기|데이터통신,전공심화,3,3학년 2학기|마이크로프로세서인터페이스,전공심화,3,3학년 2학기|멀티미디어정보처리기초(클러스터),전공핵심,2,3학년 2학기|미디어인류학,전공심화,3,3학년 2학기|빅데이터분석,전공핵심,3,3학년 2학기|빅데이터애널리틱스,전공심화,3,3학년 2학기|시스템프로그래밍,전공핵심,4,3학년 2학기|심화데이터애널리틱스,전공심화,3,3학년 2학기|암호학,전공핵심,3,3학년 2학기|언어정보의처리방법,전공심화,3,3학년 2학기|인공지능,전공핵심,3,3학년 2학기|정보통신경제론,전공핵심,3,3학년 2학기|컴퓨터그래픽스,전공심화,3,3학년 2학기|기계학습,전공심화,3,4학년 1학기|데이터사이언스응용,전공심화,3,4학년 1학기|딥러닝,전공심화,3,4학년 1학기|머신러닝,전공심화,3,4학년 1학기|모바일컴퓨팅,전공심화,3,4학년 1학기|소프트웨어공학,전공심화,4,4학년 1학기|시스템보안,전공심화,3,4학년 1학기|영상문화론,전공심화,3,4학년 1학기|인공지능디자인과응용,전공심화,3,4학년 1학기|인공지능설계,전공심화,3,4학년 1학기|컴퓨터구조및운영체제,전공심화,3,4학년 1학기|프로그래밍언어론,전공심화,3,4학년 1학기|네트워크시큐리티,전공심화,3,4학년 2학기|빅데이터시각화와인포그래픽스,전공핵심,3,4학년 2학기|빅데이터이해와분석(Adsp)(클러스터),전공핵심,2,4학년 2학기|사이버보안,전공심화,3,4학년 2학기|소셜네트워크분석,전공심화,3,4학년 2학기|임베디드소프트웨어설계,전공심화,3,4학년 2학기|임베디드운영체제,전공심화,4,4학년 2학기|컴파일러,전공심화,3,4학년 2학기|통계프로그래밍과데이터분석,전공심화,3,4학년 2학기|프로그램검증,전공심화,3,4학년 2학기",
+  '산업인공지능전공': "논리학(컴퓨터전공),전공핵심,3,1학년 1학기|프로그래밍기초,전공핵심,3,1학년 1학기|시스템프로그래밍기초,전공핵심,3,1학년 2학기|이산수학,전공핵심,3,1학년 2학기|프로그램설계방법론,전공핵심,3,1학년 2학기|Spark와빅데이터(클러스터),전공핵심,2,2학년 1학기|데이터베이스기초,전공핵심,2,2학년 1학기|데이터분석과시각화,전공핵심,2,2학년 1학기|빅데이터이해와분석(Adsp)(클러스터),전공핵심,2,2학년 1학기|선형대수,전공핵심,3,2학년 1학기|인공지능의이해,전공핵심,3,2학년 1학기|자료구조론,전공핵심,3,2학년 1학기|전산통계학기초,전공핵심,2,2학년 1학기|컴퓨팅과데이터처리,전공핵심,2,2학년 1학기|확률론,전공핵심,3,2학년 1학기|데이터베이스,전공핵심,3,2학년 2학기|데이터처리,전공핵심,3,2학년 2학기|로봇프로그래밍,전공핵심,3,2학년 2학기|알고리즘설계와분석,전공핵심,3,2학년 2학기|전산통계학,전공핵심,3,2학년 2학기|데이터마이닝,전공핵심,3,3학년 1학기|빅데이터검색,전공심화,3,3학년 1학기|운영체제론,전공핵심,4,3학년 1학기|컴퓨터구조,전공핵심,3,3학년 1학기|기계학습론,전공심화,3,3학년 2학기|빅데이터분석,전공핵심,3,3학년 2학기|빅데이터애널리틱스,전공심화,3,3학년 2학기|시스템프로그래밍,전공핵심,4,3학년 2학기|인공지능,전공핵심,3,3학년 2학기|기계학습,전공심화,3,4학년 1학기|데이터사이언스응용,전공심화,3,4학년 1학기|딥러닝,전공심화,3,4학년 1학기|머신러닝,전공심화,3,4학년 1학기|산업인공지능,전공심화,3,4학년 1학기|인공지능디자인과응용,전공심화,3,4학년 1학기|최적화이론및응용,전공심화,3,4학년 1학기|회귀분석,전공심화,3,4학년 1학기|딥러닝의기초및응용,전공심화,3,4학년 2학기|로봇지능,전공심화,3,4학년 2학기|인공지능과알고리즘,전공심화,3,4학년 2학기",
+  '비즈니스애널리틱스전공': "경영통계분석1,전공핵심,3,1학년 1학기|프로그래밍기초,전공핵심,3,1학년 1학기|경제통계학,전공핵심,3,2학년 1학기|계량경영,전공핵심,3,2학년 1학기|비즈니스분석프로그래밍,전공핵심,3,2학년 1학기|경영자료분석,전공핵심,3,2학년 2학기|경영통계분석2,전공핵심,3,2학년 2학기|데이터베이스,전공핵심,4,2학년 2학기|데이터사이언스의이해,전공핵심,3,2학년 2학기|비즈니스애널리틱스개론,전공핵심,3,2학년 2학기|Ai기반고객경험디자인,전공심화,3,3학년 1학기|Ba머신러닝,전공심화,3,3학년 1학기|계량경제학,전공핵심,3,3학년 1학기|데이터예측모델과기계학습의응용,전공핵심,3,3학년 1학기|마케팅엔지니어링,전공핵심,3,3학년 1학기|사회연결망분석:이론과방법,전공핵심,3,3학년 1학기|오퍼레이션스애널리틱스,전공핵심,3,3학년 1학기|텍스트정보분석,전공핵심,3,3학년 1학기|파이낸셜애널리틱스,전공핵심,3,3학년 1학기|경제데이터애널리틱스,전공심화,3,3학년 2학기|계량경제모델링과예측,전공핵심,3,3학년 2학기|마케팅애널리틱스,전공심화,3,3학년 2학기|애널리틱스와Ai,전공심화,3,3학년 2학기|전략적의사결정과빅데이터,전공핵심,3,3학년 2학기|통계프로그래밍과데이터분석,전공심화,3,3학년 2학기|경제데이터마이닝과머신러닝,전공심화,3,4학년 1학기|사회연결망이론과네트워크분석,전공핵심,3,4학년 1학기|응용경제데이터분석,전공심화,3,4학년 1학기|공공정책평가실증분석론,전공심화,3,4학년 2학기|딥러닝,전공심화,3,4학년 2학기",
+  'Lions공통': "미분적분학1,전공기초,3,1학년 1학기|미분적분학2,전공기초,3,1학년 1학기|일반물리학1,전공기초,3,1학년 1학기|일반물리학2,전공기초,3,1학년 1학기|일반물리학실험1,전공기초,1,1학년 1학기|일반물리학실험2,전공기초,1,1학년 1학기|일반화학1,전공기초,3,1학년 1학기|일반화학2,전공기초,3,1학년 1학기|일반화학실험1,전공기초,1,1학년 1학기|일반화학실험2,전공기초,1,1학년 1학기|Ai리터러시,교양필수,2,1학년 1학기|Bigquestion:탐구의시작,교양필수,2,1학년 1학기|Lions융합특강,교양필수,2,1학년 1학기|성장과발달의심리적이해,전공핵심,2,1학년 1학기|전공탐색과설계1,전공기초,2,1학년 1학기|파이썬과인공지능,교양필수,3,1학년 1학기|Lions융합프로젝트,전공핵심,2,1학년 2학기|Lions혁신적질문과탐구,전공기초,2,1학년 2학기|전공탐색과설계2,전공기초,1,1학년 2학기|파이썬과데이터분석,교양필수,3,1학년 2학기|전공탐색과설계3,전공기초,1,2학년 2학기",
+  '스포츠관련공통': "Ai리터러시,교양필수,2,1학년 1학기|Ic-Pbl과비전설계,교양필수,1,1학년 1학기|스포츠과학개론,전공기초,2,1학년 1학기|스포츠윤리,전공핵심,2,1학년 1학기|아카데믹글쓰기,교양필수,2,1학년 1학기|육상1,전공기초,2,1학년 1학기|전문체육인의방향모색,전공기초,2,1학년 1학기|해부학,전공기초,2,1학년 1학기|Esg와Sdgs이해,교양필수,2,1학년 2학기|건강교육론,전공핵심,2,1학년 2학기|구급법및안전관리,전공핵심,2,1학년 2학기|기계체조1,전공기초,2,1학년 2학기|생리학,전공기초,2,1학년 2학기|스포츠인문학,전공기초,2,1학년 2학기|파이썬과데이터분석,교양필수,3,1학년 2학기|Ic-Pbl과취창업을위한진로탐색,교양필수,1,2학년 1학기|배드민턴,전공심화,2,2학년 1학기|스포츠경영학,전공핵심,3,2학년 1학기|스포츠생리학,전공핵심,3,2학년 1학기|스포츠심리학,전공핵심,3,2학년 1학기|스포츠종합실기1,전공심화,3,2학년 1학기|한국체육사,전공핵심,2,2학년 1학기|골프,전공심화,2,2학년 2학기|생활체육현장기획,전공핵심,2,2학년 2학기|스포츠교육학,전공핵심,3,2학년 2학기|스포츠기획문서작성론,전공심화,2,2학년 2학기|스포츠와미디어,전공핵심,2,2학년 2학기|체육측정평가,전공핵심,3,2학년 2학기|축구,전공심화,2,2학년 2학기|학술영어,교양필수,2,2학년 2학기|교과교육론(체육),전공심화,3,3학년 1학기|스포츠마케팅,전공심화,2,3학년 1학기|스포츠사회학,전공핵심,3,3학년 1학기|스포츠산업론,전공핵심,2,3학년 1학기|스포츠영화와문화읽기,전공핵심,2,3학년 1학기|스포츠종합실기2,전공심화,3,3학년 1학기|스포츠창업,전공핵심,2,3학년 1학기|Ic-Pbl과역량계발,교양필수,1,3학년 2학기|논리및논술(체육),전공심화,2,3학년 2학기|스포츠정보론,전공심화,2,3학년 2학기|스포츠정책론,전공핵심,2,3학년 2학기|스포츠지도실습법,전공심화,2,3학년 2학기|스포츠행정관리,전공심화,2,3학년 2학기|운동역학,전공핵심,3,3학년 2학기|테니스,전공심화,2,3학년 2학기|교과교재연구및지도(체육),전공심화,3,4학년 1학기|스포츠문화트렌드분석,전공심화,2,4학년 1학기|스포츠산업경영원론,전공심화,2,4학년 1학기|스포츠종합실기3,전공심화,3,4학년 1학기|스포츠캡스톤디자인1,전공심화,2,4학년 1학기|여가및레크레이션론,전공핵심,3,4학년 1학기|취업진로세미나,교양필수,1,4학년 1학기|스포츠캡스톤디자인2,전공심화,2,4학년 2학기|스포츠현장탐방,전공핵심,2,4학년 2학기|에이전트,전공심화,2,4학년 2학기|체육조사방법론,전공심화,2,4학년 2학기",
+  '디자인공통': "2d디지털디자인,전공기초,3,1학년 1학기|드로잉파운데이션,전공기초,3,1학년 1학기|스튜디오프랙티스,전공기초,3,1학년 1학기|3d스페이셜디자인,전공기초,3,1학년 2학기|크리에이티브프로세스,전공기초,3,1학년 2학기|액세서리왁스카빙,전공핵심,3,2학년 1학기|의상디자인설계제작,전공핵심,3,2학년 1학기|주얼리기초1,전공핵심,3,2학년 1학기|주얼리기초2,전공핵심,3,2학년 1학기|주얼리기초테크닉과왁스카빙,전공핵심,3,2학년 1학기|크리에이티브텍스타일표현기법,전공핵심,3,2학년 1학기|패션복식사,전공심화,3,2학년 1학기|패션액세서리디자인1,전공핵심,3,2학년 1학기|패션일러스트레이션,전공핵심,3,2학년 1학기|디자인트렌드,전공핵심,3,2학년 2학기|빅데이터활용패션디자인기획,전공핵심,3,2학년 2학기|주얼리디자인1,전공핵심,3,2학년 2학기|지속가능한3d액세서리디자인,전공핵심,3,2학년 2학기|리사이클3d악세서리디자인,전공핵심,3,3학년 1학기|의상디자인입체재단및제작,전공심화,3,3학년 1학기|주얼리디자인2,전공핵심,3,3학년 1학기|주얼리와보석,전공핵심,3,3학년 1학기|캡스톤디자인1,전공심화,2,3학년 1학기|패션텍스타일스튜디오,전공핵심,3,3학년 1학기|디지털텍스타일프린트메이킹,전공심화,3,3학년 2학기|업싸이클링패션디자인,전공심화,3,3학년 2학기|패션액세서리디자인2,전공핵심,3,3학년 2학기|패션주얼리,전공심화,3,3학년 2학기|패션텍스타일디자인기획,전공핵심,3,3학년 2학기|주얼리디자인프로젝트,전공심화,3,4학년 1학기|컨템포러리액세서리디자인,전공심화,3,4학년 1학기|크리에이티브패션디자인1,전공심화,3,4학년 1학기|패션텍스타일제품디자인 컬렉션,전공심화,3,4학년 1학기|메타버스버추얼패션디자인,전공심화,3,4학년 2학기|주얼리브랜딩과창업,전공심화,3,4학년 2학기|패션액세서리기프트프로젝트,전공심화,3,4학년 2학기|포트폴리오,전공심화,3,4학년 2학기"
+};
+
+const parseCompressedCourses = (deptName, compressedStr) => {
+  if (!compressedStr) return [];
+  return compressedStr.split('|').map(item => {
+    const parts = item.split(',');
+    if(parts.length < 4) return null;
+    const [name, type, credits, gradeTerm] = parts;
+    return {
+      name, type, credits: Number(credits) || 3,
+      target: '공통', gradeTerm, ownerDept: deptName, reason: `${deptName} 이수 과정`
+    };
+  }).filter(Boolean);
+};
+
+Object.keys(ERICA_COMPRESSED_DATA).forEach(dept => {
+  if(!CURRICULUM_DB[dept]) CURRICULUM_DB[dept] = [];
+  CURRICULUM_DB[dept] = [
+    ...CURRICULUM_DB[dept],
+    ...parseCompressedCourses(dept, ERICA_COMPRESSED_DATA[dept])
+  ];
+});
+
+const DEPT_ALIASES = {
+  'Lions자율전공학부(전계열)': 'Lions공통',
+  'Lions자율전공학부(자연계열)': 'Lions공통',
+  'Lions자율전공학부(인문사회계열)': 'Lions공통',
+  '학생설계전공학부': 'Lions공통',
+  '스포츠과학부': '스포츠관련공통',
+  '스포츠문화전공': '스포츠관련공통',
+  '스포츠코칭전공': '스포츠관련공통',
+  '디자인계열': '디자인공통',
+  '주얼리·패션디자인학과': '디자인공통',
+  '융합디자인학부': '디자인공통'
+};
+
+Object.keys(DEPT_ALIASES).forEach(dept => {
+   if (!CURRICULUM_DB[dept]) {
+       CURRICULUM_DB[dept] = CURRICULUM_DB[DEPT_ALIASES[dept]];
+   }
+});
+
+
+const getStatus = (earned, required, type = 'number') => {
+  if (type === 'number') {
+    const e = parseFloat(earned) || 0;
+    const r = parseFloat(required) || 0;
+    const isPass = e >= r;
+    const remain = isPass ? 0 : r - e;
+    return { remain: remain > 0 ? remain : '', ui: isPass ? <span className="font-bold text-green-600">Y</span> : <span className="font-bold text-orange-500">N</span> };
+  } else {
+    const isPass = earned === 'Y';
+    return { remain: isPass ? '' : '1', ui: isPass ? <span className="font-bold text-green-600">Y</span> : <span className="font-bold text-orange-500">N</span> };
+  }
+};
+
+const calculateExpiryDate = (acqDate, validityMonths) => {
+  if (validityMonths === 'permanent') return '영구 (만료없음)';
+  if (validityMonths === 'custom') return '직접 확인 필요';
+  if (!acqDate) return '-';
+
+  const date = new Date(acqDate);
+  date.setMonth(date.getMonth() + validityMonths);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+// 💡 [실시간 D-Day 계산기]
+const getDDayFormatted = (dateStr, fallbackDesc) => {
+  if (!dateStr || dateStr.includes('상시')) return fallbackDesc;
+  const target = new Date(dateStr);
+  const today = new Date();
+  // 시간 차이를 일(day) 단위로 계산
+  const diff = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+  
+  if (diff > 0) return `D-${diff}`;
+  if (diff === 0) return 'D-Day';
+  return '모집마감';
+};
+
+const generatePlatformSearchLink = (careerSub, platformStr) => {
+  const keywordMap = {
+    'IT/소프트웨어': 'IT', '기획/마케팅': '마케팅', '식품/F&B': '식품', '패션/의류': '패션',
+    '금융/은행': '금융', '반도체/엔지니어링': '엔지니어', '공기업 (NCS)': '공공기관',
+    '로스쿨 (법조인)': '법무', '언론고시 (기자/PD)': '언론',
+  };
+  const keyword = keywordMap[careerSub] || '대외활동';
+  const encoded = encodeURIComponent(keyword);
+
+  if (platformStr === '링커리어') return `https://linkareer.com/search?keyword=${encoded}&tab=activity`;
+  if (platformStr === '캠퍼스픽') return `https://www.campuspick.com/search?keyword=${encoded}`;
+  if (platformStr === '위비티') return `https://www.wevity.com/?c=find&s=1&gbn=viewok&ctg=21&sw=${encoded}`;
+  return '#';
+};
+
+const ScreenWrapper = ({ children, isActive }) => (
+  <div className={`absolute inset-0 h-full w-full bg-gray-50 transition-all duration-300 transform ${isActive ? 'opacity-100 translate-x-0 z-10 pointer-events-auto' : 'opacity-0 translate-x-10 z-0 pointer-events-none'} overflow-y-auto pb-24`}>
+    {children}
+  </div>
+);
+
+
+export default function App() {
+  const [currentScreen, setCurrentScreen] = useState('splash');
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [onboardingStep, setOnboardingStep] = useState(1);
+  const [userProfile, setUserProfile] = useState({
+    campus: '', college: '', department: '', majorType: '심화전공(단일)',
+    secondCollege: '', secondDepartment: '', studentId: '', grade: '3',
+    name: '', careerMain: '', careerSub: '',
+    credits: {
+      total: '', majorTotal: '', major100_300: '', major400: '', englishAvg: '',
+      prerequisite: 'Y', gpa: '', requiredCourses: 'Y', volunteer: '', internship: 'Y',
+      coreElective: '', classicReading: '', globalLang: '', sw: '', icpbl: '',
+      futureStartup: '', scienceTech: '', secondMajor: ''
+    }
+  });
+
+  const [achievedSpecs, setAchievedSpecs] = useState([]);
+  const [customMilestones, setCustomMilestones] = useState([]); 
+  
+  // 나의 대외활동 일지 관리용 State
+  const [journals, setJournals] = useState([]);
+  const [isJournalModalOpen, setIsJournalModalOpen] = useState(false);
+  
+  // 스펙 사진 인증(OCR)용 State
+  const [selectedSpec, setSelectedSpec] = useState('');
+  const [customSpecName, setCustomSpecName] = useState('');
+  const [specScore, setSpecScore] = useState('');
+  const [specAcqDate, setSpecAcqDate] = useState('');
+  
+  const [isAcquired, setIsAcquired] = useState(null); 
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [verificationSuccess, setVerificationSuccess] = useState(false);
+
+  const [liveActivities, setLiveActivities] = useState([]);
+  const [isLoadingLive, setIsLoadingLive] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => { setCurrentScreen('onboarding'); setIsLoaded(true); }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleProfileChange = (key, value) => setUserProfile(prev => ({ ...prev, [key]: value }));
+  const handleCreditChange = (key, value) => setUserProfile(prev => ({ ...prev, credits: { ...prev.credits, [key]: value } }));
+
+  useEffect(() => {
+    setIsAcquired(null);
+    setIsVerifying(false);
+    setVerificationSuccess(false);
+    setSpecScore('');
+    setSpecAcqDate('');
+  }, [selectedSpec]);
+
+  useEffect(() => {
+    if (!userProfile.careerSub) return;
+    setIsLoadingLive(true);
+    setTimeout(() => {
+      const directLinks = [
+        { title: `[${userProfile.careerSub}] 링커리어 공고 바로가기`, dDay: "실시간", url: generatePlatformSearchLink(userProfile.careerSub, '링커리어'), dynamicReason: "링커리어 다이렉트" },
+        { title: `[${userProfile.careerSub}] 캠퍼스픽 활동 바로가기`, dDay: "실시간", url: generatePlatformSearchLink(userProfile.careerSub, '캠퍼스픽'), dynamicReason: "캠퍼스픽 다이렉트" },
+        { title: `[${userProfile.careerSub}] 위비티 공모전 바로가기`, dDay: "실시간", url: generatePlatformSearchLink(userProfile.careerSub, '위비티'), dynamicReason: "위비티 다이렉트" }
+      ];
+      setLiveActivities(directLinks);
+      setIsLoadingLive(false);
+    }, 300);
+  }, [userProfile.careerSub]);
+
+  // OCR 사진 촬영 시뮬레이션 함수
+  const simulatePhotoAuth = () => {
+    setIsVerifying(true);
+    setTimeout(() => {
+      setIsVerifying(false);
+      setVerificationSuccess(true);
+      
+      const isLang = selectedSpec && SPEC_DB.find(s => s.name === selectedSpec)?.type === 'lang';
+      if (isLang) {
+        if (selectedSpec.includes('TOEIC')) setSpecScore('900');
+        else if (selectedSpec.includes('OPIc')) setSpecScore('IH');
+        else setSpecScore('850');
+      } else {
+        setSpecScore('합격 (예)'); 
+      }
+      setSpecAcqDate(new Date().toISOString().split('T')[0]);
+    }, 1500);
+  };
+
+  const handleAddSpec = () => {
+    const finalName = selectedSpec === '직접 입력' ? customSpecName : selectedSpec;
+    if (!finalName || !specScore || !specAcqDate) return;
+
+    const specInfo = SPEC_DB.find(s => s.name === selectedSpec);
+    const validity = specInfo ? specInfo.validity : 'custom';
+    const expiry = calculateExpiryDate(specAcqDate, validity);
+
+    setAchievedSpecs(prev => [...prev, { name: finalName, score: specScore, acqDate: specAcqDate, expiryDate: expiry }]);
+    setSelectedSpec(''); setCustomSpecName(''); setIsAcquired(null);
+  };
+
+  const handleAddMilestone = () => {
+    const finalName = selectedSpec === '직접 입력' ? customSpecName : selectedSpec;
+    if (!finalName) return;
+    setCustomMilestones(prev => [...prev, {
+      cat: 'cert', title: finalName, dDay: '예정', duration: '-', desc: '내가 설정한 커스텀 목표', url: '#'
+    }]);
+    setSelectedSpec(''); setCustomSpecName(''); setIsAcquired(null);
+  };
+
+  const userRoadmapData = useMemo(() => {
+    if (!userProfile.careerSub || !userProfile.department) return null;
+    
+    const specs = CAREER_SPEC_MAP[userProfile.careerSub] || CAREER_SPEC_MAP['default'] || [];
+    const categorizedSpecs = specs.reduce((acc, spec) => {
+      const achieved = achievedSpecs.find(a => a.name.toLowerCase().includes(spec.title.toLowerCase()) || spec.title.toLowerCase().includes(a.name.toLowerCase()));
+      if (achieved) {
+        if (spec.cat === 'lang' && spec.targetScore) {
+          const scoreRank = { 'IM1': 1, 'IM2': 2, 'IM3': 3, 'IH': 4, 'AL': 5 };
+          const parsedUserScore = parseInt(achieved.score);
+          const parsedTarget = parseInt(spec.targetScore);
+          
+          let isGoalMet = false;
+          if(!isNaN(parsedUserScore) && !isNaN(parsedTarget)) isGoalMet = parsedUserScore >= parsedTarget; 
+          else isGoalMet = (scoreRank[achieved.score.toUpperCase()] || 0) >= (scoreRank[spec.targetScore.toUpperCase()] || 0); 
+
+          if (!isGoalMet) acc.milestones.push({ ...spec, currentStatus: `현재 ${achieved.score} (목표 ${spec.targetScore})` });
+          else acc.achieved.push({ ...spec, userScore: achieved.score, expiryDate: achieved.expiryDate });
+        } else {
+          acc.achieved.push({ ...spec, userScore: achieved.score, expiryDate: achieved.expiryDate });
+        }
+      } else {
+        // 💡 마일스톤에 추가될 때 실시간 D-Day 계산 적용
+        const dynamicDDay = getDDayFormatted(spec.targetDate, spec.dDay);
+        acc.milestones.push({ ...spec, dDay: dynamicDDay });
+      }
+      return acc;
+    }, { achieved: [], milestones: [] });
+
+    const req = getGradReqs(userProfile.department, userProfile.majorType);
+    const cr = Object.keys(userProfile.credits).reduce((acc, key) => {
+      acc[key] = (key === 'prerequisite' || key === 'requiredCourses' || key === 'internship') ? userProfile.credits[key] : parseFloat(userProfile.credits[key]) || 0;
+      return acc;
+    }, {});
+
+    const missingReqs = [];
+    if (cr.major100_300 < req.major100_300) missingReqs.push({ type: '전공 100~300단위', diff: req.major100_300 - cr.major100_300 });
+    if (cr.major400 < req.major400) missingReqs.push({ type: '전공 400단위', diff: req.major400 - cr.major400 });
+    if (userProfile.majorType !== '심화전공(단일)' && cr.secondMajor < req.secondMajor) missingReqs.push({ type: '제2전공', diff: req.secondMajor - cr.secondMajor });
+    if (cr.coreElective < req.coreElective) missingReqs.push({ type: '핵심교양', diff: req.coreElective - cr.coreElective });
+    if (cr.sw < req.sw) missingReqs.push({ type: '소프트웨어영역', diff: req.sw - cr.sw });
+    if (cr.volunteer < req.volunteer) missingReqs.push({ type: '사회봉사', diff: req.volunteer - cr.volunteer });
+
+    const allCourses = Object.values(CURRICULUM_DB).flat();
+    const userDeptCourses = CURRICULUM_DB[userProfile.department] || [];
+    const secondDeptCourses = CURRICULUM_DB[userProfile.secondDepartment] || [];
+    const commonCourses = CURRICULUM_DB['공통/교양'] || [];
+
+    let recommendedCourses = [];
+    missingReqs.forEach(missing => {
+      let matches = [];
+      if (missing.type === '제2전공') matches = secondDeptCourses;
+      else if (missing.type.includes('전공')) {
+          if (missing.type === '전공 100~300단위') matches = userDeptCourses.filter(c => c.type === '전공 100~300단위' || c.type.includes('핵심') || c.type.includes('기초'));
+          else if (missing.type === '전공 400단위') matches = userDeptCourses.filter(c => c.type === '전공 400단위' || c.type.includes('심화'));
+          else matches = userDeptCourses.filter(c => c.type === missing.type);
+          if(matches.length === 0) matches = allCourses.filter(c => c.type === missing.type && c.ownerDept === userProfile.department);
+      } else {
+          matches = commonCourses.filter(c => c.type === missing.type);
+          if(matches.length === 0) matches = allCourses.filter(c => c.type === missing.type);
+      }
+      if(matches.length > 0) matches.slice(0, 2).forEach(matched => { if(!recommendedCourses.find(c => c.name === matched.name)) recommendedCourses.push({ ...matched, dynamicReason: `부족한 [${missing.type}] 요건 충족을 위해 추천합니다.` }); });
+    });
+
+    if (recommendedCourses.length === 0) {
+        let careerMatches = userDeptCourses.filter(c => c.target === userProfile.careerSub);
+        if(careerMatches.length === 0) careerMatches = allCourses.filter(c => c.target === userProfile.careerSub);
+        careerMatches.slice(0, 3).forEach(matched => { recommendedCourses.push({ ...matched, dynamicReason: `졸업 요건을 충족하여 [${userProfile.careerSub}] 대비 심화를 추천합니다.` }); });
+    }
+
+    return { 
+      achieved: categorizedSpecs.achieved, 
+      milestones: [...categorizedSpecs.milestones, ...customMilestones], 
+      courses: recommendedCourses, 
+      gradInfo: req 
+    };
+  }, [userProfile, achievedSpecs, customMilestones]);
+
+  const renderOnboarding = () => (
+    <div className="absolute inset-0 z-50 bg-white flex flex-col h-full overflow-hidden">
+      <div className="pt-12 px-6 pb-4 flex items-center justify-between sticky top-0 z-10 bg-white">
+        <button onClick={() => setOnboardingStep(s => Math.max(1, s - 1))} className="p-2"><ChevronLeft size={24} /></button>
+        <div className="flex gap-1 flex-1 px-8">{[1, 2, 3, 4, 5, 6].map(s => <div key={s} className={`h-1 flex-1 rounded-full ${s <= onboardingStep ? 'bg-[#00307B]' : 'bg-gray-200'}`}></div>)}</div>
+      </div>
+
+      <div className="flex-1 overflow-y-auto px-6 pb-32 pt-4">
+        {onboardingStep === 1 && (
+          <div className="animate-fade-in-up">
+            <h2 className="text-2xl font-black mb-6">전공 정보를 알려주세요</h2>
+            
+            <select className="w-full p-4 mb-4 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" value={userProfile.campus} 
+              onChange={e => { 
+                handleProfileChange('campus', e.target.value); 
+                handleProfileChange('college', ''); 
+                handleProfileChange('department', ''); 
+                handleProfileChange('secondCollege', ''); 
+                handleProfileChange('secondDepartment', ''); 
+              }}>
+              <option value="">캠퍼스 선택</option><option value="SEOUL">서울캠퍼스</option><option value="ERICA">ERICA캠퍼스</option>
+            </select>
+            
+            {userProfile.campus && (
+              <select className="w-full p-4 mb-4 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" value={userProfile.college} onChange={e => { handleProfileChange('college', e.target.value); handleProfileChange('department', ''); }}>
+                <option value="">단과대학 선택</option>
+                {Object.keys(CAMPUS_DATA[userProfile.campus]?.colleges || {}).map(c => <option key={c} value={c}>{c}</option>)}
+              </select>
+            )}
+            
+            {userProfile.college && (
+              <select className="w-full p-4 mb-8 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" value={userProfile.department} onChange={e => handleProfileChange('department', e.target.value)}>
+                <option value="">학과/학부 선택</option>
+                {CAMPUS_DATA[userProfile.campus]?.colleges[userProfile.college]?.map(d => <option key={d} value={d}>{d}</option>)}
+              </select>
+            )}
+            
+            {userProfile.department && (
+              <>
+                <label className="block text-sm font-bold text-gray-700 mb-3">이수 유형 (다중전공 선택)</label>
+                <div className="grid grid-cols-2 gap-2 mb-6">
+                  {['심화전공(단일)', '다중/복수전공', '융합전공', '부전공', '마이크로전공'].map(type => (
+                    <button key={type} onClick={() => { handleProfileChange('majorType', type); if(type === '심화전공(단일)') { handleProfileChange('secondCollege', ''); handleProfileChange('secondDepartment', ''); } }} className={`py-4 rounded-2xl text-sm font-bold border-2 transition-all ${userProfile.majorType === type ? 'bg-[#00307B] text-white border-[#00307B]' : 'bg-white text-gray-600 border-gray-100'}`}>{type}</button>
+                  ))}
+                </div>
+                {userProfile.majorType !== '심화전공(단일)' && (
+                  <div className="p-5 bg-blue-50 rounded-3xl border-2 border-blue-100 animate-fade-in-up">
+                    <p className="text-sm font-black text-[#00307B] mb-4">제2전공 학과 선택</p>
+                    <select className="w-full p-3 mb-3 rounded-xl border-white border-2 text-sm font-bold bg-white focus:outline-none focus:border-[#00307B]" value={userProfile.secondCollege} onChange={e => { handleProfileChange('secondCollege', e.target.value); handleProfileChange('secondDepartment', ''); }}>
+                       <option value="">단과대학 선택</option>
+                       {Object.keys(CAMPUS_DATA[userProfile.campus]?.colleges || {}).map(c => <option key={c} value={c}>{c}</option>)}
+                    </select>
+                    {userProfile.secondCollege && (
+                      <select className="w-full p-3 rounded-xl border-white border-2 text-sm font-bold bg-white focus:outline-none focus:border-[#00307B]" value={userProfile.secondDepartment} onChange={e => handleProfileChange('secondDepartment', e.target.value)}>
+                        <option value="">학과 선택</option>
+                        {CAMPUS_DATA[userProfile.campus]?.colleges[userProfile.secondCollege]?.map(d => <option key={d} value={d}>{d}</option>)}
+                      </select>
+                    )}
+                  </div>
+                )}
+              </>
+            )}
+          </div>
+        )}
+
+        {onboardingStep === 2 && (
+          <div className="animate-fade-in-up">
+            <h2 className="text-2xl font-black mb-8">기본 정보를 입력해주세요</h2>
+            <input type="text" placeholder="이름" value={userProfile.name} onChange={e => handleProfileChange('name', e.target.value)} className="w-full p-5 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold mb-4 focus:outline-none focus:border-[#00307B]" />
+            <div className="flex gap-4">
+              <input type="number" placeholder="학년" value={userProfile.grade} onChange={e => handleProfileChange('grade', e.target.value)} className="flex-1 p-5 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" />
+              <input type="number" placeholder="학번" value={userProfile.studentId} onChange={e => handleProfileChange('studentId', e.target.value)} className="flex-1 p-5 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" />
+            </div>
+          </div>
+        )}
+
+        {onboardingStep === 3 && (
+          <div className="animate-fade-in-up">
+            <h2 className="text-2xl font-black mb-4">현재까지의 학점 정보</h2>
+            <p className="text-[11px] text-gray-500 mb-4">포털의 졸업사정조회 탭 내용을 그대로 기입하세요.</p>
+            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden mb-6">
+              <table className="w-full text-left text-[11px] sm:text-xs">
+                <thead className="bg-gray-50 border-b border-gray-200">
+                  <tr><th className="py-3 px-3 font-bold text-gray-700">항목</th><th className="py-3 px-1 font-bold text-center">기준</th><th className="py-3 px-3 font-bold text-[#00307B] text-center w-24">이수</th></tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  <tr><td className="py-2.5 px-3 font-bold">졸업학점</td><td className="text-center text-gray-500">{getGradReqs(userProfile.department, userProfile.majorType).total}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.total} onChange={e => handleCreditChange('total', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center bg-gray-50 focus:border-[#00307B] focus:outline-none" /></td></tr>
+                  <tr><td className="py-2.5 px-3 font-bold">전공학점</td><td className="text-center text-gray-500">{getGradReqs(userProfile.department, userProfile.majorType).majorTotal}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.majorTotal} onChange={e => handleCreditChange('majorTotal', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center bg-gray-50 focus:border-[#00307B] focus:outline-none" /></td></tr>
+                  <tr><td className="py-2.5 px-3 pl-6 text-gray-600">↳ 100~300</td><td className="text-center text-gray-400">{getGradReqs(userProfile.department, userProfile.majorType).major100_300}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.major100_300} onChange={e => handleCreditChange('major100_300', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center focus:border-[#00307B] focus:outline-none" /></td></tr>
+                  <tr><td className="py-2.5 px-3 pl-6 font-bold text-orange-600">↳ 400단위</td><td className="text-center font-bold text-orange-400">{getGradReqs(userProfile.department, userProfile.majorType).major400}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.major400} onChange={e => handleCreditChange('major400', e.target.value)} className="w-full p-2 border border-orange-300 rounded-lg text-center bg-orange-50 text-orange-700 font-bold focus:border-orange-500 focus:outline-none" /></td></tr>
+                  {userProfile.majorType !== '심화전공(단일)' && (
+                    <tr><td className="py-2.5 px-3 font-bold text-purple-700">제2전공</td><td className="text-center text-purple-500">{getGradReqs(userProfile.department, userProfile.majorType).secondMajor}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.secondMajor} onChange={e => handleCreditChange('secondMajor', e.target.value)} className="w-full p-2 border border-purple-300 rounded-lg text-center bg-purple-50 text-purple-700 font-bold focus:border-purple-500 focus:outline-none" /></td></tr>
+                  )}
+                  <tr><td className="py-2.5 px-3">영어전용강좌수</td><td className="text-center text-gray-500">{getGradReqs(userProfile.department, userProfile.majorType).englishAvg}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.englishAvg} onChange={e => handleCreditChange('englishAvg', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center bg-gray-50 focus:border-[#00307B] focus:outline-none" /></td></tr>
+                  <tr><td className="py-2.5 px-3">선수강이수</td><td className="text-center text-gray-500">Y</td><td className="py-1.5 px-2"><select value={userProfile.credits.prerequisite} onChange={e => handleCreditChange('prerequisite', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center bg-gray-50 focus:border-[#00307B] focus:outline-none"><option value="N">N</option><option value="Y">Y</option></select></td></tr>
+                  <tr><td className="py-2.5 px-3">졸업평점</td><td className="text-center text-gray-500">{getGradReqs(userProfile.department, userProfile.majorType).gpa}</td><td className="py-1.5 px-2"><input type="number" step="0.01" value={userProfile.credits.gpa} onChange={e => handleCreditChange('gpa', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center bg-gray-50 focus:border-[#00307B] focus:outline-none" placeholder="4.5" /></td></tr>
+                  <tr><td className="py-2.5 px-3">미필과목이수</td><td className="text-center text-gray-500">Y</td><td className="py-1.5 px-2"><select value={userProfile.credits.requiredCourses} onChange={e => handleCreditChange('requiredCourses', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center bg-gray-50 focus:border-[#00307B] focus:outline-none"><option value="N">N</option><option value="Y">Y</option></select></td></tr>
+                  <tr><td className="py-2.5 px-3">사회봉사</td><td className="text-center text-gray-500">{getGradReqs(userProfile.department, userProfile.majorType).volunteer}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.volunteer} onChange={e => handleCreditChange('volunteer', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center bg-gray-50 focus:border-[#00307B] focus:outline-none" /></td></tr>
+                  <tr><td className="py-2.5 px-3">인턴십이수</td><td className="text-center text-gray-500">Y</td><td className="py-1.5 px-2"><select value={userProfile.credits.internship} onChange={e => handleCreditChange('internship', e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg text-center bg-gray-50 focus:border-[#00307B] focus:outline-none"><option value="N">N</option><option value="Y">Y</option></select></td></tr>
+                  <tr className="bg-gray-50"><td className="py-2.5 px-3 font-bold text-[#00307B]">핵심교양</td><td className="text-center font-bold text-[#00307B]">{getGradReqs(userProfile.department, userProfile.majorType).coreElective}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.coreElective} onChange={e => handleCreditChange('coreElective', e.target.value)} className="w-full p-2 border border-[#00307B] rounded-lg text-center bg-white font-bold text-[#00307B] focus:outline-none" /></td></tr>
+                  <tr><td className="py-2.5 px-3 font-bold text-orange-600">IC-PBL강좌수</td><td className="text-center font-bold text-orange-400">{getGradReqs(userProfile.department, userProfile.majorType).icpbl}</td><td className="py-1.5 px-2"><input type="number" value={userProfile.credits.icpbl} onChange={e => handleCreditChange('icpbl', e.target.value)} className="w-full p-2 border border-orange-300 rounded-lg text-center bg-orange-50 font-bold focus:border-orange-500 focus:outline-none" /></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {onboardingStep === 4 && (
+          <div className="animate-fade-in-up">
+            <h2 className="text-2xl font-black mb-8">목표 진로를 선택하세요</h2>
+            <div className="space-y-3">
+              {Object.values(CAREER_GOALS).map(goal => (
+                <div key={goal.id} className={`p-5 rounded-3xl border-2 transition-all cursor-pointer ${userProfile.careerMain === goal.name ? 'border-[#00307B] bg-blue-50' : 'border-gray-100'}`} onClick={() => handleProfileChange('careerMain', goal.name)}>
+                  <div className="flex items-center gap-3">
+                    <div className={`w-5 h-5 rounded-full border-2 ${userProfile.careerMain === goal.name ? 'bg-[#00307B] border-[#00307B]' : 'border-gray-300'}`}></div>
+                    <span className="font-black text-lg">{goal.name}</span>
+                  </div>
+                  {userProfile.careerMain === goal.name && (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {goal.sub.map(s => <button key={s} onClick={(e) => { e.stopPropagation(); handleProfileChange('careerSub', s); setOnboardingStep(5); }} className={`px-4 py-2 rounded-full text-xs font-bold border-2 transition-all ${userProfile.careerSub === s ? 'bg-[#00307B] text-white border-[#00307B]' : 'bg-white'}`}>{s}</button>)}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {onboardingStep === 5 && (
+          <div className="animate-fade-in-up pb-10">
+            <h2 className="text-2xl font-black mb-2">이미 보유한 스펙 등록</h2>
+            <p className="text-gray-500 text-sm mb-6">등록된 항목은 로드맵의 '성취 리스트'로 이동합니다.</p>
+            
+            <div className="space-y-3 mb-8">
+              {achievedSpecs.map((spec, i) => (
+                <div key={i} className="bg-gray-50 p-4 rounded-2xl flex items-center justify-between border border-gray-200">
+                  <div>
+                    <p className="font-bold text-sm text-gray-900">{spec.name} <span className="text-[#00307B] ml-1">{spec.score}</span></p>
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className="text-[10px] text-gray-400">취득일: {spec.acqDate}</span>
+                      <span className="text-[10px] text-gray-300">|</span>
+                      <span className="text-[10px] font-bold text-orange-500">만료일: {spec.expiryDate}</span>
+                    </div>
+                  </div>
+                  <button onClick={() => setAchievedSpecs(prev => prev.filter((_, idx) => idx !== i))} className="p-2 text-red-400 hover:text-red-600"><Trash2 size={16} /></button>
+                </div>
+              ))}
+            </div>
+            
+            <div className="p-6 border-2 border-gray-100 bg-white rounded-3xl shadow-sm space-y-4">
+              <div>
+                <label className="block text-[11px] font-bold text-gray-500 mb-1 ml-1">어학 / 자격증 종류</label>
+                <select 
+                  className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-bold text-gray-800 focus:outline-none focus:border-[#00307B]"
+                  value={selectedSpec}
+                  onChange={(e) => { setSelectedSpec(e.target.value); }}
+                >
+                  <option value="">보유 혹은 목표하는 스펙을 선택하세요</option>
+                  <optgroup label="어학 (점수 입력)">
+                    {SPEC_DB.filter(s => s.type === 'lang').map(s => <option key={s.id} value={s.name}>{s.name}</option>)}
+                  </optgroup>
+                  <optgroup label="자격증 (합격 여부)">
+                    {SPEC_DB.filter(s => s.type === 'cert').map(s => <option key={s.id} value={s.name}>{s.name}</option>)}
+                  </optgroup>
+                  <optgroup label="기타">
+                    <option value="직접 입력">직접 입력 (기타 활동 등)</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              {selectedSpec && (
+                <div className="mt-2 animate-fade-in-up">
+                  {selectedSpec === '직접 입력' && (
+                    <div className="mb-4">
+                      <input type="text" placeholder="자격증/활동 명을 직접 입력하세요" className="w-full p-3.5 bg-white border border-gray-200 rounded-xl text-sm font-bold focus:outline-none focus:border-[#00307B]" value={customSpecName} onChange={e => setCustomSpecName(e.target.value)} />
+                    </div>
+                  )}
+
+                  <p className="text-[13px] font-bold text-gray-800 mb-2">해당 스펙을 이미 취득(합격)하셨나요?</p>
+                  <div className="flex gap-2 mb-4">
+                    <button onClick={() => setIsAcquired('yes')} className={`flex-1 py-2.5 rounded-xl text-sm font-bold border-2 transition-all ${isAcquired === 'yes' ? 'border-[#00307B] bg-blue-50 text-[#00307B]' : 'border-gray-200 bg-white text-gray-600'}`}>예</button>
+                    <button onClick={() => setIsAcquired('no')} className={`flex-1 py-2.5 rounded-xl text-sm font-bold border-2 transition-all ${isAcquired === 'no' ? 'border-gray-400 bg-gray-100 text-gray-700' : 'border-gray-200 bg-white text-gray-600'}`}>아니오</button>
+                  </div>
+
+                  {isAcquired === 'yes' && !verificationSuccess && !isVerifying && (
+                    <button onClick={simulatePhotoAuth} className="w-full py-8 mb-4 border-2 border-dashed border-[#00307B] rounded-2xl flex flex-col items-center justify-center gap-3 bg-blue-50/30 hover:bg-blue-50 transition-colors animate-fade-in-up group">
+                       <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                          <Camera size={24} className="text-[#00307B]" />
+                       </div>
+                       <div className="text-center">
+                         <span className="block font-bold text-[#00307B] text-sm mb-1">인증서/성적표 촬영이 필요합니다</span>
+                         <span className="block text-[10px] text-blue-400">여기를 클릭하여 카메라를 활성화하세요</span>
+                       </div>
+                    </button>
+                  )}
+                  
+                  {isVerifying && (
+                    <div className="w-full py-10 mb-4 border border-gray-200 rounded-2xl flex flex-col items-center justify-center gap-3 bg-gray-50 animate-fade-in-up">
+                       <Loader2 size={32} className="text-[#00307B] animate-spin" />
+                       <span className="font-bold text-gray-600 text-sm">문서를 인식하고 있습니다 (OCR 판독 중)...</span>
+                    </div>
+                  )}
+
+                  {verificationSuccess && (
+                    <div className="w-full py-5 px-4 mb-4 border-2 border-green-200 rounded-2xl bg-green-50/50 animate-fade-in-up">
+                      <div className="flex items-center gap-2 mb-4">
+                         <CheckCircle2 size={20} className="text-green-600" />
+                         <span className="font-black text-green-700 text-sm">인증 성공! 결과가 자동 입력되었습니다.</span>
+                      </div>
+                      <div className="flex gap-2">
+                        <div className="flex-1">
+                          <label className="block text-[10px] font-bold text-green-700 mb-1 ml-1">
+                            {(selectedSpec && SPEC_DB.find(s => s.name === selectedSpec)?.type === 'lang') ? '판독된 점수' : '합격 여부'}
+                          </label>
+                          {(selectedSpec && SPEC_DB.find(s => s.name === selectedSpec)?.type === 'lang') ? (
+                            <input type="text" value={specScore} onChange={(e)=>setSpecScore(e.target.value)} className="w-full p-3 rounded-xl border border-green-200 bg-white text-sm font-bold focus:outline-none" />
+                          ) : (
+                            <select value={specScore} onChange={(e)=>setSpecScore(e.target.value)} className="w-full p-3 rounded-xl border border-green-200 bg-white text-sm font-bold focus:outline-none text-green-700">
+                              <option value="합격 (예)">예 (합격)</option>
+                              <option value="불합격 (아니오)">아니오 (불합격)</option>
+                            </select>
+                          )}
+                        </div>
+                        <div className="flex-1">
+                          <label className="block text-[10px] font-bold text-green-700 mb-1 ml-1">취득일자</label>
+                          <input type="date" value={specAcqDate} onChange={(e)=>setSpecAcqDate(e.target.value)} className="w-full p-3 rounded-xl border border-green-200 bg-white text-sm font-bold focus:outline-none text-green-700" />
+                        </div>
+                      </div>
+                      <button onClick={handleAddSpec} className="w-full mt-4 py-3.5 bg-[#00307B] text-white font-black rounded-xl shadow-md flex justify-center items-center gap-2 hover:bg-blue-900 transition-colors"><Award size={16}/> 스펙 장착하기</button>
+                    </div>
+                  )}
+
+                  {isAcquired === 'no' && (
+                     <div className="p-4 bg-gray-50 border border-gray-200 rounded-2xl text-center mb-4 animate-fade-in-up">
+                       <Target size={24} className="mx-auto text-gray-400 mb-2"/>
+                       <p className="text-xs text-gray-600 font-bold leading-relaxed mb-3">이 스펙은 아직 취득하지 않으셨군요!<br/>'앞으로의 마일스톤' 로드맵에 자동으로 추가됩니다.</p>
+                       <button onClick={handleAddMilestone} className="w-full py-3 bg-gray-800 text-white text-xs font-bold rounded-xl shadow-md flex justify-center items-center gap-1 hover:bg-black transition-colors"><Plus size={14}/> 목표로 추가하기</button>
+                     </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {onboardingStep === 6 && (
+           <div className="flex flex-col items-center justify-center h-full animate-fade-in-up">
+           <Sparkles className="text-[#00307B] w-16 h-16 mb-4 animate-bounce" />
+           <h2 className="text-2xl font-black text-center">나만을 위한<br/>커스텀 로드맵 완성!</h2>
+           </div>
+        )}
+      </div>
+
+      <div className="p-6 bg-white border-t sticky bottom-0 z-20">
+        <button onClick={() => onboardingStep === 6 ? setCurrentScreen('home') : setOnboardingStep(s => s + 1)} className="w-full py-5 bg-[#00307B] text-white font-black text-lg rounded-[2rem] shadow-xl">{onboardingStep === 6 ? '시작하기' : '다음 단계로'}</button>
+      </div>
+    </div>
+  );
+
+  const renderHome = () => {
+    const data = userRoadmapData;
+    if (!data) return null;
+
+    return (
+      <div className="p-6 pt-10 animate-fade-in-up">
+        <div className="flex justify-between items-center mb-8">
+          <div className="bg-[#00307B] text-white px-3 py-1 rounded-lg text-xs font-black tracking-widest">HY ROAD</div>
+          <Bell size={20} className="text-gray-400" />
+        </div>
+        <h2 className="text-2xl font-black leading-tight mb-8">
+          {userProfile.name}님을 위한<br/>
+          <span className="text-[#00307B]">{userProfile.careerSub}</span> 직무<br/>
+          맞춤 가이드입니다 🚀
+        </h2>
+
+        {/* 대외활동 아웃링크 */}
+        <div className="mb-10">
+          <h3 className="font-black text-lg text-gray-900 mb-4 flex items-center gap-2">
+            <Sparkles size={20} className="text-blue-500" /> 맞춤 대외활동 찾아보기 <span className="text-[9px] bg-red-100 text-red-600 px-2 py-0.5 rounded-full ml-auto animate-pulse">LIVE</span>
+          </h3>
+          {isLoadingLive ? (
+            <div className="flex flex-col items-center justify-center py-8 bg-gray-50 rounded-3xl border border-gray-100">
+              <Loader2 className="animate-spin text-blue-400 mb-2" size={24} />
+              <p className="text-xs text-gray-500 font-bold">플랫폼 연결 중...</p>
+            </div>
+          ) : (
+            <div className="flex gap-3 overflow-x-auto pb-4 snap-x">
+              {liveActivities.map((live, idx) => (
+                <a key={idx} href={live.url} target="_blank" rel="noreferrer" className="shrink-0 w-64 bg-white border border-gray-200 rounded-3xl p-5 shadow-sm snap-start hover:border-blue-300 transition-colors block">
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="text-[10px] font-black text-red-500 bg-red-50 px-2 py-1 rounded-md">{live.dDay}</span>
+                    <span className="text-[10px] text-gray-400 font-bold">{live.dynamicReason}</span>
+                  </div>
+                  <h4 className="font-black text-gray-900 text-sm leading-snug line-clamp-2">{live.title}</h4>
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* 성취 리스트 */}
+        {data.achieved.length > 0 && (
+          <div className="mb-10">
+            <h3 className="font-black text-lg text-gray-900 mb-4 flex items-center gap-2">
+              <CheckCircle2 size={20} className="text-green-500" /> 나의 성취 리스트
+            </h3>
+            <div className="space-y-3">
+              {data.achieved.map((spec, i) => (
+                <div key={i} className="bg-white border-2 border-green-50 rounded-3xl p-5 shadow-sm flex items-center justify-between">
+                  <div>
+                    <p className="font-black text-sm text-gray-800">{spec.title}</p>
+                    <p className="text-[10px] text-green-600 font-bold mt-1">성취 완료: {spec.userScore || '취득'}</p>
+                  </div>
+                  {spec.expiryDate && spec.expiryDate !== '-' && (
+                    <div className="text-right">
+                      <p className="text-[9px] text-gray-400 font-bold uppercase mb-0.5">만료일</p>
+                      <p className="text-[11px] font-black text-gray-600 bg-gray-50 px-2 py-1 rounded-md">{spec.expiryDate}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* D-day 마일스톤 */}
+        <div>
+          <h3 className="font-black text-lg text-gray-900 mb-4 flex items-center gap-2">
+            <Target size={20} className="text-[#00307B]" /> 앞으로의 마일스톤
+          </h3>
+          <div className="space-y-4">
+            {data.milestones.map((spec, i) => (
+              <div key={i} className="bg-white border-2 border-gray-50 rounded-[2.5rem] p-6 shadow-sm group">
+                <div className="flex justify-between items-start mb-3">
+                  <div className="flex items-center gap-2">
+                    <span className={`px-2 py-0.5 rounded text-[10px] font-black ${spec.cat === 'lang' ? 'bg-blue-100 text-blue-700' : 'bg-purple-100 text-purple-700'}`}>{spec.cat === 'lang' ? '어학' : (spec.cat === 'cert' ? '자격증' : '대외활동')}</span>
+                    <h4 className="font-black text-gray-900">{spec.title}</h4>
+                  </div>
+                  <a href={spec.url} target="_blank" rel="noreferrer" className="text-gray-300 group-hover:text-[#00307B] transition-all"><ExternalLink size={16}/></a>
+                </div>
+                <p className="text-xs text-gray-500 font-bold mb-4 leading-relaxed break-keep">{spec.desc}</p>
+                <div className="flex flex-wrap items-center gap-2">
+                  {spec.dDay.includes('D-') ? (
+                    <div className="bg-red-500 text-white px-2.5 py-1 rounded-md text-[10px] font-black flex items-center gap-1 animate-pulse shadow-sm shadow-red-200">
+                      <Clock size={12}/> {spec.dDay}
+                    </div>
+                  ) : (
+                    <div className="bg-red-50 text-red-500 px-3 py-1 rounded-full text-[10px] font-black flex items-center gap-1">
+                      <Clock size={12}/> {spec.dDay}
+                    </div>
+                  )}
+                  <div className="bg-blue-50 text-[#00307B] px-3 py-1 rounded-full text-[10px] font-black flex items-center gap-1"><Hourglass size={12}/> {spec.duration}</div>
+                  {spec.currentStatus && <div className="bg-orange-50 text-orange-600 px-3 py-1 rounded-full text-[10px] font-black">{spec.currentStatus}</div>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderRoadmap = () => {
+    const data = userRoadmapData;
+    if(!data) return null;
+
+    const req = data.gradInfo;
+    const current = userProfile.credits;
+
+    return (
+      <div className="p-6 pt-10 animate-fade-in-up">
+        <h1 className="text-2xl font-black mb-8">수강 로드맵</h1>
+        
+        {/* 상단 프로그레스 바 */}
+        <div className="bg-[#00307B] rounded-[2.5rem] p-8 text-white mb-10 shadow-xl relative overflow-hidden">
+          <Sparkles className="absolute top-4 right-4 text-blue-300 opacity-30" size={40} />
+          <p className="text-blue-200 text-xs font-bold mb-1 uppercase tracking-widest">Academic Status</p>
+          <h3 className="text-2xl font-black mb-6">졸업 요건 분석</h3>
+          <div className="space-y-4">
+            <div className="flex justify-between items-end"><span className="text-sm font-bold">이수 학점</span><span className="text-lg font-black">{current.total || 0} / {req.total}</span></div>
+            <div className="h-2 bg-blue-900/50 rounded-full overflow-hidden"><div className="h-full bg-white transition-all duration-1000" style={{ width: `${Math.min(100, ((current.total || 0) / req.total) * 100)}%` }}></div></div>
+          </div>
+        </div>
+
+        {/* 상세 졸업 사정표 */}
+        <h3 className="font-black text-lg mb-6 flex items-center gap-2"><GraduationCap size={22} className="text-[#00307B]" /> 실시간 졸업 사정 상세</h3>
+        <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-200 mb-10">
+          <div className="bg-indigo-50 p-4 border-b flex justify-between items-center"><h3 className="font-bold text-indigo-900 text-xs">한양대학교 졸업요건 기준</h3><button onClick={() => { setOnboardingStep(3); setCurrentScreen('onboarding'); }} className="text-[10px] bg-white text-indigo-700 px-2 py-1 rounded border font-bold flex items-center gap-1"><Edit3 size={10}/> 학점 수정</button></div>
+          <div className="p-4 bg-white overflow-x-auto"><table className="w-full text-left text-[11px] sm:text-xs border-collapse min-w-[280px]"><thead><tr className="border-b-2 border-gray-200 text-gray-500 font-bold"><th className="pb-2 w-1/3">항목</th><th className="pb-2 text-center">취득</th><th className="pb-2 text-center">배당</th><th className="pb-2 text-center">잔여</th><th className="pb-2 text-center">판정</th></tr></thead><tbody className="divide-y divide-gray-100">
+            <tr><td className="py-2.5 font-bold text-gray-800">졸업학점</td><td className="text-center">{current.total}</td><td className="text-center text-gray-400">{req.total}</td><td className="text-center text-red-500">{getStatus(current.total, req.total).remain || ''}</td><td className="text-center">{getStatus(current.total, req.total).ui}</td></tr>
+            <tr><td className="py-2.5 font-bold text-gray-800">전공학점</td><td className="text-center">{current.majorTotal}</td><td className="text-center text-gray-400">{req.majorTotal}</td><td className="text-center text-red-500">{getStatus(current.majorTotal, req.majorTotal).remain || ''}</td><td className="text-center">{getStatus(current.majorTotal, req.majorTotal).ui}</td></tr>
+            <tr><td className="py-2.5 pl-2 text-gray-700">↳ 100~300 / 핵심</td><td className="text-center">{current.major100_300}</td><td className="text-center text-gray-400">{req.major100_300}</td><td className="text-center text-red-500">{getStatus(current.major100_300, req.major100_300).remain || ''}</td><td className="text-center">{getStatus(current.major100_300, req.major100_300).ui}</td></tr>
+            <tr><td className="py-2.5 pl-2 font-bold text-orange-600">↳ 400단위</td><td className="text-center font-bold text-orange-600">{current.major400}</td><td className="text-center text-orange-400">{req.major400}</td><td className="text-center text-red-500">{getStatus(current.major400, req.major400).remain || ''}</td><td className="text-center">{getStatus(current.major400, req.major400).ui}</td></tr>
+            {userProfile.majorType !== '심화전공(단일)' && (
+              <tr><td className="py-2.5 font-bold text-purple-700">제2전공</td><td className="text-center text-purple-600">{current.secondMajor}</td><td className="text-center text-purple-400">{req.secondMajor}</td><td className="text-center text-red-500">{getStatus(current.secondMajor, req.secondMajor).remain || ''}</td><td className="text-center">{getStatus(current.secondMajor, req.secondMajor).ui}</td></tr>
+            )}
+            <tr><td className="py-2.5 text-gray-700">영어전용강좌수</td><td className="text-center">{current.englishAvg}</td><td className="text-center text-gray-400">{req.englishAvg}</td><td className="text-center text-red-500">{getStatus(current.englishAvg, req.englishAvg).remain || ''}</td><td className="text-center">{getStatus(current.englishAvg, req.englishAvg).ui}</td></tr>
+            <tr><td className="py-2.5 text-gray-700">사회봉사</td><td className="text-center">{current.volunteer}</td><td className="text-center text-gray-400">{req.volunteer}</td><td className="text-center text-red-500">{getStatus(current.volunteer, req.volunteer).remain || ''}</td><td className="text-center">{getStatus(current.volunteer, req.volunteer).ui}</td></tr>
+            <tr className="bg-blue-50/30"><td className="py-2.5 font-bold text-[#00307B]">핵심교양</td><td className="text-center font-bold text-[#00307B]">{current.coreElective}</td><td className="text-center text-[#00307B]">{req.coreElective}</td><td className="text-center text-red-500">{getStatus(current.coreElective, req.coreElective).remain || ''}</td><td className="text-center">{getStatus(current.coreElective, req.coreElective).ui}</td></tr>
+            <tr><td className="py-2.5 font-bold text-orange-600">IC-PBL강좌수</td><td className="text-center font-bold text-orange-600">{current.icpbl}</td><td className="text-center text-orange-400">{req.icpbl}</td><td className="text-center text-red-500">{getStatus(current.icpbl, req.icpbl).remain || ''}</td><td className="text-center">{getStatus(current.icpbl, req.icpbl).ui}</td></tr>
+          </tbody></table></div>
+        </div>
+
+        {/* 지능형 과목 추천 */}
+        <h3 className="font-black text-lg mb-6 flex items-center gap-2"><BookOpen size={22} className="text-[#00307B]" /> AI 수강편람 핀셋 추천</h3>
+        <div className="space-y-4 mb-10">
+          {data.courses.length > 0 ? data.courses.map((c, i) => (
+            <div key={i} className="bg-white p-6 rounded-[2rem] border-2 border-blue-50 shadow-sm relative group overflow-hidden transition-all hover:border-[#00307B]">
+              <div className="flex justify-between items-start mb-3">
+                <div className="flex flex-col gap-1.5">
+                  <span className="bg-gray-100 text-gray-600 text-[10px] font-black px-2.5 py-1 rounded-md w-fit">{c.ownerDept} / {c.type}</span>
+                  <h4 className="font-black text-lg text-gray-900 group-hover:text-[#00307B] transition-all">{c.name}</h4>
+                </div>
+                <div className="bg-blue-50 text-[#00307B] px-3 py-1.5 rounded-xl text-[10px] font-black text-center whitespace-nowrap">{c.gradeTerm}</div>
+              </div>
+              <p className="text-[11px] text-blue-600 font-bold leading-relaxed mb-2 bg-blue-50/50 p-2 rounded-lg break-keep">{c.dynamicReason}</p>
+              <p className="text-[11px] text-gray-500 font-medium leading-relaxed pr-8">{c.reason}</p>
+            </div>
+          )) : (
+            <div className="bg-gray-50 rounded-[2rem] p-8 text-center text-gray-500 font-bold border-2 border-gray-100">
+              <CheckCircle2 size={40} className="mx-auto mb-3 text-green-400" />
+              모든 추천 요건이 충족되었습니다!
+            </div>
+          )}
+        </div>
+
+        {/* 학년별 진로 로드맵 지도(Subway Map UI) */}
+        <h3 className="font-black text-lg mb-6 flex items-center gap-2">
+          <Map size={22} className="text-[#00307B]" /> {userProfile.careerSub} 로드맵 지도
+        </h3>
+        <div className="relative pl-6 border-l-2 border-dashed border-blue-200 space-y-8 pb-4">
+          {(YEARLY_ROADMAP_DB[userProfile.careerSub] || YEARLY_ROADMAP_DB['default']).map((roadmap, idx) => (
+            <div key={idx} className="relative">
+              <div className="absolute -left-[33px] top-1 w-4 h-4 bg-white border-4 border-[#00307B] rounded-full z-10"></div>
+              <div className="bg-white rounded-[2rem] p-5 shadow-sm border-2 border-blue-50 relative ml-2 group hover:border-[#00307B] transition-colors">
+                <div className="absolute -left-3 top-2 w-0 h-0 border-t-[8px] border-t-transparent border-r-[12px] border-r-blue-50 border-b-[8px] border-b-transparent group-hover:border-r-[#00307B] transition-colors"></div>
+                <div className="absolute -left-2 top-2.5 w-0 h-0 border-t-[6px] border-t-transparent border-r-[9px] border-r-white border-b-[6px] border-b-transparent z-10"></div>
+                
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="bg-[#00307B] text-white text-[10px] font-black px-2.5 py-1 rounded-lg">{roadmap.grade}학년</span>
+                  <h4 className="font-black text-gray-900 text-sm leading-tight">{roadmap.title}</h4>
+                </div>
+                <ul className="space-y-2">
+                  {roadmap.items.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2 text-xs text-gray-600 font-bold leading-relaxed break-keep">
+                      <Check size={14} className="text-green-500 shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    );
+  };
+
+  const renderSettings = () => (
+    <div className="p-6 pt-10 animate-fade-in-up">
+      <h1 className="text-2xl font-black mb-8">마이 페이지</h1>
+      <div className="bg-white rounded-[2.5rem] p-8 shadow-sm border border-gray-100 mb-8 text-center">
+        <div className="w-24 h-24 bg-[#00307B] rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-black">{userProfile.name?.charAt(0) || 'H'}</div>
+        <h2 className="text-xl font-black">{userProfile.name}</h2>
+        <p className="text-sm text-gray-400 font-bold mt-1">{userProfile.department} • {userProfile.studentId}학번</p>
+        <div className="mt-4 inline-block px-4 py-2 bg-blue-50 text-[#00307B] rounded-2xl text-xs font-black">{userProfile.careerSub} 목표</div>
+      </div>
+      
+      {/* 나의 대외활동 일지 관리 섹션 */}
+      <div className="mb-8">
+        <div className="flex justify-between items-end mb-4">
+           <h3 className="font-black text-lg flex items-center gap-2"><FileText size={20} className="text-[#00307B]"/> 나의 활동 일지</h3>
+           <button onClick={() => setIsJournalModalOpen(true)} className="text-[11px] bg-[#00307B] text-white px-3 py-2 rounded-xl font-bold flex items-center gap-1 shadow-md hover:bg-blue-900 transition-colors">
+              <PenTool size={12}/> 새 일지 작성
+           </button>
+        </div>
+        
+        {journals.length === 0 ? (
+           <div className="bg-gray-50 border-2 border-dashed border-gray-200 rounded-[2rem] p-8 text-center">
+              <FileText size={32} className="mx-auto text-gray-300 mb-3" />
+              <p className="text-xs font-bold text-gray-400 leading-relaxed">아직 작성된 일지가 없습니다.<br/>활동 경험을 기록하고 스펙을 관리해 보세요!</p>
+           </div>
+        ) : (
+           <div className="space-y-4">
+              {journals.map((j, idx) => (
+                 <div key={idx} className="bg-white border-2 border-gray-50 rounded-[2rem] p-6 shadow-sm">
+                    <div className="flex justify-between items-start mb-3">
+                       <h4 className="font-black text-gray-900 leading-tight">{j.title}</h4>
+                       <button onClick={() => setJournals(prev => prev.filter((_, i) => i !== idx))} className="text-gray-300 hover:text-red-500"><Trash2 size={16}/></button>
+                    </div>
+                    <div className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 px-2.5 py-1 rounded-md mb-3">
+                       <CalendarIcon size={10} />
+                       <span className="text-[10px] font-bold">{j.period}</span>
+                    </div>
+                    <p className="text-xs text-gray-600 font-medium whitespace-pre-wrap leading-relaxed bg-gray-50 p-4 rounded-xl">{j.content}</p>
+                 </div>
+              ))}
+           </div>
+        )}
+      </div>
+
+      <div className="space-y-3">
+        {[{ icon: GraduationCap, label: '학적 및 이수학점 수정', step: 1 }, { icon: Award, label: '보유 스펙 관리', step: 5 }, { icon: Target, label: '진로 목표 변경', step: 4 }].map((item, i) => (
+          <button key={i} onClick={() => { setOnboardingStep(item.step); setCurrentScreen('onboarding'); }} className="w-full bg-white p-6 rounded-3xl flex items-center justify-between border border-gray-50 shadow-sm active:bg-gray-50">
+            <div className="flex items-center gap-4">
+              <div className="p-2 bg-gray-50 rounded-xl text-gray-400"><item.icon size={20}/></div>
+              <span className="font-bold text-gray-800">{item.label}</span>
+            </div>
+            <ChevronRight size={20} className="text-gray-300" />
+          </button>
+        ))}
+      </div>
+      
+      {/* 활동 일지 작성 모달창 */}
+      {isJournalModalOpen && (
+         <div className="fixed inset-0 z-[100] bg-black/60 flex flex-col justify-end">
+            <div className="bg-white rounded-t-[2.5rem] p-6 pt-8 animate-fade-in-up h-[85%] flex flex-col shadow-[0_-20px_40px_rgba(0,0,0,0.2)]">
+               <div className="flex justify-between items-center mb-6">
+                  <h3 className="font-black text-2xl text-gray-900">새 활동 일지 기록</h3>
+                  <button onClick={() => setIsJournalModalOpen(false)} className="p-2 -mr-2 text-gray-400 hover:text-gray-800"><XCircle size={28} /></button>
+               </div>
+               <div className="space-y-5 flex-1 overflow-y-auto pb-4">
+                  <div>
+                     <label className="block text-xs font-bold text-gray-500 mb-2 ml-1">활동명 (대외활동/인턴/공모전 등)</label>
+                     <input id="j-title" type="text" placeholder="예: 한양대학교 멋쟁이사자처럼 11기" className="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl text-sm font-bold focus:border-[#00307B] outline-none" />
+                  </div>
+                  <div>
+                     <label className="block text-xs font-bold text-gray-500 mb-2 ml-1">진행 기간</label>
+                     <input id="j-period" type="text" placeholder="예: 2024.03.01 ~ 2024.12.20" className="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl text-sm font-bold focus:border-[#00307B] outline-none" />
+                  </div>
+                  <div className="flex-1 flex flex-col">
+                     <label className="block text-xs font-bold text-gray-500 mb-2 ml-1">활동 내용 및 성과 (배운 점)</label>
+                     <textarea id="j-content" placeholder="어떤 역할을 맡았고, 무엇을 성취했는지 구체적으로 기록해 보세요. 나중에 자소서의 훌륭한 글감이 됩니다." className="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium focus:border-[#00307B] outline-none flex-1 resize-none min-h-[180px]"></textarea>
+                  </div>
+                  <div className="pt-2">
+                     <div className="w-full p-4 border border-dashed border-gray-300 rounded-xl bg-gray-50 flex items-center justify-center gap-2 cursor-pointer hover:bg-gray-100 transition-colors">
+                        <ImageIcon size={18} className="text-gray-400" />
+                        <span className="text-xs font-bold text-gray-500">관련 사진 첨부하기 (옵션)</span>
+                     </div>
+                  </div>
+               </div>
+               <div className="pt-4 mt-auto">
+                  <button onClick={() => {
+                     const title = document.getElementById('j-title').value;
+                     const period = document.getElementById('j-period').value;
+                     const content = document.getElementById('j-content').value;
+                     if(title && content) {
+                        setJournals(prev => [{title, period, content}, ...prev]);
+                        setIsJournalModalOpen(false);
+                     } else {
+                        alert('활동명과 내용은 필수로 입력해주세요.');
+                     }
+                  }} className="w-full py-4 bg-[#00307B] text-white font-black text-lg rounded-2xl shadow-lg">일지 저장하기</button>
+               </div>
+            </div>
+         </div>
+      )}
+    </div>
+  );
+
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gray-900 p-4 font-sans text-gray-900 overflow-hidden">
+      <div className="w-full max-w-md h-[850px] max-h-[90vh] bg-white relative overflow-hidden sm:rounded-[3rem] sm:shadow-2xl border-8 border-black">
+        {/* Splash Screen */}
+        <div className={`absolute inset-0 bg-[#00307B] flex flex-col items-center justify-center transition-all duration-1000 z-[60] ${isLoaded ? 'opacity-0 pointer-events-none scale-110' : 'opacity-100 scale-100'}`}>
+          <div className="w-24 h-24 bg-white rounded-[2.5rem] flex items-center justify-center mb-8 shadow-2xl animate-pulse">
+            <span className="text-[#00307B] text-4xl font-black italic">HY</span>
+          </div>
+          <h1 className="text-white text-4xl font-black tracking-widest mb-2">HY ROAD</h1>
+          <p className="text-blue-300 text-sm font-bold tracking-[0.3em] uppercase">Academic Navigator</p>
+        </div>
+
+        {currentScreen === 'onboarding' && renderOnboarding()}
+
+        <div className={`absolute inset-0 transition-opacity duration-300 ${currentScreen !== 'onboarding' && currentScreen !== 'splash' ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+          <ScreenWrapper isActive={currentScreen === 'home'}>{renderHome()}</ScreenWrapper>
+          <ScreenWrapper isActive={currentScreen === 'roadmap'}>{renderRoadmap()}</ScreenWrapper>
+          <ScreenWrapper isActive={currentScreen === 'settings'}>{renderSettings()}</ScreenWrapper>
+          
+          {/* Bottom Tab Bar */}
+          <div className="absolute bottom-0 w-full bg-white/80 backdrop-blur-xl border-t border-gray-100 px-8 py-4 pb-8 flex justify-around items-center z-40">
+            {[{ id: 'home', icon: Home, label: '가이드' }, { id: 'roadmap', icon: Map, label: '로드맵' }, { id: 'settings', icon: 'MY' }].map(tab => {
+              const isActive = currentScreen === tab.id;
+              return (
+                <button key={tab.id} onClick={() => setCurrentScreen(tab.id)} className={`flex flex-col items-center gap-1 transition-all ${isActive ? 'scale-110' : 'opacity-40 hover:opacity-100'}`}>
+                  <div className={`p-2 rounded-2xl ${isActive ? 'bg-[#00307B] text-white' : 'text-gray-400'}`}>
+                    {typeof tab.icon === 'string' ? <span className="text-xs font-black">{tab.icon}</span> : <tab.icon size={20} strokeWidth={3}/>}
+                  </div>
+                  <span className={`text-[9px] font-black ${isActive ? 'text-[#00307B]' : 'text-gray-400'}`}>{tab.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes fade-in-up { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in-up { animation: fade-in-up 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+      `}} />
+    </div>
+  );
+}
