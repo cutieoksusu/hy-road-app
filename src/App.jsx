@@ -696,6 +696,7 @@ const getAuthErrorMessage = (error) => {
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState('splash');
   const [isLoaded, setIsLoaded] = useState(false);
+  const [splashFinished, setSplashFinished] = useState(false);
   const [onboardingStep, setOnboardingStep] = useState(1);
   const [userProfile, setUserProfile] = useState(readStoredProfile);
 
@@ -730,8 +731,8 @@ export default function App() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setCurrentScreen(hasCompletedProfile(readStoredProfile()) ? 'home' : 'onboarding');
       setIsLoaded(true);
+      setSplashFinished(true);
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
@@ -769,25 +770,31 @@ export default function App() {
         setSyncStatus('클라우드 불러오는 중');
         try {
           const stored = await client.loadUserData(user.uid);
-          if (stored) {
-            if (stored.profile) {
-              const restoredProfile = {
-                ...EMPTY_PROFILE,
-                ...stored.profile,
-                credits: { ...EMPTY_PROFILE.credits, ...(stored.profile.credits || {}) },
-              };
-              setUserProfile(restoredProfile);
-              if (hasCompletedProfile(restoredProfile)) setCurrentScreen('home');
-            }
+          if (stored?.profile && hasCompletedProfile(stored.profile)) {
+            const restoredProfile = {
+              ...EMPTY_PROFILE,
+              ...stored.profile,
+              credits: { ...EMPTY_PROFILE.credits, ...(stored.profile.credits || {}) },
+            };
+            setUserProfile(restoredProfile);
             setAchievedSpecs(stored.achievedSpecs || []);
             setCustomMilestones(stored.customMilestones || []);
             setJournals(stored.journals || []);
+            setCurrentScreen('home');
+          } else {
+            setUserProfile(EMPTY_PROFILE);
+            setAchievedSpecs([]);
+            setCustomMilestones([]);
+            setJournals([]);
+            setOnboardingStep(1);
+            setCurrentScreen('onboarding');
           }
           setRemoteProfileReady(true);
           setSyncStatus(stored ? 'Firebase에서 불러옴' : 'Firebase 저장 준비됨');
         } catch {
           setAuthMessage('프로필을 불러오지 못했습니다. Firestore 권한을 확인해 주세요.');
           setSyncStatus('동기화 실패');
+          setCurrentScreen('auth');
         }
       });
     }).catch(() => {
@@ -801,6 +808,12 @@ export default function App() {
       if (unsubscribe) unsubscribe();
     };
   }, []);
+
+  useEffect(() => {
+    if (splashFinished && currentScreen === 'splash') {
+      setCurrentScreen('auth');
+    }
+  }, [splashFinished, currentScreen]);
 
   useEffect(() => {
     if (!firebaseClient || !firebaseUser || !remoteProfileReady) return undefined;
@@ -850,6 +863,7 @@ export default function App() {
     setRemoteProfileReady(false);
     setSyncStatus('로컬에 저장됨');
     setAuthMessage('로그아웃되었습니다. 이 기기의 정보는 계속 유지됩니다.');
+    setCurrentScreen('auth');
   };
 
   useEffect(() => {
@@ -991,6 +1005,59 @@ export default function App() {
       gradInfo: req 
     };
   }, [userProfile, achievedSpecs, customMilestones]);
+
+  const renderAuth = () => (
+    <div className="absolute inset-0 z-50 bg-white flex flex-col h-full overflow-y-auto px-6 py-12">
+      <div className="flex-1 flex flex-col justify-center">
+        <div className="w-16 h-16 bg-[#00307B] rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+          <span className="text-white text-2xl font-black italic">HY</span>
+        </div>
+        <p className="text-[#00307B] text-xs font-black tracking-widest mb-3">HY ROAD</p>
+        <h2 className="text-3xl font-black leading-tight mb-3">내 로드맵을<br/>시작해 볼까요?</h2>
+        <p className="text-sm text-gray-500 font-bold leading-relaxed mb-8">로그인하면 내 학업 정보와 진로 로드맵을<br/>안전하게 저장하고 다시 불러올 수 있어요.</p>
+
+        <div className="bg-white rounded-[2rem] p-6 shadow-xl border border-gray-100">
+          {!isFirebaseConfigured ? (
+            <div className="rounded-2xl bg-amber-50 border border-amber-100 p-4">
+              <div className="flex items-center gap-2 text-amber-700 mb-2">
+                <AlertCircle size={16} />
+                <span className="text-xs font-black">Firebase 설정이 필요합니다</span>
+              </div>
+              <p className="text-[11px] text-amber-700 font-bold leading-relaxed">관리자에게 Firebase 설정을 요청해 주세요.</p>
+            </div>
+          ) : (authLoading || firebaseUser) && !syncStatus.includes('실패') ? (
+            <div className="flex flex-col items-center justify-center py-10 gap-3">
+              <Loader2 size={30} className="text-[#00307B] animate-spin" />
+              <p className="text-sm text-gray-500 font-bold">{firebaseUser ? '내 정보를 불러오고 있습니다...' : '로그인 준비 중입니다...'}</p>
+            </div>
+          ) : firebaseUser ? (
+            <div className="rounded-2xl bg-red-50 border border-red-100 p-4">
+              <p className="text-xs font-black text-red-600 mb-3">프로필을 불러오지 못했습니다.</p>
+              <button type="button" onClick={handleLogout} className="w-full py-3 bg-white border border-red-100 text-red-600 text-sm font-black rounded-xl">로그아웃 후 다시 시도하기</button>
+            </div>
+          ) : (
+            <form onSubmit={handleAuthSubmit}>
+              <div className="flex p-1 bg-gray-100 rounded-xl mb-5">
+                {[
+                  { id: 'signin', label: '로그인' },
+                  { id: 'signup', label: '회원가입' },
+                ].map(mode => (
+                  <button key={mode.id} type="button" onClick={() => { setAuthMode(mode.id); setAuthMessage(''); }} className={`flex-1 py-3 rounded-lg text-sm font-black transition-colors ${authMode === mode.id ? 'bg-white text-[#00307B] shadow-sm' : 'text-gray-400'}`}>{mode.label}</button>
+                ))}
+              </div>
+              <input type="email" required placeholder="이메일" value={authEmail} onChange={event => setAuthEmail(event.target.value)} className="w-full p-4 mb-3 bg-gray-50 border border-gray-200 rounded-xl text-sm font-bold focus:outline-none focus:border-[#00307B]" />
+              <input type="password" required minLength={6} placeholder="비밀번호 (6자 이상)" value={authPassword} onChange={event => setAuthPassword(event.target.value)} className="w-full p-4 mb-5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-bold focus:outline-none focus:border-[#00307B]" />
+              <button disabled={authLoading} className="w-full py-4 bg-[#00307B] disabled:bg-gray-300 text-white text-base font-black rounded-xl flex justify-center items-center gap-2 shadow-md">
+                {authLoading && <Loader2 size={16} className="animate-spin" />}
+                {authMode === 'signin' ? '로그인하고 시작하기' : '회원가입하고 시작하기'}
+              </button>
+            </form>
+          )}
+          {authMessage && <p className="mt-4 p-3 rounded-xl text-[11px] font-bold bg-red-50 text-red-600">{authMessage}</p>}
+        </div>
+      </div>
+    </div>
+  );
 
   const renderOnboarding = () => (
     <div className="absolute inset-0 z-50 bg-white flex flex-col h-full overflow-hidden">
@@ -1612,9 +1679,10 @@ export default function App() {
           <p className="text-blue-300 text-sm font-bold tracking-[0.3em] uppercase">Academic Navigator</p>
         </div>
 
+        {currentScreen === 'auth' && renderAuth()}
         {currentScreen === 'onboarding' && renderOnboarding()}
 
-        <div className={`absolute inset-0 transition-opacity duration-300 ${currentScreen !== 'onboarding' && currentScreen !== 'splash' ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`absolute inset-0 transition-opacity duration-300 ${currentScreen !== 'auth' && currentScreen !== 'onboarding' && currentScreen !== 'splash' ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
           <ScreenWrapper isActive={currentScreen === 'home'}>{renderHome()}</ScreenWrapper>
           <ScreenWrapper isActive={currentScreen === 'roadmap'}>{renderRoadmap()}</ScreenWrapper>
           <ScreenWrapper isActive={currentScreen === 'settings'}>{renderSettings()}</ScreenWrapper>
