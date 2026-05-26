@@ -614,6 +614,33 @@ const getDDayFormatted = (dateStr, fallbackDesc) => {
   return '모집마감';
 };
 
+const CERT_DURATION_ESTIMATES = [
+  { keywords: ['GA4'], duration: '취득까지 약 1~2주' },
+  { keywords: ['SQLD', '한국사능력검정시험', 'KBS한국어능력시험'], duration: '취득까지 약 4~6주' },
+  { keywords: ['컴퓨터활용능력', 'GTQ', '컴퓨터그래픽스운용기능사'], duration: '취득까지 약 1~2개월' },
+  { keywords: ['신용분석사', 'AFPK'], duration: '취득까지 약 2~3개월' },
+  { keywords: ['정보처리기사', '식품기사', '품질경영기사', '패션머천다이징산업기사', '일반기계', '전기기사'], duration: '취득까지 약 3~4개월' },
+  { keywords: ['위생사', '영양사'], duration: '취득까지 약 3~5개월' },
+  { keywords: ['학점이수제도'], duration: '이수까지 1학기 이상' },
+];
+
+const getSpecDuration = (spec) => {
+  if (spec.duration) return spec.duration;
+  if (spec.cat !== 'cert') return '';
+
+  const title = spec.title || '';
+  const matchedEstimate = CERT_DURATION_ESTIMATES.find(({ keywords }) =>
+    keywords.some(keyword => title.includes(keyword))
+  );
+
+  return matchedEstimate?.duration || '취득까지 약 2~3개월';
+};
+
+const getMilestoneTiming = (spec) => ({
+  dDay: getDDayFormatted(spec.targetDate, spec.dDay || '일정 확인'),
+  duration: getSpecDuration(spec),
+});
+
 const generatePlatformSearchLink = (careerSub, platformStr) => {
   const keywordMap = {
     'IT/소프트웨어': 'IT', '기획/마케팅': '마케팅', '식품/F&B': '식품', '패션/의류': '패션',
@@ -635,28 +662,76 @@ const ScreenWrapper = ({ children, isActive }) => (
   </div>
 );
 
+const STORAGE_KEYS = {
+  profile: 'hyRoad.profile.v1',
+  specs: 'hyRoad.achievedSpecs.v1',
+  milestones: 'hyRoad.customMilestones.v1',
+  journals: 'hyRoad.journals.v1',
+};
+
+const EMPTY_PROFILE = {
+  campus: '', college: '', department: '', majorType: '심화전공(단일)',
+  secondCollege: '', secondDepartment: '', studentId: '', grade: '3',
+  name: '', careerMain: '', careerSub: '',
+  credits: {
+    total: '', majorTotal: '', major100_300: '', major400: '', englishAvg: '',
+    prerequisite: 'Y', gpa: '', requiredCourses: 'Y', volunteer: '', internship: 'Y',
+    coreElective: '', classicReading: '', globalLang: '', sw: '', icpbl: '',
+    futureStartup: '', scienceTech: '', secondMajor: ''
+  }
+};
+
+const readStoredValue = (key, fallback) => {
+  try {
+    const stored = localStorage.getItem(key);
+    return stored ? JSON.parse(stored) : fallback;
+  } catch {
+    return fallback;
+  }
+};
+
+const readStoredProfile = () => {
+  const stored = readStoredValue(STORAGE_KEYS.profile, {});
+  return {
+    ...EMPTY_PROFILE,
+    ...stored,
+    credits: { ...EMPTY_PROFILE.credits, ...(stored.credits || {}) },
+  };
+};
+
+const hasCompletedProfile = (profile) => Boolean(profile.department && profile.name && profile.careerSub);
+
+const isFirebaseConfigured = Boolean(
+  import.meta.env.VITE_FIREBASE_API_KEY &&
+  import.meta.env.VITE_FIREBASE_AUTH_DOMAIN &&
+  import.meta.env.VITE_FIREBASE_PROJECT_ID &&
+  import.meta.env.VITE_FIREBASE_APP_ID
+);
+
+const getAuthErrorMessage = (error) => {
+  const messages = {
+    'auth/email-already-in-use': '이미 가입된 이메일입니다. 로그인해 주세요.',
+    'auth/invalid-credential': '이메일 또는 비밀번호를 확인해 주세요.',
+    'auth/invalid-email': '올바른 이메일 주소를 입력해 주세요.',
+    'auth/weak-password': '비밀번호는 6자 이상이어야 합니다.',
+    'auth/too-many-requests': '시도가 많습니다. 잠시 후 다시 시도해 주세요.',
+  };
+  return messages[error.code] || '로그인 처리 중 오류가 발생했습니다.';
+};
+
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState('splash');
   const [isLoaded, setIsLoaded] = useState(false);
+  const [splashFinished, setSplashFinished] = useState(false);
   const [onboardingStep, setOnboardingStep] = useState(1);
-  const [userProfile, setUserProfile] = useState({
-    campus: '', college: '', department: '', majorType: '심화전공(단일)',
-    secondCollege: '', secondDepartment: '', studentId: '', grade: '3',
-    name: '', careerMain: '', careerSub: '',
-    credits: {
-      total: '', majorTotal: '', major100_300: '', major400: '', englishAvg: '',
-      prerequisite: 'Y', gpa: '', requiredCourses: 'Y', volunteer: '', internship: 'Y',
-      coreElective: '', classicReading: '', globalLang: '', sw: '', icpbl: '',
-      futureStartup: '', scienceTech: '', secondMajor: ''
-    }
-  });
+  const [userProfile, setUserProfile] = useState(readStoredProfile);
 
-  const [achievedSpecs, setAchievedSpecs] = useState([]);
-  const [customMilestones, setCustomMilestones] = useState([]); 
+  const [achievedSpecs, setAchievedSpecs] = useState(() => readStoredValue(STORAGE_KEYS.specs, []));
+  const [customMilestones, setCustomMilestones] = useState(() => readStoredValue(STORAGE_KEYS.milestones, []));
   
   // 나의 대외활동 일지 관리용 State
-  const [journals, setJournals] = useState([]);
+  const [journals, setJournals] = useState(() => readStoredValue(STORAGE_KEYS.journals, []));
   const [isJournalModalOpen, setIsJournalModalOpen] = useState(false);
   
   // 스펙 사진 인증(OCR)용 State
@@ -671,14 +746,152 @@ export default function App() {
 
   const [liveActivities, setLiveActivities] = useState([]);
   const [isLoadingLive, setIsLoadingLive] = useState(false);
+  const [firebaseUser, setFirebaseUser] = useState(null);
+  const [authMode, setAuthMode] = useState('signin');
+  const [authEmail, setAuthEmail] = useState('');
+  const [authPassword, setAuthPassword] = useState('');
+  const [authLoading, setAuthLoading] = useState(isFirebaseConfigured);
+  const [authMessage, setAuthMessage] = useState('');
+  const [remoteProfileReady, setRemoteProfileReady] = useState(false);
+  const [syncStatus, setSyncStatus] = useState('로컬에 저장됨');
+  const [firebaseClient, setFirebaseClient] = useState(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => { setCurrentScreen('onboarding'); setIsLoaded(true); }, 2000);
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+      setSplashFinished(true);
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
   const handleProfileChange = (key, value) => setUserProfile(prev => ({ ...prev, [key]: value }));
   const handleCreditChange = (key, value) => setUserProfile(prev => ({ ...prev, credits: { ...prev.credits, [key]: value } }));
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEYS.profile, JSON.stringify(userProfile));
+    localStorage.setItem(STORAGE_KEYS.specs, JSON.stringify(achievedSpecs));
+    localStorage.setItem(STORAGE_KEYS.milestones, JSON.stringify(customMilestones));
+    localStorage.setItem(STORAGE_KEYS.journals, JSON.stringify(journals));
+    if (!firebaseUser) setSyncStatus('로컬에 저장됨');
+  }, [userProfile, achievedSpecs, customMilestones, journals, firebaseUser]);
+
+  useEffect(() => {
+    if (!isFirebaseConfigured) {
+      setAuthLoading(false);
+      return undefined;
+    }
+
+    let isMounted = true;
+    let unsubscribe;
+    import('./firebase').then((client) => {
+      if (!isMounted) return;
+      setFirebaseClient(client);
+      unsubscribe = client.observeAuth(async (user) => {
+        setFirebaseUser(user);
+        setAuthLoading(false);
+        setRemoteProfileReady(false);
+        setAuthMessage('');
+
+        if (!user) return;
+
+        setSyncStatus('클라우드 불러오는 중');
+        try {
+          const stored = await client.loadUserData(user.uid);
+          if (stored?.profile && hasCompletedProfile(stored.profile)) {
+            const restoredProfile = {
+              ...EMPTY_PROFILE,
+              ...stored.profile,
+              credits: { ...EMPTY_PROFILE.credits, ...(stored.profile.credits || {}) },
+            };
+            setUserProfile(restoredProfile);
+            setAchievedSpecs(stored.achievedSpecs || []);
+            setCustomMilestones(stored.customMilestones || []);
+            setJournals(stored.journals || []);
+            setCurrentScreen('home');
+          } else {
+            setUserProfile(EMPTY_PROFILE);
+            setAchievedSpecs([]);
+            setCustomMilestones([]);
+            setJournals([]);
+            setOnboardingStep(1);
+            setCurrentScreen('onboarding');
+          }
+          setRemoteProfileReady(true);
+          setSyncStatus(stored ? 'Firebase에서 불러옴' : 'Firebase 저장 준비됨');
+        } catch {
+          setAuthMessage('프로필을 불러오지 못했습니다. Firestore 권한을 확인해 주세요.');
+          setSyncStatus('동기화 실패');
+          setCurrentScreen('auth');
+        }
+      });
+    }).catch(() => {
+      if (!isMounted) return;
+      setAuthLoading(false);
+      setAuthMessage('Firebase를 시작하지 못했습니다. 환경설정을 확인해 주세요.');
+    });
+
+    return () => {
+      isMounted = false;
+      if (unsubscribe) unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (splashFinished && currentScreen === 'splash') {
+      setCurrentScreen('auth');
+    }
+  }, [splashFinished, currentScreen]);
+
+  useEffect(() => {
+    if (!firebaseClient || !firebaseUser || !remoteProfileReady) return undefined;
+
+    const timer = setTimeout(async () => {
+      setSyncStatus('Firebase에 저장 중');
+      try {
+        await firebaseClient.saveUserData(firebaseUser.uid, {
+          profile: userProfile,
+          achievedSpecs,
+          customMilestones,
+          journals,
+          email: firebaseUser.email,
+        });
+        setSyncStatus('Firebase에 저장됨');
+      } catch {
+        setAuthMessage('프로필 저장에 실패했습니다. Firestore 설정을 확인해 주세요.');
+        setSyncStatus('동기화 실패');
+      }
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [firebaseClient, firebaseUser, remoteProfileReady, userProfile, achievedSpecs, customMilestones, journals]);
+
+  const handleAuthSubmit = async (event) => {
+    event.preventDefault();
+    if (!firebaseClient) return;
+    setAuthLoading(true);
+    setAuthMessage('');
+    try {
+      if (authMode === 'signup') {
+        await firebaseClient.createAccount(authEmail.trim(), authPassword);
+        setAuthMessage('가입되었습니다. 현재 내 정보를 Firebase에 저장합니다.');
+      } else {
+        await firebaseClient.login(authEmail.trim(), authPassword);
+      }
+      setAuthPassword('');
+    } catch (error) {
+      setAuthMessage(getAuthErrorMessage(error));
+    } finally {
+      setAuthLoading(false);
+    }
+  };
+
+  const handleLogout = async () => {
+    await firebaseClient.logout();
+    setRemoteProfileReady(false);
+    setSyncStatus('로컬에 저장됨');
+    setAuthMessage('로그아웃되었습니다. 이 기기의 정보는 계속 유지됩니다.');
+    setCurrentScreen('auth');
+  };
 
   useEffect(() => {
     setIsAcquired(null);
@@ -737,7 +950,7 @@ export default function App() {
     const finalName = selectedSpec === '직접 입력' ? customSpecName : selectedSpec;
     if (!finalName) return;
     setCustomMilestones(prev => [...prev, {
-      cat: 'cert', title: finalName, dDay: '예정', duration: '-', desc: '내가 설정한 커스텀 목표', url: '#'
+      cat: 'cert', title: finalName, dDay: '예정', duration: getSpecDuration({ cat: 'cert', title: finalName }), desc: '내가 설정한 커스텀 목표', url: '#'
     }]);
     setSelectedSpec(''); setCustomSpecName(''); setIsAcquired(null);
   };
@@ -758,15 +971,14 @@ export default function App() {
           if(!isNaN(parsedUserScore) && !isNaN(parsedTarget)) isGoalMet = parsedUserScore >= parsedTarget; 
           else isGoalMet = (scoreRank[achieved.score.toUpperCase()] || 0) >= (scoreRank[spec.targetScore.toUpperCase()] || 0); 
 
-          if (!isGoalMet) acc.milestones.push({ ...spec, currentStatus: `현재 ${achieved.score} (목표 ${spec.targetScore})` });
+          if (!isGoalMet) acc.milestones.push({ ...spec, ...getMilestoneTiming(spec), currentStatus: `현재 ${achieved.score} (목표 ${spec.targetScore})` });
           else acc.achieved.push({ ...spec, userScore: achieved.score, expiryDate: achieved.expiryDate });
         } else {
           acc.achieved.push({ ...spec, userScore: achieved.score, expiryDate: achieved.expiryDate });
         }
       } else {
         // 💡 마일스톤에 추가될 때 실시간 D-Day 계산 적용
-        const dynamicDDay = getDDayFormatted(spec.targetDate, spec.dDay);
-        acc.milestones.push({ ...spec, dDay: dynamicDDay });
+        acc.milestones.push({ ...spec, ...getMilestoneTiming(spec) });
       }
       return acc;
     }, { achieved: [], milestones: [] });
@@ -819,6 +1031,59 @@ export default function App() {
       gradInfo: req 
     };
   }, [userProfile, achievedSpecs, customMilestones]);
+
+  const renderAuth = () => (
+    <div className="absolute inset-0 z-50 bg-white flex flex-col h-full overflow-y-auto px-6 py-12">
+      <div className="flex-1 flex flex-col justify-center">
+        <div className="w-16 h-16 bg-[#00307B] rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+          <span className="text-white text-2xl font-black italic">HY</span>
+        </div>
+        <p className="text-[#00307B] text-xs font-black tracking-widest mb-3">HY ROAD</p>
+        <h2 className="text-3xl font-black leading-tight mb-3">내 로드맵을<br/>시작해 볼까요?</h2>
+        <p className="text-sm text-gray-500 font-bold leading-relaxed mb-8">로그인하면 내 학업 정보와 진로 로드맵을<br/>안전하게 저장하고 다시 불러올 수 있어요.</p>
+
+        <div className="bg-white rounded-[2rem] p-6 shadow-xl border border-gray-100">
+          {!isFirebaseConfigured ? (
+            <div className="rounded-2xl bg-amber-50 border border-amber-100 p-4">
+              <div className="flex items-center gap-2 text-amber-700 mb-2">
+                <AlertCircle size={16} />
+                <span className="text-xs font-black">Firebase 설정이 필요합니다</span>
+              </div>
+              <p className="text-[11px] text-amber-700 font-bold leading-relaxed">관리자에게 Firebase 설정을 요청해 주세요.</p>
+            </div>
+          ) : (authLoading || firebaseUser) && !syncStatus.includes('실패') ? (
+            <div className="flex flex-col items-center justify-center py-10 gap-3">
+              <Loader2 size={30} className="text-[#00307B] animate-spin" />
+              <p className="text-sm text-gray-500 font-bold">{firebaseUser ? '내 정보를 불러오고 있습니다...' : '로그인 준비 중입니다...'}</p>
+            </div>
+          ) : firebaseUser ? (
+            <div className="rounded-2xl bg-red-50 border border-red-100 p-4">
+              <p className="text-xs font-black text-red-600 mb-3">프로필을 불러오지 못했습니다.</p>
+              <button type="button" onClick={handleLogout} className="w-full py-3 bg-white border border-red-100 text-red-600 text-sm font-black rounded-xl">로그아웃 후 다시 시도하기</button>
+            </div>
+          ) : (
+            <form onSubmit={handleAuthSubmit}>
+              <div className="flex p-1 bg-gray-100 rounded-xl mb-5">
+                {[
+                  { id: 'signin', label: '로그인' },
+                  { id: 'signup', label: '회원가입' },
+                ].map(mode => (
+                  <button key={mode.id} type="button" onClick={() => { setAuthMode(mode.id); setAuthMessage(''); }} className={`flex-1 py-3 rounded-lg text-sm font-black transition-colors ${authMode === mode.id ? 'bg-white text-[#00307B] shadow-sm' : 'text-gray-400'}`}>{mode.label}</button>
+                ))}
+              </div>
+              <input type="email" required placeholder="이메일" value={authEmail} onChange={event => setAuthEmail(event.target.value)} className="w-full p-4 mb-3 bg-gray-50 border border-gray-200 rounded-xl text-sm font-bold focus:outline-none focus:border-[#00307B]" />
+              <input type="password" required minLength={6} placeholder="비밀번호 (6자 이상)" value={authPassword} onChange={event => setAuthPassword(event.target.value)} className="w-full p-4 mb-5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-bold focus:outline-none focus:border-[#00307B]" />
+              <button disabled={authLoading} className="w-full py-4 bg-[#00307B] disabled:bg-gray-300 text-white text-base font-black rounded-xl flex justify-center items-center gap-2 shadow-md">
+                {authLoading && <Loader2 size={16} className="animate-spin" />}
+                {authMode === 'signin' ? '로그인하고 시작하기' : '회원가입하고 시작하기'}
+              </button>
+            </form>
+          )}
+          {authMessage && <p className="mt-4 p-3 rounded-xl text-[11px] font-bold bg-red-50 text-red-600">{authMessage}</p>}
+        </div>
+      </div>
+    </div>
+  );
 
   const renderOnboarding = () => (
     <div className="absolute inset-0 z-50 bg-white flex flex-col h-full overflow-hidden">
@@ -1162,7 +1427,7 @@ export default function App() {
                 </div>
                 <p className="text-xs text-gray-500 font-bold mb-4 leading-relaxed break-keep">{spec.desc}</p>
                 <div className="flex flex-wrap items-center gap-2">
-                  {spec.dDay.includes('D-') ? (
+                  {spec.dDay?.includes('D-') ? (
                     <div className="bg-red-500 text-white px-2.5 py-1 rounded-md text-[10px] font-black flex items-center gap-1 animate-pulse shadow-sm shadow-red-200">
                       <Clock size={12}/> {spec.dDay}
                     </div>
@@ -1171,7 +1436,7 @@ export default function App() {
                       <Clock size={12}/> {spec.dDay}
                     </div>
                   )}
-                  <div className="bg-blue-50 text-[#00307B] px-3 py-1 rounded-full text-[10px] font-black flex items-center gap-1"><Hourglass size={12}/> {spec.duration}</div>
+                  {spec.duration && <div className="bg-blue-50 text-[#00307B] px-3 py-1 rounded-full text-[10px] font-black flex items-center gap-1"><Hourglass size={12}/> {spec.duration}</div>}
                   {spec.currentStatus && <div className="bg-orange-50 text-orange-600 px-3 py-1 rounded-full text-[10px] font-black">{spec.currentStatus}</div>}
                 </div>
               </div>
@@ -1288,6 +1553,53 @@ export default function App() {
         <p className="text-sm text-gray-400 font-bold mt-1">{userProfile.department} • {userProfile.studentId}학번</p>
         <div className="mt-4 inline-block px-4 py-2 bg-blue-50 text-[#00307B] rounded-2xl text-xs font-black">{userProfile.careerSub} 목표</div>
       </div>
+
+      <div className="bg-white rounded-[2rem] p-6 shadow-sm border border-gray-100 mb-8">
+        <div className="flex items-start justify-between gap-3 mb-5">
+          <div>
+            <h3 className="font-black text-lg flex items-center gap-2"><ShieldCheck size={20} className="text-[#00307B]"/> 계정 및 저장</h3>
+            <p className="text-[11px] text-gray-500 font-bold mt-2 leading-relaxed">내 정보는 이 기기에 먼저 저장되고, 로그인하면 Firebase 프로필과 동기화됩니다.</p>
+          </div>
+          <span className={`shrink-0 text-[10px] font-black px-2.5 py-1 rounded-full ${syncStatus.includes('실패') ? 'bg-red-50 text-red-600' : firebaseUser ? 'bg-green-50 text-green-700' : 'bg-gray-100 text-gray-500'}`}>{syncStatus}</span>
+        </div>
+
+        {!isFirebaseConfigured ? (
+          <div className="rounded-2xl bg-amber-50 border border-amber-100 p-4">
+            <div className="flex items-center gap-2 text-amber-700 mb-2">
+              <AlertCircle size={16} />
+              <span className="text-xs font-black">Firebase 설정이 필요합니다</span>
+            </div>
+            <p className="text-[11px] text-amber-700 font-bold leading-relaxed">`.env.example`을 참고해 `.env.local`에 프로젝트 키를 넣으면 이메일 로그인과 Firestore 저장이 활성화됩니다.</p>
+          </div>
+        ) : firebaseUser ? (
+          <div className="rounded-2xl bg-blue-50 border border-blue-100 p-4">
+            <p className="text-xs text-blue-500 font-bold mb-1">로그인된 계정</p>
+            <p className="font-black text-[#00307B] break-all mb-4">{firebaseUser.email}</p>
+            <button type="button" onClick={handleLogout} className="w-full py-3 bg-white border border-blue-100 text-[#00307B] text-sm font-black rounded-xl flex justify-center items-center gap-2">
+              <LogOut size={16} /> 로그아웃
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={handleAuthSubmit}>
+            <div className="flex p-1 bg-gray-100 rounded-xl mb-4">
+              {[
+                { id: 'signin', label: '로그인' },
+                { id: 'signup', label: '회원가입' },
+              ].map(mode => (
+                <button key={mode.id} type="button" onClick={() => { setAuthMode(mode.id); setAuthMessage(''); }} className={`flex-1 py-2.5 rounded-lg text-xs font-black transition-colors ${authMode === mode.id ? 'bg-white text-[#00307B] shadow-sm' : 'text-gray-400'}`}>{mode.label}</button>
+              ))}
+            </div>
+            <input type="email" required placeholder="이메일" value={authEmail} onChange={event => setAuthEmail(event.target.value)} className="w-full p-3.5 mb-3 bg-gray-50 border border-gray-200 rounded-xl text-sm font-bold focus:outline-none focus:border-[#00307B]" />
+            <input type="password" required minLength={6} placeholder="비밀번호 (6자 이상)" value={authPassword} onChange={event => setAuthPassword(event.target.value)} className="w-full p-3.5 mb-4 bg-gray-50 border border-gray-200 rounded-xl text-sm font-bold focus:outline-none focus:border-[#00307B]" />
+            <button disabled={authLoading} className="w-full py-3.5 bg-[#00307B] disabled:bg-gray-300 text-white text-sm font-black rounded-xl flex justify-center items-center gap-2">
+              {authLoading && <Loader2 size={16} className="animate-spin" />}
+              {authMode === 'signin' ? 'Firebase 로그인' : '계정 만들고 저장하기'}
+            </button>
+          </form>
+        )}
+
+        {authMessage && <p className={`mt-4 p-3 rounded-xl text-[11px] font-bold ${syncStatus.includes('실패') || authMessage.includes('오류') || authMessage.includes('확인') ? 'bg-red-50 text-red-600' : 'bg-blue-50 text-[#00307B]'}`}>{authMessage}</p>}
+      </div>
       
       {/* 나의 대외활동 일지 관리 섹션 */}
       <div className="mb-8">
@@ -1312,7 +1624,7 @@ export default function App() {
                        <button onClick={() => setJournals(prev => prev.filter((_, i) => i !== idx))} className="text-gray-300 hover:text-red-500"><Trash2 size={16}/></button>
                     </div>
                     <div className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 px-2.5 py-1 rounded-md mb-3">
-                       <CalendarIcon size={10} />
+                       <Calendar size={10} />
                        <span className="text-[10px] font-bold">{j.period}</span>
                     </div>
                     <p className="text-xs text-gray-600 font-medium whitespace-pre-wrap leading-relaxed bg-gray-50 p-4 rounded-xl">{j.content}</p>
@@ -1393,9 +1705,10 @@ export default function App() {
           <p className="text-blue-300 text-sm font-bold tracking-[0.3em] uppercase">Academic Navigator</p>
         </div>
 
+        {currentScreen === 'auth' && renderAuth()}
         {currentScreen === 'onboarding' && renderOnboarding()}
 
-        <div className={`absolute inset-0 transition-opacity duration-300 ${currentScreen !== 'onboarding' && currentScreen !== 'splash' ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`absolute inset-0 transition-opacity duration-300 ${currentScreen !== 'auth' && currentScreen !== 'onboarding' && currentScreen !== 'splash' ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
           <ScreenWrapper isActive={currentScreen === 'home'}>{renderHome()}</ScreenWrapper>
           <ScreenWrapper isActive={currentScreen === 'roadmap'}>{renderRoadmap()}</ScreenWrapper>
           <ScreenWrapper isActive={currentScreen === 'settings'}>{renderSettings()}</ScreenWrapper>
