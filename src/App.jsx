@@ -2182,7 +2182,7 @@ export default function App() {
         </button>
         <div className="absolute right-6 top-16 h-28 w-28 rounded-full bg-purple-500/30 blur-2xl"></div>
         <p className="text-[11px] font-black tracking-widest text-purple-300">HY ROAD PLUS</p>
-        <h1 className="mt-3 text-2xl font-black leading-tight text-white">듀얼고 맞춤형<br/>취업 자신있게</h1>
+        <h1 className="mt-3 text-2xl font-black leading-tight text-white">HY-ROAD PREMIUM</h1>
         <p className="mt-3 text-xs font-bold leading-relaxed text-gray-300">로드맵, 일정, 활동 기록을 기반으로 더 깊은 추천과 브리핑을 받아보세요.</p>
         <div className="mt-7 mx-auto flex h-28 w-28 items-center justify-center rounded-[2rem] border border-purple-300/50 bg-purple-500/20 shadow-2xl shadow-purple-900/40">
           <Sparkles size={42} className="text-purple-200" />
