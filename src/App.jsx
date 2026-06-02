@@ -2184,6 +2184,16 @@ export default function App() {
         <p className="text-[11px] font-black tracking-widest text-purple-300">HY ROAD PLUS</p>
         <h1 className="mt-3 text-2xl font-black leading-tight text-white">HY-ROAD PREMIUM</h1>
         <p className="mt-3 text-xs font-bold leading-relaxed text-gray-300">로드맵, 일정, 활동 기록을 기반으로 더 깊은 추천과 브리핑을 받아보세요.</p>
+        <div className="mt-5 grid grid-cols-2 gap-3">
+          <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
+            <p className="text-[10px] font-black text-purple-200">월 구독</p>
+            <p className="mt-1 text-xl font-black text-white">3,900원</p>
+          </div>
+          <div className="rounded-2xl border border-purple-300/40 bg-purple-500/20 p-4">
+            <p className="text-[10px] font-black text-purple-200">학기 구독</p>
+            <p className="mt-1 text-xl font-black text-white">14,900원</p>
+          </div>
+        </div>
         <div className="mt-7 mx-auto flex h-28 w-28 items-center justify-center rounded-[2rem] border border-purple-300/50 bg-purple-500/20 shadow-2xl shadow-purple-900/40">
           <Sparkles size={42} className="text-purple-200" />
         </div>
