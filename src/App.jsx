@@ -702,16 +702,16 @@ const getMilestoneTiming = (spec) => ({
 
 const generatePlatformSearchLink = (careerSub, platformStr) => {
   const keywordMap = {
-    'IT/소프트웨어': 'IT', '기획/마케팅': '마케팅', '식품/F&B': '식품', '패션/의류': '패션',
-    '금융/은행': '금융', '반도체/엔지니어링': '엔지니어', '공기업 (NCS)': '공공기관',
-    '로스쿨 (법조인)': '법무', '언론고시 (기자/PD)': '언론',
+    'IT/소프트웨어': 'IT', '기획/마케팅': '마케팅', '식품/F&B': '식품', '패션/섬유': '패션',
+    '금융/투자': '금융', '반도체/엔지니어링': '엔지니어', '공기업(NCS)': '공기업',
+    '로스쿨(법조인)': '법무', '언론고시 (기자/PD)': '언론',
   };
   const keyword = keywordMap[careerSub] || careerSub || '대외활동';
   const encoded = encodeURIComponent(keyword);
 
-  if (platformStr === '링커리어') return `https://linkareer.com/search?keyword=${encoded}&tab=activity`;
-  if (platformStr === '캠퍼스픽') return `https://www.campuspick.com/search?keyword=${encoded}`;
-  if (platformStr === '위비티') return `https://www.wevity.com/?c=find&s=1&gbn=viewok&ctg=21&sw=${encoded}`;
+  if (platformStr === '링커리어' || platformStr.includes('링커리어')) return `https://linkareer.com/search?keyword=${encoded}&tab=activity`;
+  if (platformStr === '캠퍼스픽' || platformStr.includes('캠퍼스픽')) return `https://www.campuspick.com/search?keyword=${encoded}`;
+  if (platformStr === '위비티' || platformStr.includes('위비티')) return `https://www.wevity.com/?c=find&s=1&gbn=viewok&ctg=21&sw=${encoded}`;
   return '#';
 };
 
@@ -876,6 +876,10 @@ export default function App() {
   const [journals, setJournals] = useState(() => readStoredValue(STORAGE_KEYS.journals, []));
   const [isJournalModalOpen, setIsJournalModalOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const [onboardingReturnScreen, setOnboardingReturnScreen] = useState(null);
+  const [selectedRoadmapBriefing, setSelectedRoadmapBriefing] = useState(null);
+  const [showAllLiveActivities, setShowAllLiveActivities] = useState(false);
+  const [showAllMilestones, setShowAllMilestones] = useState(false);
   
   // 스펙 사진 인증(OCR)용 State
   const [selectedSpec, setSelectedSpec] = useState('');
@@ -909,6 +913,29 @@ export default function App() {
 
   const handleProfileChange = (key, value) => setUserProfile(prev => ({ ...prev, [key]: value }));
   const handleCreditChange = (key, value) => setUserProfile(prev => ({ ...prev, credits: { ...prev.credits, [key]: value } }));
+  const openOnboarding = (step, returnScreen = null) => {
+    setOnboardingReturnScreen(returnScreen);
+    setOnboardingStep(step);
+    setCurrentScreen('onboarding');
+  };
+  const handleOnboardingBack = () => {
+    if (onboardingStep > 1) {
+      setOnboardingStep(step => step - 1);
+      return;
+    }
+    if (onboardingReturnScreen) {
+      setCurrentScreen(onboardingReturnScreen);
+      setOnboardingReturnScreen(null);
+    }
+  };
+  const handleOnboardingNext = () => {
+    if (onboardingStep === 8) {
+      setCurrentScreen(onboardingReturnScreen || 'home');
+      setOnboardingReturnScreen(null);
+      return;
+    }
+    setOnboardingStep(step => step + 1);
+  };
   const canContinueOnboarding = () => {
     if (onboardingStep === 1) return isAcademicProfileComplete(userProfile);
     if (onboardingStep === 2) return isBasicProfileComplete(userProfile);
@@ -1279,7 +1306,7 @@ export default function App() {
   const renderOnboarding = () => (
     <div className="absolute inset-0 z-50 bg-white flex flex-col h-full overflow-hidden">
       <div className="pt-12 px-6 pb-4 flex items-center justify-between sticky top-0 z-10 bg-white">
-        <button onClick={() => setOnboardingStep(s => Math.max(1, s - 1))} className="p-2"><ChevronLeft size={24} /></button>
+        <button onClick={handleOnboardingBack} className="p-2"><ChevronLeft size={24} /></button>
         <div className="flex gap-1 flex-1 px-8">{[1, 2, 3, 4, 5, 6, 7, 8].map(s => <div key={s} className={`h-1 flex-1 rounded-full ${s <= onboardingStep ? 'bg-[#00307B]' : 'bg-gray-200'}`}></div>)}</div>
       </div>
 
@@ -1613,7 +1640,7 @@ export default function App() {
       <div className="p-6 bg-white border-t sticky bottom-0 z-20">
         <button
           disabled={!canContinueOnboarding()}
-          onClick={() => onboardingStep === 8 ? setCurrentScreen('home') : setOnboardingStep(s => s + 1)}
+          onClick={handleOnboardingNext}
           className="w-full py-5 bg-[#00307B] disabled:bg-gray-300 disabled:shadow-none text-white font-black text-lg rounded-[2rem] shadow-xl transition-colors"
         >
           {onboardingStep === 8 ? '시작하기' : '다음 단계로'}
@@ -1648,6 +1675,8 @@ export default function App() {
       tone: 'green',
     }));
     const notifications = [...upcomingMilestones, ...liveActivityNotifications, ...achievedNotifications].slice(0, 6);
+    const visibleLiveActivities = showAllLiveActivities ? liveActivities : liveActivities.slice(0, 3);
+    const visibleMilestones = showAllMilestones ? data.milestones : data.milestones.slice(0, 3);
 
     return (
       <div className="p-6 pt-10 animate-fade-in-up">
@@ -1714,20 +1743,25 @@ export default function App() {
             </div>
           ) : (
             <div className="flex gap-3 overflow-x-auto pb-4 snap-x">
-              {liveActivities.map((live, idx) => (
+              {visibleLiveActivities.map((live, idx) => (
                 <a key={live.id || idx} href={live.url} target="_blank" rel="noreferrer" className="shrink-0 w-72 bg-white border border-gray-200 rounded-3xl p-5 shadow-sm snap-start hover:border-blue-300 transition-colors block">
                   <div className="flex justify-between items-center mb-3 gap-3">
                     <span className="text-[10px] font-black text-red-500 bg-red-50 px-2 py-1 rounded-md">{live.dDay || '일정 확인'}</span>
-                    <span className="text-[10px] text-gray-400 font-bold truncate">{live.source}</span>
+                    <span className="text-[10px] text-gray-400 font-bold truncate">{live.source || live.dynamicReason}</span>
                   </div>
                   <h4 className="font-black text-gray-900 text-sm leading-snug line-clamp-2 mb-3">{live.title}</h4>
-                  <p className="text-[11px] text-gray-500 font-bold leading-relaxed line-clamp-3 mb-4">{live.summary}</p>
+                  <p className="text-[11px] text-gray-500 font-bold leading-relaxed line-clamp-3 mb-4">{live.summary || live.dynamicReason || '추천 활동 정보를 확인해 보세요.'}</p>
                   <div className="flex items-center gap-1 text-[10px] font-black text-[#00307B]">
                     원문 링크 <ExternalLink size={12} />
                   </div>
                 </a>
               ))}
             </div>
+          )}
+          {liveActivities.length > 3 && (
+            <button type="button" onClick={() => setShowAllLiveActivities(prev => !prev)} className="w-full py-3 bg-white border border-blue-100 text-[#00307B] text-xs font-black rounded-2xl shadow-sm">
+              {showAllLiveActivities ? '접기' : `더보기 (${liveActivities.length - 3}개 더)`}
+            </button>
           )}
         </div>
 
@@ -1762,7 +1796,7 @@ export default function App() {
             <Target size={20} className="text-[#00307B]" /> 앞으로의 마일스톤
           </h3>
           <div className="space-y-4">
-            {data.milestones.map((spec, i) => (
+            {visibleMilestones.map((spec, i) => (
               <div key={i} className="bg-white border-2 border-gray-50 rounded-[2.5rem] p-6 shadow-sm group">
                 <div className="flex justify-between items-start mb-3">
                   <div className="flex items-center gap-2">
@@ -1792,6 +1826,11 @@ export default function App() {
               </div>
             ))}
           </div>
+          {data.milestones.length > 3 && (
+            <button type="button" onClick={() => setShowAllMilestones(prev => !prev)} className="w-full mt-4 py-3 bg-white border border-gray-200 text-gray-700 text-xs font-black rounded-2xl shadow-sm">
+              {showAllMilestones ? '접기' : `마일스톤 더보기 (${data.milestones.length - 3}개 더)`}
+            </button>
+          )}
         </div>
       </div>
     );
@@ -1803,6 +1842,13 @@ export default function App() {
 
     const req = data.gradInfo;
     const current = userProfile.credits;
+    const roadmapList = YEARLY_ROADMAP_DB[getCareerRecommendationKey(userProfile)] || YEARLY_ROADMAP_DB['default'];
+    const buildYearBriefing = (roadmap) => ([
+      { label: '추천 공모전', value: `${userProfile.careerSub} 문제 해결형 공모전`, desc: `${roadmap.grade}학년 단계에서는 결과물 1개를 남길 수 있는 팀 프로젝트형 공모전이 좋습니다.` },
+      { label: '추천 인턴십', value: `${userProfile.careerSub} 체험형/전환형 인턴`, desc: roadmap.grade >= 3 ? '실무 과제, 포트폴리오, 면접 경험을 동시에 쌓을 수 있는 공고를 우선 확인하세요.' : '저학년은 직무 탐색형 현장실습이나 단기 실습부터 시작하는 편이 부담이 적습니다.' },
+      { label: '준비 스펙', value: data.milestones[0]?.title || '어학/자격증 목표 1개 선정', desc: '마감일이 가까운 목표부터 캘린더에 넣고 주 단위로 체크하는 흐름을 추천합니다.' },
+      { label: '이번 달 액션', value: roadmap.items[0] || '로드맵 첫 과제 실행', desc: '학년 로드맵의 첫 항목을 한 달 안에 완료할 수 있는 작은 과제로 쪼개보세요.' },
+    ]);
 
     return (
       <div className="p-6 pt-10 animate-fade-in-up">
@@ -1822,7 +1868,7 @@ export default function App() {
         {/* 상세 졸업 사정표 */}
         <h3 className="font-black text-lg mb-6 flex items-center gap-2"><GraduationCap size={22} className="text-[#00307B]" /> 실시간 졸업 사정 상세</h3>
         <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-200 mb-10">
-          <div className="bg-indigo-50 p-4 border-b flex justify-between items-center"><h3 className="font-bold text-indigo-900 text-xs">한양대학교 졸업요건 기준</h3><button onClick={() => { setOnboardingStep(3); setCurrentScreen('onboarding'); }} className="text-[10px] bg-white text-indigo-700 px-2 py-1 rounded border font-bold flex items-center gap-1"><Edit3 size={10}/> 학점 수정</button></div>
+          <div className="bg-indigo-50 p-4 border-b flex justify-between items-center"><h3 className="font-bold text-indigo-900 text-xs">한양대학교 졸업요건 기준</h3><button onClick={() => openOnboarding(3, 'roadmap')} className="text-[10px] bg-white text-indigo-700 px-2 py-1 rounded border font-bold flex items-center gap-1"><Edit3 size={10}/> 학점 수정</button></div>
           <div className="p-4 bg-white overflow-x-auto"><table className="w-full text-left text-[11px] sm:text-xs border-collapse min-w-[280px]"><thead><tr className="border-b-2 border-gray-200 text-gray-500 font-bold"><th className="pb-2 w-1/3">항목</th><th className="pb-2 text-center">취득</th><th className="pb-2 text-center">배당</th><th className="pb-2 text-center">잔여</th><th className="pb-2 text-center">판정</th></tr></thead><tbody className="divide-y divide-gray-100">
             <tr><td className="py-2.5 font-bold text-gray-800">졸업학점</td><td className="text-center">{current.total}</td><td className="text-center text-gray-400">{req.total}</td><td className="text-center text-red-500">{getStatus(current.total, req.total).remain || ''}</td><td className="text-center">{getStatus(current.total, req.total).ui}</td></tr>
             <tr><td className="py-2.5 font-bold text-gray-800">전공학점</td><td className="text-center">{current.majorTotal}</td><td className="text-center text-gray-400">{req.majorTotal}</td><td className="text-center text-red-500">{getStatus(current.majorTotal, req.majorTotal).remain || ''}</td><td className="text-center">{getStatus(current.majorTotal, req.majorTotal).ui}</td></tr>
@@ -1866,10 +1912,10 @@ export default function App() {
           <Map size={22} className="text-[#00307B]" /> {userProfile.careerSub} 로드맵 지도
         </h3>
         <div className="relative pl-6 border-l-2 border-dashed border-blue-200 space-y-8 pb-4">
-          {(YEARLY_ROADMAP_DB[getCareerRecommendationKey(userProfile)] || YEARLY_ROADMAP_DB['default']).map((roadmap, idx) => (
+          {roadmapList.map((roadmap, idx) => (
             <div key={idx} className="relative">
               <div className="absolute -left-[33px] top-1 w-4 h-4 bg-white border-4 border-[#00307B] rounded-full z-10"></div>
-              <div className="bg-white rounded-[2rem] p-5 shadow-sm border-2 border-blue-50 relative ml-2 group hover:border-[#00307B] transition-colors">
+              <button type="button" onClick={() => setSelectedRoadmapBriefing(selectedRoadmapBriefing === idx ? null : idx)} className="w-full text-left bg-white rounded-[2rem] p-5 shadow-sm border-2 border-blue-50 relative ml-2 group hover:border-[#00307B] transition-colors">
                 <div className="absolute -left-3 top-2 w-0 h-0 border-t-[8px] border-t-transparent border-r-[12px] border-r-blue-50 border-b-[8px] border-b-transparent group-hover:border-r-[#00307B] transition-colors"></div>
                 <div className="absolute -left-2 top-2.5 w-0 h-0 border-t-[6px] border-t-transparent border-r-[9px] border-r-white border-b-[6px] border-b-transparent z-10"></div>
                 
@@ -1885,7 +1931,25 @@ export default function App() {
                     </li>
                   ))}
                 </ul>
-              </div>
+                <p className="mt-4 text-[10px] font-black text-[#00307B]">{selectedRoadmapBriefing === idx ? '브리핑 접기' : '활동 세부 브리핑 보기'}</p>
+              </button>
+              {selectedRoadmapBriefing === idx && (
+                <div className="ml-2 mt-3 rounded-[2rem] border border-blue-100 bg-blue-50/60 p-4 animate-fade-in-up">
+                  <div className="mb-3 flex items-center justify-between">
+                    <h4 className="text-sm font-black text-[#00307B]">{roadmap.grade}학년 활동 브리핑</h4>
+                    <span className="rounded-full bg-white px-2.5 py-1 text-[10px] font-black text-blue-500">맞춤 추천</span>
+                  </div>
+                  <div className="space-y-2">
+                    {buildYearBriefing(roadmap).map(item => (
+                      <div key={item.label} className="rounded-2xl bg-white p-3 shadow-sm">
+                        <p className="text-[10px] font-black text-blue-500">{item.label}</p>
+                        <p className="mt-1 text-sm font-black text-gray-900">{item.value}</p>
+                        <p className="mt-1 text-[11px] font-bold leading-relaxed text-gray-500">{item.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -1894,7 +1958,27 @@ export default function App() {
     );
   };
 
-  const renderSettings = () => (
+  const renderSettings = () => {
+    const today = new Date();
+    const calendarYear = today.getFullYear();
+    const calendarMonth = today.getMonth();
+    const monthStart = new Date(calendarYear, calendarMonth, 1);
+    const firstDay = monthStart.getDay();
+    const daysInMonth = new Date(calendarYear, calendarMonth + 1, 0).getDate();
+    const calendarCells = [
+      ...Array.from({ length: firstDay }, () => null),
+      ...Array.from({ length: daysInMonth }, (_, index) => index + 1),
+    ];
+    const calendarEvents = [
+      ...liveActivities.map(item => ({ title: item.dynamicReason || item.source || '활동', date: item.targetDate || item.deadline, tone: 'activity' })),
+      ...((userRoadmapData?.milestones || []).map(item => ({ title: item.title, date: item.targetDate, tone: item.cat === 'lang' ? 'lang' : 'cert' }))),
+    ].filter(event => {
+      if (!event.date) return false;
+      const date = new Date(event.date);
+      return date.getFullYear() === calendarYear && date.getMonth() === calendarMonth;
+    });
+
+    return (
     <div className="p-6 pt-10 animate-fade-in-up">
       <h1 className="text-2xl font-black mb-8">마이 페이지</h1>
       <div className="bg-white rounded-[2.5rem] p-8 shadow-sm border border-gray-100 mb-8 text-center">
@@ -1951,6 +2035,43 @@ export default function App() {
         {authMessage && <p className={`mt-4 p-3 rounded-xl text-[11px] font-bold ${syncStatus.includes('실패') || authMessage.includes('오류') || authMessage.includes('확인') ? 'bg-red-50 text-red-600' : 'bg-blue-50 text-[#00307B]'}`}>{authMessage}</p>}
       </div>
       
+      <div className="bg-gray-950 text-white rounded-[2rem] p-5 shadow-sm border border-gray-900 mb-8 overflow-hidden">
+        <div className="flex items-end justify-between mb-5">
+          <div>
+            <p className="text-[10px] font-black tracking-widest text-purple-300">MONTHLY PLAN</p>
+            <h3 className="text-3xl font-black">{monthStart.toLocaleString('en-US', { month: 'short' })}</h3>
+          </div>
+          <Calendar size={24} className="text-purple-300" />
+        </div>
+        <div className="grid grid-cols-7 border-b border-white/10 pb-2 mb-2">
+          {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, idx) => (
+            <div key={`${day}-${idx}`} className="text-center text-[11px] font-black text-gray-400">{day}</div>
+          ))}
+        </div>
+        <div className="grid grid-cols-7 gap-y-2">
+          {calendarCells.map((day, idx) => {
+            const events = day ? calendarEvents.filter(event => new Date(event.date).getDate() === day).slice(0, 2) : [];
+            const isToday = day === today.getDate();
+            return (
+              <div key={idx} className="min-h-[54px] px-0.5">
+                {day && (
+                  <>
+                    <div className={`mx-auto mb-1 flex h-6 w-6 items-center justify-center rounded-full text-xs font-black ${isToday ? 'bg-purple-500 text-white' : 'text-white'}`}>{day}</div>
+                    <div className="space-y-1">
+                      {events.map((event, eventIdx) => (
+                        <div key={`${event.title}-${eventIdx}`} className={`truncate rounded-md px-1.5 py-0.5 text-[8px] font-black ${event.tone === 'activity' ? 'bg-purple-500/80 text-white' : 'bg-blue-500/80 text-white'}`}>
+                          {event.title}
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
       {/* 나의 대외활동 일지 관리 섹션 */}
       <div className="mb-8">
         <div className="flex justify-between items-end mb-4">
@@ -1984,9 +2105,18 @@ export default function App() {
         )}
       </div>
 
+      <button type="button" onClick={() => setCurrentScreen('subscription')} className="w-full mb-8 bg-gray-950 text-white p-5 rounded-[2rem] flex items-center justify-between shadow-sm border border-gray-900 active:scale-[0.99] transition-transform">
+        <div className="text-left">
+          <p className="text-[10px] font-black tracking-widest text-purple-300">PREMIUM</p>
+          <p className="mt-1 text-base font-black">구독 페이지로 이동</p>
+          <p className="mt-1 text-[11px] font-bold text-gray-400">맞춤 자소서, 영상 통화, 심층 활동 추천을 확인하세요.</p>
+        </div>
+        <ChevronRight size={22} className="text-purple-300" />
+      </button>
+
       <div className="space-y-3">
         {[{ icon: GraduationCap, label: '학적 및 이수학점 수정', step: 1 }, { icon: Award, label: '보유 스펙 관리', step: 7 }, { icon: Target, label: '진로 목표 변경', step: 4 }].map((item, i) => (
-          <button key={i} onClick={() => { setOnboardingStep(item.step); setCurrentScreen('onboarding'); }} className="w-full bg-white p-6 rounded-3xl flex items-center justify-between border border-gray-50 shadow-sm active:bg-gray-50">
+          <button key={i} onClick={() => openOnboarding(item.step, 'settings')} className="w-full bg-white p-6 rounded-3xl flex items-center justify-between border border-gray-50 shadow-sm active:bg-gray-50">
             <div className="flex items-center gap-4">
               <div className="p-2 bg-gray-50 rounded-xl text-gray-400"><item.icon size={20}/></div>
               <span className="font-bold text-gray-800">{item.label}</span>
@@ -2041,6 +2171,48 @@ export default function App() {
          </div>
       )}
     </div>
+    );
+  };
+
+  const renderSubscription = () => (
+    <div className="min-h-full bg-white animate-fade-in-up">
+      <div className="relative overflow-hidden bg-gray-950 px-6 pb-10 pt-10 text-white">
+        <button type="button" onClick={() => setCurrentScreen('settings')} className="mb-8 flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10 text-white">
+          <ChevronLeft size={22} />
+        </button>
+        <div className="absolute right-6 top-16 h-28 w-28 rounded-full bg-purple-500/30 blur-2xl"></div>
+        <p className="text-[11px] font-black tracking-widest text-purple-300">HY ROAD PLUS</p>
+        <h1 className="mt-3 text-2xl font-black leading-tight text-white">듀얼고 맞춤형<br/>취업 자신있게</h1>
+        <p className="mt-3 text-xs font-bold leading-relaxed text-gray-300">로드맵, 일정, 활동 기록을 기반으로 더 깊은 추천과 브리핑을 받아보세요.</p>
+        <div className="mt-7 mx-auto flex h-28 w-28 items-center justify-center rounded-[2rem] border border-purple-300/50 bg-purple-500/20 shadow-2xl shadow-purple-900/40">
+          <Sparkles size={42} className="text-purple-200" />
+        </div>
+      </div>
+      <div className="-mt-6 rounded-t-[2.5rem] bg-white px-6 pb-28 pt-8">
+        <div className="space-y-5">
+          {[
+            { title: '맞춤 활동 브리핑', desc: '학년별 공모전, 인턴십, 자격증 우선순위를 정리합니다.' },
+            { title: '자소서/면접 코칭', desc: '활동 일지를 기반으로 자기소개서 소재를 뽑아줍니다.' },
+            { title: '일정 알림 강화', desc: 'D-Day와 대외활동 마감 일정을 놓치지 않게 관리합니다.' },
+            { title: '광고 제거', desc: '더 조용하고 집중하기 쉬운 화면으로 사용할 수 있습니다.' },
+          ].map(item => (
+            <div key={item.title} className="flex items-start gap-4">
+              <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-purple-100 text-purple-600">
+                <CheckCircle2 size={18} />
+              </div>
+              <div>
+                <p className="text-sm font-black text-gray-900">{item.title}</p>
+                <p className="mt-1 text-xs font-bold leading-relaxed text-gray-500">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <button type="button" className="mt-8 w-full rounded-2xl bg-purple-600 py-4 text-sm font-black text-white shadow-lg shadow-purple-200">
+          부스트 구독 시작하기
+        </button>
+        <p className="mt-4 text-center text-[11px] font-bold text-gray-400">언제든지 MY 페이지에서 구독 상태를 확인할 수 있어요.</p>
+      </div>
+    </div>
   );
 
   return (
@@ -2062,9 +2234,10 @@ export default function App() {
           <ScreenWrapper isActive={currentScreen === 'home'}>{renderHome()}</ScreenWrapper>
           <ScreenWrapper isActive={currentScreen === 'roadmap'}>{renderRoadmap()}</ScreenWrapper>
           <ScreenWrapper isActive={currentScreen === 'settings'}>{renderSettings()}</ScreenWrapper>
+          <ScreenWrapper isActive={currentScreen === 'subscription'}>{renderSubscription()}</ScreenWrapper>
           
           {/* Bottom Tab Bar */}
-          <div className="absolute bottom-0 w-full bg-white/80 backdrop-blur-xl border-t border-gray-100 px-8 py-4 pb-8 flex justify-around items-center z-40">
+          <div className={`absolute bottom-0 w-full bg-white/80 backdrop-blur-xl border-t border-gray-100 px-8 py-4 pb-8 justify-around items-center z-40 ${currentScreen === 'subscription' ? 'hidden' : 'flex'}`}>
             {[{ id: 'home', icon: Home, label: '가이드' }, { id: 'roadmap', icon: Map, label: '로드맵' }, { id: 'settings', icon: 'MY' }].map(tab => {
               const isActive = currentScreen === tab.id;
               return (
