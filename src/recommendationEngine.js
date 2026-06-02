@@ -44,7 +44,7 @@ export const recommendActivities = ({ user, activities = ACTIVITIES, limit = 7 }
   const grade = getGrade(user.grade);
   const userWeights = buildUserTagWeights(user);
 
-  return activities
+  const ranked = activities
     .map((activity) => {
       const tagScore = activity.tags.reduce((score, tag) => score + (userWeights[tag] || 0), 0);
       const gradeBonus = activity.recommendedGrades?.includes(grade) ? 8 : 0;
@@ -62,8 +62,29 @@ export const recommendActivities = ({ user, activities = ACTIVITIES, limit = 7 }
       };
     })
     .filter(activity => activity.score > activity.baseWeight)
-    .sort((a, b) => b.score - a.score || b.baseWeight - a.baseWeight)
-    .slice(0, limit);
+    .sort((a, b) => b.score - a.score || b.baseWeight - a.baseWeight);
+
+  const picked = [];
+  const typeCounts = {};
+
+  ranked.forEach((activity) => {
+    const currentTypeCount = typeCounts[activity.type] || 0;
+    const typeLimit = activity.type === 'certificate' ? 3 : 2;
+    if (picked.length < limit && currentTypeCount < typeLimit) {
+      picked.push(activity);
+      typeCounts[activity.type] = currentTypeCount + 1;
+    }
+  });
+
+  if (picked.length < limit) {
+    ranked.forEach((activity) => {
+      if (picked.length < limit && !picked.find(item => item.id === activity.id)) {
+        picked.push(activity);
+      }
+    });
+  }
+
+  return picked;
 };
 
 export { ACTIVITIES, TAG_LABELS };
