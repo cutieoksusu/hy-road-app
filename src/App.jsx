@@ -5,6 +5,7 @@ import {
   AlertCircle, ChevronLeft, Building, Target, Check, Sparkles, ExternalLink, Link as LinkIcon, Edit3, XCircle, Info, Award, FileText, Globe, Hourglass, Plus, Trash2, Loader2, Camera, PenTool, Image as ImageIcon
 } from 'lucide-react';
 import { recommendActivities } from './recommendationEngine';
+import { ACTIVITIES } from './recommendationData';
 
 const CAMPUS_DATA = {
   SEOUL: {
@@ -700,8 +701,36 @@ const normalizeLiveActivity = (item) => ({
   url: item.url || item.originalLink || '#',
   source: item.source || item.sourceName || '허가된 출처',
   summary: item.summary || '',
+  deadline: item.deadline || '',
+  recommendationTags: item.recommendationTags || item.tags || [],
+  recommendationType: item.recommendationType || 'activity',
+  recommendationCat: item.recommendationCat || 'activity',
+  baseWeight: item.baseWeight || 6,
+  recommendedGrades: item.recommendedGrades || [1, 2, 3],
+  taggedBy: item.taggedBy || 'keyword',
   dynamicReason: item.dynamicReason || item.type || '실시간 API',
 });
+
+const toRecommendationActivity = (item) => {
+  const tags = item.recommendationTags || [];
+  if (!tags.length) return null;
+  return {
+    id: `opportunity-${item.id || item.url || item.title}`,
+    title: item.title,
+    cat: item.recommendationCat || 'activity',
+    type: item.recommendationType || 'activity',
+    tags,
+    baseWeight: item.baseWeight || 6,
+    recommendedGrades: item.recommendedGrades || [1, 2, 3],
+    source: item.source,
+    targetDate: item.deadline || '',
+    duration: '공고 확인',
+    desc: item.summary || '외부 API에서 수집한 최신 활동입니다.',
+    url: item.url || '#',
+    isExternalOpportunity: true,
+    taggedBy: item.taggedBy || 'keyword',
+  };
+};
 
 const fetchOpportunityApi = async ({ careerSub, signal }) => {
   const apiUrl = import.meta.env.VITE_OPPORTUNITY_API_URL;
@@ -841,6 +870,7 @@ export default function App() {
   const [verificationSuccess, setVerificationSuccess] = useState(false);
 
   const [liveActivities, setLiveActivities] = useState([]);
+  const [opportunityActivities, setOpportunityActivities] = useState([]);
   const [isLoadingLive, setIsLoadingLive] = useState(false);
   const [firebaseUser, setFirebaseUser] = useState(null);
   const [authMode, setAuthMode] = useState('signin');
@@ -1023,20 +1053,27 @@ export default function App() {
         if (!isMounted) return;
         if (apiItems.length) {
           setLiveActivities(apiItems);
+          setOpportunityActivities(apiItems.map(toRecommendationActivity).filter(Boolean));
           return;
         }
 
         if (!isFirebaseConfigured) {
           setLiveActivities(fallbackLinks);
+          setOpportunityActivities([]);
           return;
         }
 
         const client = firebaseClient || await import('./firebase');
         const remoteItems = await client.loadOpportunities({ careerSub: userProfile.careerSub });
         if (!isMounted) return;
-        setLiveActivities(remoteItems.length ? remoteItems.map(normalizeLiveActivity) : fallbackLinks);
+        const normalizedRemoteItems = remoteItems.length ? remoteItems.map(normalizeLiveActivity) : fallbackLinks;
+        setLiveActivities(normalizedRemoteItems);
+        setOpportunityActivities(remoteItems.length ? normalizedRemoteItems.map(toRecommendationActivity).filter(Boolean) : []);
       } catch (error) {
-        if (isMounted && error.name !== 'AbortError') setLiveActivities(fallbackLinks);
+        if (isMounted && error.name !== 'AbortError') {
+          setLiveActivities(fallbackLinks);
+          setOpportunityActivities([]);
+        }
       } finally {
         if (isMounted) setIsLoadingLive(false);
       }
@@ -1101,6 +1138,7 @@ export default function App() {
         careerMain: userProfile.careerMain,
         careerSub: userProfile.careerSub,
       },
+      activities: [...ACTIVITIES, ...opportunityActivities],
       limit: 7,
     });
     const categorizedSpecs = specs.reduce((acc, spec) => {
@@ -1175,7 +1213,7 @@ export default function App() {
       courses: recommendedCourses, 
       gradInfo: req 
     };
-  }, [userProfile, achievedSpecs, customMilestones]);
+  }, [userProfile, achievedSpecs, customMilestones, opportunityActivities]);
 
   const renderAuth = () => (
     <div className="absolute inset-0 z-50 bg-white flex flex-col h-full overflow-y-auto px-6 py-12">
@@ -1613,7 +1651,9 @@ export default function App() {
                   <h4 className="font-black text-gray-900 text-sm leading-snug line-clamp-2 mb-3">{live.title}</h4>
                   <p className="text-[11px] text-gray-500 font-bold leading-relaxed line-clamp-3 mb-4">{live.summary}</p>
                   <div className="flex items-center gap-1 text-[10px] font-black text-[#00307B]">
-                    원문 링크 <ExternalLink size={12} />
+                    <span>원문 링크</span>
+                    <span className="text-[9px] text-blue-400">{live.taggedBy === 'openai' ? 'AI 태그' : '키워드 태그'}</span>
+                    <ExternalLink size={12} />
                   </div>
                 </a>
               ))}
