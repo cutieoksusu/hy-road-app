@@ -89,13 +89,93 @@ const getGradReqs = (dept, majorType) => {
   return req;
 };
 
-const CAREER_GOALS = {
-  INDUSTRY: { id: 'industry', name: '산업체 취업', sub: ['IT/소프트웨어', '기획/마케팅', '금융/은행', '반도체/엔지니어링', '식품/F&B', '패션/의류'] },
-  PUBLIC: { id: 'public', name: '공직/공공기관', sub: ['공기업 (NCS)', '5급 행정고시', '5급 기술고시'] },
-  PROFESSIONAL: { id: 'professional', name: '전문직 (고시)', sub: ['로스쿨 (법조인)', 'CPA (공인회계사)'] },
-  MEDIA: { id: 'media', name: '미디어/언론', sub: ['언론고시 (기자/PD)'] },
-  GRAD_SCHOOL: { id: 'grad_school', name: '대학원 진학', sub: ['자대 대학원', '타대 대학원'] }
+const CAREER_CATEGORIES = [
+  {
+    categoryName: 'IT·AI·데이터',
+    subCategories: [
+      { subCategoryName: '개발', jobs: ['프론트엔드개발자', '백엔드개발자', '앱개발자', '게임개발자', '소프트웨어개발자'] },
+      { subCategoryName: '데이터/AI', jobs: ['데이터사이언티스트', '데이터분석가', '데이터엔지니어', 'AI/ML엔지니어', 'AI/ML연구원', 'MLOps엔지니어', '프롬프트엔지니어'] },
+      { subCategoryName: '인프라/기타', jobs: ['클라우드엔지니어', '보안엔지니어', '시스템엔지니어', '네트워크엔지니어', 'DB관리자(DBA)', 'QA', 'IT컨설턴트'] },
+    ],
+  },
+  {
+    categoryName: '기획·마케팅·광고',
+    subCategories: [
+      { subCategoryName: '기획/전략', jobs: ['서비스기획자(PM·PO)', '웹기획자', '경영·비즈니스기획', 'AI기획자', 'AI사업전략', '컨설턴트'] },
+      { subCategoryName: '마케팅/PR', jobs: ['브랜드마케터', '퍼포먼스마케터', '콘텐츠마케터', 'CRM마케터', '그로스해커', '홍보(PR)'] },
+      { subCategoryName: '광고/MD', jobs: ['AE(광고기획자)', '카피라이터', '크리에이티브디렉터', 'MD', '리서치(설문/통계)'] },
+    ],
+  },
+  {
+    categoryName: '디자인',
+    subCategories: [
+      { subCategoryName: 'IT/웹 디자인', jobs: ['UI·UX디자이너', '웹디자이너'] },
+      { subCategoryName: '시각/영상 디자인', jobs: ['영상디자이너', '3D디자이너', '그래픽디자이너', '시각디자이너', '캐릭터디자이너', '아트디렉터'] },
+      { subCategoryName: '산업/공간 디자인', jobs: ['제품디자이너', '산업디자이너', '실내디자이너', '공간디자이너', '환경디자이너', '패션디자이너'] },
+    ],
+  },
+  {
+    categoryName: '금융·재무·회계',
+    subCategories: [
+      { subCategoryName: '재무/회계/세무', jobs: ['회계사(CPA)', '세무사', '관세사', '회계담당자', '세무담당자', '재무담당자', 'IR·공시'] },
+      { subCategoryName: '금융/투자', jobs: ['애널리스트', '펀드매니저', '은행원·텔러(IB/PB 등)', '손해사정사', '심사역', '금융영업'] },
+    ],
+  },
+  {
+    categoryName: '엔지니어링·제조',
+    subCategories: [
+      { subCategoryName: '엔지니어링', jobs: ['반도체엔지니어', '공정엔지니어', '전기·전자엔지니어', '기계엔지니어', '화학엔지니어', '통신/RF엔지니어', 'AI로봇엔지니어'] },
+      { subCategoryName: '연구/제조 관리', jobs: ['R&D·연구원', '생산·공정관리자', '품질관리자(QA/QC)'] },
+    ],
+  },
+  {
+    categoryName: '전문직·공직·법무',
+    subCategories: [
+      { subCategoryName: '전문직/법무', jobs: ['변호사(로스쿨)', '변리사', '노무사', '법무담당자'] },
+      { subCategoryName: '공공/행정', jobs: ['공기업(NCS 준비)', '5급 행정고시', '5급 기술고시', '사회복지사', '사서'] },
+    ],
+  },
+  {
+    categoryName: '미디어·문화·콘텐츠',
+    subCategories: [
+      { subCategoryName: '방송/언론', jobs: ['PD·감독', '기자', '아나운서', '리포터'] },
+      { subCategoryName: '콘텐츠 제작', jobs: ['콘텐츠에디터', '작가', '영상편집자', 'AI콘텐츠크리에이터'] },
+      { subCategoryName: '문화/예술', jobs: ['큐레이터', '음반기획', '통번역사'] },
+    ],
+  },
+  {
+    categoryName: '물류·무역·영업·HR',
+    subCategories: [
+      { subCategoryName: '물류/무역', jobs: ['물류관리자', '구매관리자', '유통관리자', '무역사무원'] },
+      { subCategoryName: '영업', jobs: ['B2B/법인영업', 'IT·기술영업', '해외영업', '서비스영업'] },
+      { subCategoryName: '인사(HR)', jobs: ['인사담당자', 'HRD·HRM', '헤드헌터'] },
+    ],
+  },
+  {
+    categoryName: '건축·환경·의료·바이오',
+    subCategories: [
+      { subCategoryName: '건축/시설', jobs: ['건축가', '건축기사', '시공기사', '도시·조경설계', '안전관리자', '환경기사'] },
+      { subCategoryName: '의료/바이오', jobs: ['바이오·제약연구원', '임상연구원(CRA)', '보건관리자', '영양사', '식품연구원'] },
+    ],
+  },
+];
+
+const CAREER_RECOMMENDATION_FALLBACK = {
+  'IT·AI·데이터': 'IT/소프트웨어',
+  '기획·마케팅·광고': '기획/마케팅',
+  '금융·재무·회계': '금융/은행',
+  '엔지니어링·제조': '반도체/엔지니어링',
+  '전문직·공직·법무': '공기업 (NCS)',
+  '미디어·문화·콘텐츠': '언론고시 (기자/PD)',
+  '디자인': '패션/의류',
+  '건축·환경·의료·바이오': '식품/F&B',
 };
+
+const getCareerRecommendationKey = (profile) => (
+  CAREER_SPEC_MAP[profile.careerSub]
+    ? profile.careerSub
+    : CAREER_RECOMMENDATION_FALLBACK[profile.careerMain] || 'default'
+);
 
 // 💡 [기능 반영] 실시간 D-day 계산을 위한 타겟 날짜 명시 데이터베이스
 const CAREER_SPEC_MAP = {
@@ -620,7 +700,7 @@ const generatePlatformSearchLink = (careerSub, platformStr) => {
     '금융/은행': '금융', '반도체/엔지니어링': '엔지니어', '공기업 (NCS)': '공공기관',
     '로스쿨 (법조인)': '법무', '언론고시 (기자/PD)': '언론',
   };
-  const keyword = keywordMap[careerSub] || '대외활동';
+  const keyword = keywordMap[careerSub] || careerSub || '대외활동';
   const encoded = encodeURIComponent(keyword);
 
   if (platformStr === '링커리어') return `https://linkareer.com/search?keyword=${encoded}&tab=activity`;
@@ -645,7 +725,7 @@ const STORAGE_KEYS = {
 const EMPTY_PROFILE = {
   campus: '', college: '', department: '', majorType: '심화전공(단일)',
   secondCollege: '', secondDepartment: '', studentId: '', grade: '3',
-  name: '', careerMain: '', careerSub: '',
+  name: '', careerMain: '', careerSubCategory: '', careerSub: '',
   credits: {
     total: '', majorTotal: '', major100_300: '', major400: '', englishAvg: '',
     prerequisite: 'Y', gpa: '', requiredCourses: 'Y', volunteer: '', internship: 'Y',
@@ -672,7 +752,41 @@ const readStoredProfile = () => {
   };
 };
 
-const hasCompletedProfile = (profile) => Boolean(profile.department && profile.name && profile.careerSub);
+const isFilled = (value) => String(value ?? '').trim().length > 0;
+
+const isAcademicProfileComplete = (profile) => (
+  isFilled(profile.campus) &&
+  isFilled(profile.college) &&
+  isFilled(profile.department) &&
+  (profile.majorType === '심화전공(단일)' || (isFilled(profile.secondCollege) && isFilled(profile.secondDepartment)))
+);
+
+const isBasicProfileComplete = (profile) => isFilled(profile.name) && isFilled(profile.studentId);
+
+const isCareerProfileComplete = (profile) => (
+  isFilled(profile.careerMain) && isFilled(profile.careerSubCategory) && isFilled(profile.careerSub)
+);
+
+const hasCompletedProfile = (profile) => (
+  isAcademicProfileComplete(profile) && isBasicProfileComplete(profile) && isCareerProfileComplete(profile)
+);
+
+const RequiredMark = () => (
+  <span className="absolute right-3 top-2 text-lg font-black leading-none text-red-500" aria-hidden="true">*</span>
+);
+
+const RequiredField = ({ children, className = '' }) => (
+  <div className={`relative ${className}`.trim()}>
+    {children}
+    <RequiredMark />
+  </div>
+);
+
+const RequiredNotice = () => (
+  <p className="mb-4 rounded-2xl bg-red-50 px-4 py-3 text-[11px] font-bold text-red-500">
+    <span className="font-black">*</span> 표시된 필수 입력란을 모두 채워야 다음 단계로 이동할 수 있어요.
+  </p>
+);
 
 const isFirebaseConfigured = Boolean(
   import.meta.env.VITE_FIREBASE_API_KEY &&
@@ -739,6 +853,15 @@ export default function App() {
 
   const handleProfileChange = (key, value) => setUserProfile(prev => ({ ...prev, [key]: value }));
   const handleCreditChange = (key, value) => setUserProfile(prev => ({ ...prev, credits: { ...prev.credits, [key]: value } }));
+  const canContinueOnboarding = () => {
+    if (onboardingStep === 1) return isAcademicProfileComplete(userProfile);
+    if (onboardingStep === 2) return isBasicProfileComplete(userProfile);
+    if (onboardingStep === 4) return isFilled(userProfile.careerMain);
+    if (onboardingStep === 5) return isFilled(userProfile.careerSubCategory);
+    if (onboardingStep === 6) return isFilled(userProfile.careerSub);
+    if (onboardingStep === 8) return hasCompletedProfile(userProfile);
+    return true;
+  };
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEYS.profile, JSON.stringify(userProfile));
@@ -931,7 +1054,8 @@ export default function App() {
   const userRoadmapData = useMemo(() => {
     if (!userProfile.careerSub || !userProfile.department) return null;
     
-    const specs = CAREER_SPEC_MAP[userProfile.careerSub] || CAREER_SPEC_MAP['default'] || [];
+    const careerRecommendationKey = getCareerRecommendationKey(userProfile);
+    const specs = CAREER_SPEC_MAP[careerRecommendationKey] || CAREER_SPEC_MAP['default'] || [];
     const categorizedSpecs = specs.reduce((acc, spec) => {
       const achieved = achievedSpecs.find(a => a.name.toLowerCase().includes(spec.title.toLowerCase()) || spec.title.toLowerCase().includes(a.name.toLowerCase()));
       if (achieved) {
@@ -993,8 +1117,8 @@ export default function App() {
     });
 
     if (recommendedCourses.length === 0) {
-        let careerMatches = userDeptCourses.filter(c => c.target === userProfile.careerSub);
-        if(careerMatches.length === 0) careerMatches = allCourses.filter(c => c.target === userProfile.careerSub);
+        let careerMatches = userDeptCourses.filter(c => c.target === userProfile.careerSub || c.target === careerRecommendationKey);
+        if(careerMatches.length === 0) careerMatches = allCourses.filter(c => c.target === userProfile.careerSub || c.target === careerRecommendationKey);
         careerMatches.slice(0, 3).forEach(matched => { recommendedCourses.push({ ...matched, dynamicReason: `졸업 요건을 충족하여 [${userProfile.careerSub}] 대비 심화를 추천합니다.` }); });
     }
 
@@ -1063,37 +1187,44 @@ export default function App() {
     <div className="absolute inset-0 z-50 bg-white flex flex-col h-full overflow-hidden">
       <div className="pt-12 px-6 pb-4 flex items-center justify-between sticky top-0 z-10 bg-white">
         <button onClick={() => setOnboardingStep(s => Math.max(1, s - 1))} className="p-2"><ChevronLeft size={24} /></button>
-        <div className="flex gap-1 flex-1 px-8">{[1, 2, 3, 4, 5, 6].map(s => <div key={s} className={`h-1 flex-1 rounded-full ${s <= onboardingStep ? 'bg-[#00307B]' : 'bg-gray-200'}`}></div>)}</div>
+        <div className="flex gap-1 flex-1 px-8">{[1, 2, 3, 4, 5, 6, 7, 8].map(s => <div key={s} className={`h-1 flex-1 rounded-full ${s <= onboardingStep ? 'bg-[#00307B]' : 'bg-gray-200'}`}></div>)}</div>
       </div>
 
       <div className="flex-1 overflow-y-auto px-6 pb-32 pt-4">
         {onboardingStep === 1 && (
           <div className="animate-fade-in-up">
-            <h2 className="text-2xl font-black mb-6">전공 정보를 알려주세요</h2>
+            <h2 className="text-2xl font-black mb-3">전공 정보를 알려주세요</h2>
+            <RequiredNotice />
             
-            <select className="w-full p-4 mb-4 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" value={userProfile.campus} 
-              onChange={e => { 
-                handleProfileChange('campus', e.target.value); 
-                handleProfileChange('college', ''); 
-                handleProfileChange('department', ''); 
-                handleProfileChange('secondCollege', ''); 
-                handleProfileChange('secondDepartment', ''); 
-              }}>
-              <option value="">캠퍼스 선택</option><option value="SEOUL">서울캠퍼스</option><option value="ERICA">ERICA캠퍼스</option>
-            </select>
+            <RequiredField>
+              <select className="w-full p-4 pr-10 mb-4 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" value={userProfile.campus} 
+                onChange={e => { 
+                  handleProfileChange('campus', e.target.value); 
+                  handleProfileChange('college', ''); 
+                  handleProfileChange('department', ''); 
+                  handleProfileChange('secondCollege', ''); 
+                  handleProfileChange('secondDepartment', ''); 
+                }}>
+                <option value="">캠퍼스 선택</option><option value="SEOUL">서울캠퍼스</option><option value="ERICA">ERICA캠퍼스</option>
+              </select>
+            </RequiredField>
             
             {userProfile.campus && (
-              <select className="w-full p-4 mb-4 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" value={userProfile.college} onChange={e => { handleProfileChange('college', e.target.value); handleProfileChange('department', ''); }}>
-                <option value="">단과대학 선택</option>
-                {Object.keys(CAMPUS_DATA[userProfile.campus]?.colleges || {}).map(c => <option key={c} value={c}>{c}</option>)}
-              </select>
+              <RequiredField>
+                <select className="w-full p-4 pr-10 mb-4 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" value={userProfile.college} onChange={e => { handleProfileChange('college', e.target.value); handleProfileChange('department', ''); }}>
+                  <option value="">단과대학 선택</option>
+                  {Object.keys(CAMPUS_DATA[userProfile.campus]?.colleges || {}).map(c => <option key={c} value={c}>{c}</option>)}
+                </select>
+              </RequiredField>
             )}
             
             {userProfile.college && (
-              <select className="w-full p-4 mb-8 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" value={userProfile.department} onChange={e => handleProfileChange('department', e.target.value)}>
-                <option value="">학과/학부 선택</option>
-                {CAMPUS_DATA[userProfile.campus]?.colleges[userProfile.college]?.map(d => <option key={d} value={d}>{d}</option>)}
-              </select>
+              <RequiredField>
+                <select className="w-full p-4 pr-10 mb-8 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" value={userProfile.department} onChange={e => handleProfileChange('department', e.target.value)}>
+                  <option value="">학과/학부 선택</option>
+                  {CAMPUS_DATA[userProfile.campus]?.colleges[userProfile.college]?.map(d => <option key={d} value={d}>{d}</option>)}
+                </select>
+              </RequiredField>
             )}
             
             {userProfile.department && (
@@ -1107,15 +1238,19 @@ export default function App() {
                 {userProfile.majorType !== '심화전공(단일)' && (
                   <div className="p-5 bg-blue-50 rounded-3xl border-2 border-blue-100 animate-fade-in-up">
                     <p className="text-sm font-black text-[#00307B] mb-4">제2전공 학과 선택</p>
-                    <select className="w-full p-3 mb-3 rounded-xl border-white border-2 text-sm font-bold bg-white focus:outline-none focus:border-[#00307B]" value={userProfile.secondCollege} onChange={e => { handleProfileChange('secondCollege', e.target.value); handleProfileChange('secondDepartment', ''); }}>
-                       <option value="">단과대학 선택</option>
-                       {Object.keys(CAMPUS_DATA[userProfile.campus]?.colleges || {}).map(c => <option key={c} value={c}>{c}</option>)}
-                    </select>
-                    {userProfile.secondCollege && (
-                      <select className="w-full p-3 rounded-xl border-white border-2 text-sm font-bold bg-white focus:outline-none focus:border-[#00307B]" value={userProfile.secondDepartment} onChange={e => handleProfileChange('secondDepartment', e.target.value)}>
-                        <option value="">학과 선택</option>
-                        {CAMPUS_DATA[userProfile.campus]?.colleges[userProfile.secondCollege]?.map(d => <option key={d} value={d}>{d}</option>)}
+                    <RequiredField>
+                      <select className="w-full p-3 pr-10 mb-3 rounded-xl border-white border-2 text-sm font-bold bg-white focus:outline-none focus:border-[#00307B]" value={userProfile.secondCollege} onChange={e => { handleProfileChange('secondCollege', e.target.value); handleProfileChange('secondDepartment', ''); }}>
+                         <option value="">단과대학 선택</option>
+                         {Object.keys(CAMPUS_DATA[userProfile.campus]?.colleges || {}).map(c => <option key={c} value={c}>{c}</option>)}
                       </select>
+                    </RequiredField>
+                    {userProfile.secondCollege && (
+                      <RequiredField>
+                        <select className="w-full p-3 pr-10 rounded-xl border-white border-2 text-sm font-bold bg-white focus:outline-none focus:border-[#00307B]" value={userProfile.secondDepartment} onChange={e => handleProfileChange('secondDepartment', e.target.value)}>
+                          <option value="">학과 선택</option>
+                          {CAMPUS_DATA[userProfile.campus]?.colleges[userProfile.secondCollege]?.map(d => <option key={d} value={d}>{d}</option>)}
+                        </select>
+                      </RequiredField>
                     )}
                   </div>
                 )}
@@ -1126,11 +1261,16 @@ export default function App() {
 
         {onboardingStep === 2 && (
           <div className="animate-fade-in-up">
-            <h2 className="text-2xl font-black mb-8">기본 정보를 입력해주세요</h2>
-            <input type="text" placeholder="이름" value={userProfile.name} onChange={e => handleProfileChange('name', e.target.value)} className="w-full p-5 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold mb-4 focus:outline-none focus:border-[#00307B]" />
+            <h2 className="text-2xl font-black mb-3">기본 정보를 입력해주세요</h2>
+            <RequiredNotice />
+            <RequiredField>
+              <input type="text" placeholder="이름" value={userProfile.name} onChange={e => handleProfileChange('name', e.target.value)} className="w-full p-5 pr-10 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold mb-4 focus:outline-none focus:border-[#00307B]" />
+            </RequiredField>
             <div className="flex gap-4">
               <input type="number" placeholder="학년" value={userProfile.grade} onChange={e => handleProfileChange('grade', e.target.value)} className="flex-1 p-5 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" />
-              <input type="number" placeholder="학번" value={userProfile.studentId} onChange={e => handleProfileChange('studentId', e.target.value)} className="flex-1 p-5 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" />
+              <RequiredField className="flex-1">
+                <input type="number" placeholder="학번" value={userProfile.studentId} onChange={e => handleProfileChange('studentId', e.target.value)} className="w-full p-5 pr-10 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" />
+              </RequiredField>
             </div>
           </div>
         )}
@@ -1168,26 +1308,91 @@ export default function App() {
 
         {onboardingStep === 4 && (
           <div className="animate-fade-in-up">
-            <h2 className="text-2xl font-black mb-8">목표 진로를 선택하세요</h2>
-            <div className="space-y-3">
-              {Object.values(CAREER_GOALS).map(goal => (
-                <div key={goal.id} className={`p-5 rounded-3xl border-2 transition-all cursor-pointer ${userProfile.careerMain === goal.name ? 'border-[#00307B] bg-blue-50' : 'border-gray-100'}`} onClick={() => handleProfileChange('careerMain', goal.name)}>
-                  <div className="flex items-center gap-3">
-                    <div className={`w-5 h-5 rounded-full border-2 ${userProfile.careerMain === goal.name ? 'bg-[#00307B] border-[#00307B]' : 'border-gray-300'}`}></div>
-                    <span className="font-black text-lg">{goal.name}</span>
-                  </div>
-                  {userProfile.careerMain === goal.name && (
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {goal.sub.map(s => <button key={s} onClick={(e) => { e.stopPropagation(); handleProfileChange('careerSub', s); setOnboardingStep(5); }} className={`px-4 py-2 rounded-full text-xs font-bold border-2 transition-all ${userProfile.careerSub === s ? 'bg-[#00307B] text-white border-[#00307B]' : 'bg-white'}`}>{s}</button>)}
+            <h2 className="text-2xl font-black mb-2">목표 진로 분야를 선택하세요</h2>
+            <p className="text-gray-500 text-sm mb-4">먼저 큰 진로 카테고리를 고르면 다음 화면에서 세부 분야를 선택할 수 있어요.</p>
+            <RequiredNotice />
+            <div className="grid grid-cols-1 gap-3">
+              {CAREER_CATEGORIES.map(category => (
+                <button
+                  key={category.categoryName}
+                  onClick={() => {
+                    handleProfileChange('careerMain', category.categoryName);
+                    handleProfileChange('careerSubCategory', '');
+                    handleProfileChange('careerSub', '');
+                    setOnboardingStep(5);
+                  }}
+                  className={`relative p-5 rounded-3xl border-2 text-left transition-all ${userProfile.careerMain === category.categoryName ? 'border-[#00307B] bg-blue-50 shadow-sm' : 'border-gray-100 bg-white'}`}
+                >
+                  <RequiredMark />
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="font-black text-lg text-gray-900">{category.categoryName}</p>
+                      <p className="mt-1 text-xs font-bold text-gray-400">{category.subCategories.length}개 세부 분야 · {category.subCategories.reduce((count, sub) => count + sub.jobs.length, 0)}개 직무</p>
                     </div>
-                  )}
-                </div>
+                    <ChevronRight size={20} className={userProfile.careerMain === category.categoryName ? 'text-[#00307B]' : 'text-gray-300'} />
+                  </div>
+                </button>
               ))}
             </div>
           </div>
         )}
 
         {onboardingStep === 5 && (
+          <div className="animate-fade-in-up">
+            <p className="text-xs font-black text-[#00307B] mb-2">{userProfile.careerMain || '진로 분야'}</p>
+            <h2 className="text-2xl font-black mb-2">세부 분야를 선택하세요</h2>
+            <p className="text-gray-500 text-sm mb-4">선택한 분야 안에서 관심 있는 직무군을 골라주세요.</p>
+            <RequiredNotice />
+            <div className="space-y-3">
+              {(CAREER_CATEGORIES.find(category => category.categoryName === userProfile.careerMain)?.subCategories || []).map(subCategory => (
+                <button
+                  key={subCategory.subCategoryName}
+                  onClick={() => {
+                    handleProfileChange('careerSubCategory', subCategory.subCategoryName);
+                    handleProfileChange('careerSub', '');
+                    setOnboardingStep(6);
+                  }}
+                  className={`relative w-full p-5 rounded-3xl border-2 text-left transition-all ${userProfile.careerSubCategory === subCategory.subCategoryName ? 'border-[#00307B] bg-blue-50 shadow-sm' : 'border-gray-100 bg-white'}`}
+                >
+                  <RequiredMark />
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="font-black text-lg text-gray-900">{subCategory.subCategoryName}</p>
+                      <p className="mt-2 text-xs font-bold text-gray-400 leading-relaxed">{subCategory.jobs.join(' · ')}</p>
+                    </div>
+                    <ChevronRight size={20} className={userProfile.careerSubCategory === subCategory.subCategoryName ? 'text-[#00307B]' : 'text-gray-300'} />
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {onboardingStep === 6 && (
+          <div className="animate-fade-in-up">
+            <p className="text-xs font-black text-[#00307B] mb-2">{userProfile.careerMain} &gt; {userProfile.careerSubCategory}</p>
+            <h2 className="text-2xl font-black mb-2">희망 직무를 선택하세요</h2>
+            <p className="text-gray-500 text-sm mb-4">직무까지 선택하면 보유 스펙 등록 화면으로 이동합니다.</p>
+            <RequiredNotice />
+            <div className="grid grid-cols-1 gap-3">
+              {(CAREER_CATEGORIES.find(category => category.categoryName === userProfile.careerMain)?.subCategories.find(subCategory => subCategory.subCategoryName === userProfile.careerSubCategory)?.jobs || []).map(job => (
+                <button
+                  key={job}
+                  onClick={() => {
+                    handleProfileChange('careerSub', job);
+                    setOnboardingStep(7);
+                  }}
+                  className={`relative p-4 pr-10 rounded-2xl border-2 text-left font-black transition-all ${userProfile.careerSub === job ? 'border-[#00307B] bg-[#00307B] text-white shadow-md' : 'border-gray-100 bg-white text-gray-700'}`}
+                >
+                  <RequiredMark />
+                  {job}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {onboardingStep === 7 && (
           <div className="animate-fade-in-up pb-10">
             <h2 className="text-2xl font-black mb-2">이미 보유한 스펙 등록</h2>
             <p className="text-gray-500 text-sm mb-6">등록된 항목은 로드맵의 '성취 리스트'로 이동합니다.</p>
@@ -1304,7 +1509,7 @@ export default function App() {
           </div>
         )}
 
-        {onboardingStep === 6 && (
+        {onboardingStep === 8 && (
            <div className="flex flex-col items-center justify-center h-full animate-fade-in-up">
            <Sparkles className="text-[#00307B] w-16 h-16 mb-4 animate-bounce" />
            <h2 className="text-2xl font-black text-center">나만을 위한<br/>커스텀 로드맵 완성!</h2>
@@ -1313,7 +1518,13 @@ export default function App() {
       </div>
 
       <div className="p-6 bg-white border-t sticky bottom-0 z-20">
-        <button onClick={() => onboardingStep === 6 ? setCurrentScreen('home') : setOnboardingStep(s => s + 1)} className="w-full py-5 bg-[#00307B] text-white font-black text-lg rounded-[2rem] shadow-xl">{onboardingStep === 6 ? '시작하기' : '다음 단계로'}</button>
+        <button
+          disabled={!canContinueOnboarding()}
+          onClick={() => onboardingStep === 8 ? setCurrentScreen('home') : setOnboardingStep(s => s + 1)}
+          className="w-full py-5 bg-[#00307B] disabled:bg-gray-300 disabled:shadow-none text-white font-black text-lg rounded-[2rem] shadow-xl transition-colors"
+        >
+          {onboardingStep === 8 ? '시작하기' : '다음 단계로'}
+        </button>
       </div>
     </div>
   );
@@ -1490,7 +1701,7 @@ export default function App() {
           <Map size={22} className="text-[#00307B]" /> {userProfile.careerSub} 로드맵 지도
         </h3>
         <div className="relative pl-6 border-l-2 border-dashed border-blue-200 space-y-8 pb-4">
-          {(YEARLY_ROADMAP_DB[userProfile.careerSub] || YEARLY_ROADMAP_DB['default']).map((roadmap, idx) => (
+          {(YEARLY_ROADMAP_DB[getCareerRecommendationKey(userProfile)] || YEARLY_ROADMAP_DB['default']).map((roadmap, idx) => (
             <div key={idx} className="relative">
               <div className="absolute -left-[33px] top-1 w-4 h-4 bg-white border-4 border-[#00307B] rounded-full z-10"></div>
               <div className="bg-white rounded-[2rem] p-5 shadow-sm border-2 border-blue-50 relative ml-2 group hover:border-[#00307B] transition-colors">
@@ -1609,7 +1820,7 @@ export default function App() {
       </div>
 
       <div className="space-y-3">
-        {[{ icon: GraduationCap, label: '학적 및 이수학점 수정', step: 1 }, { icon: Award, label: '보유 스펙 관리', step: 5 }, { icon: Target, label: '진로 목표 변경', step: 4 }].map((item, i) => (
+        {[{ icon: GraduationCap, label: '학적 및 이수학점 수정', step: 1 }, { icon: Award, label: '보유 스펙 관리', step: 7 }, { icon: Target, label: '진로 목표 변경', step: 4 }].map((item, i) => (
           <button key={i} onClick={() => { setOnboardingStep(item.step); setCurrentScreen('onboarding'); }} className="w-full bg-white p-6 rounded-3xl flex items-center justify-between border border-gray-50 shadow-sm active:bg-gray-50">
             <div className="flex items-center gap-4">
               <div className="p-2 bg-gray-50 rounded-xl text-gray-400"><item.icon size={20}/></div>
