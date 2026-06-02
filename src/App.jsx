@@ -875,6 +875,7 @@ export default function App() {
   // 나의 대외활동 일지 관리용 State
   const [journals, setJournals] = useState(() => readStoredValue(STORAGE_KEYS.journals, []));
   const [isJournalModalOpen, setIsJournalModalOpen] = useState(false);
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   
   // 스펙 사진 인증(OCR)용 State
   const [selectedSpec, setSelectedSpec] = useState('');
@@ -1625,11 +1626,75 @@ export default function App() {
     const data = userRoadmapData;
     if (!data) return null;
 
+    const upcomingMilestones = data.milestones
+      .filter(spec => typeof spec.dDay === 'string' && (spec.dDay.includes('D-') || spec.dDay === 'D-Day'))
+      .slice(0, 3)
+      .map(spec => ({
+        title: spec.title,
+        message: spec.dDay === 'D-Day' ? '오늘 마감되는 목표가 있어요.' : `${spec.dDay} 남은 목표를 확인해 보세요.`,
+        meta: spec.dDay,
+        tone: 'red',
+      }));
+    const liveActivityNotifications = liveActivities.slice(0, 2).map(live => ({
+      title: live.title,
+      message: live.dynamicReason || '새로운 활동 정보를 확인할 수 있어요.',
+      meta: 'LIVE',
+      tone: 'blue',
+    }));
+    const achievedNotifications = data.achieved.slice(0, 1).map(spec => ({
+      title: spec.title,
+      message: '달성한 스펙으로 표시되어 있어요.',
+      meta: '완료',
+      tone: 'green',
+    }));
+    const notifications = [...upcomingMilestones, ...liveActivityNotifications, ...achievedNotifications].slice(0, 6);
+
     return (
       <div className="p-6 pt-10 animate-fade-in-up">
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex justify-between items-center mb-8 relative">
           <div className="bg-[#00307B] text-white px-3 py-1 rounded-lg text-xs font-black tracking-widest">HY ROAD</div>
-          <Bell size={20} className="text-gray-400" />
+          <button
+            type="button"
+            onClick={() => setIsNotificationOpen(prev => !prev)}
+            aria-label="알림 열기"
+            aria-expanded={isNotificationOpen}
+            className={`relative h-10 w-10 rounded-2xl border flex items-center justify-center transition-all ${isNotificationOpen ? 'bg-[#00307B] border-[#00307B] text-white shadow-lg shadow-blue-100' : 'bg-white border-gray-100 text-gray-400 shadow-sm hover:text-[#00307B]'}`}
+          >
+            <Bell size={20} />
+            {notifications.length > 0 && (
+              <span className="absolute right-2 top-2 h-2.5 w-2.5 rounded-full bg-red-500 ring-2 ring-white" />
+            )}
+          </button>
+          {isNotificationOpen && (
+            <div className="absolute right-0 top-12 z-50 w-80 max-w-[calc(100vw-3rem)] rounded-[2rem] border border-gray-100 bg-white p-4 text-left shadow-2xl shadow-gray-200/80">
+              <div className="mb-3 flex items-center justify-between">
+                <div>
+                  <p className="text-[10px] font-black tracking-widest text-[#00307B]">NOTIFICATIONS</p>
+                  <h3 className="text-base font-black text-gray-900">알림</h3>
+                </div>
+                <span className="rounded-full bg-gray-100 px-2.5 py-1 text-[10px] font-black text-gray-500">{notifications.length}</span>
+              </div>
+              {notifications.length === 0 ? (
+                <div className="rounded-3xl border-2 border-dashed border-gray-100 bg-gray-50 px-5 py-8 text-center">
+                  <Bell size={28} className="mx-auto mb-3 text-gray-300" />
+                  <p className="text-sm font-black text-gray-600">알림이 오지 않았어요</p>
+                  <p className="mt-1 text-[11px] font-bold leading-relaxed text-gray-400">새로운 마감이나 추천 활동이 생기면 여기에 표시됩니다.</p>
+                </div>
+              ) : (
+                <div className="max-h-80 space-y-2 overflow-y-auto pr-1">
+                  {notifications.map((notification, idx) => (
+                    <div key={`${notification.title}-${idx}`} className="rounded-2xl border border-gray-100 bg-gray-50 p-3">
+                      <div className="mb-1.5 flex items-start justify-between gap-3">
+                        <p className="line-clamp-2 text-xs font-black leading-snug text-gray-900">{notification.title}</p>
+                        <span className={`shrink-0 rounded-full px-2 py-0.5 text-[9px] font-black ${notification.tone === 'red' ? 'bg-red-100 text-red-600' : notification.tone === 'green' ? 'bg-green-100 text-green-600' : 'bg-blue-100 text-[#00307B]'}`}>{notification.meta}</span>
+                      </div>
+                      <p className="text-[11px] font-bold leading-relaxed text-gray-500">{notification.message}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
         <h2 className="text-2xl font-black leading-tight mb-8">
           {userProfile.name}님을 위한<br/>
