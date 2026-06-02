@@ -46,3 +46,54 @@ npm run dev
 ```
 
 검증 빌드는 `npm run build`, 코드 검사는 `npm run lint`로 실행합니다.
+
+## 최신 공모전/해커톤 데이터 수집
+
+홈 화면의 `liveActivities` 영역은 Firebase가 설정되어 있으면 Firestore `opportunities` 컬렉션에서 최신 데이터를 읽고, 데이터가 없거나 Firebase를 사용할 수 없을 때만 기존 플랫폼 검색 링크로 fallback합니다.
+
+### Cloud Functions + Scheduler
+
+`functions/`에는 6시간마다 실행되는 `collectOpportunities` 스케줄 함수가 포함되어 있습니다. 함수는 저작권 침해를 피하기 위해 HTML 무단 스크래핑을 하지 않고 다음 출처만 사용합니다.
+
+1. 공공데이터포털 Open API (`PUBLIC_DATA_SERVICE_KEY`, `PUBLIC_DATA_ENDPOINTS`)
+2. 검색 API (`NAVER_SEARCH_CLIENT_ID`, `NAVER_SEARCH_CLIENT_SECRET`)
+3. 명시적으로 사용 허가를 받은 JSON 피드 (`PERMITTED_FEEDS`)
+
+수집된 항목은 원문 전체를 저장하지 않고 `title`, `deadline`, `source`, `originalLink`, 앱이 직접 생성한 짧은 `summary`, `careerTags`만 Firestore `opportunities` 컬렉션에 저장합니다.
+
+Firebase Functions v2 배포 환경에서는 Secret Manager, `.env`/`.env.<project-id>` 파일, 또는 CI/CD 환경변수로 아래 값을 주입하세요.
+
+```bash
+PUBLIC_DATA_SERVICE_KEY="공공데이터포털_서비스키"
+NAVER_SEARCH_CLIENT_ID="검색_API_Client_ID"
+NAVER_SEARCH_CLIENT_SECRET="검색_API_Client_Secret"
+PUBLIC_DATA_ENDPOINTS='[{"name":"공공데이터포털 승인 API","url":"https://apis.data.go.kr/...","itemsPath":"response.body.items.item","fields":{"title":"title","url":"url","deadline":"endDate","publishedAt":"createdAt"}}]'
+PERMITTED_FEEDS='[{"name":"제휴 피드명","url":"https://partner.example.com/opportunities.json","itemsPath":"items","fields":{"title":"title","url":"url","deadline":"deadline","publishedAt":"publishedAt","careerTags":"careerTags"}}]'
+```
+
+배포:
+
+```bash
+npm install --prefix functions
+firebase deploy --only functions
+```
+
+### Firestore 보안 규칙 예시
+
+`opportunities`는 앱 홈 화면에 표시되는 공개 모집 정보이므로 읽기는 허용하고, 쓰기는 Cloud Functions Admin SDK만 수행하도록 클라이언트 쓰기를 차단합니다.
+
+```txt
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    match /opportunities/{opportunityId} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}
+```

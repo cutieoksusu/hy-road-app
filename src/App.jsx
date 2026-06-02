@@ -709,6 +709,30 @@ const generatePlatformSearchLink = (careerSub, platformStr) => {
   return '#';
 };
 
+const buildFallbackLiveActivities = (careerSub) => ([
+  {
+    title: `[${careerSub}] 링커리어 공고 바로가기`,
+    dDay: '실시간',
+    url: generatePlatformSearchLink(careerSub, '링커리어'),
+    source: '링커리어 검색',
+    summary: '수집된 최신 데이터가 없을 때만 제공되는 플랫폼 검색 링크입니다.',
+  },
+  {
+    title: `[${careerSub}] 캠퍼스픽 활동 바로가기`,
+    dDay: '실시간',
+    url: generatePlatformSearchLink(careerSub, '캠퍼스픽'),
+    source: '캠퍼스픽 검색',
+    summary: '수집된 최신 데이터가 없을 때만 제공되는 플랫폼 검색 링크입니다.',
+  },
+  {
+    title: `[${careerSub}] 위비티 공모전 바로가기`,
+    dDay: '실시간',
+    url: generatePlatformSearchLink(careerSub, '위비티'),
+    source: '위비티 검색',
+    summary: '수집된 최신 데이터가 없을 때만 제공되는 플랫폼 검색 링크입니다.',
+  },
+]);
+
 const ScreenWrapper = ({ children, isActive }) => (
   <div className={`absolute inset-0 h-full w-full bg-gray-50 transition-all duration-300 transform ${isActive ? 'opacity-100 translate-x-0 z-10 pointer-events-auto' : 'opacity-0 translate-x-10 z-0 pointer-events-none'} overflow-y-auto pb-24`}>
     {children}
@@ -998,18 +1022,37 @@ export default function App() {
   }, [selectedSpec]);
 
   useEffect(() => {
-    if (!userProfile.careerSub) return;
-    setIsLoadingLive(true);
-    setTimeout(() => {
-      const directLinks = [
-        { title: `[${userProfile.careerSub}] 링커리어 공고 바로가기`, dDay: "실시간", url: generatePlatformSearchLink(userProfile.careerSub, '링커리어'), dynamicReason: "링커리어 다이렉트" },
-        { title: `[${userProfile.careerSub}] 캠퍼스픽 활동 바로가기`, dDay: "실시간", url: generatePlatformSearchLink(userProfile.careerSub, '캠퍼스픽'), dynamicReason: "캠퍼스픽 다이렉트" },
-        { title: `[${userProfile.careerSub}] 위비티 공모전 바로가기`, dDay: "실시간", url: generatePlatformSearchLink(userProfile.careerSub, '위비티'), dynamicReason: "위비티 다이렉트" }
-      ];
-      setLiveActivities(directLinks);
-      setIsLoadingLive(false);
-    }, 300);
-  }, [userProfile.careerSub]);
+    if (!userProfile.careerSub) return undefined;
+
+    let isMounted = true;
+    const fallbackLinks = buildFallbackLiveActivities(userProfile.careerSub);
+    const loadLiveActivities = async () => {
+      setIsLoadingLive(true);
+      try {
+        if (!isFirebaseConfigured) {
+          setLiveActivities(fallbackLinks);
+          return;
+        }
+
+        const client = firebaseClient || await import('./firebase');
+        const remoteItems = await client.loadOpportunities({ careerSub: userProfile.careerSub });
+        if (!isMounted) return;
+        setLiveActivities(remoteItems.length ? remoteItems.map((item) => ({
+          ...item,
+          dDay: getDDayFormatted(item.deadline, item.deadline ? '일정 확인' : '상시/확인'),
+        })) : fallbackLinks);
+      } catch {
+        if (isMounted) setLiveActivities(fallbackLinks);
+      } finally {
+        if (isMounted) setIsLoadingLive(false);
+      }
+    };
+
+    loadLiveActivities();
+    return () => {
+      isMounted = false;
+    };
+  }, [firebaseClient, userProfile.careerSub]);
 
   // OCR 사진 촬영 시뮬레이션 함수
   const simulatePhotoAuth = () => {
@@ -1558,12 +1601,16 @@ export default function App() {
           ) : (
             <div className="flex gap-3 overflow-x-auto pb-4 snap-x">
               {liveActivities.map((live, idx) => (
-                <a key={idx} href={live.url} target="_blank" rel="noreferrer" className="shrink-0 w-64 bg-white border border-gray-200 rounded-3xl p-5 shadow-sm snap-start hover:border-blue-300 transition-colors block">
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="text-[10px] font-black text-red-500 bg-red-50 px-2 py-1 rounded-md">{live.dDay}</span>
-                    <span className="text-[10px] text-gray-400 font-bold">{live.dynamicReason}</span>
+                <a key={live.id || idx} href={live.url} target="_blank" rel="noreferrer" className="shrink-0 w-72 bg-white border border-gray-200 rounded-3xl p-5 shadow-sm snap-start hover:border-blue-300 transition-colors block">
+                  <div className="flex justify-between items-center mb-3 gap-3">
+                    <span className="text-[10px] font-black text-red-500 bg-red-50 px-2 py-1 rounded-md">{live.dDay || '일정 확인'}</span>
+                    <span className="text-[10px] text-gray-400 font-bold truncate">{live.source}</span>
                   </div>
-                  <h4 className="font-black text-gray-900 text-sm leading-snug line-clamp-2">{live.title}</h4>
+                  <h4 className="font-black text-gray-900 text-sm leading-snug line-clamp-2 mb-3">{live.title}</h4>
+                  <p className="text-[11px] text-gray-500 font-bold leading-relaxed line-clamp-3 mb-4">{live.summary}</p>
+                  <div className="flex items-center gap-1 text-[10px] font-black text-[#00307B]">
+                    원문 링크 <ExternalLink size={12} />
+                  </div>
                 </a>
               ))}
             </div>
