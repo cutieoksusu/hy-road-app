@@ -715,23 +715,48 @@ const buildFallbackLiveActivities = (careerSub) => ([
     dDay: '실시간',
     url: generatePlatformSearchLink(careerSub, '링커리어'),
     source: '링커리어 검색',
-    summary: '수집된 최신 데이터가 없을 때만 제공되는 플랫폼 검색 링크입니다.',
+    summary: '실시간 API 응답이 없을 때만 제공되는 플랫폼 검색 링크입니다.',
   },
   {
     title: `[${careerSub}] 캠퍼스픽 활동 바로가기`,
     dDay: '실시간',
     url: generatePlatformSearchLink(careerSub, '캠퍼스픽'),
     source: '캠퍼스픽 검색',
-    summary: '수집된 최신 데이터가 없을 때만 제공되는 플랫폼 검색 링크입니다.',
+    summary: '실시간 API 응답이 없을 때만 제공되는 플랫폼 검색 링크입니다.',
   },
   {
     title: `[${careerSub}] 위비티 공모전 바로가기`,
     dDay: '실시간',
     url: generatePlatformSearchLink(careerSub, '위비티'),
     source: '위비티 검색',
-    summary: '수집된 최신 데이터가 없을 때만 제공되는 플랫폼 검색 링크입니다.',
+    summary: '실시간 API 응답이 없을 때만 제공되는 플랫폼 검색 링크입니다.',
   },
 ]);
+
+const normalizeLiveActivity = (item) => ({
+  id: item.id || item.url || item.originalLink || item.title,
+  title: item.title || '제목 확인 필요',
+  dDay: item.dDay || getDDayFormatted(item.deadline, item.deadline ? '일정 확인' : '상시/확인'),
+  url: item.url || item.originalLink || '#',
+  source: item.source || item.sourceName || '허가된 출처',
+  summary: item.summary || '',
+  dynamicReason: item.dynamicReason || item.type || '실시간 API',
+});
+
+const fetchOpportunityApi = async ({ careerSub, signal }) => {
+  const apiUrl = import.meta.env.VITE_OPPORTUNITY_API_URL;
+  if (!apiUrl) return [];
+
+  const url = new URL(apiUrl, window.location.origin);
+  url.searchParams.set('career', careerSub);
+  url.searchParams.set('maxItems', '12');
+
+  const response = await fetch(url, { signal });
+  if (!response.ok) throw new Error('opportunity-api-failed');
+
+  const data = await response.json();
+  return Array.isArray(data.items) ? data.items.map(normalizeLiveActivity) : [];
+};
 
 const ScreenWrapper = ({ children, isActive }) => (
   <div className={`absolute inset-0 h-full w-full bg-gray-50 transition-all duration-300 transform ${isActive ? 'opacity-100 translate-x-0 z-10 pointer-events-auto' : 'opacity-0 translate-x-10 z-0 pointer-events-none'} overflow-y-auto pb-24`}>
@@ -1025,10 +1050,22 @@ export default function App() {
     if (!userProfile.careerSub) return undefined;
 
     let isMounted = true;
+    const controller = new AbortController();
     const fallbackLinks = buildFallbackLiveActivities(userProfile.careerSub);
+
     const loadLiveActivities = async () => {
       setIsLoadingLive(true);
       try {
+        const apiItems = await fetchOpportunityApi({
+          careerSub: userProfile.careerSub,
+          signal: controller.signal,
+        });
+        if (!isMounted) return;
+        if (apiItems.length) {
+          setLiveActivities(apiItems);
+          return;
+        }
+
         if (!isFirebaseConfigured) {
           setLiveActivities(fallbackLinks);
           return;
@@ -1037,12 +1074,9 @@ export default function App() {
         const client = firebaseClient || await import('./firebase');
         const remoteItems = await client.loadOpportunities({ careerSub: userProfile.careerSub });
         if (!isMounted) return;
-        setLiveActivities(remoteItems.length ? remoteItems.map((item) => ({
-          ...item,
-          dDay: getDDayFormatted(item.deadline, item.deadline ? '일정 확인' : '상시/확인'),
-        })) : fallbackLinks);
-      } catch {
-        if (isMounted) setLiveActivities(fallbackLinks);
+        setLiveActivities(remoteItems.length ? remoteItems.map(normalizeLiveActivity) : fallbackLinks);
+      } catch (error) {
+        if (isMounted && error.name !== 'AbortError') setLiveActivities(fallbackLinks);
       } finally {
         if (isMounted) setIsLoadingLive(false);
       }
@@ -1051,6 +1085,7 @@ export default function App() {
     loadLiveActivities();
     return () => {
       isMounted = false;
+      controller.abort();
     };
   }, [firebaseClient, userProfile.careerSub]);
 
