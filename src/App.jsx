@@ -2035,15 +2035,15 @@ export default function App() {
         {authMessage && <p className={`mt-4 p-3 rounded-xl text-[11px] font-bold ${syncStatus.includes('실패') || authMessage.includes('오류') || authMessage.includes('확인') ? 'bg-red-50 text-red-600' : 'bg-blue-50 text-[#00307B]'}`}>{authMessage}</p>}
       </div>
       
-      <div className="bg-gray-950 text-white rounded-[2rem] p-5 shadow-sm border border-gray-900 mb-8 overflow-hidden">
+      <div className="bg-white text-gray-900 rounded-[2rem] p-5 shadow-sm border border-blue-100 mb-8 overflow-hidden">
         <div className="flex items-end justify-between mb-5">
           <div>
-            <p className="text-[10px] font-black tracking-widest text-purple-300">MONTHLY PLAN</p>
-            <h3 className="text-3xl font-black">{monthStart.toLocaleString('en-US', { month: 'short' })}</h3>
+            <p className="text-[10px] font-black tracking-widest text-[#00307B]">MONTHLY PLAN</p>
+            <h3 className="text-3xl font-black text-gray-900">{monthStart.toLocaleString('en-US', { month: 'short' })}</h3>
           </div>
-          <Calendar size={24} className="text-purple-300" />
+          <Calendar size={24} className="text-[#00307B]" />
         </div>
-        <div className="grid grid-cols-7 border-b border-white/10 pb-2 mb-2">
+        <div className="grid grid-cols-7 border-b border-blue-100 pb-2 mb-2">
           {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, idx) => (
             <div key={`${day}-${idx}`} className="text-center text-[11px] font-black text-gray-400">{day}</div>
           ))}
@@ -2056,10 +2056,10 @@ export default function App() {
               <div key={idx} className="min-h-[54px] px-0.5">
                 {day && (
                   <>
-                    <div className={`mx-auto mb-1 flex h-6 w-6 items-center justify-center rounded-full text-xs font-black ${isToday ? 'bg-purple-500 text-white' : 'text-white'}`}>{day}</div>
+                    <div className={`mx-auto mb-1 flex h-6 w-6 items-center justify-center rounded-full text-xs font-black ${isToday ? 'bg-[#00307B] text-white' : 'text-gray-900'}`}>{day}</div>
                     <div className="space-y-1">
                       {events.map((event, eventIdx) => (
-                        <div key={`${event.title}-${eventIdx}`} className={`truncate rounded-md px-1.5 py-0.5 text-[8px] font-black ${event.tone === 'activity' ? 'bg-purple-500/80 text-white' : 'bg-blue-500/80 text-white'}`}>
+                        <div key={`${event.title}-${eventIdx}`} className={`truncate rounded-md px-1.5 py-0.5 text-[8px] font-black ${event.tone === 'activity' ? 'bg-blue-100 text-[#00307B]' : 'bg-[#00307B] text-white'}`}>
                           {event.title}
                         </div>
                       ))}
@@ -2105,13 +2105,13 @@ export default function App() {
         )}
       </div>
 
-      <button type="button" onClick={() => setCurrentScreen('subscription')} className="w-full mb-8 bg-gray-950 text-white p-5 rounded-[2rem] flex items-center justify-between shadow-sm border border-gray-900 active:scale-[0.99] transition-transform">
+      <button type="button" onClick={() => setCurrentScreen('subscription')} className="w-full mb-8 bg-white text-gray-900 p-5 rounded-[2rem] flex items-center justify-between shadow-sm border border-blue-100 active:scale-[0.99] transition-transform">
         <div className="text-left">
-          <p className="text-[10px] font-black tracking-widest text-purple-300">PREMIUM</p>
+          <p className="text-[10px] font-black tracking-widest text-[#00307B]">PREMIUM</p>
           <p className="mt-1 text-base font-black">구독 페이지로 이동</p>
-          <p className="mt-1 text-[11px] font-bold text-gray-400">맞춤 자소서, 영상 통화, 심층 활동 추천을 확인하세요.</p>
+          <p className="mt-1 text-[11px] font-bold text-gray-500">맞춤 자소서, 영상 통화, 심층 활동 추천을 확인하세요.</p>
         </div>
-        <ChevronRight size={22} className="text-purple-300" />
+        <ChevronRight size={22} className="text-[#00307B]" />
       </button>
 
       <div className="space-y-3">
@@ -2176,26 +2176,25 @@ export default function App() {
 
   const renderSubscription = () => (
     <div className="min-h-full bg-white animate-fade-in-up">
-      <div className="relative overflow-hidden bg-gray-950 px-6 pb-10 pt-10 text-white">
-        <button type="button" onClick={() => setCurrentScreen('settings')} className="mb-8 flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10 text-white">
+      <div className="relative overflow-hidden bg-[#00307B] px-6 pb-10 pt-10 text-white">
+        <button type="button" onClick={() => setCurrentScreen('settings')} className="mb-8 flex h-10 w-10 items-center justify-center rounded-2xl bg-white/15 text-white">
           <ChevronLeft size={22} />
         </button>
-        <div className="absolute right-6 top-16 h-28 w-28 rounded-full bg-purple-500/30 blur-2xl"></div>
-        <p className="text-[11px] font-black tracking-widest text-purple-300">HY ROAD PLUS</p>
+        <p className="text-[11px] font-black tracking-widest text-blue-200">HY ROAD PLUS</p>
         <h1 className="mt-3 text-2xl font-black leading-tight text-white">HY-ROAD PREMIUM</h1>
-        <p className="mt-3 text-xs font-bold leading-relaxed text-gray-300">로드맵, 일정, 활동 기록을 기반으로 더 깊은 추천과 브리핑을 받아보세요.</p>
+        <p className="mt-3 text-xs font-bold leading-relaxed text-blue-100">로드맵, 일정, 활동 기록을 기반으로 더 깊은 추천과 브리핑을 받아보세요.</p>
         <div className="mt-5 grid grid-cols-2 gap-3">
-          <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
-            <p className="text-[10px] font-black text-purple-200">월 구독</p>
+          <div className="rounded-2xl border border-white/20 bg-white/10 p-4">
+            <p className="text-[10px] font-black text-blue-100">월 구독</p>
             <p className="mt-1 text-xl font-black text-white">3,900원</p>
           </div>
-          <div className="rounded-2xl border border-purple-300/40 bg-purple-500/20 p-4">
-            <p className="text-[10px] font-black text-purple-200">학기 구독</p>
+          <div className="rounded-2xl border border-white/30 bg-white/20 p-4">
+            <p className="text-[10px] font-black text-blue-100">학기 구독</p>
             <p className="mt-1 text-xl font-black text-white">14,900원</p>
           </div>
         </div>
-        <div className="mt-7 mx-auto flex h-28 w-28 items-center justify-center rounded-[2rem] border border-purple-300/50 bg-purple-500/20 shadow-2xl shadow-purple-900/40">
-          <Sparkles size={42} className="text-purple-200" />
+        <div className="mt-7 mx-auto flex h-28 w-28 items-center justify-center rounded-[2rem] border border-white/30 bg-white/15 shadow-2xl shadow-blue-950/30">
+          <Sparkles size={42} className="text-blue-100" />
         </div>
       </div>
       <div className="-mt-6 rounded-t-[2.5rem] bg-white px-6 pb-28 pt-8">
@@ -2207,7 +2206,7 @@ export default function App() {
             { title: '광고 제거', desc: '더 조용하고 집중하기 쉬운 화면으로 사용할 수 있습니다.' },
           ].map(item => (
             <div key={item.title} className="flex items-start gap-4">
-              <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-purple-100 text-purple-600">
+              <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[#00307B]">
                 <CheckCircle2 size={18} />
               </div>
               <div>
@@ -2217,7 +2216,7 @@ export default function App() {
             </div>
           ))}
         </div>
-        <button type="button" className="mt-8 w-full rounded-2xl bg-purple-600 py-4 text-sm font-black text-white shadow-lg shadow-purple-200">
+        <button type="button" className="mt-8 w-full rounded-2xl bg-[#00307B] py-4 text-sm font-black text-white shadow-lg shadow-blue-200">
           부스트 구독 시작하기
         </button>
         <p className="mt-4 text-center text-[11px] font-bold text-gray-400">언제든지 MY 페이지에서 구독 상태를 확인할 수 있어요.</p>
