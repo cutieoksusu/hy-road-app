@@ -4,6 +4,7 @@ import {
   Clock, LogOut, ShieldCheck, BookOpen, CheckCircle2, TrendingUp, Search, 
   AlertCircle, ChevronLeft, Building, Target, Check, Sparkles, ExternalLink, Link as LinkIcon, Edit3, XCircle, Info, Award, FileText, Globe, Hourglass, Plus, Trash2, Loader2, Camera, PenTool, Image as ImageIcon
 } from 'lucide-react';
+import { recommendActivities } from './recommendationEngine';
 
 const CAMPUS_DATA = {
   SEOUL: {
@@ -171,108 +172,67 @@ const CAREER_RECOMMENDATION_FALLBACK = {
   '건축·환경·의료·바이오': '식품/F&B',
 };
 
+const CAREER_ROADMAP_KEY_MAP = {
+  '프론트엔드개발자': 'IT/소프트웨어',
+  '백엔드개발자': 'IT/소프트웨어',
+  '앱개발자': 'IT/소프트웨어',
+  '게임개발자': 'IT/소프트웨어',
+  '소프트웨어개발자': 'IT/소프트웨어',
+  '데이터사이언티스트': 'IT/소프트웨어',
+  '데이터분석가': 'IT/소프트웨어',
+  '데이터엔지니어': 'IT/소프트웨어',
+  'AI/ML엔지니어': 'IT/소프트웨어',
+  'AI/ML연구원': 'IT/소프트웨어',
+  '서비스기획자(PM·PO)': '기획/마케팅',
+  '웹기획자': '기획/마케팅',
+  '경영·비즈니스기획': '기획/마케팅',
+  'AI기획자': '기획/마케팅',
+  '브랜드마케터': '기획/마케팅',
+  '퍼포먼스마케터': '기획/마케팅',
+  '콘텐츠마케터': '기획/마케팅',
+  'AE(광고기획자)': '기획/마케팅',
+  'UI·UX디자이너': '패션/의류',
+  '웹디자이너': '패션/의류',
+  '영상디자이너': '패션/의류',
+  '그래픽디자이너': '패션/의류',
+  '패션디자이너': '패션/의류',
+  '회계사(CPA)': 'CPA (공인회계사)',
+  '세무사': 'CPA (공인회계사)',
+  '회계담당자': '금융/은행',
+  '재무담당자': '금융/은행',
+  '애널리스트': '금융/은행',
+  '펀드매니저': '금융/은행',
+  '은행원·텔러(IB/PB 등)': '금융/은행',
+  '반도체엔지니어': '반도체/엔지니어링',
+  '공정엔지니어': '반도체/엔지니어링',
+  '전기·전자엔지니어': '반도체/엔지니어링',
+  '기계엔지니어': '반도체/엔지니어링',
+  '화학엔지니어': '반도체/엔지니어링',
+  'R&D·연구원': '반도체/엔지니어링',
+  '품질관리자(QA/QC)': '반도체/엔지니어링',
+  '변호사(로스쿨)': '로스쿨 (법조인)',
+  '법무담당자': '로스쿨 (법조인)',
+  '공기업(NCS 준비)': '공기업 (NCS)',
+  '5급 행정고시': '5급 행정고시',
+  '5급 기술고시': '5급 기술고시',
+  'PD·감독': '언론고시 (기자/PD)',
+  '기자': '언론고시 (기자/PD)',
+  '아나운서': '언론고시 (기자/PD)',
+  '콘텐츠에디터': '언론고시 (기자/PD)',
+  '영상편집자': '언론고시 (기자/PD)',
+  '바이오·제약연구원': '식품/F&B',
+  '영양사': '식품/F&B',
+  '식품연구원': '식품/F&B',
+};
+
 const getCareerRecommendationKey = (profile) => (
-  CAREER_SPEC_MAP[profile.careerSub]
-    ? profile.careerSub
-    : CAREER_RECOMMENDATION_FALLBACK[profile.careerMain] || 'default'
+  CAREER_ROADMAP_KEY_MAP[profile.careerSub]
+    || CAREER_RECOMMENDATION_FALLBACK[profile.careerMain]
+    || 'default'
 );
 
-// 💡 [기능 반영] 실시간 D-day 계산을 위한 타겟 날짜 명시 데이터베이스
-const CAREER_SPEC_MAP = {
-  'IT/소프트웨어': [
-    { cat: 'lang', title: 'OPIc', targetScore: 'IM2', source: 'OPIc', targetDate: '2026-06-25', desc: '개발자 대기업 서류 패스 기본 요건입니다.', url: 'https://www.opic.or.kr/' },
-    { cat: 'lang', title: 'TOEIC', targetScore: '800', source: 'YBM', targetDate: '2026-06-14', desc: '공통 필수 어학 스탯입니다.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: '정보처리기사', source: 'Q-Net', targetDate: '2026-07-05', desc: 'IT 직무의 가장 기본이 되는 국가공인자격증.', url: 'https://www.q-net.or.kr/' },
-    { cat: 'cert', title: 'SQLD', source: '데이터자격검정', targetDate: '2026-08-24', desc: '백엔드/데이터 직무 지원자라면 필수.', url: 'https://www.dataq.or.kr/' },
-    { cat: 'activity', title: 'IT 연합동아리 (SOPT/NEXTERS)', source: '캠퍼스픽', targetDate: '2026-05-30', desc: '기획/디자인/개발자가 모여 협업 프로젝트를 진행하는 대장급 동아리.', url: 'https://sopt.org/' },
-    { cat: 'project', title: '네이버 부스트캠프 / 우테코', source: '링커리어', targetDate: '2026-06-10', desc: '수료 시 네카라쿠배 합격률 최상위인 초고퀄리티 부트캠프.', url: 'https://woowacourse.github.io/' },
-    { cat: 'intern', title: '카카오/네이버 하계 인턴십', source: '채용 홈페이지', targetDate: '2026-06-01', desc: '최고의 실무 스펙. 코딩테스트 통과가 핵심입니다.', url: 'https://careers.kakao.com/' },
-  ],
-  '기획/마케팅': [
-    { cat: 'lang', title: 'OPIc', targetScore: 'IH', source: 'YBM/OPIc', targetDate: '2026-06-25', desc: '기획/마케팅 직무의 필수 어학 컷. 커뮤니케이션 역량을 어필하세요.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'lang', title: 'TOEIC', targetScore: '900', source: 'YBM', targetDate: '2026-06-14', desc: '고고익선 어학 성적입니다.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: 'GA4 (구글 애널리틱스)', source: 'Google Skillshop', targetDate: '2026-05-28', desc: '데이터 기반 퍼포먼스 마케팅을 위한 필수 자격증입니다.', url: 'https://skillshop.exceedlms.com/' },
-    { cat: 'cert', title: '컴퓨터활용능력 1급', source: '대한상공회의소', targetDate: '2026-06-10', desc: '기획/사무직의 기본 엑셀/데이터 활용 능력 증명입니다.', url: 'https://license.korcham.net/' },
-    { cat: 'activity', title: '경영전략/마케팅 학회', source: '교내', targetDate: '2026-09-05', desc: '실제 기업과 산학협력 프로젝트를 진행하며 실무 기획력을 배양합니다.', url: '#' },
-    { cat: 'activity', title: 'KT&G 상상유니브 마케팅스쿨', source: '상상유니브', targetDate: '2026-07-20', desc: '전국 최대 규모 마케팅 실무 대외활동.', url: 'https://www.sangsanguniv.com/' },
-    { cat: 'project', title: '제일기획 아이디어 페스티벌', source: '제일기획', targetDate: '2026-05-31', desc: '광고/기획 분야 최고 권위 공모전. 입상 시 대행사 취업에 유리합니다.', url: 'https://ideafestival.cheil.co.kr/' },
-  ],
-  '식품/F&B': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '800', source: 'YBM', targetDate: '2026-06-14', desc: '식품 및 소비재 대기업 지원의 필수 어학 요건입니다.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: '식품기사', source: 'Q-Net', targetDate: '2026-07-05', desc: '식품 연구개발(R&D) 및 품질관리(QC) 필수 자격증.', url: 'https://www.q-net.or.kr/' },
-    { cat: 'cert', title: '위생사 / 영양사', source: '한국보건의료인국가시험원', targetDate: '2026-11-20', desc: '식품영양학과 특화 국가면허. 급식, 단체급식, 식품위생 직무 필수.', url: 'https://www.kuksiwon.or.kr/' },
-    { cat: 'cert', title: '품질경영기사', source: 'Q-Net', targetDate: '2026-07-05', desc: '식품공장 생산관리/품질보증(QA) 지원 시 엄청난 무기가 됩니다.', url: 'https://www.q-net.or.kr/' },
-    { cat: 'activity', title: '식품/외식기업 대학생 서포터즈', source: '위비티/링커리어', targetDate: '2026-06-05', desc: '오뚜기, 농심, CJ제일제당 등 타겟 기업의 프로슈머/서포터즈 활동 필수.', url: 'https://www.wevity.com/' },
-    { cat: 'intern', title: '식품 기업 R&D/품질관리 인턴', source: '기업별 채용공고', targetDate: '2026-06-10', desc: '실제 식품 공정 및 연구 보조 경험을 쌓을 수 있는 핵심 스펙.', url: '#' },
-  ],
-  '패션/의류': [
-    { cat: 'lang', title: 'OPIc', targetScore: 'IH', source: 'OPIc', targetDate: '2026-06-25', desc: '글로벌 패션 브랜드(벤더) 및 해외 영업/소싱 지원 시 필수 요건.', url: 'https://www.opic.or.kr/' },
-    { cat: 'cert', title: '패션머천다이징산업기사', source: 'Q-Net', targetDate: '2026-07-05', desc: '패션 MD 및 기획 직무를 희망한다면 전공 지식을 증명하는 가장 확실한 자격증.', url: 'https://www.q-net.or.kr/' },
-    { cat: 'cert', title: 'GTQ / 컴퓨터그래픽스운용기능사', source: 'KPC 자격', targetDate: '2026-06-20', desc: '의류 디자인 및 VMD 보조를 위한 포토샵/일러스트레이터 활용 능력 증명.', url: 'https://license.kpc.or.kr/' },
-    { cat: 'activity', title: '패션 브랜드 대외활동/앰버서더', source: '캠퍼스픽', targetDate: '2026-05-30', desc: '의류 브랜드 마케터, 패션 매거진 에디터 등 실무 경험 축적.', url: 'https://www.campuspick.com/' },
-    { cat: 'project', title: '졸업작품전/교내 패션쇼 위원회', source: '교내', targetDate: '2026-09-01', desc: '컬렉션 기획, 원단 소싱, 패턴 제작 등 패션 실무 사이클을 통째로 경험합니다.', url: '#' },
-    { cat: 'intern', title: '의류 벤더/브랜드 MD 체험형 인턴', source: '각 패션기업', targetDate: '2026-06-05', desc: '영원무역, 한세실업, LF 등 패션 기업 실무 인턴십.', url: '#' },
-  ],
-  '금융/은행': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '850', source: 'YBM', targetDate: '2026-06-14', desc: '은행권 및 금융공기업 서류 통과를 위한 기본 어학 컷입니다.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: '신용분석사', source: '한국금융연수원', targetDate: '2026-06-13', desc: '기업금융 직무 목표 시 가장 파괴력 있는 자격증입니다.', url: 'https://www.kbi.or.kr/' },
-    { cat: 'cert', title: 'AFPK (개인재무설계사)', source: '한국FPSB', targetDate: '2026-07-25', desc: '은행권(개인금융, WM) 지원자 다수가 보유한 필수 자격증입니다.', url: 'https://www.fpsbkorea.org/' },
-    { cat: 'activity', title: '신한은행 / 국민은행 대학생 홍보대사', source: '각 은행', targetDate: '2026-07-01', desc: '금융권 취업을 위한 최고의 네트워킹 대외활동.', url: 'https://www.kbcampusstar.com/' },
-    { cat: 'activity', title: '교내 가치투자/금융 학회', source: '교내', targetDate: '2026-09-05', desc: '산업 분석 및 기업 밸류에이션 등 금융권 실무 지식을 쌓는 필수 코스.', url: '#' }
-  ],
-  'CPA (공인회계사)': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '700', source: 'YBM', targetDate: '2026-06-14', desc: '공인회계사 1차 시험 응시를 위한 필수 어학 요건입니다.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: '학점이수제도 (회계 12, 경영 9, 경제 3)', source: '금융감독원', targetDate: '2026-12-31', desc: 'CPA 응시를 위한 필수 이수 학점 (학교 교과목 또는 학점은행제로 충족).', url: 'https://cpa.fss.or.kr/' },
-    { cat: 'activity', title: '교내 고시반 / 회계동아리', source: '교내', targetDate: '2026-09-01', desc: '회계사 시험 준비생들이 모여 정보 공유 및 체계적인 스터디 진행.', url: '#' },
-    { cat: 'project', title: '공인회계사(CPA) 1차 시험', source: '금융감독원', targetDate: '2027-02-28', desc: '재무회계, 원가관리, 세법, 상법 등 심도 있는 지식을 요구하는 고시.', url: 'https://cpa.fss.or.kr/' }
-  ],
-  '로스쿨 (법조인)': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '950', source: 'YBM', targetDate: '2026-06-14', desc: '로스쿨 지원의 절대적 기본 스탯. 고고익선이며 1~2학년 때 조기 달성 필수입니다.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: 'KBS한국어능력시험', targetScore: '2+', source: 'KBS', targetDate: '2026-08-16', desc: '정량평가 가산점 획득 및 LEET 언어이해 파트 감각 유지를 위한 필수 스펙.', url: 'http://www.klt.or.kr/' },
-    { cat: 'activity', title: '소외계층 장기 봉사활동 (멘토링 등)', source: 'VMS', targetDate: '2026-06-30', desc: '로스쿨 정성평가(자소서)에서 공익적 마인드를 어필하는 강력한 요소입니다.', url: 'https://www.vms.or.kr/' },
-    { cat: 'activity', title: '교내 법학/토론 동아리', source: '교내', targetDate: '2026-09-05', desc: '리걸 마인드와 논리적 사고력을 기르는 학술 동아리.', url: '#' },
-    { cat: 'intern', title: '대한법률구조공단 실무 수습', source: '법률구조공단', targetDate: '2026-11-01', desc: '공익 법무 실무 경험. 로스쿨 합격자 다수가 거쳐가는 엘리트 코스입니다.', url: 'https://www.klac.or.kr/' },
-    { cat: 'project', title: 'LEET (법학적성시험)', source: '법학적성시험', targetDate: '2026-07-19', desc: '입시의 알파와 오메가. 실전 시간 배분 연습이 핵심.', url: 'https://leet.uwayapply.com/' },
-  ],
-  '반도체/엔지니어링': [
-    { cat: 'lang', title: 'OPIc', targetScore: 'IM2', source: 'OPIc', targetDate: '2026-06-25', desc: '삼성전자(DS), 하이닉스 등 주요 기업은 영어 회화 커트라인 미충족 시 지원 불가.', url: 'https://www.opic.or.kr/' },
-    { cat: 'cert', title: '일반기계/전기기사', source: 'Q-Net', targetDate: '2026-07-05', desc: '엔지니어링 직무의 꽃. 전공 기초 역량을 증명하며 졸업 전 1개 취득 권장.', url: 'https://www.q-net.or.kr/' },
-    { cat: 'activity', title: '학부 연구생 (랩실 인턴)', source: '교내 연구실', targetDate: '2026-06-10', desc: '석박사 연구 보조 및 공정 장비 활용 경험을 쌓을 수 있는 최고의 스펙.', url: '#' },
-    { cat: 'activity', title: '반도체 공정실습 (SPTA 등)', source: 'SPTA / 교내', targetDate: '2026-06-20', desc: 'FAB 출입 및 실제 웨이퍼 공정 경험 유무가 합격을 가릅니다.', url: 'https://spta.co.kr/' },
-    { cat: 'intern', title: '삼성전자 DS 대학생 인턴', source: '삼성커리어스', targetDate: '2026-09-10', desc: '엔지니어가 거칠 수 있는 최고의 실무 체험.', url: 'https://www.samsungcareers.com/' }
-  ],
-  '공기업 (NCS)': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '850', source: 'YBM', targetDate: '2026-06-14', desc: '주요 공기업 서류전형 어학 가점 만점을 위한 필수 컷.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: '한국사능력검정시험 (1급)', source: '국사편찬위원회', targetDate: '2026-08-08', desc: '모든 공기업/공공기관 서류 전형 필수 가산점 1순위.', url: 'https://www.historyexam.go.kr/' },
-    { cat: 'cert', title: '컴퓨터활용능력 1급', source: '대한상공회의소', targetDate: '2026-06-10', desc: '사무/기술직 공통 가산점 자격증. 실기 기출 반복 훈련이 필수.', url: 'https://license.korcham.net/' },
-    { cat: 'activity', title: '공공기관 서포터즈/기자단', source: '링커리어', targetDate: '2026-06-05', desc: '한국전력, 인권위 등 공공기관의 직무관련 활동으로 조직 적합성을 어필합니다.', url: 'https://linkareer.com/' },
-    { cat: 'intern', title: '국민건강보험공단 등 청년인턴', source: '잡알리오', targetDate: '2026-07-01', desc: '공공기관 실무 경험의 프리패스이자 면접 최고의 소스.', url: 'https://job.alio.go.kr/' }
-  ],
-  '5급 행정고시': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '700', source: 'YBM', targetDate: '2026-06-14', desc: '5급 공채 응시를 위한 필수 어학 요건 (토익 700점 이상).', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: '한국사능력검정시험 (2급 이상)', source: '국사편찬위원회', targetDate: '2026-08-08', desc: '5급 공채 응시를 위한 필수 한국사 요건.', url: 'https://www.historyexam.go.kr/' },
-    { cat: 'activity', title: '교내 행정고시반 (국가고시센터)', source: '교내', targetDate: '2026-09-01', desc: 'PSAT 모의고사, 특강, 2차 논술 대비 그룹 스터디가 이루어지는 최적의 환경.', url: '#' },
-    { cat: 'project', title: 'PSAT (1차) 시험', source: '인사혁신처', targetDate: '2027-02-28', desc: '경제학, 행정법, 행정학 등 방대한 분량의 2차 논문형 시험 대비가 핵심.', url: 'https://www.gosi.kr/' }
-  ],
-  '5급 기술고시': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '700', source: 'YBM', targetDate: '2026-06-14', desc: '5급 기술직 응시를 위한 필수 어학 요건.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: '한국사능력검정시험 (2급 이상)', source: '국사편찬위원회', targetDate: '2026-08-08', desc: '필수 한국사 요건.', url: 'https://www.historyexam.go.kr/' },
-    { cat: 'activity', title: '교내 기술고시반', source: '교내', targetDate: '2026-09-01', desc: '기출문제 풀이, PSAT 스터디 및 모의고사 응시 혜택 지원.', url: '#' },
-    { cat: 'project', title: 'PSAT 및 기술직 2차 시험', source: '인사혁신처', targetDate: '2027-02-28', desc: '토목, 기계, 화공, 전산 등 직렬별 전공 심화 논술 대비.', url: 'https://www.gosi.kr/' }
-  ],
-  '언론고시 (기자/PD)': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '850', source: 'YBM', targetDate: '2026-06-14', desc: '주요 언론사(KBS, MBC, 주요 일간지) 서류 및 필기 전형의 기본 요건.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: 'KBS한국어능력시험', targetScore: '2+', source: 'KBS', targetDate: '2026-08-16', desc: '언론사 지원자 필수 스펙. 서류 및 필기 평가 시 강력한 가산점.', url: 'http://www.klt.or.kr/' },
-    { cat: 'activity', title: '교내 학보사 / 방송국(HUBS)', source: '교내', targetDate: '2026-09-05', desc: '취재, 기사 작성, 영상 기획/편집 등 실무 경험을 쌓는 최고의 대외활동.', url: '#' },
-    { cat: 'activity', title: '언론고시 실전 스터디 (아랑)', source: '다음 카페 아랑', targetDate: '2026-06-01', desc: 'PD/기자 지망생의 성지. 논술, 상식, 시사 이슈 토론 스터디 필수.', url: 'https://cafe.daum.net/forjournalists' },
-    { cat: 'intern', title: '주요 언론사 하계 인턴십', source: '각 언론사', targetDate: '2026-06-20', desc: '현장 취재 및 방송 제작 실무를 직접 경험하며 포트폴리오를 채웁니다.', url: '#' }
-  ],
-  'default': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '850', source: 'YBM', targetDate: '2026-06-14', desc: '취업의 가장 기본 스펙. 방학을 활용해 미리 점수를 만들어두세요.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'activity', title: '직무 연관 연합동아리 가입', source: '에브리타임/캠퍼스픽', targetDate: '2026-09-01', desc: '어떤 직무든 협업 경험은 필수입니다.', url: 'https://everytime.kr/' },
-    { cat: 'intern', title: '한양대학교 현장실습(HY-WEP)', source: 'HY-in 포털', targetDate: '2026-06-10', desc: '학교와 연계된 기업에서 실무 경험을 쌓고 학점을 충족하는 최적의 프로그램.', url: 'https://portal.hanyang.ac.kr/' },
-  ]
-};
+// 추천 스펙/활동은 src/recommendationData.js의 태그 기반 데이터와
+// src/recommendationEngine.js의 가중치 계산 결과를 사용합니다.
 
 // 💡 학년별 진로 로드맵 데이터베이스 (Map UI 생성용)
 const YEARLY_ROADMAP_DB = {
@@ -1133,7 +1093,16 @@ export default function App() {
     if (!userProfile.careerSub || !userProfile.department) return null;
     
     const careerRecommendationKey = getCareerRecommendationKey(userProfile);
-    const specs = CAREER_SPEC_MAP[careerRecommendationKey] || CAREER_SPEC_MAP['default'] || [];
+    const specs = recommendActivities({
+      user: {
+        college: userProfile.college,
+        major: userProfile.department,
+        grade: userProfile.grade,
+        careerMain: userProfile.careerMain,
+        careerSub: userProfile.careerSub,
+      },
+      limit: 7,
+    });
     const categorizedSpecs = specs.reduce((acc, spec) => {
       const achieved = achievedSpecs.find(a => a.name.toLowerCase().includes(spec.title.toLowerCase()) || spec.title.toLowerCase().includes(a.name.toLowerCase()));
       if (achieved) {
