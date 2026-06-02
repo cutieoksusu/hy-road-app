@@ -4,6 +4,7 @@ import {
   Clock, LogOut, ShieldCheck, BookOpen, CheckCircle2, TrendingUp, Search, 
   AlertCircle, ChevronLeft, Building, Target, Check, Sparkles, ExternalLink, Link as LinkIcon, Edit3, XCircle, Info, Award, FileText, Globe, Hourglass, Plus, Trash2, Loader2, Camera, PenTool, Image as ImageIcon
 } from 'lucide-react';
+import { recommendActivities } from './recommendationEngine';
 
 const CAMPUS_DATA = {
   SEOUL: {
@@ -89,110 +90,149 @@ const getGradReqs = (dept, majorType) => {
   return req;
 };
 
-const CAREER_GOALS = {
-  INDUSTRY: { id: 'industry', name: '산업체 취업', sub: ['IT/소프트웨어', '기획/마케팅', '금융/은행', '반도체/엔지니어링', '식품/F&B', '패션/의류'] },
-  PUBLIC: { id: 'public', name: '공직/공공기관', sub: ['공기업 (NCS)', '5급 행정고시', '5급 기술고시'] },
-  PROFESSIONAL: { id: 'professional', name: '전문직 (고시)', sub: ['로스쿨 (법조인)', 'CPA (공인회계사)'] },
-  MEDIA: { id: 'media', name: '미디어/언론', sub: ['언론고시 (기자/PD)'] },
-  GRAD_SCHOOL: { id: 'grad_school', name: '대학원 진학', sub: ['자대 대학원', '타대 대학원'] }
+const CAREER_CATEGORIES = [
+  {
+    categoryName: 'IT·AI·데이터',
+    subCategories: [
+      { subCategoryName: '개발', jobs: ['프론트엔드개발자', '백엔드개발자', '앱개발자', '게임개발자', '소프트웨어개발자'] },
+      { subCategoryName: '데이터/AI', jobs: ['데이터사이언티스트', '데이터분석가', '데이터엔지니어', 'AI/ML엔지니어', 'AI/ML연구원', 'MLOps엔지니어', '프롬프트엔지니어'] },
+      { subCategoryName: '인프라/기타', jobs: ['클라우드엔지니어', '보안엔지니어', '시스템엔지니어', '네트워크엔지니어', 'DB관리자(DBA)', 'QA', 'IT컨설턴트'] },
+    ],
+  },
+  {
+    categoryName: '기획·마케팅·광고',
+    subCategories: [
+      { subCategoryName: '기획/전략', jobs: ['서비스기획자(PM·PO)', '웹기획자', '경영·비즈니스기획', 'AI기획자', 'AI사업전략', '컨설턴트'] },
+      { subCategoryName: '마케팅/PR', jobs: ['브랜드마케터', '퍼포먼스마케터', '콘텐츠마케터', 'CRM마케터', '그로스해커', '홍보(PR)'] },
+      { subCategoryName: '광고/MD', jobs: ['AE(광고기획자)', '카피라이터', '크리에이티브디렉터', 'MD', '리서치(설문/통계)'] },
+    ],
+  },
+  {
+    categoryName: '디자인',
+    subCategories: [
+      { subCategoryName: 'IT/웹 디자인', jobs: ['UI·UX디자이너', '웹디자이너'] },
+      { subCategoryName: '시각/영상 디자인', jobs: ['영상디자이너', '3D디자이너', '그래픽디자이너', '시각디자이너', '캐릭터디자이너', '아트디렉터'] },
+      { subCategoryName: '산업/공간 디자인', jobs: ['제품디자이너', '산업디자이너', '실내디자이너', '공간디자이너', '환경디자이너', '패션디자이너'] },
+    ],
+  },
+  {
+    categoryName: '금융·재무·회계',
+    subCategories: [
+      { subCategoryName: '재무/회계/세무', jobs: ['회계사(CPA)', '세무사', '관세사', '회계담당자', '세무담당자', '재무담당자', 'IR·공시'] },
+      { subCategoryName: '금융/투자', jobs: ['애널리스트', '펀드매니저', '은행원·텔러(IB/PB 등)', '손해사정사', '심사역', '금융영업'] },
+    ],
+  },
+  {
+    categoryName: '엔지니어링·제조',
+    subCategories: [
+      { subCategoryName: '엔지니어링', jobs: ['반도체엔지니어', '공정엔지니어', '전기·전자엔지니어', '기계엔지니어', '화학엔지니어', '통신/RF엔지니어', 'AI로봇엔지니어'] },
+      { subCategoryName: '연구/제조 관리', jobs: ['R&D·연구원', '생산·공정관리자', '품질관리자(QA/QC)'] },
+    ],
+  },
+  {
+    categoryName: '전문직·공직·법무',
+    subCategories: [
+      { subCategoryName: '전문직/법무', jobs: ['변호사(로스쿨)', '변리사', '노무사', '법무담당자'] },
+      { subCategoryName: '공공/행정', jobs: ['공기업(NCS 준비)', '5급 행정고시', '5급 기술고시', '사회복지사', '사서'] },
+    ],
+  },
+  {
+    categoryName: '미디어·문화·콘텐츠',
+    subCategories: [
+      { subCategoryName: '방송/언론', jobs: ['PD·감독', '기자', '아나운서', '리포터'] },
+      { subCategoryName: '콘텐츠 제작', jobs: ['콘텐츠에디터', '작가', '영상편집자', 'AI콘텐츠크리에이터'] },
+      { subCategoryName: '문화/예술', jobs: ['큐레이터', '음반기획', '통번역사'] },
+    ],
+  },
+  {
+    categoryName: '물류·무역·영업·HR',
+    subCategories: [
+      { subCategoryName: '물류/무역', jobs: ['물류관리자', '구매관리자', '유통관리자', '무역사무원'] },
+      { subCategoryName: '영업', jobs: ['B2B/법인영업', 'IT·기술영업', '해외영업', '서비스영업'] },
+      { subCategoryName: '인사(HR)', jobs: ['인사담당자', 'HRD·HRM', '헤드헌터'] },
+    ],
+  },
+  {
+    categoryName: '건축·환경·의료·바이오',
+    subCategories: [
+      { subCategoryName: '건축/시설', jobs: ['건축가', '건축기사', '시공기사', '도시·조경설계', '안전관리자', '환경기사'] },
+      { subCategoryName: '의료/바이오', jobs: ['바이오·제약연구원', '임상연구원(CRA)', '보건관리자', '영양사', '식품연구원'] },
+    ],
+  },
+];
+
+const CAREER_RECOMMENDATION_FALLBACK = {
+  'IT·AI·데이터': 'IT/소프트웨어',
+  '기획·마케팅·광고': '기획/마케팅',
+  '금융·재무·회계': '금융/은행',
+  '엔지니어링·제조': '반도체/엔지니어링',
+  '전문직·공직·법무': '공기업 (NCS)',
+  '미디어·문화·콘텐츠': '언론고시 (기자/PD)',
+  '디자인': '패션/의류',
+  '건축·환경·의료·바이오': '식품/F&B',
 };
 
-// 💡 [기능 반영] 실시간 D-day 계산을 위한 타겟 날짜 명시 데이터베이스
-const CAREER_SPEC_MAP = {
-  'IT/소프트웨어': [
-    { cat: 'lang', title: 'OPIc', targetScore: 'IM2', source: 'OPIc', targetDate: '2026-06-25', desc: '개발자 대기업 서류 패스 기본 요건입니다.', url: 'https://www.opic.or.kr/' },
-    { cat: 'lang', title: 'TOEIC', targetScore: '800', source: 'YBM', targetDate: '2026-06-14', desc: '공통 필수 어학 스탯입니다.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: '정보처리기사', source: 'Q-Net', targetDate: '2026-07-05', desc: 'IT 직무의 가장 기본이 되는 국가공인자격증.', url: 'https://www.q-net.or.kr/' },
-    { cat: 'cert', title: 'SQLD', source: '데이터자격검정', targetDate: '2026-08-24', desc: '백엔드/데이터 직무 지원자라면 필수.', url: 'https://www.dataq.or.kr/' },
-    { cat: 'activity', title: 'IT 연합동아리 (SOPT/NEXTERS)', source: '캠퍼스픽', targetDate: '2026-05-30', desc: '기획/디자인/개발자가 모여 협업 프로젝트를 진행하는 대장급 동아리.', url: 'https://sopt.org/' },
-    { cat: 'project', title: '네이버 부스트캠프 / 우테코', source: '링커리어', targetDate: '2026-06-10', desc: '수료 시 네카라쿠배 합격률 최상위인 초고퀄리티 부트캠프.', url: 'https://woowacourse.github.io/' },
-    { cat: 'intern', title: '카카오/네이버 하계 인턴십', source: '채용 홈페이지', targetDate: '2026-06-01', desc: '최고의 실무 스펙. 코딩테스트 통과가 핵심입니다.', url: 'https://careers.kakao.com/' },
-  ],
-  '기획/마케팅': [
-    { cat: 'lang', title: 'OPIc', targetScore: 'IH', source: 'YBM/OPIc', targetDate: '2026-06-25', desc: '기획/마케팅 직무의 필수 어학 컷. 커뮤니케이션 역량을 어필하세요.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'lang', title: 'TOEIC', targetScore: '900', source: 'YBM', targetDate: '2026-06-14', desc: '고고익선 어학 성적입니다.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: 'GA4 (구글 애널리틱스)', source: 'Google Skillshop', targetDate: '2026-05-28', desc: '데이터 기반 퍼포먼스 마케팅을 위한 필수 자격증입니다.', url: 'https://skillshop.exceedlms.com/' },
-    { cat: 'cert', title: '컴퓨터활용능력 1급', source: '대한상공회의소', targetDate: '2026-06-10', desc: '기획/사무직의 기본 엑셀/데이터 활용 능력 증명입니다.', url: 'https://license.korcham.net/' },
-    { cat: 'activity', title: '경영전략/마케팅 학회', source: '교내', targetDate: '2026-09-05', desc: '실제 기업과 산학협력 프로젝트를 진행하며 실무 기획력을 배양합니다.', url: '#' },
-    { cat: 'activity', title: 'KT&G 상상유니브 마케팅스쿨', source: '상상유니브', targetDate: '2026-07-20', desc: '전국 최대 규모 마케팅 실무 대외활동.', url: 'https://www.sangsanguniv.com/' },
-    { cat: 'project', title: '제일기획 아이디어 페스티벌', source: '제일기획', targetDate: '2026-05-31', desc: '광고/기획 분야 최고 권위 공모전. 입상 시 대행사 취업에 유리합니다.', url: 'https://ideafestival.cheil.co.kr/' },
-  ],
-  '식품/F&B': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '800', source: 'YBM', targetDate: '2026-06-14', desc: '식품 및 소비재 대기업 지원의 필수 어학 요건입니다.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: '식품기사', source: 'Q-Net', targetDate: '2026-07-05', desc: '식품 연구개발(R&D) 및 품질관리(QC) 필수 자격증.', url: 'https://www.q-net.or.kr/' },
-    { cat: 'cert', title: '위생사 / 영양사', source: '한국보건의료인국가시험원', targetDate: '2026-11-20', desc: '식품영양학과 특화 국가면허. 급식, 단체급식, 식품위생 직무 필수.', url: 'https://www.kuksiwon.or.kr/' },
-    { cat: 'cert', title: '품질경영기사', source: 'Q-Net', targetDate: '2026-07-05', desc: '식품공장 생산관리/품질보증(QA) 지원 시 엄청난 무기가 됩니다.', url: 'https://www.q-net.or.kr/' },
-    { cat: 'activity', title: '식품/외식기업 대학생 서포터즈', source: '위비티/링커리어', targetDate: '2026-06-05', desc: '오뚜기, 농심, CJ제일제당 등 타겟 기업의 프로슈머/서포터즈 활동 필수.', url: 'https://www.wevity.com/' },
-    { cat: 'intern', title: '식품 기업 R&D/품질관리 인턴', source: '기업별 채용공고', targetDate: '2026-06-10', desc: '실제 식품 공정 및 연구 보조 경험을 쌓을 수 있는 핵심 스펙.', url: '#' },
-  ],
-  '패션/의류': [
-    { cat: 'lang', title: 'OPIc', targetScore: 'IH', source: 'OPIc', targetDate: '2026-06-25', desc: '글로벌 패션 브랜드(벤더) 및 해외 영업/소싱 지원 시 필수 요건.', url: 'https://www.opic.or.kr/' },
-    { cat: 'cert', title: '패션머천다이징산업기사', source: 'Q-Net', targetDate: '2026-07-05', desc: '패션 MD 및 기획 직무를 희망한다면 전공 지식을 증명하는 가장 확실한 자격증.', url: 'https://www.q-net.or.kr/' },
-    { cat: 'cert', title: 'GTQ / 컴퓨터그래픽스운용기능사', source: 'KPC 자격', targetDate: '2026-06-20', desc: '의류 디자인 및 VMD 보조를 위한 포토샵/일러스트레이터 활용 능력 증명.', url: 'https://license.kpc.or.kr/' },
-    { cat: 'activity', title: '패션 브랜드 대외활동/앰버서더', source: '캠퍼스픽', targetDate: '2026-05-30', desc: '의류 브랜드 마케터, 패션 매거진 에디터 등 실무 경험 축적.', url: 'https://www.campuspick.com/' },
-    { cat: 'project', title: '졸업작품전/교내 패션쇼 위원회', source: '교내', targetDate: '2026-09-01', desc: '컬렉션 기획, 원단 소싱, 패턴 제작 등 패션 실무 사이클을 통째로 경험합니다.', url: '#' },
-    { cat: 'intern', title: '의류 벤더/브랜드 MD 체험형 인턴', source: '각 패션기업', targetDate: '2026-06-05', desc: '영원무역, 한세실업, LF 등 패션 기업 실무 인턴십.', url: '#' },
-  ],
-  '금융/은행': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '850', source: 'YBM', targetDate: '2026-06-14', desc: '은행권 및 금융공기업 서류 통과를 위한 기본 어학 컷입니다.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: '신용분석사', source: '한국금융연수원', targetDate: '2026-06-13', desc: '기업금융 직무 목표 시 가장 파괴력 있는 자격증입니다.', url: 'https://www.kbi.or.kr/' },
-    { cat: 'cert', title: 'AFPK (개인재무설계사)', source: '한국FPSB', targetDate: '2026-07-25', desc: '은행권(개인금융, WM) 지원자 다수가 보유한 필수 자격증입니다.', url: 'https://www.fpsbkorea.org/' },
-    { cat: 'activity', title: '신한은행 / 국민은행 대학생 홍보대사', source: '각 은행', targetDate: '2026-07-01', desc: '금융권 취업을 위한 최고의 네트워킹 대외활동.', url: 'https://www.kbcampusstar.com/' },
-    { cat: 'activity', title: '교내 가치투자/금융 학회', source: '교내', targetDate: '2026-09-05', desc: '산업 분석 및 기업 밸류에이션 등 금융권 실무 지식을 쌓는 필수 코스.', url: '#' }
-  ],
-  'CPA (공인회계사)': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '700', source: 'YBM', targetDate: '2026-06-14', desc: '공인회계사 1차 시험 응시를 위한 필수 어학 요건입니다.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: '학점이수제도 (회계 12, 경영 9, 경제 3)', source: '금융감독원', targetDate: '2026-12-31', desc: 'CPA 응시를 위한 필수 이수 학점 (학교 교과목 또는 학점은행제로 충족).', url: 'https://cpa.fss.or.kr/' },
-    { cat: 'activity', title: '교내 고시반 / 회계동아리', source: '교내', targetDate: '2026-09-01', desc: '회계사 시험 준비생들이 모여 정보 공유 및 체계적인 스터디 진행.', url: '#' },
-    { cat: 'project', title: '공인회계사(CPA) 1차 시험', source: '금융감독원', targetDate: '2027-02-28', desc: '재무회계, 원가관리, 세법, 상법 등 심도 있는 지식을 요구하는 고시.', url: 'https://cpa.fss.or.kr/' }
-  ],
-  '로스쿨 (법조인)': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '950', source: 'YBM', targetDate: '2026-06-14', desc: '로스쿨 지원의 절대적 기본 스탯. 고고익선이며 1~2학년 때 조기 달성 필수입니다.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: 'KBS한국어능력시험', targetScore: '2+', source: 'KBS', targetDate: '2026-08-16', desc: '정량평가 가산점 획득 및 LEET 언어이해 파트 감각 유지를 위한 필수 스펙.', url: 'http://www.klt.or.kr/' },
-    { cat: 'activity', title: '소외계층 장기 봉사활동 (멘토링 등)', source: 'VMS', targetDate: '2026-06-30', desc: '로스쿨 정성평가(자소서)에서 공익적 마인드를 어필하는 강력한 요소입니다.', url: 'https://www.vms.or.kr/' },
-    { cat: 'activity', title: '교내 법학/토론 동아리', source: '교내', targetDate: '2026-09-05', desc: '리걸 마인드와 논리적 사고력을 기르는 학술 동아리.', url: '#' },
-    { cat: 'intern', title: '대한법률구조공단 실무 수습', source: '법률구조공단', targetDate: '2026-11-01', desc: '공익 법무 실무 경험. 로스쿨 합격자 다수가 거쳐가는 엘리트 코스입니다.', url: 'https://www.klac.or.kr/' },
-    { cat: 'project', title: 'LEET (법학적성시험)', source: '법학적성시험', targetDate: '2026-07-19', desc: '입시의 알파와 오메가. 실전 시간 배분 연습이 핵심.', url: 'https://leet.uwayapply.com/' },
-  ],
-  '반도체/엔지니어링': [
-    { cat: 'lang', title: 'OPIc', targetScore: 'IM2', source: 'OPIc', targetDate: '2026-06-25', desc: '삼성전자(DS), 하이닉스 등 주요 기업은 영어 회화 커트라인 미충족 시 지원 불가.', url: 'https://www.opic.or.kr/' },
-    { cat: 'cert', title: '일반기계/전기기사', source: 'Q-Net', targetDate: '2026-07-05', desc: '엔지니어링 직무의 꽃. 전공 기초 역량을 증명하며 졸업 전 1개 취득 권장.', url: 'https://www.q-net.or.kr/' },
-    { cat: 'activity', title: '학부 연구생 (랩실 인턴)', source: '교내 연구실', targetDate: '2026-06-10', desc: '석박사 연구 보조 및 공정 장비 활용 경험을 쌓을 수 있는 최고의 스펙.', url: '#' },
-    { cat: 'activity', title: '반도체 공정실습 (SPTA 등)', source: 'SPTA / 교내', targetDate: '2026-06-20', desc: 'FAB 출입 및 실제 웨이퍼 공정 경험 유무가 합격을 가릅니다.', url: 'https://spta.co.kr/' },
-    { cat: 'intern', title: '삼성전자 DS 대학생 인턴', source: '삼성커리어스', targetDate: '2026-09-10', desc: '엔지니어가 거칠 수 있는 최고의 실무 체험.', url: 'https://www.samsungcareers.com/' }
-  ],
-  '공기업 (NCS)': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '850', source: 'YBM', targetDate: '2026-06-14', desc: '주요 공기업 서류전형 어학 가점 만점을 위한 필수 컷.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: '한국사능력검정시험 (1급)', source: '국사편찬위원회', targetDate: '2026-08-08', desc: '모든 공기업/공공기관 서류 전형 필수 가산점 1순위.', url: 'https://www.historyexam.go.kr/' },
-    { cat: 'cert', title: '컴퓨터활용능력 1급', source: '대한상공회의소', targetDate: '2026-06-10', desc: '사무/기술직 공통 가산점 자격증. 실기 기출 반복 훈련이 필수.', url: 'https://license.korcham.net/' },
-    { cat: 'activity', title: '공공기관 서포터즈/기자단', source: '링커리어', targetDate: '2026-06-05', desc: '한국전력, 인권위 등 공공기관의 직무관련 활동으로 조직 적합성을 어필합니다.', url: 'https://linkareer.com/' },
-    { cat: 'intern', title: '국민건강보험공단 등 청년인턴', source: '잡알리오', targetDate: '2026-07-01', desc: '공공기관 실무 경험의 프리패스이자 면접 최고의 소스.', url: 'https://job.alio.go.kr/' }
-  ],
-  '5급 행정고시': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '700', source: 'YBM', targetDate: '2026-06-14', desc: '5급 공채 응시를 위한 필수 어학 요건 (토익 700점 이상).', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: '한국사능력검정시험 (2급 이상)', source: '국사편찬위원회', targetDate: '2026-08-08', desc: '5급 공채 응시를 위한 필수 한국사 요건.', url: 'https://www.historyexam.go.kr/' },
-    { cat: 'activity', title: '교내 행정고시반 (국가고시센터)', source: '교내', targetDate: '2026-09-01', desc: 'PSAT 모의고사, 특강, 2차 논술 대비 그룹 스터디가 이루어지는 최적의 환경.', url: '#' },
-    { cat: 'project', title: 'PSAT (1차) 시험', source: '인사혁신처', targetDate: '2027-02-28', desc: '경제학, 행정법, 행정학 등 방대한 분량의 2차 논문형 시험 대비가 핵심.', url: 'https://www.gosi.kr/' }
-  ],
-  '5급 기술고시': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '700', source: 'YBM', targetDate: '2026-06-14', desc: '5급 기술직 응시를 위한 필수 어학 요건.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: '한국사능력검정시험 (2급 이상)', source: '국사편찬위원회', targetDate: '2026-08-08', desc: '필수 한국사 요건.', url: 'https://www.historyexam.go.kr/' },
-    { cat: 'activity', title: '교내 기술고시반', source: '교내', targetDate: '2026-09-01', desc: '기출문제 풀이, PSAT 스터디 및 모의고사 응시 혜택 지원.', url: '#' },
-    { cat: 'project', title: 'PSAT 및 기술직 2차 시험', source: '인사혁신처', targetDate: '2027-02-28', desc: '토목, 기계, 화공, 전산 등 직렬별 전공 심화 논술 대비.', url: 'https://www.gosi.kr/' }
-  ],
-  '언론고시 (기자/PD)': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '850', source: 'YBM', targetDate: '2026-06-14', desc: '주요 언론사(KBS, MBC, 주요 일간지) 서류 및 필기 전형의 기본 요건.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'cert', title: 'KBS한국어능력시험', targetScore: '2+', source: 'KBS', targetDate: '2026-08-16', desc: '언론사 지원자 필수 스펙. 서류 및 필기 평가 시 강력한 가산점.', url: 'http://www.klt.or.kr/' },
-    { cat: 'activity', title: '교내 학보사 / 방송국(HUBS)', source: '교내', targetDate: '2026-09-05', desc: '취재, 기사 작성, 영상 기획/편집 등 실무 경험을 쌓는 최고의 대외활동.', url: '#' },
-    { cat: 'activity', title: '언론고시 실전 스터디 (아랑)', source: '다음 카페 아랑', targetDate: '2026-06-01', desc: 'PD/기자 지망생의 성지. 논술, 상식, 시사 이슈 토론 스터디 필수.', url: 'https://cafe.daum.net/forjournalists' },
-    { cat: 'intern', title: '주요 언론사 하계 인턴십', source: '각 언론사', targetDate: '2026-06-20', desc: '현장 취재 및 방송 제작 실무를 직접 경험하며 포트폴리오를 채웁니다.', url: '#' }
-  ],
-  'default': [
-    { cat: 'lang', title: 'TOEIC', targetScore: '850', source: 'YBM', targetDate: '2026-06-14', desc: '취업의 가장 기본 스펙. 방학을 활용해 미리 점수를 만들어두세요.', url: 'https://exam.toeic.co.kr/' },
-    { cat: 'activity', title: '직무 연관 연합동아리 가입', source: '에브리타임/캠퍼스픽', targetDate: '2026-09-01', desc: '어떤 직무든 협업 경험은 필수입니다.', url: 'https://everytime.kr/' },
-    { cat: 'intern', title: '한양대학교 현장실습(HY-WEP)', source: 'HY-in 포털', targetDate: '2026-06-10', desc: '학교와 연계된 기업에서 실무 경험을 쌓고 학점을 충족하는 최적의 프로그램.', url: 'https://portal.hanyang.ac.kr/' },
-  ]
+const CAREER_ROADMAP_KEY_MAP = {
+  '프론트엔드개발자': 'IT/소프트웨어',
+  '백엔드개발자': 'IT/소프트웨어',
+  '앱개발자': 'IT/소프트웨어',
+  '게임개발자': 'IT/소프트웨어',
+  '소프트웨어개발자': 'IT/소프트웨어',
+  '데이터사이언티스트': 'IT/소프트웨어',
+  '데이터분석가': 'IT/소프트웨어',
+  '데이터엔지니어': 'IT/소프트웨어',
+  'AI/ML엔지니어': 'IT/소프트웨어',
+  'AI/ML연구원': 'IT/소프트웨어',
+  '서비스기획자(PM·PO)': '기획/마케팅',
+  '웹기획자': '기획/마케팅',
+  '경영·비즈니스기획': '기획/마케팅',
+  'AI기획자': '기획/마케팅',
+  '브랜드마케터': '기획/마케팅',
+  '퍼포먼스마케터': '기획/마케팅',
+  '콘텐츠마케터': '기획/마케팅',
+  'AE(광고기획자)': '기획/마케팅',
+  'UI·UX디자이너': '패션/의류',
+  '웹디자이너': '패션/의류',
+  '영상디자이너': '패션/의류',
+  '그래픽디자이너': '패션/의류',
+  '패션디자이너': '패션/의류',
+  '회계사(CPA)': 'CPA (공인회계사)',
+  '세무사': 'CPA (공인회계사)',
+  '회계담당자': '금융/은행',
+  '재무담당자': '금융/은행',
+  '애널리스트': '금융/은행',
+  '펀드매니저': '금융/은행',
+  '은행원·텔러(IB/PB 등)': '금융/은행',
+  '반도체엔지니어': '반도체/엔지니어링',
+  '공정엔지니어': '반도체/엔지니어링',
+  '전기·전자엔지니어': '반도체/엔지니어링',
+  '기계엔지니어': '반도체/엔지니어링',
+  '화학엔지니어': '반도체/엔지니어링',
+  'R&D·연구원': '반도체/엔지니어링',
+  '품질관리자(QA/QC)': '반도체/엔지니어링',
+  '변호사(로스쿨)': '로스쿨 (법조인)',
+  '법무담당자': '로스쿨 (법조인)',
+  '공기업(NCS 준비)': '공기업 (NCS)',
+  '5급 행정고시': '5급 행정고시',
+  '5급 기술고시': '5급 기술고시',
+  'PD·감독': '언론고시 (기자/PD)',
+  '기자': '언론고시 (기자/PD)',
+  '아나운서': '언론고시 (기자/PD)',
+  '콘텐츠에디터': '언론고시 (기자/PD)',
+  '영상편집자': '언론고시 (기자/PD)',
+  '바이오·제약연구원': '식품/F&B',
+  '영양사': '식품/F&B',
+  '식품연구원': '식품/F&B',
 };
+
+const getCareerRecommendationKey = (profile) => (
+  CAREER_ROADMAP_KEY_MAP[profile.careerSub]
+    || CAREER_RECOMMENDATION_FALLBACK[profile.careerMain]
+    || 'default'
+);
+
+// 추천 스펙/활동은 src/recommendationData.js의 태그 기반 데이터와
+// src/recommendationEngine.js의 가중치 계산 결과를 사용합니다.
 
 // 💡 학년별 진로 로드맵 데이터베이스 (Map UI 생성용)
 const YEARLY_ROADMAP_DB = {
@@ -615,18 +655,37 @@ const getDDayFormatted = (dateStr, fallbackDesc) => {
 };
 
 const CERT_DURATION_ESTIMATES = [
-  { keywords: ['GA4'], duration: '취득까지 약 1~2주' },
-  { keywords: ['SQLD', '한국사능력검정시험', 'KBS한국어능력시험'], duration: '취득까지 약 4~6주' },
-  { keywords: ['컴퓨터활용능력', 'GTQ', '컴퓨터그래픽스운용기능사'], duration: '취득까지 약 1~2개월' },
-  { keywords: ['신용분석사', 'AFPK'], duration: '취득까지 약 2~3개월' },
-  { keywords: ['정보처리기사', '식품기사', '품질경영기사', '패션머천다이징산업기사', '일반기계', '전기기사'], duration: '취득까지 약 3~4개월' },
-  { keywords: ['위생사', '영양사'], duration: '취득까지 약 3~5개월' },
-  { keywords: ['학점이수제도'], duration: '이수까지 1학기 이상' },
+  { keywords: ['GA4'], duration: 'Skillshop 1~2주' },
+  { keywords: ['SQLD', 'ADsP'], duration: '단일 2~4주' },
+  { keywords: ['한국사능력검정시험', 'KBS한국어능력시험', 'TESAT', '매경TEST'], duration: '단일 2~4주' },
+  { keywords: ['GTQ'], duration: '실기 2~4주' },
+  { keywords: ['컴퓨터활용능력'], duration: '필기 1~2주 · 실기 4~8주' },
+  { keywords: ['AWS Cloud Practitioner'], duration: '단일 1~2주' },
+  { keywords: ['리눅스마스터'], duration: '1차 1~3일 · 2차 1~3주' },
+  { keywords: ['ERP정보관리사'], duration: '2급 1~2개월 · 1급 3~6개월' },
+  { keywords: ['무역영어', '국제무역사'], duration: '무역영어 1~2개월 · 국제무역사 2~3개월' },
+  { keywords: ['SAS Base Programmer'], duration: '단일 4~8주' },
+  { keywords: ['신용분석사'], duration: '1부/2부 3~4개월' },
+  { keywords: ['AFPK'], duration: '교육이수 포함 2~3개월' },
+  { keywords: ['빅데이터분석기사'], duration: '필기 2~4주 · 실기 1~2주' },
+  { keywords: ['물류관리사'], duration: '단일 2~3개월' },
+  { keywords: ['정보처리기사'], duration: '필기 2~4주 · 실기 4~6주' },
+  { keywords: ['식품기사', '환경기사', '산업안전기사'], duration: '필기 4~8주 · 실기 4~8주' },
+  { keywords: ['일반기계기사', '전기기사', '건축기사', '실내건축기사'], duration: '필기 6~8주 · 실기 4~8주' },
+  { keywords: ['패션머천다이징산업기사'], duration: '필기 3~4주 · 실기 3~4주' },
+  { keywords: ['영양사'], duration: '국시 4~8주' },
+  { keywords: ['CPA 응시 학점 요건'], duration: '학점 이수 1학기 이상' },
+  { keywords: ['노무사'], duration: '1차 4~6개월+' },
 ];
 
 const getSpecDuration = (spec) => {
-  if (spec.duration) return spec.duration;
   if (spec.cat !== 'cert') return '';
+  if (spec.duration && spec.duration !== '-') {
+    const detailMarkers = ['필기', '실기', '단일', '1차', '2차', '국시', '교육이수', 'Skillshop', '학점', '급', '부/'];
+    if (spec.duration.includes('까지') || spec.duration.includes('기간') || detailMarkers.some(marker => spec.duration.includes(marker))) return spec.duration;
+    if (spec.duration.includes('학기') || spec.duration.includes('+')) return spec.duration;
+    return `취득까지 약 ${spec.duration}`;
+  }
 
   const title = spec.title || '';
   const matchedEstimate = CERT_DURATION_ESTIMATES.find(({ keywords }) =>
@@ -647,13 +706,62 @@ const generatePlatformSearchLink = (careerSub, platformStr) => {
     '금융/은행': '금융', '반도체/엔지니어링': '엔지니어', '공기업 (NCS)': '공공기관',
     '로스쿨 (법조인)': '법무', '언론고시 (기자/PD)': '언론',
   };
-  const keyword = keywordMap[careerSub] || '대외활동';
+  const keyword = keywordMap[careerSub] || careerSub || '대외활동';
   const encoded = encodeURIComponent(keyword);
 
   if (platformStr === '링커리어') return `https://linkareer.com/search?keyword=${encoded}&tab=activity`;
   if (platformStr === '캠퍼스픽') return `https://www.campuspick.com/search?keyword=${encoded}`;
   if (platformStr === '위비티') return `https://www.wevity.com/?c=find&s=1&gbn=viewok&ctg=21&sw=${encoded}`;
   return '#';
+};
+
+const buildFallbackLiveActivities = (careerSub) => ([
+  {
+    title: `[${careerSub}] 링커리어 공고 바로가기`,
+    dDay: '실시간',
+    url: generatePlatformSearchLink(careerSub, '링커리어'),
+    source: '링커리어 검색',
+    summary: '실시간 API 응답이 없을 때만 제공되는 플랫폼 검색 링크입니다.',
+  },
+  {
+    title: `[${careerSub}] 캠퍼스픽 활동 바로가기`,
+    dDay: '실시간',
+    url: generatePlatformSearchLink(careerSub, '캠퍼스픽'),
+    source: '캠퍼스픽 검색',
+    summary: '실시간 API 응답이 없을 때만 제공되는 플랫폼 검색 링크입니다.',
+  },
+  {
+    title: `[${careerSub}] 위비티 공모전 바로가기`,
+    dDay: '실시간',
+    url: generatePlatformSearchLink(careerSub, '위비티'),
+    source: '위비티 검색',
+    summary: '실시간 API 응답이 없을 때만 제공되는 플랫폼 검색 링크입니다.',
+  },
+]);
+
+const normalizeLiveActivity = (item) => ({
+  id: item.id || item.url || item.originalLink || item.title,
+  title: item.title || '제목 확인 필요',
+  dDay: item.dDay || getDDayFormatted(item.deadline, item.deadline ? '일정 확인' : '상시/확인'),
+  url: item.url || item.originalLink || '#',
+  source: item.source || item.sourceName || '허가된 출처',
+  summary: item.summary || '',
+  dynamicReason: item.dynamicReason || item.type || '실시간 API',
+});
+
+const fetchOpportunityApi = async ({ careerSub, signal }) => {
+  const apiUrl = import.meta.env.VITE_OPPORTUNITY_API_URL;
+  if (!apiUrl) return [];
+
+  const url = new URL(apiUrl, window.location.origin);
+  url.searchParams.set('career', careerSub);
+  url.searchParams.set('maxItems', '12');
+
+  const response = await fetch(url, { signal });
+  if (!response.ok) throw new Error('opportunity-api-failed');
+
+  const data = await response.json();
+  return Array.isArray(data.items) ? data.items.map(normalizeLiveActivity) : [];
 };
 
 const ScreenWrapper = ({ children, isActive }) => (
@@ -672,7 +780,7 @@ const STORAGE_KEYS = {
 const EMPTY_PROFILE = {
   campus: '', college: '', department: '', majorType: '심화전공(단일)',
   secondCollege: '', secondDepartment: '', studentId: '', grade: '3',
-  name: '', careerMain: '', careerSub: '',
+  name: '', careerMain: '', careerSubCategory: '', careerSub: '',
   credits: {
     total: '', majorTotal: '', major100_300: '', major400: '', englishAvg: '',
     prerequisite: 'Y', gpa: '', requiredCourses: 'Y', volunteer: '', internship: 'Y',
@@ -699,7 +807,41 @@ const readStoredProfile = () => {
   };
 };
 
-const hasCompletedProfile = (profile) => Boolean(profile.department && profile.name && profile.careerSub);
+const isFilled = (value) => String(value ?? '').trim().length > 0;
+
+const isAcademicProfileComplete = (profile) => (
+  isFilled(profile.campus) &&
+  isFilled(profile.college) &&
+  isFilled(profile.department) &&
+  (profile.majorType === '심화전공(단일)' || (isFilled(profile.secondCollege) && isFilled(profile.secondDepartment)))
+);
+
+const isBasicProfileComplete = (profile) => isFilled(profile.name) && isFilled(profile.studentId);
+
+const isCareerProfileComplete = (profile) => (
+  isFilled(profile.careerMain) && isFilled(profile.careerSubCategory) && isFilled(profile.careerSub)
+);
+
+const hasCompletedProfile = (profile) => (
+  isAcademicProfileComplete(profile) && isBasicProfileComplete(profile) && isCareerProfileComplete(profile)
+);
+
+const RequiredMark = () => (
+  <span className="absolute right-3 top-2 text-lg font-black leading-none text-red-500" aria-hidden="true">*</span>
+);
+
+const RequiredField = ({ children, className = '' }) => (
+  <div className={`relative ${className}`.trim()}>
+    {children}
+    <RequiredMark />
+  </div>
+);
+
+const RequiredNotice = () => (
+  <p className="mb-4 rounded-2xl bg-red-50 px-4 py-3 text-[11px] font-bold text-red-500">
+    <span className="font-black">*</span> 표시된 필수 입력란을 모두 채워야 다음 단계로 이동할 수 있어요.
+  </p>
+);
 
 const isFirebaseConfigured = Boolean(
   import.meta.env.VITE_FIREBASE_API_KEY &&
@@ -766,6 +908,15 @@ export default function App() {
 
   const handleProfileChange = (key, value) => setUserProfile(prev => ({ ...prev, [key]: value }));
   const handleCreditChange = (key, value) => setUserProfile(prev => ({ ...prev, credits: { ...prev.credits, [key]: value } }));
+  const canContinueOnboarding = () => {
+    if (onboardingStep === 1) return isAcademicProfileComplete(userProfile);
+    if (onboardingStep === 2) return isBasicProfileComplete(userProfile);
+    if (onboardingStep === 4) return isFilled(userProfile.careerMain);
+    if (onboardingStep === 5) return isFilled(userProfile.careerSubCategory);
+    if (onboardingStep === 6) return isFilled(userProfile.careerSub);
+    if (onboardingStep === 8) return hasCompletedProfile(userProfile);
+    return true;
+  };
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEYS.profile, JSON.stringify(userProfile));
@@ -902,18 +1053,47 @@ export default function App() {
   }, [selectedSpec]);
 
   useEffect(() => {
-    if (!userProfile.careerSub) return;
-    setIsLoadingLive(true);
-    setTimeout(() => {
-      const directLinks = [
-        { title: `[${userProfile.careerSub}] 링커리어 공고 바로가기`, dDay: "실시간", url: generatePlatformSearchLink(userProfile.careerSub, '링커리어'), dynamicReason: "링커리어 다이렉트" },
-        { title: `[${userProfile.careerSub}] 캠퍼스픽 활동 바로가기`, dDay: "실시간", url: generatePlatformSearchLink(userProfile.careerSub, '캠퍼스픽'), dynamicReason: "캠퍼스픽 다이렉트" },
-        { title: `[${userProfile.careerSub}] 위비티 공모전 바로가기`, dDay: "실시간", url: generatePlatformSearchLink(userProfile.careerSub, '위비티'), dynamicReason: "위비티 다이렉트" }
-      ];
-      setLiveActivities(directLinks);
-      setIsLoadingLive(false);
-    }, 300);
-  }, [userProfile.careerSub]);
+    if (!userProfile.careerSub) return undefined;
+
+    let isMounted = true;
+    const controller = new AbortController();
+    const fallbackLinks = buildFallbackLiveActivities(userProfile.careerSub);
+
+    const loadLiveActivities = async () => {
+      setIsLoadingLive(true);
+      try {
+        const apiItems = await fetchOpportunityApi({
+          careerSub: userProfile.careerSub,
+          signal: controller.signal,
+        });
+        if (!isMounted) return;
+        if (apiItems.length) {
+          setLiveActivities(apiItems);
+          return;
+        }
+
+        if (!isFirebaseConfigured) {
+          setLiveActivities(fallbackLinks);
+          return;
+        }
+
+        const client = firebaseClient || await import('./firebase');
+        const remoteItems = await client.loadOpportunities({ careerSub: userProfile.careerSub });
+        if (!isMounted) return;
+        setLiveActivities(remoteItems.length ? remoteItems.map(normalizeLiveActivity) : fallbackLinks);
+      } catch (error) {
+        if (isMounted && error.name !== 'AbortError') setLiveActivities(fallbackLinks);
+      } finally {
+        if (isMounted) setIsLoadingLive(false);
+      }
+    };
+
+    loadLiveActivities();
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
+  }, [firebaseClient, userProfile.careerSub]);
 
   // OCR 사진 촬영 시뮬레이션 함수
   const simulatePhotoAuth = () => {
@@ -958,7 +1138,17 @@ export default function App() {
   const userRoadmapData = useMemo(() => {
     if (!userProfile.careerSub || !userProfile.department) return null;
     
-    const specs = CAREER_SPEC_MAP[userProfile.careerSub] || CAREER_SPEC_MAP['default'] || [];
+    const careerRecommendationKey = getCareerRecommendationKey(userProfile);
+    const specs = recommendActivities({
+      user: {
+        college: userProfile.college,
+        major: userProfile.department,
+        grade: userProfile.grade,
+        careerMain: userProfile.careerMain,
+        careerSub: userProfile.careerSub,
+      },
+      limit: 7,
+    });
     const categorizedSpecs = specs.reduce((acc, spec) => {
       const achieved = achievedSpecs.find(a => a.name.toLowerCase().includes(spec.title.toLowerCase()) || spec.title.toLowerCase().includes(a.name.toLowerCase()));
       if (achieved) {
@@ -1019,8 +1209,8 @@ export default function App() {
     });
 
     if (recommendedCourses.length === 0) {
-        let careerMatches = userDeptCourses.filter(c => c.target === userProfile.careerSub);
-        if(careerMatches.length === 0) careerMatches = allCourses.filter(c => c.target === userProfile.careerSub);
+        let careerMatches = userDeptCourses.filter(c => c.target === userProfile.careerSub || c.target === careerRecommendationKey);
+        if(careerMatches.length === 0) careerMatches = allCourses.filter(c => c.target === userProfile.careerSub || c.target === careerRecommendationKey);
         careerMatches.slice(0, 3).forEach(matched => { recommendedCourses.push({ ...matched, dynamicReason: `졸업 요건을 충족하여 [${userProfile.careerSub}] 대비 심화를 추천합니다.` }); });
     }
 
@@ -1089,37 +1279,44 @@ export default function App() {
     <div className="absolute inset-0 z-50 bg-white flex flex-col h-full overflow-hidden">
       <div className="pt-12 px-6 pb-4 flex items-center justify-between sticky top-0 z-10 bg-white">
         <button onClick={() => setOnboardingStep(s => Math.max(1, s - 1))} className="p-2"><ChevronLeft size={24} /></button>
-        <div className="flex gap-1 flex-1 px-8">{[1, 2, 3, 4, 5, 6].map(s => <div key={s} className={`h-1 flex-1 rounded-full ${s <= onboardingStep ? 'bg-[#00307B]' : 'bg-gray-200'}`}></div>)}</div>
+        <div className="flex gap-1 flex-1 px-8">{[1, 2, 3, 4, 5, 6, 7, 8].map(s => <div key={s} className={`h-1 flex-1 rounded-full ${s <= onboardingStep ? 'bg-[#00307B]' : 'bg-gray-200'}`}></div>)}</div>
       </div>
 
       <div className="flex-1 overflow-y-auto px-6 pb-32 pt-4">
         {onboardingStep === 1 && (
           <div className="animate-fade-in-up">
-            <h2 className="text-2xl font-black mb-6">전공 정보를 알려주세요</h2>
+            <h2 className="text-2xl font-black mb-3">전공 정보를 알려주세요</h2>
+            <RequiredNotice />
             
-            <select className="w-full p-4 mb-4 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" value={userProfile.campus} 
-              onChange={e => { 
-                handleProfileChange('campus', e.target.value); 
-                handleProfileChange('college', ''); 
-                handleProfileChange('department', ''); 
-                handleProfileChange('secondCollege', ''); 
-                handleProfileChange('secondDepartment', ''); 
-              }}>
-              <option value="">캠퍼스 선택</option><option value="SEOUL">서울캠퍼스</option><option value="ERICA">ERICA캠퍼스</option>
-            </select>
+            <RequiredField>
+              <select className="w-full p-4 pr-10 mb-4 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" value={userProfile.campus}
+                onChange={e => {
+                  handleProfileChange('campus', e.target.value);
+                  handleProfileChange('college', '');
+                  handleProfileChange('department', '');
+                  handleProfileChange('secondCollege', '');
+                  handleProfileChange('secondDepartment', '');
+                }}>
+                <option value="">캠퍼스 선택</option><option value="SEOUL">서울캠퍼스</option><option value="ERICA">ERICA캠퍼스</option>
+              </select>
+            </RequiredField>
             
             {userProfile.campus && (
-              <select className="w-full p-4 mb-4 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" value={userProfile.college} onChange={e => { handleProfileChange('college', e.target.value); handleProfileChange('department', ''); }}>
-                <option value="">단과대학 선택</option>
-                {Object.keys(CAMPUS_DATA[userProfile.campus]?.colleges || {}).map(c => <option key={c} value={c}>{c}</option>)}
-              </select>
+              <RequiredField>
+                <select className="w-full p-4 pr-10 mb-4 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" value={userProfile.college} onChange={e => { handleProfileChange('college', e.target.value); handleProfileChange('department', ''); }}>
+                  <option value="">단과대학 선택</option>
+                  {Object.keys(CAMPUS_DATA[userProfile.campus]?.colleges || {}).map(c => <option key={c} value={c}>{c}</option>)}
+                </select>
+              </RequiredField>
             )}
             
             {userProfile.college && (
-              <select className="w-full p-4 mb-8 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" value={userProfile.department} onChange={e => handleProfileChange('department', e.target.value)}>
-                <option value="">학과/학부 선택</option>
-                {CAMPUS_DATA[userProfile.campus]?.colleges[userProfile.college]?.map(d => <option key={d} value={d}>{d}</option>)}
-              </select>
+              <RequiredField>
+                <select className="w-full p-4 pr-10 mb-8 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" value={userProfile.department} onChange={e => handleProfileChange('department', e.target.value)}>
+                  <option value="">학과/학부 선택</option>
+                  {CAMPUS_DATA[userProfile.campus]?.colleges[userProfile.college]?.map(d => <option key={d} value={d}>{d}</option>)}
+                </select>
+              </RequiredField>
             )}
             
             {userProfile.department && (
@@ -1133,15 +1330,19 @@ export default function App() {
                 {userProfile.majorType !== '심화전공(단일)' && (
                   <div className="p-5 bg-blue-50 rounded-3xl border-2 border-blue-100 animate-fade-in-up">
                     <p className="text-sm font-black text-[#00307B] mb-4">제2전공 학과 선택</p>
-                    <select className="w-full p-3 mb-3 rounded-xl border-white border-2 text-sm font-bold bg-white focus:outline-none focus:border-[#00307B]" value={userProfile.secondCollege} onChange={e => { handleProfileChange('secondCollege', e.target.value); handleProfileChange('secondDepartment', ''); }}>
-                       <option value="">단과대학 선택</option>
-                       {Object.keys(CAMPUS_DATA[userProfile.campus]?.colleges || {}).map(c => <option key={c} value={c}>{c}</option>)}
-                    </select>
-                    {userProfile.secondCollege && (
-                      <select className="w-full p-3 rounded-xl border-white border-2 text-sm font-bold bg-white focus:outline-none focus:border-[#00307B]" value={userProfile.secondDepartment} onChange={e => handleProfileChange('secondDepartment', e.target.value)}>
-                        <option value="">학과 선택</option>
-                        {CAMPUS_DATA[userProfile.campus]?.colleges[userProfile.secondCollege]?.map(d => <option key={d} value={d}>{d}</option>)}
+                    <RequiredField>
+                      <select className="w-full p-3 pr-10 mb-3 rounded-xl border-white border-2 text-sm font-bold bg-white focus:outline-none focus:border-[#00307B]" value={userProfile.secondCollege} onChange={e => { handleProfileChange('secondCollege', e.target.value); handleProfileChange('secondDepartment', ''); }}>
+                         <option value="">단과대학 선택</option>
+                         {Object.keys(CAMPUS_DATA[userProfile.campus]?.colleges || {}).map(c => <option key={c} value={c}>{c}</option>)}
                       </select>
+                    </RequiredField>
+                    {userProfile.secondCollege && (
+                      <RequiredField>
+                        <select className="w-full p-3 pr-10 rounded-xl border-white border-2 text-sm font-bold bg-white focus:outline-none focus:border-[#00307B]" value={userProfile.secondDepartment} onChange={e => handleProfileChange('secondDepartment', e.target.value)}>
+                          <option value="">학과 선택</option>
+                          {CAMPUS_DATA[userProfile.campus]?.colleges[userProfile.secondCollege]?.map(d => <option key={d} value={d}>{d}</option>)}
+                        </select>
+                      </RequiredField>
                     )}
                   </div>
                 )}
@@ -1152,11 +1353,16 @@ export default function App() {
 
         {onboardingStep === 2 && (
           <div className="animate-fade-in-up">
-            <h2 className="text-2xl font-black mb-8">기본 정보를 입력해주세요</h2>
-            <input type="text" placeholder="이름" value={userProfile.name} onChange={e => handleProfileChange('name', e.target.value)} className="w-full p-5 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold mb-4 focus:outline-none focus:border-[#00307B]" />
+            <h2 className="text-2xl font-black mb-3">기본 정보를 입력해주세요</h2>
+            <RequiredNotice />
+            <RequiredField>
+              <input type="text" placeholder="이름" value={userProfile.name} onChange={e => handleProfileChange('name', e.target.value)} className="w-full p-5 pr-10 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold mb-4 focus:outline-none focus:border-[#00307B]" />
+            </RequiredField>
             <div className="flex gap-4">
               <input type="number" placeholder="학년" value={userProfile.grade} onChange={e => handleProfileChange('grade', e.target.value)} className="flex-1 p-5 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" />
-              <input type="number" placeholder="학번" value={userProfile.studentId} onChange={e => handleProfileChange('studentId', e.target.value)} className="flex-1 p-5 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" />
+              <RequiredField className="flex-1">
+                <input type="number" placeholder="학번" value={userProfile.studentId} onChange={e => handleProfileChange('studentId', e.target.value)} className="w-full p-5 pr-10 bg-gray-50 border-2 border-gray-100 rounded-2xl font-bold focus:outline-none focus:border-[#00307B]" />
+              </RequiredField>
             </div>
           </div>
         )}
@@ -1194,26 +1400,91 @@ export default function App() {
 
         {onboardingStep === 4 && (
           <div className="animate-fade-in-up">
-            <h2 className="text-2xl font-black mb-8">목표 진로를 선택하세요</h2>
-            <div className="space-y-3">
-              {Object.values(CAREER_GOALS).map(goal => (
-                <div key={goal.id} className={`p-5 rounded-3xl border-2 transition-all cursor-pointer ${userProfile.careerMain === goal.name ? 'border-[#00307B] bg-blue-50' : 'border-gray-100'}`} onClick={() => handleProfileChange('careerMain', goal.name)}>
-                  <div className="flex items-center gap-3">
-                    <div className={`w-5 h-5 rounded-full border-2 ${userProfile.careerMain === goal.name ? 'bg-[#00307B] border-[#00307B]' : 'border-gray-300'}`}></div>
-                    <span className="font-black text-lg">{goal.name}</span>
-                  </div>
-                  {userProfile.careerMain === goal.name && (
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {goal.sub.map(s => <button key={s} onClick={(e) => { e.stopPropagation(); handleProfileChange('careerSub', s); setOnboardingStep(5); }} className={`px-4 py-2 rounded-full text-xs font-bold border-2 transition-all ${userProfile.careerSub === s ? 'bg-[#00307B] text-white border-[#00307B]' : 'bg-white'}`}>{s}</button>)}
+            <h2 className="text-2xl font-black mb-2">목표 진로 분야를 선택하세요</h2>
+            <p className="text-gray-500 text-sm mb-4">먼저 큰 진로 카테고리를 고르면 다음 화면에서 세부 분야를 선택할 수 있어요.</p>
+            <RequiredNotice />
+            <div className="grid grid-cols-1 gap-3">
+              {CAREER_CATEGORIES.map(category => (
+                <button
+                  key={category.categoryName}
+                  onClick={() => {
+                    handleProfileChange('careerMain', category.categoryName);
+                    handleProfileChange('careerSubCategory', '');
+                    handleProfileChange('careerSub', '');
+                    setOnboardingStep(5);
+                  }}
+                  className={`relative p-5 rounded-3xl border-2 text-left transition-all ${userProfile.careerMain === category.categoryName ? 'border-[#00307B] bg-blue-50 shadow-sm' : 'border-gray-100 bg-white'}`}
+                >
+                  <RequiredMark />
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="font-black text-lg text-gray-900">{category.categoryName}</p>
+                      <p className="mt-1 text-xs font-bold text-gray-400">{category.subCategories.length}개 세부 분야 · {category.subCategories.reduce((count, sub) => count + sub.jobs.length, 0)}개 직무</p>
                     </div>
-                  )}
-                </div>
+                    <ChevronRight size={20} className={userProfile.careerMain === category.categoryName ? 'text-[#00307B]' : 'text-gray-300'} />
+                  </div>
+                </button>
               ))}
             </div>
           </div>
         )}
 
         {onboardingStep === 5 && (
+          <div className="animate-fade-in-up">
+            <p className="text-xs font-black text-[#00307B] mb-2">{userProfile.careerMain || '진로 분야'}</p>
+            <h2 className="text-2xl font-black mb-2">세부 분야를 선택하세요</h2>
+            <p className="text-gray-500 text-sm mb-4">선택한 분야 안에서 관심 있는 직무군을 골라주세요.</p>
+            <RequiredNotice />
+            <div className="space-y-3">
+              {(CAREER_CATEGORIES.find(category => category.categoryName === userProfile.careerMain)?.subCategories || []).map(subCategory => (
+                <button
+                  key={subCategory.subCategoryName}
+                  onClick={() => {
+                    handleProfileChange('careerSubCategory', subCategory.subCategoryName);
+                    handleProfileChange('careerSub', '');
+                    setOnboardingStep(6);
+                  }}
+                  className={`relative w-full p-5 rounded-3xl border-2 text-left transition-all ${userProfile.careerSubCategory === subCategory.subCategoryName ? 'border-[#00307B] bg-blue-50 shadow-sm' : 'border-gray-100 bg-white'}`}
+                >
+                  <RequiredMark />
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="font-black text-lg text-gray-900">{subCategory.subCategoryName}</p>
+                      <p className="mt-2 text-xs font-bold text-gray-400 leading-relaxed">{subCategory.jobs.join(' · ')}</p>
+                    </div>
+                    <ChevronRight size={20} className={userProfile.careerSubCategory === subCategory.subCategoryName ? 'text-[#00307B]' : 'text-gray-300'} />
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {onboardingStep === 6 && (
+          <div className="animate-fade-in-up">
+            <p className="text-xs font-black text-[#00307B] mb-2">{userProfile.careerMain} &gt; {userProfile.careerSubCategory}</p>
+            <h2 className="text-2xl font-black mb-2">희망 직무를 선택하세요</h2>
+            <p className="text-gray-500 text-sm mb-4">직무까지 선택하면 보유 스펙 등록 화면으로 이동합니다.</p>
+            <RequiredNotice />
+            <div className="grid grid-cols-1 gap-3">
+              {(CAREER_CATEGORIES.find(category => category.categoryName === userProfile.careerMain)?.subCategories.find(subCategory => subCategory.subCategoryName === userProfile.careerSubCategory)?.jobs || []).map(job => (
+                <button
+                  key={job}
+                  onClick={() => {
+                    handleProfileChange('careerSub', job);
+                    setOnboardingStep(7);
+                  }}
+                  className={`relative p-4 pr-10 rounded-2xl border-2 text-left font-black transition-all ${userProfile.careerSub === job ? 'border-[#00307B] bg-[#00307B] text-white shadow-md' : 'border-gray-100 bg-white text-gray-700'}`}
+                >
+                  <RequiredMark />
+                  {job}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {onboardingStep === 7 && (
           <div className="animate-fade-in-up pb-10">
             <h2 className="text-2xl font-black mb-2">이미 보유한 스펙 등록</h2>
             <p className="text-gray-500 text-sm mb-6">등록된 항목은 로드맵의 '성취 리스트'로 이동합니다.</p>
@@ -1330,7 +1601,7 @@ export default function App() {
           </div>
         )}
 
-        {onboardingStep === 6 && (
+        {onboardingStep === 8 && (
            <div className="flex flex-col items-center justify-center h-full animate-fade-in-up">
            <Sparkles className="text-[#00307B] w-16 h-16 mb-4 animate-bounce" />
            <h2 className="text-2xl font-black text-center">나만을 위한<br/>커스텀 로드맵 완성!</h2>
@@ -1339,7 +1610,13 @@ export default function App() {
       </div>
 
       <div className="p-6 bg-white border-t sticky bottom-0 z-20">
-        <button onClick={() => onboardingStep === 6 ? setCurrentScreen('home') : setOnboardingStep(s => s + 1)} className="w-full py-5 bg-[#00307B] text-white font-black text-lg rounded-[2rem] shadow-xl">{onboardingStep === 6 ? '시작하기' : '다음 단계로'}</button>
+        <button
+          disabled={!canContinueOnboarding()}
+          onClick={() => onboardingStep === 8 ? setCurrentScreen('home') : setOnboardingStep(s => s + 1)}
+          className="w-full py-5 bg-[#00307B] disabled:bg-gray-300 disabled:shadow-none text-white font-black text-lg rounded-[2rem] shadow-xl transition-colors"
+        >
+          {onboardingStep === 8 ? '시작하기' : '다음 단계로'}
+        </button>
       </div>
     </div>
   );
@@ -1373,12 +1650,16 @@ export default function App() {
           ) : (
             <div className="flex gap-3 overflow-x-auto pb-4 snap-x">
               {liveActivities.map((live, idx) => (
-                <a key={idx} href={live.url} target="_blank" rel="noreferrer" className="shrink-0 w-64 bg-white border border-gray-200 rounded-3xl p-5 shadow-sm snap-start hover:border-blue-300 transition-colors block">
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="text-[10px] font-black text-red-500 bg-red-50 px-2 py-1 rounded-md">{live.dDay}</span>
-                    <span className="text-[10px] text-gray-400 font-bold">{live.dynamicReason}</span>
+                <a key={live.id || idx} href={live.url} target="_blank" rel="noreferrer" className="shrink-0 w-72 bg-white border border-gray-200 rounded-3xl p-5 shadow-sm snap-start hover:border-blue-300 transition-colors block">
+                  <div className="flex justify-between items-center mb-3 gap-3">
+                    <span className="text-[10px] font-black text-red-500 bg-red-50 px-2 py-1 rounded-md">{live.dDay || '일정 확인'}</span>
+                    <span className="text-[10px] text-gray-400 font-bold truncate">{live.source}</span>
                   </div>
-                  <h4 className="font-black text-gray-900 text-sm leading-snug line-clamp-2">{live.title}</h4>
+                  <h4 className="font-black text-gray-900 text-sm leading-snug line-clamp-2 mb-3">{live.title}</h4>
+                  <p className="text-[11px] text-gray-500 font-bold leading-relaxed line-clamp-3 mb-4">{live.summary}</p>
+                  <div className="flex items-center gap-1 text-[10px] font-black text-[#00307B]">
+                    원문 링크 <ExternalLink size={12} />
+                  </div>
                 </a>
               ))}
             </div>
@@ -1436,7 +1717,11 @@ export default function App() {
                       <Clock size={12}/> {spec.dDay}
                     </div>
                   )}
-                  {spec.duration && <div className="bg-blue-50 text-[#00307B] px-3 py-1 rounded-full text-[10px] font-black flex items-center gap-1"><Hourglass size={12}/> {spec.duration}</div>}
+                  {spec.duration && (
+                    <div className="max-w-full bg-blue-50 text-[#00307B] px-3 py-1 rounded-full text-[10px] font-black flex items-center gap-1 leading-relaxed">
+                      <Hourglass size={12} className="shrink-0"/> <span className="break-keep">{spec.duration}</span>
+                    </div>
+                  )}
                   {spec.currentStatus && <div className="bg-orange-50 text-orange-600 px-3 py-1 rounded-full text-[10px] font-black">{spec.currentStatus}</div>}
                 </div>
               </div>
@@ -1516,7 +1801,7 @@ export default function App() {
           <Map size={22} className="text-[#00307B]" /> {userProfile.careerSub} 로드맵 지도
         </h3>
         <div className="relative pl-6 border-l-2 border-dashed border-blue-200 space-y-8 pb-4">
-          {(YEARLY_ROADMAP_DB[userProfile.careerSub] || YEARLY_ROADMAP_DB['default']).map((roadmap, idx) => (
+          {(YEARLY_ROADMAP_DB[getCareerRecommendationKey(userProfile)] || YEARLY_ROADMAP_DB['default']).map((roadmap, idx) => (
             <div key={idx} className="relative">
               <div className="absolute -left-[33px] top-1 w-4 h-4 bg-white border-4 border-[#00307B] rounded-full z-10"></div>
               <div className="bg-white rounded-[2rem] p-5 shadow-sm border-2 border-blue-50 relative ml-2 group hover:border-[#00307B] transition-colors">
@@ -1635,7 +1920,7 @@ export default function App() {
       </div>
 
       <div className="space-y-3">
-        {[{ icon: GraduationCap, label: '학적 및 이수학점 수정', step: 1 }, { icon: Award, label: '보유 스펙 관리', step: 5 }, { icon: Target, label: '진로 목표 변경', step: 4 }].map((item, i) => (
+        {[{ icon: GraduationCap, label: '학적 및 이수학점 수정', step: 1 }, { icon: Award, label: '보유 스펙 관리', step: 7 }, { icon: Target, label: '진로 목표 변경', step: 4 }].map((item, i) => (
           <button key={i} onClick={() => { setOnboardingStep(item.step); setCurrentScreen('onboarding'); }} className="w-full bg-white p-6 rounded-3xl flex items-center justify-between border border-gray-50 shadow-sm active:bg-gray-50">
             <div className="flex items-center gap-4">
               <div className="p-2 bg-gray-50 rounded-xl text-gray-400"><item.icon size={20}/></div>
