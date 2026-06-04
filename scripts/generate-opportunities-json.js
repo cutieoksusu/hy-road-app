@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 import crypto from 'node:crypto';
-import { TAGS } from '../src/recommendationData.js';
+import { CAREER_TAG_WEIGHTS, TAGS } from '../src/recommendationData.js';
 
 const CAREER_KEYWORDS = {
   'IT/소프트웨어': ['IT', '소프트웨어', '개발', '인공지능', 'AI', '데이터', '해커톤'],
@@ -19,6 +19,77 @@ const OPENAI_MODEL = process.env.OPENAI_MODEL || 'gpt-4o-mini';
 const MAX_AI_TAG_ITEMS = Number.parseInt(process.env.OPPORTUNITY_AI_MAX_ITEMS || '10', 10);
 const MAX_ITEMS = Number.parseInt(process.env.OPPORTUNITY_MAX_ITEMS || '80', 10);
 const SOURCE_SITE_QUERIES = ['site:linkareer.com/activity', 'site:wevity.com'];
+
+const CAREER_SUB_SEARCH_KEYWORDS = {
+  '프론트엔드개발자': ['프론트엔드', 'React', '웹개발'],
+  '백엔드개발자': ['백엔드', '서버개발', 'API'],
+  '앱개발자': ['앱개발', '모바일앱'],
+  '소프트웨어개발자': ['소프트웨어', '개발자', '해커톤'],
+  '데이터사이언티스트': ['데이터사이언스', 'AI 데이터', '머신러닝'],
+  '데이터분석가': ['데이터분석', 'SQL', '빅데이터'],
+  '데이터엔지니어': ['데이터엔지니어', '데이터 파이프라인'],
+  'AI/ML엔지니어': ['AI', '머신러닝', '인공지능'],
+  'AI/ML연구원': ['AI 연구', '인공지능 연구'],
+  'MLOps엔지니어': ['MLOps', 'AI 엔지니어링'],
+  '보안엔지니어': ['보안', '해킹방어', 'CTF'],
+  '클라우드엔지니어': ['클라우드', 'AWS'],
+  '서비스기획자(PM·PO)': ['서비스기획', 'PM', '프로덕트'],
+  '웹기획자': ['웹기획', '서비스기획'],
+  '경영·비즈니스기획': ['비즈니스기획', '사업기획'],
+  'AI기획자': ['AI 기획', '인공지능 서비스'],
+  'AI사업전략': ['AI 사업', 'AI 전략'],
+  '컨설턴트': ['컨설팅', '전략'],
+  '브랜드마케터': ['브랜드마케팅', '브랜딩'],
+  '퍼포먼스마케터': ['퍼포먼스마케팅', '광고 데이터'],
+  '콘텐츠마케터': ['콘텐츠마케팅', 'SNS 콘텐츠'],
+  'CRM마케터': ['CRM', '고객 데이터'],
+  '그로스해커': ['그로스', '마케팅 데이터'],
+  '홍보(PR)': ['홍보', 'PR'],
+  'AE(광고기획자)': ['광고기획', '광고 공모전'],
+  '카피라이터': ['카피라이팅', '광고 문구'],
+  'MD': ['MD', '상품기획'],
+  'UI·UX디자이너': ['UX', 'UI', '서비스디자인'],
+  '웹디자이너': ['웹디자인', 'UI 디자인'],
+  '영상디자이너': ['영상디자인', '영상 공모전'],
+  '그래픽디자이너': ['그래픽디자인', '시각디자인'],
+  '패션디자이너': ['패션', '의류 디자인'],
+  '회계사(CPA)': ['회계', 'CPA'],
+  '세무사': ['세무', '세금'],
+  '회계담당자': ['회계', '재무회계'],
+  '재무담당자': ['재무', '기업분석'],
+  '애널리스트': ['애널리스트', '투자 리서치'],
+  '펀드매니저': ['투자', '자산운용'],
+  '은행원·텔러(IB/PB 등)': ['은행', '금융권'],
+  '반도체엔지니어': ['반도체', '공정'],
+  '공정엔지니어': ['공정', '제조'],
+  '전기·전자엔지니어': ['전기전자', '전자공학'],
+  '기계엔지니어': ['기계', '로봇'],
+  '화학엔지니어': ['화학공학', '화학'],
+  'R&D·연구원': ['R&D', '연구개발'],
+  '품질관리자(QA/QC)': ['품질관리', 'QA QC'],
+  '변호사(로스쿨)': ['법률', '로스쿨'],
+  '법무담당자': ['법무', '컴플라이언스'],
+  '공기업(NCS 준비)': ['공기업', 'NCS', '공공기관'],
+  '사회복지사': ['사회복지', '봉사'],
+  'PD·감독': ['PD', '영상기획'],
+  '기자': ['기자', '취재'],
+  '콘텐츠에디터': ['콘텐츠에디터', '에디터'],
+  '작가': ['작가', '글쓰기'],
+  '영상편집자': ['영상편집', '영상 제작'],
+  'AI콘텐츠크리에이터': ['AI 콘텐츠', '생성형 AI'],
+  '통번역사': ['통번역', '번역'],
+  '해외영업': ['해외영업', '글로벌 영업'],
+  '물류관리자': ['물류', 'SCM'],
+  '인사담당자': ['인사', 'HR'],
+  'HRD·HRM': ['HRD', 'HRM'],
+  '건축가': ['건축', '건축설계'],
+  '건축기사': ['건축기사', '건축'],
+  '환경기사': ['환경', 'ESG'],
+  '바이오·제약연구원': ['바이오', '제약'],
+  '임상연구원(CRA)': ['임상', 'CRA'],
+  '영양사': ['영양', '식품'],
+  '식품연구원': ['식품', '푸드테크'],
+};
 
 const toArray = (value) => (Array.isArray(value) ? value : []);
 const uniq = (values) => [...new Set(values.filter(Boolean).map((value) => String(value).trim()).filter(Boolean))];
@@ -160,6 +231,25 @@ const getCareerTags = (text) => {
     .map(([career]) => career);
 };
 
+const getMatchedCareerSubs = (text, recommendationTags) => {
+  const source = String(text || '').toLowerCase();
+  const scored = Object.entries(CAREER_TAG_WEIGHTS).map(([careerSub, weights]) => {
+    const tagScore = recommendationTags.reduce((score, tag) => score + (weights[tag] || 0), 0);
+    const keywordScore = (CAREER_SUB_SEARCH_KEYWORDS[careerSub] || [careerSub])
+      .some((keyword) => source.includes(String(keyword).toLowerCase().replace(/[()·/]/g, ' ').trim()))
+      ? 12
+      : 0;
+    return [careerSub, tagScore + keywordScore];
+  });
+
+  const strongMatches = scored
+    .filter(([, score]) => score >= 18)
+    .sort((a, b) => b[1] - a[1])
+    .map(([careerSub]) => careerSub);
+
+  return strongMatches.slice(0, 8);
+};
+
 const getType = (text) => {
   const source = String(text || '').toLowerCase();
   if (source.includes('해커톤')) return '해커톤';
@@ -183,6 +273,8 @@ const normalizeItem = (raw) => {
   const recommendationType = inferRecommendationType(type, text, recommendationTags);
   const deadline = extractDeadline(`${title} ${summary}`);
   if (deadline === '확인 필요' || isExpiredDeadline(deadline)) return null;
+  const matchedCareerSubs = getMatchedCareerSubs(text, recommendationTags);
+  if (!matchedCareerSubs.length) return null;
 
   return {
     id: crypto.createHash('sha1').update(url || title).digest('hex').slice(0, 16),
@@ -194,6 +286,7 @@ const normalizeItem = (raw) => {
     deadline,
     publishedAt: raw.publishedAt || '',
     careerTags,
+    matchedCareerSubs,
     recommendationTags,
     recommendationType,
     recommendationCat: inferRecommendationCat(recommendationType, recommendationTags),
@@ -204,14 +297,23 @@ const normalizeItem = (raw) => {
   };
 };
 
-const buildQueries = () => uniq(Object.entries(CAREER_KEYWORDS).flatMap(([career, keywords]) => (
-  SOURCE_SITE_QUERIES.flatMap((siteQuery) => [
-    `${siteQuery} ${career} 공모전`,
-    `${siteQuery} ${career} 대외활동`,
-    `${siteQuery} ${career} 해커톤`,
-    ...keywords.slice(0, 2).map((keyword) => `${siteQuery} ${keyword} 공모전 대외활동 해커톤`),
-  ])
-))).slice(0, 48);
+const buildQueries = () => {
+  const careerQueries = Object.entries(CAREER_SUB_SEARCH_KEYWORDS).flatMap(([careerSub, keywords]) => (
+    SOURCE_SITE_QUERIES.flatMap((siteQuery) => [
+      `${siteQuery} ${careerSub} 공모전`,
+      `${siteQuery} ${careerSub} 대외활동`,
+      ...keywords.slice(0, 2).map((keyword) => `${siteQuery} ${keyword} 공모전 대외활동 해커톤`),
+    ])
+  ));
+  const categoryQueries = Object.entries(CAREER_KEYWORDS).flatMap(([career, keywords]) => (
+    SOURCE_SITE_QUERIES.flatMap((siteQuery) => [
+      `${siteQuery} ${career} 공모전`,
+      `${siteQuery} ${career} 대외활동`,
+      ...keywords.slice(0, 1).map((keyword) => `${siteQuery} ${keyword} 공모전 대외활동`),
+    ])
+  ));
+  return uniq([...careerQueries, ...categoryQueries]).slice(0, 180);
+};
 
 const fetchNaverSearch = async () => {
   const clientId = process.env.NAVER_SEARCH_CLIENT_ID;

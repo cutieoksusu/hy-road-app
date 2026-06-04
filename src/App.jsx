@@ -754,6 +754,7 @@ const normalizeLiveActivity = (item) => ({
   baseWeight: item.baseWeight || 6,
   recommendedGrades: item.recommendedGrades || [1, 2, 3],
   taggedBy: item.taggedBy || 'keyword',
+  matchedCareerSubs: item.matchedCareerSubs || [],
   dynamicReason: item.dynamicReason || item.type || '실시간 API',
 });
 
@@ -775,6 +776,7 @@ const toRecommendationActivity = (item) => {
     url: item.url || '#',
     isExternalOpportunity: true,
     taggedBy: item.taggedBy || 'keyword',
+    matchedCareerSubs: item.matchedCareerSubs || [],
   };
 };
 
@@ -790,9 +792,9 @@ const fetchStaticOpportunities = async ({ careerSub, signal }) => {
   const normalizedCareer = String(careerSub || '').trim();
   const activeItems = items.filter((item) => item.active !== false);
   const matchedItems = normalizedCareer
-    ? activeItems.filter((item) => (item.careerTags || []).includes(normalizedCareer))
+    ? activeItems.filter((item) => (item.matchedCareerSubs || []).includes(normalizedCareer))
     : activeItems;
-  return (matchedItems.length ? matchedItems : activeItems)
+  return matchedItems
     .slice(0, 12)
     .map(normalizeLiveActivity);
 };

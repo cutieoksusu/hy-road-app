@@ -45,6 +45,11 @@ export const recommendActivities = ({ user, activities = ACTIVITIES, limit = 7 }
   const userWeights = buildUserTagWeights(user);
 
   const ranked = activities
+    .filter((activity) => {
+      if (!activity.isExternalOpportunity) return true;
+      const matchedCareerSubs = activity.matchedCareerSubs || [];
+      return matchedCareerSubs.includes(user.careerSub);
+    })
     .map((activity) => {
       const tagScore = activity.tags.reduce((score, tag) => score + (userWeights[tag] || 0), 0);
       const gradeBonus = activity.recommendedGrades?.includes(grade) ? 8 : 0;
