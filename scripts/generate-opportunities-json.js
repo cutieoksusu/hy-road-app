@@ -303,6 +303,7 @@ const normalizeItem = (raw) => {
   if (!title || !url) return null;
   if (!isAllowedSourceUrl(url)) return null;
   if (hasOldYearInTitle(title)) return null;
+  if (/과정/.test(title) && !/(공모전|대외활동|해커톤|서포터즈|기자단|챌린지|대회|콘테스트)/.test(title)) return null;
   if (!isRelevantOpportunityText(`${title} ${summary}`)) return null;
 
   const source = normalizeSourceName(url);
