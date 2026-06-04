@@ -1,6 +1,276 @@
 {
-  "generatedAt": "2026-06-04T00:00:00.000Z",
+  "generatedAt": "2026-06-04T13:35:06.968Z",
   "source": "github-actions-static-json",
-  "itemCount": 0,
-  "items": []
+  "itemCount": 7,
+  "items": [
+    {
+      "id": "609c43eac5cf9f5d",
+      "title": "데이터 분석& 엔지니어 과정(Python)(~12/06)",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/158887",
+      "summary": "비영리단체/협회/재단 대외활동 인 데이터 분석& 엔지니어 과정(Python)(~12/06)입니다. 혜택으로는 실무 교육, 전문가/임직원 멘토링 등이 있습니다.",
+      "deadline": "2026-12-06",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "data",
+        "statistics",
+        "research",
+        "hr",
+        "education",
+        "management",
+        "activity"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "2456c82dcf7d5974",
+      "title": "2026 코드게이트 AI 스타트업 해커톤",
+      "type": "해커톤",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107527",
+      "summary": "AI 해커톤 에 참여하여 아이디어를 실제 서비스(MVP)로 구현하고, 시장 가능성까지 직접 검증해보세요. ■ 신청안내 - 신청기간 : ~ 2026.07.08.(수) - 진행일정 : 2026.07.21.(화) ~ 07.23.(목), 21일 ~ 22일 무박2일 진행...",
+      "deadline": "2026-07-21",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "소프트웨어개발자",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "da25b9e51070a0f0",
+      "title": "재활 AI 챗봇 아이디어 해커톤 2024",
+      "type": "해커톤",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=89067",
+      "summary": "재활 AI 챗봇 아이디어 해커톤 2024 ■ 공모 주제 - '생성형 AI'를... 클릭하기 ■ 활동 내용(일정) - [ 해커톤 참가 신청] 7/3(수)~07/12(금)... 검증) ■ 공모전 시상내역 - 대상: 1팀 상금 500만 원 - 최우수상: 2팀...",
+      "deadline": "2026-07-12",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "AI콘텐츠크리에이터",
+        "소프트웨어개발자",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "8a645fc17d0e822b",
+      "title": "2020년 비대면 서비스 정보보호 해커톤",
+      "type": "해커톤",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=45386",
+      "summary": "비대면 서비스 환경에서 발생되는 문제와 해결방안을 자유롭게 제안 ■ 대회일정 - 접수( 공모 )기간 : 9.25(금) ~ 10.21(수) - 오리엔테이션 사전교육 : 10.30(수) - 온라인 해커톤 발표평가 : 10.30(수) ~ 11.06(금)...",
+      "deadline": "2026-09-25",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "환경기사"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "environment",
+        "architecture",
+        "engineering",
+        "energy",
+        "hr"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "e33ce2b36042cebc",
+      "title": "2025 한국 경영 인증원 브랜드 숏폼 공모전 , AI로 만드는 'Cre-AI-tive 숏폼 챌린지’ (기간연장 ~10/12)",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/267168",
+      "summary": "2025 한국 경영 인증원 브랜드 숏폼 공모전 , AI로 만드는 'Cre-AI-tive 숏폼 챌린지’ (기간연장 ~10/12)입니다. 혜택으로는 입사시 가산점, 상장 수여 등이 있습니다. 기획 /아이디어, 사진/영상/UCC에 관심있다면 지원해주세요!",
+      "deadline": "2026-10-12",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "패션/의류"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "데이터사이언티스트",
+        "PD·감독"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "d1e08b161ee8f67d",
+      "title": "2022년 청년 컨설턴트 (SNS 콘텐츠 제작) 모집",
+      "type": "대외활동",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=64337",
+      "summary": "2022년 청년 컨설턴트 (SNS 콘텐츠 제작) 모집 ■ 모집규모 : 20팀 ■ 모집공고 : 6.7.(화) ~ 6.17.(금)... 7월~11월(총 5개월) ■ 대외활동 내용 : 자영업자별①일반콘텐츠(인스타그램) ②영상콘텐츠(인스타그램) 월...",
+      "deadline": "2026-06-17",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "언론고시 (기자/PD)"
+      ],
+      "matchedCareerSubs": [
+        "콘텐츠마케터",
+        "PD·감독",
+        "기자",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "91ef8328649811ec",
+      "title": "[미니인턴X올마이투어] 그로스해커 지망생 주목! 여행 OTA 올마이투어닷컴 앱마케팅 전략 기획하고, 실무 경험 어....",
+      "type": "인턴십",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/187604",
+      "summary": "중소기업 대외활동 인 [미니인턴X올마이투어] 그로스해커 지망생 주목! 여행 OTA 올마이투어닷컴 앱마케팅 전략 기획하고, 실무 경험 어필하자! (~7/3)입니다. 혜택으로는 전문가/임직원 멘토링, 수료증 및 인증서 등이 있습니다.",
+      "deadline": "2026-07-03",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "그로스해커",
+        "소프트웨어개발자",
+        "컨설턴트",
+        "브랜드마케터",
+        "앱개발자",
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "mobile",
+        "software",
+        "marketing",
+        "contents",
+        "hr",
+        "education",
+        "management"
+      ],
+      "recommendationType": "internship",
+      "recommendationCat": "intern",
+      "baseWeight": 8,
+      "recommendedGrades": [
+        3,
+        4
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    }
+  ]
 }
