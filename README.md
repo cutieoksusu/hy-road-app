@@ -55,23 +55,24 @@ Firebase Functions 결제가 필요하지 않도록, 최신 공고 수집은 Git
 
 `.github/workflows/update-opportunities.yml`이 매일 03:00 KST에 실행됩니다.
 
-필요한 GitHub Secrets:
+선택 GitHub Secret:
 
 ```bash
-NAVER_SEARCH_CLIENT_ID
-NAVER_SEARCH_CLIENT_SECRET
 OPENAI_API_KEY
 ```
 
-OpenAI 사용량을 줄이고 싶으면 Repository Variables에 아래 값을 둘 수 있습니다.
+수집량과 OpenAI 사용량을 조절하고 싶으면 Repository Variables에 아래 값을 둘 수 있습니다.
 
 ```bash
 OPENAI_MODEL=gpt-4o-mini
 OPPORTUNITY_AI_MAX_ITEMS=10
+OPPORTUNITY_MAX_ITEMS=200
+LINKAREER_MAX_PAGES=10
+WEVITY_MAX_PAGES=10
 ```
 
-OpenAI 키가 없거나 실패해도 수집은 멈추지 않고 키워드 기반 태그/가중치로 fallback합니다. 네이버 검색 API 키가 없으면 `public/opportunities.json`은 빈 목록으로 유지됩니다.
+OpenAI 키가 없거나 실패해도 수집은 멈추지 않고 키워드 기반 태그/가중치로 fallback합니다.
 
-HTML 무단 크롤링은 하지 않고, 네이버 검색 API의 웹문서 검색 결과 중 링커리어 `/activity/` 공고와 `wevity.com` 원문 링크만 저장합니다. 저장 필드는 제목, 짧은 요약, 마감일, 본문 링크, 추천 태그/가중치입니다. 마감일을 찾지 못했거나 이미 마감된 항목, 오래된 상시 공고, 교육/채용성 글은 추천 피드에서 제외합니다.
+수집기는 링커리어 공모전/대외활동 목록과 위비티 공모전/대외활동 목록을 여러 페이지 순회합니다. 저장 필드는 제목, 짧은 요약, 마감일, 본문 링크, 추천 태그/가중치입니다. 마감일을 찾지 못했거나 이미 마감된 항목, 오래된 상시 공고, 교육/채용성 글은 추천 피드에서 제외합니다.
 
 추천 로직은 전공/단과대/희망직무/학년을 태그 가중치로 합산한 뒤, 각 활동의 태그와 비교해 점수를 냅니다. 실시간 공고는 추가로 `matchedCareerSubs`에 사용자가 선택한 세부 직무가 포함된 경우에만 추천 후보에 들어갑니다. 맞는 공고가 없을 때 전체 공고를 대신 보여주지는 않습니다.

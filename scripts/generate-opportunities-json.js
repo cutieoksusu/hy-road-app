@@ -17,8 +17,10 @@ const CAREER_KEYWORDS = {
 const TAG_VALUES = Object.values(TAGS);
 const OPENAI_MODEL = process.env.OPENAI_MODEL || 'gpt-4o-mini';
 const MAX_AI_TAG_ITEMS = Number.parseInt(process.env.OPPORTUNITY_AI_MAX_ITEMS || '10', 10);
-const MAX_ITEMS = Number.parseInt(process.env.OPPORTUNITY_MAX_ITEMS || '80', 10);
-const SOURCE_SITE_QUERIES = ['site:linkareer.com/activity', 'site:wevity.com'];
+const MAX_ITEMS = Number.parseInt(process.env.OPPORTUNITY_MAX_ITEMS || '200', 10);
+const LINKAREER_MAX_PAGES = Number.parseInt(process.env.LINKAREER_MAX_PAGES || '10', 10);
+const WEVITY_MAX_PAGES = Number.parseInt(process.env.WEVITY_MAX_PAGES || '10', 10);
+const REQUEST_DELAY_MS = Number.parseInt(process.env.OPPORTUNITY_REQUEST_DELAY_MS || '250', 10);
 
 const CAREER_SUB_SEARCH_KEYWORDS = {
   '프론트엔드개발자': ['프론트엔드', 'React', '웹개발'],
@@ -101,6 +103,15 @@ const stripHtml = (value = '') => String(value)
   .replace(/\s+/g, ' ')
   .trim();
 
+const decodeHtml = (value = '') => stripHtml(String(value)
+  .replace(/&lt;/g, '<')
+  .replace(/&gt;/g, '>')
+  .replace(/&nbsp;/g, ' '));
+
+const sleep = (ms) => new Promise((resolve) => {
+  setTimeout(resolve, ms);
+});
+
 const safeUrl = (value) => {
   try {
     const url = new URL(value);
@@ -159,6 +170,17 @@ const extractDeadline = (text) => {
   return `${parts[0]}-${parts[1].padStart(2, '0')}-${parts[2].padStart(2, '0')}`;
 };
 
+const deadlineFromDDay = (value) => {
+  const source = stripHtml(value);
+  if (/접수예정|상시/.test(source)) return '상시';
+  const matched = source.match(/D-(\d+)/i);
+  if (!matched) return '';
+  const date = new Date();
+  date.setHours(date.getHours() + 9);
+  date.setDate(date.getDate() + Number.parseInt(matched[1], 10));
+  return date.toISOString().slice(0, 10);
+};
+
 const getTodayKst = () => new Intl.DateTimeFormat('en-CA', {
   timeZone: 'Asia/Seoul',
   year: 'numeric',
@@ -200,6 +222,17 @@ const getCanonicalOpportunityKey = (item) => {
     // fall through to title/url key
   }
   return item.url || item.title;
+};
+
+const fetchText = async (url) => {
+  const response = await fetch(url, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (compatible; HY-ROAD-OpportunityBot/1.0)',
+      Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    },
+  });
+  if (!response.ok) throw new Error(`Fetch failed: ${response.status} ${url}`);
+  return response.text();
 };
 
 const addTags = (set, ...tags) => tags.forEach((tag) => {
@@ -312,7 +345,7 @@ const normalizeItem = (raw) => {
   const text = `${title} ${summary} ${type} ${careerTags.join(' ')}`;
   const recommendationTags = inferRecommendationTags(text);
   const recommendationType = inferRecommendationType(type, text, recommendationTags);
-  const deadline = extractDeadline(`${title} ${summary}`);
+  const deadline = raw.deadline || extractDeadline(`${title} ${summary}`);
   if (deadline === '확인 필요' || isExpiredDeadline(deadline)) return null;
   if (deadline === '상시' && hasOldYearMarker(`${title} ${summary}`)) return null;
   const matchedCareerSubs = getMatchedCareerSubs(text, recommendationTags);
@@ -339,60 +372,113 @@ const normalizeItem = (raw) => {
   };
 };
 
-const buildQueries = () => {
-  const careerQueries = Object.entries(CAREER_SUB_SEARCH_KEYWORDS).flatMap(([careerSub, keywords]) => (
-    SOURCE_SITE_QUERIES.flatMap((siteQuery) => [
-      `${siteQuery} ${careerSub} 공모전`,
-      `${siteQuery} ${careerSub} 대외활동`,
-      ...keywords.slice(0, 2).map((keyword) => `${siteQuery} ${keyword} 공모전 대외활동 해커톤`),
-    ])
-  ));
-  const categoryQueries = Object.entries(CAREER_KEYWORDS).flatMap(([career, keywords]) => (
-    SOURCE_SITE_QUERIES.flatMap((siteQuery) => [
-      `${siteQuery} ${career} 공모전`,
-      `${siteQuery} ${career} 대외활동`,
-      ...keywords.slice(0, 1).map((keyword) => `${siteQuery} ${keyword} 공모전 대외활동`),
-    ])
-  ));
-  return uniq([...careerQueries, ...categoryQueries]).slice(0, 180);
+const extractNextData = (html) => {
+  const matched = html.match(/<script id="__NEXT_DATA__" type="application\/json">([\s\S]*?)<\/script>/);
+  if (!matched) return null;
+  return JSON.parse(matched[1]);
 };
 
-const fetchNaverSearch = async () => {
-  const clientId = process.env.NAVER_SEARCH_CLIENT_ID;
-  const clientSecret = process.env.NAVER_SEARCH_CLIENT_SECRET;
-  if (!clientId || !clientSecret) {
-    console.warn('[opportunities] NAVER_SEARCH_CLIENT_ID/SECRET missing. Writing fallback empty feed.');
-    return [];
-  }
+const getApolloCache = (nextData) => nextData?.props?.pageProps?.apolloState?.data
+  || nextData?.props?.pageProps?.__APOLLO_STATE__
+  || nextData?.props?.pageProps?.initialApolloState
+  || nextData?.props?.pageProps?.apolloState
+  || {};
 
+const parseLinkareerPage = (html, type) => {
+  const cache = getApolloCache(extractNextData(html));
+  return Object.entries(cache)
+    .filter(([key, value]) => key.startsWith('Activity:') && value?.id && value?.title)
+    .map(([, activity]) => normalizeItem({
+      title: activity.title,
+      summary: [
+        activity.organizationName,
+        activity.activityTypeID ? `activityTypeID: ${activity.activityTypeID}` : '',
+        activity.scrapCount ? `스크랩 ${activity.scrapCount}` : '',
+      ].filter(Boolean).join(' · '),
+      url: `https://linkareer.com/activity/${activity.id}`,
+      type,
+      deadline: activity.recruitCloseAt ? new Date(activity.recruitCloseAt).toISOString().slice(0, 10) : '',
+      careerTags: getCareerTags(`${activity.title} ${activity.organizationName || ''}`),
+    }))
+    .filter(Boolean);
+};
+
+const parseWevityPage = (html, type, pageCategory) => {
+  const cardPattern = /<div class="tit">\s*<a href="([^"]*ix=(\d+)[^"]*)">([\s\S]*?)<\/a>\s*<div class="sub-tit">([\s\S]*?)<\/div>[\s\S]*?<div class="day">\s*([\s\S]*?)<span class="dday/gi;
+  const items = [];
+  for (const match of html.matchAll(cardPattern)) {
+    const [, , ix, rawTitle, rawSummary, rawDay] = match;
+    const title = decodeHtml(rawTitle.replace(/<span[\s\S]*?<\/span>/g, ''));
+    const summary = decodeHtml(rawSummary);
+    const dDayDeadline = deadlineFromDDay(rawDay);
+    items.push(normalizeItem({
+      title,
+      summary,
+      url: `https://www.wevity.com/?c=${pageCategory}&gbn=viewok&ix=${ix}`,
+      type,
+      deadline: dDayDeadline,
+      careerTags: getCareerTags(`${title} ${summary}`),
+    }));
+  }
+  return items.filter(Boolean);
+};
+
+const fetchLinkareerList = async () => {
   const results = [];
-  for (const query of buildQueries()) {
-    for (const searchType of ['webkr']) {
-      const url = new URL(`https://openapi.naver.com/v1/search/${searchType}.json`);
-      url.searchParams.set('query', query);
-      url.searchParams.set('display', '10');
-      const response = await fetch(url, {
-        headers: {
-          'X-Naver-Client-Id': clientId,
-          'X-Naver-Client-Secret': clientSecret,
-        },
-      });
-      if (!response.ok) {
-        console.warn(`[opportunities] Naver ${searchType} failed: ${response.status} ${query}`);
-        continue;
+  const sources = [
+    {
+      type: '공모전',
+      urlForPage: (page) => `https://linkareer.com/list/contest?page=${page}`,
+    },
+    {
+      type: '대외활동',
+      urlForPage: (page) => `https://linkareer.com/list/activity?filterType=CATEGORY&orderBy_direction=DESC&orderBy_field=CREATED_AT&page=${page}`,
+    },
+  ];
+
+  for (const source of sources) {
+    for (let page = 1; page <= LINKAREER_MAX_PAGES; page += 1) {
+      try {
+        const html = await fetchText(source.urlForPage(page));
+        const items = parseLinkareerPage(html, source.type);
+        if (!items.length) break;
+        results.push(...items);
+      } catch (error) {
+        console.warn(`[opportunities] Linkareer failed: ${error.message}`);
       }
-      const data = await response.json();
-      results.push(...toArray(data.items).map((item) => normalizeItem({
-        title: item.title,
-        description: item.description,
-        url: item.link,
-        publishedAt: item.pubDate || item.postdate || '',
-        careerTags: getCareerTags(`${query} ${item.title} ${item.description}`),
-      })).filter(Boolean));
+      await sleep(REQUEST_DELAY_MS);
     }
   }
   return results;
 };
+
+const fetchWevityList = async () => {
+  const results = [];
+  const sources = [
+    { type: '공모전', category: 'find' },
+    { type: '대외활동', category: 'active' },
+  ];
+
+  for (const source of sources) {
+    for (let page = 1; page <= WEVITY_MAX_PAGES; page += 1) {
+      try {
+        const html = await fetchText(`https://www.wevity.com/?c=${source.category}&gp=${page}`);
+        const items = parseWevityPage(html, source.type, source.category);
+        if (!items.length) break;
+        results.push(...items);
+      } catch (error) {
+        console.warn(`[opportunities] Wevity failed: ${error.message}`);
+      }
+      await sleep(REQUEST_DELAY_MS);
+    }
+  }
+  return results;
+};
+
+const fetchAllowedSources = async () => (await Promise.all([
+  fetchLinkareerList(),
+  fetchWevityList(),
+])).flat();
 
 const extractResponseText = (data) => data.output_text
   || toArray(data.output).flatMap((item) => toArray(item.content)).find((item) => item.type === 'output_text')?.text;
@@ -434,7 +520,7 @@ const tagWithOpenAI = async (items) => {
 };
 
 const main = async () => {
-  const rawItems = await fetchNaverSearch();
+  const rawItems = await fetchAllowedSources();
   const uniqueItems = [...new Map(rawItems.map((item) => [getCanonicalOpportunityKey(item), item])).values()].slice(0, MAX_ITEMS);
   let items = uniqueItems;
   try {

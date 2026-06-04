@@ -19,11 +19,12 @@ jobs:
           node-version: '24'
       - name: Generate opportunities JSON
         env:
-          NAVER_SEARCH_CLIENT_ID: ${{ secrets.NAVER_SEARCH_CLIENT_ID }}
-          NAVER_SEARCH_CLIENT_SECRET: ${{ secrets.NAVER_SEARCH_CLIENT_SECRET }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-4o-mini' }}
           OPPORTUNITY_AI_MAX_ITEMS: ${{ vars.OPPORTUNITY_AI_MAX_ITEMS || '10' }}
+          OPPORTUNITY_MAX_ITEMS: ${{ vars.OPPORTUNITY_MAX_ITEMS || '200' }}
+          LINKAREER_MAX_PAGES: ${{ vars.LINKAREER_MAX_PAGES || '10' }}
+          WEVITY_MAX_PAGES: ${{ vars.WEVITY_MAX_PAGES || '10' }}
         run: node scripts/generate-opportunities-json.js
       - name: Commit updated opportunities
         uses: stefanzweifel/git-auto-commit-action@v5

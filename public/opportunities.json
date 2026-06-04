@@ -1,16 +1,1858 @@
 {
-  "generatedAt": "2026-06-04T13:44:54.618Z",
+  "generatedAt": "2026-06-04T13:56:06.743Z",
   "source": "github-actions-static-json",
-  "itemCount": 2,
+  "itemCount": 200,
   "items": [
     {
-      "id": "2456c82dcf7d5974",
-      "title": "2026 코드게이트 AI 스타트업 해커톤",
-      "type": "해커톤",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107527",
-      "summary": "AI 해커톤 에 참여하여 아이디어를 실제 서비스(MVP)로 구현하고, 시장 가능성까지 직접 검증해보세요. ■ 신청안내 - 신청기간 : ~ 2026.07.08.(수) - 진행일정 : 2026.07.21.(화) ~ 07.23.(목), 21일 ~ 22일 무박2일 진행...",
-      "deadline": "2026-07-21",
+      "id": "229ca8cce048321b",
+      "title": "제17회 건설노동자의 땀과 보람, 그 행복한 동행 사진·영상 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/326127",
+      "summary": "건설근로자공제회 · activityTypeID: 3",
+      "deadline": "2026-07-24",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "영상디자이너",
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "a16e818adfbea27e",
+      "title": "2026 제11회 전국대학생 CM 시공 · 경진대회",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/326067",
+      "summary": "한국CM협회, 한국건설관리학회, 한국건축시공학회 / 국립부경대학교, 무영CM건축사사무소 · activityTypeID: 3 · 스크랩 1",
+      "deadline": "2026-06-22",
+      "publishedAt": "",
+      "careerTags": [
+        "반도체/엔지니어링",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "반도체엔지니어",
+        "건축가",
+        "건축기사"
+      ],
+      "recommendationTags": [
+        "semiconductor",
+        "engineering",
+        "environment",
+        "architecture",
+        "energy",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "4f3335f9cfe56446",
+      "title": "2026 강원특별자치도 청소년정책 제언대회",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/326065",
+      "summary": "강원특별자치도청소년활동진흥센터 · activityTypeID: 3 · 스크랩 2",
+      "deadline": "2026-07-12",
+      "publishedAt": "",
+      "careerTags": [
+        "공기업 (NCS)",
+        "로스쿨 (법조인)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "공기업(NCS 준비)",
+        "변호사(로스쿨)"
+      ],
+      "recommendationTags": [
+        "public",
+        "ncs",
+        "law",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "7899f8c6a68800ad",
+      "title": "2026 '40초로 즐기는 여수' 숏폼 영상 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/326058",
+      "summary": "전라남도 여수시 · activityTypeID: 3 · 스크랩 4",
+      "deadline": "2026-07-10",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "영상디자이너",
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "2b4dbd5f271ac504",
+      "title": "2026 KT&G 상상마당 디자인 챌린지 [일러스트 · 캐릭터 만화 공모전]",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/326048",
+      "summary": "컴퍼니에스에스 · activityTypeID: 3 · 스크랩 9",
+      "deadline": "2026-07-05",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "패션/의류",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "패션디자이너",
+        "크리에이티브디렉터",
+        "UI·UX디자이너",
+        "시각디자이너"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "design",
+        "ux",
+        "portfolio",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "411b5bccb705f91c",
+      "title": "데이터 분석 직무 경험 | 웰니스 앱 리텐션 패턴 분석 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/326043",
+      "summary": "주식회사 어치브모먼트 · activityTypeID: 3 · 스크랩 17",
+      "deadline": "2026-06-21",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "소프트웨어개발자",
+        "리서치(설문/통계)",
+        "앱개발자",
+        "그로스해커",
+        "AI/ML엔지니어"
+      ],
+      "recommendationTags": [
+        "mobile",
+        "software",
+        "data",
+        "statistics",
+        "research",
+        "marketing",
+        "contents"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "a12eb95a879c3836",
+      "title": "제2회 원주시 공공데이터·AI 활용 아이디어 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/326034",
+      "summary": "강원대학교 원주캠퍼스, 한라대학교 · activityTypeID: 3 · 스크랩 6",
+      "deadline": "2026-07-08",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "AI/ML연구원",
+        "데이터사이언티스트",
+        "리서치(설문/통계)"
+      ],
+      "recommendationTags": [
+        "data",
+        "statistics",
+        "research",
+        "ai",
+        "marketing",
+        "contents",
+        "public"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "8ff0e6fa756ffdf0",
+      "title": "2026 독립기념관 단편 영상 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325973",
+      "summary": "독립기념관 · activityTypeID: 3 · 스크랩 8",
+      "deadline": "2026-08-20",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "영상디자이너",
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "7aa93b761088449e",
+      "title": "2026 해양생물 콘텐츠 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325966",
+      "summary": "올에프 · activityTypeID: 3 · 스크랩 1",
+      "deadline": "2026-07-15",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "언론고시 (기자/PD)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "ade23e61bd42d88c",
+      "title": "제4회 문화체육관광 인공지능·데이터 활용 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/317802",
+      "summary": "문화체육관광부 / 한국문화정보원 · activityTypeID: 3 · 스크랩 575",
+      "deadline": "2026-06-26",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "AI/ML연구원",
+        "데이터사이언티스트",
+        "리서치(설문/통계)"
+      ],
+      "recommendationTags": [
+        "data",
+        "statistics",
+        "research",
+        "ai",
+        "marketing",
+        "contents",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "ce0703941a49790e",
+      "title": "2026 롯데월드 상품 디자인 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/321019",
+      "summary": "롯데월드 · activityTypeID: 3 · 스크랩 356",
+      "deadline": "2026-09-06",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "패션/의류",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "패션디자이너",
+        "크리에이티브디렉터",
+        "UI·UX디자이너",
+        "시각디자이너"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "design",
+        "ux",
+        "portfolio",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "968b401e7a553f4b",
+      "title": "제14회 산업통상부 공공데이터 활용 아이디어 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/311551",
+      "summary": "제14회 산업통상부 공공데이터 활용 아이디어 공모전 운영 사무국 · activityTypeID: 3 · 스크랩 627",
+      "deadline": "2026-07-06",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "리서치(설문/통계)",
+        "공기업(NCS 준비)"
+      ],
+      "recommendationTags": [
+        "data",
+        "statistics",
+        "research",
+        "marketing",
+        "contents",
+        "public",
+        "ncs"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "96487205fb2989f8",
+      "title": "[방송미디어통신위원회, 한국인터넷진흥원] 2026 LBS 스타트업 챌린지 (~6/10)",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/321524",
+      "summary": "방송미디어통신위원회, 한국인터넷진흥원 · activityTypeID: 3 · 스크랩 22",
+      "deadline": "2026-06-10",
+      "publishedAt": "",
+      "careerTags": [
+        "언론고시 (기자/PD)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자"
+      ],
+      "recommendationTags": [
+        "media",
+        "contents",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "748664c1a6328445",
+      "title": "하이오커피 브랜드 캐릭터 디자인 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/320170",
+      "summary": "하이파이브 · activityTypeID: 3 · 스크랩 216",
+      "deadline": "2026-06-28",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "패션/의류",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "패션디자이너",
+        "크리에이티브디렉터",
+        "UI·UX디자이너",
+        "시각디자이너"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "design",
+        "ux",
+        "portfolio",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "38fd4f46fcdc2809",
+      "title": "제7회 계룡장학재단 건축 아이디어 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325819",
+      "summary": "계룡장학재단 · activityTypeID: 3 · 스크랩 7",
+      "deadline": "2026-07-05",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "건축가",
+        "건축기사"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "environment",
+        "architecture",
+        "engineering",
+        "energy",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "03e4944096e60c22",
+      "title": "2026 핵심규제 합리화 숏폼 영상 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325817",
+      "summary": "주식회사 무나 · activityTypeID: 3 · 스크랩 4",
+      "deadline": "2026-06-30",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "영상디자이너",
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "c2f97e97ea58576e",
+      "title": "2026 한경 청소년 경제체험대회",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325804",
+      "summary": "한국경제신문 · activityTypeID: 3",
+      "deadline": "2026-07-10",
+      "publishedAt": "",
+      "careerTags": [
+        "금융/은행",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "은행원·텔러(IB/PB 등)"
+      ],
+      "recommendationTags": [
+        "finance",
+        "accounting",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "4d5e0c5f7b71cf23",
+      "title": "제4회 퀴즈노스 AI 영상 광고 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325800",
+      "summary": "에코네스트에이아이 주식회사 · activityTypeID: 3 · 스크랩 8",
+      "deadline": "2026-07-03",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "AE(광고기획자)",
+        "AI/ML엔지니어",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "홍보(PR)",
+        "카피라이터",
+        "데이터사이언티스트",
+        "PD·감독"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "c4ea9b2c932a1fff",
+      "title": "2026 독립기념관 단편 영상 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325764",
+      "summary": "독립기념관 · activityTypeID: 3 · 스크랩 10",
+      "deadline": "2026-08-20",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "영상디자이너",
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "24c9aeb001aafa58",
+      "title": "2026년 인구정책 카드뉴스 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325757",
+      "summary": "화성특례시 · activityTypeID: 3 · 스크랩 30",
+      "deadline": "2026-06-15",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "공기업 (NCS)",
+        "로스쿨 (법조인)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "공기업(NCS 준비)",
+        "변호사(로스쿨)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "public",
+        "ncs",
+        "law",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "70b8d55809416840",
+      "title": "[충북도청] 2026 충청북도 60초 영상 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325745",
+      "summary": "충북도청 · activityTypeID: 3 · 스크랩 11",
+      "deadline": "2026-08-14",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "영상디자이너",
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "6677b180e0a0315e",
+      "title": "[에이치앤더블유문화재단] 2026 H&W문화재단 영상콘텐츠공모전 「서울에 살아보니」",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325744",
+      "summary": "재단법인 에이치앤더블유문화재단 · activityTypeID: 3 · 스크랩 7",
+      "deadline": "2026-08-31",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "언론고시 (기자/PD)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "law",
+        "public",
+        "media",
+        "writing",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "b736cbbaddfda115",
+      "title": "2026년 \"한어교\" 세계 대학생 중고등학생 초등학생 중국어대회 한국예선전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325677",
+      "summary": "공자아카데미(주) · activityTypeID: 3",
+      "deadline": "2026-06-05",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "통번역사"
+      ],
+      "recommendationTags": [
+        "competition",
+        "project",
+        "global",
+        "language"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "lang",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "8477050722a2328d",
+      "title": "경상남도 자원봉사 연구공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325647",
+      "summary": "경상남도자원봉사센터 · activityTypeID: 3 · 스크랩 4",
+      "deadline": "2026-07-10",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "사회복지사"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "activity",
+        "volunteer",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "b2680572958fac17",
+      "title": "2026년 아토피·천식 그림 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325646",
+      "summary": "대전광역시 아토피·천식 교육정보센터 · activityTypeID: 3 · 스크랩 4",
+      "deadline": "2026-07-10",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "브랜드마케터",
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "hr",
+        "education",
+        "management",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "9ba845b0959387e3",
+      "title": "2026년 장미원 사진공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325645",
+      "summary": "서울대공원 기획홍보과 · activityTypeID: 3 · 스크랩 3",
+      "deadline": "2026-06-14",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "홍보(PR)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "492e6b5209413bd0",
+      "title": "총 상금 1,000만원 DIVE 2026 (글로벌 데이터 해커톤 대회)",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325642",
+      "summary": "주식회사 패스파인더 · activityTypeID: 3 · 스크랩 12",
+      "deadline": "2026-06-24",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "물류관리자"
+      ],
+      "recommendationTags": [
+        "data",
+        "statistics",
+        "research",
+        "trade",
+        "logistics",
+        "global",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "aa396e9d3ec4bef3",
+      "title": "제3회 울산관광 전국사진 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325641",
+      "summary": "(사)한국사진작가협회 울산광역시지회 · activityTypeID: 3 · 스크랩 6",
+      "deadline": "2026-10-07",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "작가",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "df260a7927b8d71d",
+      "title": "「상상이 현실이 되는 경남여행」 2026 경남 관광 AI 홍보 영상 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325627",
+      "summary": "(재)경남관광재단 · activityTypeID: 3 · 스크랩 14",
+      "deadline": "2026-07-31",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "홍보(PR)",
+        "AI/ML엔지니어",
+        "영상디자이너",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "카피라이터",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "14309dd1ee7075dd",
+      "title": "[요기요 X 오라클 해커톤] 맛있는 일상, AI로 잇(IT)다",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325621",
+      "summary": "주식회사 위대한상상 · activityTypeID: 3 · 스크랩 40",
+      "deadline": "2026-07-12",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "소프트웨어개발자",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "bd4479104bc56b20",
+      "title": "청년미래플러스 1:1 멘토링 희망 청년 모집",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325587",
+      "summary": "한국소프트웨어산업협회 · activityTypeID: 3 · 스크랩 2",
+      "deadline": "2026-08-31",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "hr",
+        "education",
+        "management",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "4c1ec366d69af3e1",
+      "title": "제7회 시험·연구용 유전자변형생물체 안전 콘텐츠 대국민 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325529",
+      "summary": "과학기술정보통신부 · activityTypeID: 3 · 스크랩 14",
+      "deadline": "2026-06-30",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "언론고시 (기자/PD)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "engineering",
+        "environment",
+        "architecture"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "73e12988ae28644b",
+      "title": "2026년 전북특별자치도 드론 영상 및 사진 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325524",
+      "summary": "전북특별자치도 · activityTypeID: 3",
+      "deadline": "2026-09-30",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "025b5915014e747f",
+      "title": "2026 전국 고교 웹소설 슈퍼루키전 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325520",
+      "summary": "gling · activityTypeID: 3 · 스크랩 1",
+      "deadline": "2026-07-31",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "프론트엔드개발자",
+        "소프트웨어개발자",
+        "앱개발자",
+        "게임개발자",
+        "크리에이티브디렉터"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "marketing",
+        "contents",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "6ea83ce767f1f4b9",
+      "title": "2026년 제18회 하늘사랑 그림공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325512",
+      "summary": "수도권대기환경청 · activityTypeID: 3 · 스크랩 3",
+      "deadline": "2026-07-10",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "환경기사"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "environment",
+        "architecture",
+        "engineering",
+        "energy",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "e8290ac6c46d24ab",
+      "title": "제16회 전국 고등학생 바이오안전성•바이오산업 토론대회",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325475",
+      "summary": "주식회사 영마이스 · activityTypeID: 3",
+      "deadline": "2026-07-10",
+      "publishedAt": "",
+      "careerTags": [
+        "로스쿨 (법조인)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "변호사(로스쿨)",
+        "바이오·제약연구원"
+      ],
+      "recommendationTags": [
+        "law",
+        "public",
+        "bio",
+        "healthcare",
+        "food",
+        "environment",
+        "architecture"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "9685d56fd5f550b9",
+      "title": "2026년 부산 남구 청년AI 해커톤_소셜리빙랩 모집 공고",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325450",
+      "summary": "(사)사회혁신연구원 · activityTypeID: 3 · 스크랩 4",
+      "deadline": "2026-06-19",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "소프트웨어개발자",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "0923907714ff0d8c",
+      "title": "[청도군] 2026 새마을 숏폼 영상 콘테스트",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325440",
+      "summary": "청도군 · activityTypeID: 3 · 스크랩 8",
+      "deadline": "2026-09-28",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독"
+      ],
+      "recommendationTags": [
+        "media",
+        "contents",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "97bf129cf6131497",
+      "title": "제16회 전국 고등학생 바이오안전성·바이오산업 토론대회",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325412",
+      "summary": "한국생명공학연구원 / 한국바이오안전성정보센터 · activityTypeID: 3 · 스크랩 2",
+      "deadline": "2026-07-10",
+      "publishedAt": "",
+      "careerTags": [
+        "반도체/엔지니어링",
+        "로스쿨 (법조인)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "반도체엔지니어",
+        "변호사(로스쿨)",
+        "바이오·제약연구원"
+      ],
+      "recommendationTags": [
+        "law",
+        "public",
+        "semiconductor",
+        "engineering",
+        "bio",
+        "healthcare",
+        "food"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "df09b4c90f13757a",
+      "title": "[제주특별자치도] 2026 제주 인구정책 '몬딱' 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325407",
+      "summary": "제주특별자치도 · activityTypeID: 3 · 스크랩 7",
+      "deadline": "2026-06-15",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "공기업 (NCS)",
+        "로스쿨 (법조인)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "공기업(NCS 준비)",
+        "변호사(로스쿨)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "public",
+        "ncs",
+        "law",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "92afb0ced7b138fa",
+      "title": "상상이 현실이 되는 경남여행 - 2026 경남 관광 AI 홍보 영상 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325404",
+      "summary": "경남관광재단 · activityTypeID: 3 · 스크랩 8",
+      "deadline": "2026-07-31",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "홍보(PR)",
+        "AI/ML엔지니어",
+        "영상디자이너",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "카피라이터",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "c79d717ba4c670c3",
+      "title": "[국민경제자문회의] 청년 정책 아이디어 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325399",
+      "summary": "국민경제자문회의 · activityTypeID: 3 · 스크랩 57",
+      "deadline": "2026-07-08",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "금융/은행",
+        "공기업 (NCS)",
+        "로스쿨 (법조인)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "공기업(NCS 준비)",
+        "변호사(로스쿨)",
+        "은행원·텔러(IB/PB 등)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "finance",
+        "accounting",
+        "public",
+        "ncs",
+        "law"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "1dfd82fac738cab7",
+      "title": "[장흥군] 2026년 장흥군 정책제안 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325397",
+      "summary": "장흥군 · activityTypeID: 3 · 스크랩 8",
+      "deadline": "2026-06-24",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "공기업 (NCS)",
+        "로스쿨 (법조인)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "공기업(NCS 준비)",
+        "변호사(로스쿨)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "public",
+        "ncs",
+        "law",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "d0a36eca5d66627f",
+      "title": "제1회 자유기업원 AI콘텐츠 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325394",
+      "summary": "재단법인 자유기업원 · activityTypeID: 3 · 스크랩 25",
+      "deadline": "2026-07-31",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "언론고시 (기자/PD)"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "law",
+        "public",
+        "media"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "4b9a2257ddb33b5f",
+      "title": "[데이콘] 2026 성균관대학교 멀티모달 AI 챌린지 (~6/29)",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325373",
+      "summary": "데이콘 주식회사 · activityTypeID: 3 · 스크랩 21",
+      "deadline": "2026-06-29",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "소프트웨어개발자",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "9873823e1e46ca63",
+      "title": "2026년 창원시 AIㆍ데이터 활용 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325360",
+      "summary": "창원특례시 · activityTypeID: 3 · 스크랩 30",
+      "deadline": "2026-09-30",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "AI/ML연구원",
+        "데이터사이언티스트",
+        "리서치(설문/통계)"
+      ],
+      "recommendationTags": [
+        "data",
+        "statistics",
+        "research",
+        "ai",
+        "marketing",
+        "contents",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "346fd9f883d376e1",
+      "title": "2026 새마을 숏폼 영상 콘테스트",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325328",
+      "summary": "미디어라인 · activityTypeID: 3 · 스크랩 12",
+      "deadline": "2026-09-28",
+      "publishedAt": "",
+      "careerTags": [
+        "언론고시 (기자/PD)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자"
+      ],
+      "recommendationTags": [
+        "media",
+        "contents",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "484610781d855498",
+      "title": "2026년 KOICA 공공데이터 활용 챌린지",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325306",
+      "summary": "KOICA · activityTypeID: 3 · 스크랩 43",
+      "deadline": "2026-06-16",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "소프트웨어개발자",
+        "데이터사이언티스트",
+        "공기업(NCS 준비)"
+      ],
+      "recommendationTags": [
+        "data",
+        "statistics",
+        "research",
+        "public",
+        "ncs",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "7988c8af942af71e",
+      "title": "서울특별시교육청정독도서관 개관 50주년 기념 슬로건 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325304",
+      "summary": "서울특별시교육청정독도서관 · activityTypeID: 3 · 스크랩 36",
+      "deadline": "2026-06-21",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "브랜드마케터",
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "hr",
+        "education",
+        "management",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "c1fd8dd23e9eb6f1",
+      "title": "전국민 AI활용 사례 공모전 시즌 1",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325256",
+      "summary": "마이스플랜즈 · activityTypeID: 3 · 스크랩 13",
+      "deadline": "2026-06-30",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어",
@@ -40,12 +1882,3530 @@
       "active": true
     },
     {
-      "id": "91ef8328649811ec",
-      "title": "[미니인턴X올마이투어] 그로스해커 지망생 주목! 여행 OTA 올마이투어닷컴 앱마케팅 전략 기획하고, 실무 경험 어....",
-      "type": "인턴십",
+      "id": "42d7090bee1d175e",
+      "title": "2026년 백암재단 청소년‧청년 사회문제해결 아이디어 공모전",
+      "type": "공모전",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/187604",
-      "summary": "중소기업 대외활동 인 [미니인턴X올마이투어] 그로스해커 지망생 주목! 여행 OTA 올마이투어닷컴 앱마케팅 전략 기획하고, 실무 경험 어필하자! (~7/3)입니다. 혜택으로는 전문가/임직원 멘토링, 수료증 및 인증서 등이 있습니다.",
+      "url": "https://linkareer.com/activity/325242",
+      "summary": "사회복지법인 백암복지재단 · activityTypeID: 3 · 스크랩 12",
+      "deadline": "2026-06-30",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "사회복지사"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "law",
+        "public",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "7d8a303f9626ec3a",
+      "title": "2026 KOICA 공공데이터 활용 챌린지",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325208",
+      "summary": "한국국제협력단 · activityTypeID: 3 · 스크랩 18",
+      "deadline": "2026-06-16",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "소프트웨어개발자",
+        "데이터사이언티스트",
+        "공기업(NCS 준비)"
+      ],
+      "recommendationTags": [
+        "data",
+        "statistics",
+        "research",
+        "public",
+        "ncs",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "d5810f9f90318cdf",
+      "title": "[전국민 참여] 에어팟 맥스 증정! 지금 OO할 결심 숏폼 영상 챌린지",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325177",
+      "summary": "주식회사 잡브리즈 · activityTypeID: 3 · 스크랩 8",
+      "deadline": "2026-07-31",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독"
+      ],
+      "recommendationTags": [
+        "media",
+        "contents",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "f6cdf0fcf5afa8cc",
+      "title": "2026 제18회 녹색생활실천 환경그림대회",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325091",
+      "summary": "울산제일일보 · activityTypeID: 3 · 스크랩 2",
+      "deadline": "2026-06-13",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "환경기사"
+      ],
+      "recommendationTags": [
+        "environment",
+        "architecture",
+        "engineering",
+        "energy",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "1a8145feca599f89",
+      "title": "제1회 대학생 영상·영화 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325087",
+      "summary": "합천군시설관리공단 · activityTypeID: 3 · 스크랩 2",
+      "deadline": "2026-06-05",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "a6e194693f22ac2f",
+      "title": "한반도 평화교류 정책 AI영상 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325084",
+      "summary": "남북교류협력지원협회 · activityTypeID: 3 · 스크랩 4",
+      "deadline": "2026-06-26",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "공기업 (NCS)",
+        "로스쿨 (법조인)"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "공기업(NCS 준비)",
+        "변호사(로스쿨)",
+        "영상디자이너",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "public",
+        "ncs",
+        "law"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "d521c3a12e128799",
+      "title": "2026 HiKR MEDIA ART(하이커 미디어 아트) 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325080",
+      "summary": "문화체육관광부 · activityTypeID: 3 · 스크랩 18",
+      "deadline": "2026-07-31",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "언론고시 (기자/PD)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "f7e4708b93e040fc",
+      "title": "AI-Kive 챌린지",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325043",
+      "summary": "(주)스튜디오프리윌루전 · activityTypeID: 3 · 스크랩 9",
+      "deadline": "2026-07-05",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "소프트웨어개발자",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "60ad9056d7dce8ec",
+      "title": "제6회숏츠멘터리공모전 [AI시대, 기후기록)",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325015",
+      "summary": "사단법인 지속가능월드네트워크 · activityTypeID: 3 · 스크랩 5",
+      "deadline": "2026-08-08",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "law",
+        "public",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "e2ab14f28583033d",
+      "title": "2026년 법무부 성평등 영상 콘텐츠 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324993",
+      "summary": "법무부 · activityTypeID: 3 · 스크랩 36",
+      "deadline": "2026-07-17",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "로스쿨 (법조인)",
+        "언론고시 (기자/PD)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자",
+        "변호사(로스쿨)",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "법무담당자",
+        "홍보(PR)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "law",
+        "public",
+        "media",
+        "writing",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "f3ae7418a5e2f4a3",
+      "title": "[이민정책연구원] 제6회 대학(원)생 대상 이민정책연구 논문공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324986",
+      "summary": "이민정책연구원 · activityTypeID: 3 · 스크랩 23",
+      "deadline": "2026-09-30",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "공기업 (NCS)",
+        "로스쿨 (법조인)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "공기업(NCS 준비)",
+        "변호사(로스쿨)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "public",
+        "ncs",
+        "law",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "a7d79777dc21e19b",
+      "title": "천씨씨커피 영상공모전 CC필름페스타 2회",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324957",
+      "summary": "주식회사 지민 · activityTypeID: 3 · 스크랩 13",
+      "deadline": "2026-10-31",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "98eb6b1c6966aaed",
+      "title": "2026 한국수력원자력 유튜브 짧은영상 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324943",
+      "summary": "한국수력원자력 · activityTypeID: 3 · 스크랩 47",
+      "deadline": "2026-07-30",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "영상디자이너",
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "3bfd083b3e075ec0",
+      "title": "2026 호반그룹×서울창업허브 오픈이노베이션_[2026 호반혁신기술공모전]",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324938",
+      "summary": "호반, 서울경제진흥원, 창업진흥원, 한국건설기술연구원 · activityTypeID: 3 · 스크랩 9",
+      "deadline": "2026-06-30",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "금융/은행",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "은행원·텔러(IB/PB 등)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "finance",
+        "accounting",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "2cc98b6db6f73018",
+      "title": "[경북문화재단 콘텐츠진흥원] 경북 차세대 패션 콘텐츠 창작 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324917",
+      "summary": "경북문화재단 콘텐츠진흥원 · activityTypeID: 3 · 스크랩 6",
+      "deadline": "2026-06-10",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "패션/의류",
+        "언론고시 (기자/PD)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "2142b04d3f44afd0",
+      "title": "[국내산 수산물을 부탁해] 간편식 아이디어 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324902",
+      "summary": "이랜드팜앤푸드 · activityTypeID: 3 · 스크랩 26",
+      "deadline": "2026-06-16",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "식품/F&B",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "식품연구원",
+        "영양사"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "bio",
+        "healthcare",
+        "food",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "21172301e1388285",
+      "title": "2026년 제주시 정책 아이디어 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324804",
+      "summary": "제주시 · activityTypeID: 3 · 스크랩 28",
+      "deadline": "2026-07-10",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "공기업 (NCS)",
+        "로스쿨 (법조인)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "공기업(NCS 준비)",
+        "변호사(로스쿨)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "public",
+        "ncs",
+        "law",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "c60b84343297baa8",
+      "title": "2026 양파 소비촉진을 위한 대국민 숏폼영상 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324798",
+      "summary": "농림축산식품부, 한국농수산식품유통공사 · activityTypeID: 3 · 스크랩 43",
+      "deadline": "2026-06-13",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "식품/F&B",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "식품연구원",
+        "영상디자이너",
+        "영양사",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "bio",
+        "healthcare",
+        "food"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "17ba8667cbfdeab9",
+      "title": "[국립중앙도서관] 2026 도서관 데이터 활용 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324762",
+      "summary": "국립중앙도서관 · activityTypeID: 3 · 스크랩 110",
+      "deadline": "2026-08-07",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "소프트웨어개발자",
+        "리서치(설문/통계)",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "data",
+        "statistics",
+        "research",
+        "marketing",
+        "contents",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "e2dac17a63c801c5",
+      "title": "AI 활용 국유재산 홍보 콘텐츠 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324743",
+      "summary": "한국자산관리공사 · activityTypeID: 3 · 스크랩 37",
+      "deadline": "2026-06-19",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "언론고시 (기자/PD)"
+      ],
+      "matchedCareerSubs": [
+        "홍보(PR)",
+        "AI/ML엔지니어",
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "카피라이터"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "e2d55167d9e1e4a2",
+      "title": "[대한민국 해군] 2026 대한민국해군 영상·숏폼 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324718",
+      "summary": "대한민국 해군 · activityTypeID: 3 · 스크랩 10",
+      "deadline": "2026-07-03",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "5e91e5a56c1228be",
+      "title": "서울드라마어워즈 2026 공식 캐릭터 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324692",
+      "summary": "한국방송협회 · activityTypeID: 3 · 스크랩 30",
+      "deadline": "2026-06-17",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "언론고시 (기자/PD)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "da17f04a2884d491",
+      "title": "2026 한국 자살예방연구실천협회 자살예방 정책&실천 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324678",
+      "summary": "한국자살예방연구실천협회(KASPRA) · activityTypeID: 3 · 스크랩 36",
+      "deadline": "2026-07-31",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "공기업 (NCS)",
+        "로스쿨 (법조인)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "공기업(NCS 준비)",
+        "변호사(로스쿨)",
+        "홍보(PR)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "public",
+        "ncs",
+        "law",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "09b81313b88979a8",
+      "title": "'도서관과 사서 이야기' 영상 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324675",
+      "summary": "국립중앙도서관 · activityTypeID: 3 · 스크랩 4",
+      "deadline": "2026-06-30",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "영상디자이너",
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "8e3ac86a360888be",
+      "title": "제14회 전국 초·중·고 학생 사랑의열매 나눔공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324674",
+      "summary": "사랑의열매 사회복지공동모금회, 교육부 · activityTypeID: 3 · 스크랩 3",
+      "deadline": "2026-08-03",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "브랜드마케터",
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "hr",
+        "education",
+        "management",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "02095611797778cf",
+      "title": "[HD건설기계] HD 퓨처 건설기계 챌린지",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324673",
+      "summary": "에이치디건설기계(주) · activityTypeID: 3 · 스크랩 8",
+      "deadline": "2026-06-10",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "기계엔지니어"
+      ],
+      "recommendationTags": [
+        "engineering",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "66d36bdfb6425ae1",
+      "title": "2026 농어촌 기본소득 숏폼 공모전_6월",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324654",
+      "summary": "농림축산식품부 · activityTypeID: 3 · 스크랩 13",
+      "deadline": "2026-06-21",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "식품/F&B",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "식품연구원",
+        "영양사"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "bio",
+        "healthcare",
+        "food",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "6bacb5ca2a4bb7a7",
+      "title": "제8회 법무부 통일법제 논문 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324651",
+      "summary": "법무부 · activityTypeID: 3 · 스크랩 32",
+      "deadline": "2026-09-16",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "로스쿨 (법조인)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "변호사(로스쿨)",
+        "법무담당자"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "law",
+        "public",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "e8f037a50b9f4922",
+      "title": "[신한투자증권] 신한 Premier Film Festa 숏폼 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324647",
+      "summary": "신한투자증권 · activityTypeID: 3 · 스크랩 66",
+      "deadline": "2026-07-24",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "금융/은행",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "홍보(PR)",
+        "펀드매니저",
+        "은행원·텔러(IB/PB 등)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "finance",
+        "accounting",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "09ab792e94799f1f",
+      "title": "『반환경보조금(Environmentally Harmful Subsidies) 발굴 공모전』",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324622",
+      "summary": "한국환경정책협의회 · activityTypeID: 3 · 스크랩 47",
+      "deadline": "2026-06-30",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "공기업 (NCS)",
+        "로스쿨 (법조인)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "공기업(NCS 준비)",
+        "변호사(로스쿨)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "public",
+        "ncs",
+        "law",
+        "environment",
+        "architecture"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "e79f4a69d735418d",
+      "title": "한국중부발전 재생에너지·에너지 절약 대국민 콘텐츠 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324539",
+      "summary": "한국중부발전 · activityTypeID: 3 · 스크랩 18",
+      "deadline": "2026-06-05",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "언론고시 (기자/PD)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "environment",
+        "architecture",
+        "engineering"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "db009a4de6d41fe6",
+      "title": "2026년 제12회 전국 중.고교생 서강 게임/애니/만화 아이디어 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324536",
+      "summary": "서강대학교 미래교육원 · activityTypeID: 3 · 스크랩 2",
+      "deadline": "2026-07-14",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "브랜드마케터",
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "hr",
+        "education",
+        "management",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "1a74703a9aed35e9",
+      "title": "2026 대한민국 지자체·공공 캐릭터 페스티벌 대상 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324533",
+      "summary": "한국문화콘텐츠라이센싱협회 · activityTypeID: 3 · 스크랩 5",
+      "deadline": "2026-07-10",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "언론고시 (기자/PD)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "공기업(NCS 준비)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "public",
+        "ncs",
+        "media",
+        "writing",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "f2182b3654408418",
+      "title": "릴레이 토크콘서트 청년담장 이야기 영상공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324531",
+      "summary": "부산광역시 남구청 · activityTypeID: 3 · 스크랩 2",
+      "deadline": "2026-07-10",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "4ba4ee950b9da544",
+      "title": "제24회 부여서동연꽃축제 「서동 나이트 퍼레이드」 음원 공모전 (AI음악 허용)",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324503",
+      "summary": "(주)레몬사운드 · activityTypeID: 3 · 스크랩 2",
+      "deadline": "2026-06-12",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "소프트웨어개발자",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "07969caa48dde6b6",
+      "title": "2026 청소년 해양영토 토론대회",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324459",
+      "summary": "해양수산부 · activityTypeID: 3 · 스크랩 1",
+      "deadline": "2026-06-15",
+      "publishedAt": "",
+      "careerTags": [
+        "로스쿨 (법조인)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "변호사(로스쿨)"
+      ],
+      "recommendationTags": [
+        "law",
+        "public",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "c4738f62b0e7e65a",
+      "title": "릴레이 토크콘서트 청년담장 이야기영상 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324416",
+      "summary": "부산광역시 남구청 · activityTypeID: 3 · 스크랩 2",
+      "deadline": "2026-07-10",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "영상디자이너",
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "dd23236e3ec5d04b",
+      "title": "[한국조폐공사] 2026 전국 대학생 공공데이터 활용 창업 경진대회",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324413",
+      "summary": "한국조폐공사 · activityTypeID: 3 · 스크랩 29",
+      "deadline": "2026-06-07",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "소프트웨어개발자",
+        "데이터사이언티스트",
+        "공기업(NCS 준비)"
+      ],
+      "recommendationTags": [
+        "data",
+        "statistics",
+        "research",
+        "public",
+        "ncs",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "3e3bec80e41d230b",
+      "title": "현금영수증 숏폼 영상 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324396",
+      "summary": "국세청 · activityTypeID: 3 · 스크랩 37",
+      "deadline": "2026-06-26",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "영상디자이너",
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "1c0b379868255657",
+      "title": "2027 충청 유니버시아드대회 공식상품 디자인 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324365",
+      "summary": "재단법인 2027 충청권 하계세계대학경기대회 조직위원회 · activityTypeID: 3 · 스크랩 22",
+      "deadline": "2026-07-27",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "패션/의류",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "패션디자이너",
+        "크리에이티브디렉터",
+        "시각디자이너",
+        "UI·UX디자이너"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "law",
+        "public",
+        "design",
+        "ux",
+        "portfolio"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "2f2e7cea93c5a587",
+      "title": "[다어울림생활문화센터] 2026 다어울림생활문화센터 홍보 서포터즈 1기 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/326112",
+      "summary": "다어울림생활문화센터 · activityTypeID: 1",
+      "deadline": "2026-06-23",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "홍보(PR)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "829074e56893e42b",
+      "title": "[굿네이버스] 한 달간 핵심 경험·의미 챙겨가는 글로벌 서포터즈ㅣGOAL라잡는 사람들 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/326085",
+      "summary": "굿네이버스 경기2사업본부 · activityTypeID: 1 · 스크랩 8",
+      "deadline": "2026-06-28",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "물류관리자"
+      ],
+      "recommendationTags": [
+        "trade",
+        "logistics",
+        "global",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "ebe5973906c5df3c",
+      "title": "2026 중소벤처기업부 청년 서포터즈 영상 크리에이터 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/326060",
+      "summary": "중소벤처기업부 · activityTypeID: 1 · 스크랩 16",
+      "deadline": "2026-06-22",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독"
+      ],
+      "recommendationTags": [
+        "media",
+        "contents",
+        "writing",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "05c6b8d73ae7c1b2",
+      "title": "2026 SCMC 홍보 서포터즈 “콘텐츠 크루(CREW)” 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325991",
+      "summary": "서울특별시서대문구도시관리공단 · activityTypeID: 1 · 스크랩 3",
+      "deadline": "2026-06-30",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "언론고시 (기자/PD)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "홍보(PR)",
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "environment",
+        "architecture",
+        "engineering"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "f5b8a75f75d4d700",
+      "title": "[BNK 썸 여자프로농구단] 대학생 서포터즈 2기 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/321903",
+      "summary": "(주)부산은행 · activityTypeID: 1 · 스크랩 79",
+      "deadline": "2026-06-07",
+      "publishedAt": "",
+      "careerTags": [
+        "금융/은행",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "은행원·텔러(IB/PB 등)"
+      ],
+      "recommendationTags": [
+        "finance",
+        "accounting",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "33f745037482d22d",
+      "title": "[해커스교육그룹] 해커스검정고시 서포터즈 4기 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325937",
+      "summary": "해커스교육그룹 · activityTypeID: 1 · 스크랩 2",
+      "deadline": "2026-06-28",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "hr",
+        "education",
+        "management",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "f1b6b1e9687b207e",
+      "title": "2026 스터디투어 in 한국/일본 서포터즈 선발 공고 (~2026/06/10)",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325902",
+      "summary": "피스윈즈 재팬 · activityTypeID: 1 · 스크랩 5",
+      "deadline": "2026-06-10",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "통번역사"
+      ],
+      "recommendationTags": [
+        "activity",
+        "volunteer",
+        "global",
+        "language"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "lang",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "b3742989af07d9a6",
+      "title": "2026년 제 18.5기 아웃리치 자원봉사단 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325814",
+      "summary": "부산광역시일시청소년쉼터(고정형) · activityTypeID: 1 · 스크랩 3",
+      "deadline": "2026-06-15",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "사회복지사"
+      ],
+      "recommendationTags": [
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "ac252b6d34a30c05",
+      "title": "[달성군시설관리공단] 2026년 달성군시설관리공단 단-짝 대학생 기자단 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325787",
+      "summary": "달성군시설관리공단 · activityTypeID: 1 · 스크랩 10",
+      "deadline": "2026-06-21",
+      "publishedAt": "",
+      "careerTags": [
+        "언론고시 (기자/PD)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자"
+      ],
+      "recommendationTags": [
+        "media",
+        "contents",
+        "writing",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "46d7526f6f7dd7be",
+      "title": "[사이버외교사절단 반크] 글로벌 AI 국제기구 홍보대사 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325782",
+      "summary": "사이버외교사절단 반크(VANK) · activityTypeID: 1 · 스크랩 60",
+      "deadline": "2026-06-28",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "홍보(PR)",
+        "물류관리자",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "trade",
+        "logistics",
+        "global"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "e45ce7e0dac4f697",
+      "title": "[세정] 디지털 매거진 OURLOG 아워로그 콘텐츠 에디터 서포터즈 모집 (~6/21)",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325684",
+      "summary": "(주) 세정서울지사 · activityTypeID: 1 · 스크랩 186",
+      "deadline": "2026-06-21",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "언론고시 (기자/PD)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "콘텐츠에디터",
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "680dc041df66a6b2",
+      "title": "[법무법인 해율] 서포터즈 12기 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325674",
+      "summary": "법무법인 해율 · activityTypeID: 1 · 스크랩 87",
+      "deadline": "2026-06-16",
+      "publishedAt": "",
+      "careerTags": [
+        "로스쿨 (법조인)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "변호사(로스쿨)",
+        "법무담당자"
+      ],
+      "recommendationTags": [
+        "law",
+        "public",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "b64af7c506a299d4",
+      "title": "[bbb 코리아] 제34기 bbb 프로보노 청년 봉사단 모집(~6/10)",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325568",
+      "summary": "bbb코리아 · activityTypeID: 1 · 스크랩 21",
+      "deadline": "2026-06-10",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "사회복지사"
+      ],
+      "recommendationTags": [
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "7d58e1c953c0a335",
+      "title": "2026년 하반기 청소년 정서·진로멘토링 씨드스쿨 교육봉사자(T) 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325525",
+      "summary": "사단법인 대한민국교육봉사단 · activityTypeID: 1 · 스크랩 32",
+      "deadline": "2026-07-05",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "사회복지사",
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "law",
+        "public",
+        "hr",
+        "education",
+        "management",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "f77d9c597f408415",
+      "title": "2026 공공 AI 박람회_제9회 전자정부의 날 기념식 서포터즈 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325452",
+      "summary": "행정안전부 · activityTypeID: 1 · 스크랩 39",
+      "deadline": "2026-06-05",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "공기업 (NCS)"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "공기업(NCS 준비)",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "public",
+        "ncs",
+        "engineering",
+        "environment",
+        "architecture"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "8bba76913bcc714d",
+      "title": "2026년 길음종합사회복지관 대학생 멘토링 봉사자 추가 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325445",
+      "summary": "길음종합사회복지관 · activityTypeID: 1 · 스크랩 1",
+      "deadline": "2026-06-12",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "사회복지사",
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "hr",
+        "education",
+        "management",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "f1d431dd8d7132c9",
+      "title": "[국가과학기술인력개발원] 2026 이공계 장애 대학(원)생 경력개발 멘토링",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325442",
+      "summary": "국가과학기술인력개발원 · activityTypeID: 1 · 스크랩 2",
+      "deadline": "2026-08-27",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "hr",
+        "education",
+        "management",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "8d4a03f21f20fcdc",
+      "title": "[그로스쿨] \"하루 10분 광고 뜯어보기 챌린지\" 5기 모집 (~06/14, 무료 참여)",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325303",
+      "summary": "연플 · activityTypeID: 1 · 스크랩 46",
+      "deadline": "2026-06-14",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "변호사(로스쿨)",
+        "그로스해커"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "law",
+        "public",
+        "activity",
+        "volunteer",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "f21096a92a82aaa5",
+      "title": "FLY ASIA 2026 글로벌 서포터즈 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325258",
+      "summary": "부산광역시 · activityTypeID: 1 · 스크랩 35",
+      "deadline": "2026-06-28",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "물류관리자"
+      ],
+      "recommendationTags": [
+        "trade",
+        "logistics",
+        "global",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "1b6c7cb071488fd8",
+      "title": "금천장애인가족지원센터 비장애 형제자매 멘토링 프로그램 대학생 자원봉사자(멘토) 모집 (남 1명, 여 1명)",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325215",
+      "summary": "금천장애인가족지원센터 · activityTypeID: 1 · 스크랩 8",
+      "deadline": "2026-06-05",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "사회복지사",
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "hr",
+        "education",
+        "management",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "3622a24e961cef4a",
+      "title": "TJ 대학생 서포터즈 '티플즈' 11기 모집 (~6/10)",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325191",
+      "summary": "TJ미디어 · activityTypeID: 1 · 스크랩 63",
+      "deadline": "2026-06-10",
+      "publishedAt": "",
+      "careerTags": [
+        "언론고시 (기자/PD)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자"
+      ],
+      "recommendationTags": [
+        "media",
+        "contents",
+        "writing",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "cbc057020adfd51c",
+      "title": "굿네이버스 경기용인지부 아동권리옹호 서포터즈단 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325046",
+      "summary": "사회복지법인 굿네이버스 경기용인지부 · activityTypeID: 1 · 스크랩 5",
+      "deadline": "2026-06-12",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "사회복지사"
+      ],
+      "recommendationTags": [
+        "law",
+        "public",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "3185a55a23aa2de5",
+      "title": "[수도권 중고등학교 출강] 대학 학과멘토링 강사 모집 (대학생 / 휴학생 / 졸업생 가능)",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/325016",
+      "summary": "H.I.S. Production · activityTypeID: 1 · 스크랩 42",
+      "deadline": "2026-08-27",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "hr",
+        "education",
+        "management",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "7b5995475cc759b2",
+      "title": "[굿네이버스] Environmental Design 커리어 브랜딩 환경캠페인",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324996",
+      "summary": "굿네이버스 경기동부사업본부 · activityTypeID: 1 · 스크랩 10",
+      "deadline": "2026-06-29",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "브랜드마케터",
+        "크리에이티브디렉터",
+        "건축가",
+        "시각디자이너",
+        "실내디자이너",
+        "공간디자이너",
+        "도시·조경설계",
+        "UI·UX디자이너"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "design",
+        "ux",
+        "portfolio",
+        "environment",
+        "architecture"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "0e0fdd7077e06773",
+      "title": "하남시미사노인복지관 대학생 홍보 서포터즈 1기 추가 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324950",
+      "summary": "미사노인복지관 · activityTypeID: 1 · 스크랩 6",
+      "deadline": "2026-06-10",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "홍보(PR)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "ecedd2c98b40bd5f",
+      "title": "[굿네이버스] 한 달간 핵심 경험·의미 챙겨가는 글로벌 서포터즈ㅣGOAL라잡는 사람들 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324781",
+      "summary": "굿네이버스 경기2사업본부 · activityTypeID: 1 · 스크랩 89",
+      "deadline": "2026-06-28",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "물류관리자"
+      ],
+      "recommendationTags": [
+        "trade",
+        "logistics",
+        "global",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "d5bcaa0d38220fc2",
+      "title": "굿네이버스 사회복지 관련 학과 학생을 위한 맞춤형 대외활동 '희망나눔꿈지원 멘토' 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324765",
+      "summary": "사단법인 굿네이버스 인터내셔날 경북사업본부 · activityTypeID: 1 · 스크랩 17",
+      "deadline": "2026-06-14",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "사회복지사"
+      ],
+      "recommendationTags": [
+        "law",
+        "public",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "61bb1649decf0210",
+      "title": "2026년 하반기 청소년 정서·진로멘토링 씨드스쿨 교육봉사자(T) 모집(~7/5)",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324754",
+      "summary": "(사)대한민국교육봉사단 · activityTypeID: 1 · 스크랩 58",
+      "deadline": "2026-07-05",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "사회복지사",
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "hr",
+        "education",
+        "management",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "2824dd5f1b460fa5",
+      "title": "AI가 답을 주는 시대, 여러분이 던진 물음표를 찾습니다. [폴리뷰온라인 서포터즈 씽커 모집]",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324382",
+      "summary": "폴리뷰온라인 · activityTypeID: 1 · 스크랩 18",
+      "deadline": "2026-06-17",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "e1f6518c75c31779",
+      "title": "[서민금융진흥원] KINFA 상생유스 금융교육 봉사단 1기 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324289",
+      "summary": "(주)엘리트코리아 · activityTypeID: 1 · 스크랩 173",
+      "deadline": "2026-06-14",
+      "publishedAt": "",
+      "careerTags": [
+        "금융/은행",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "사회복지사",
+        "은행원·텔러(IB/PB 등)",
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "finance",
+        "accounting",
+        "hr",
+        "education",
+        "management",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "517ca31933374ec9",
+      "title": "라오스 GHP해외봉사단 17기 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324288",
+      "summary": "마음이예쁜사람들 · activityTypeID: 1 · 스크랩 35",
+      "deadline": "2026-07-30",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "사회복지사",
+        "통번역사"
+      ],
+      "recommendationTags": [
+        "activity",
+        "volunteer",
+        "global",
+        "language"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "lang",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "5ab21b1ab92dd5d9",
+      "title": "[bbb 코리아] 제34기 bbb 프로보노 청년 봉사단 모집(~6/10)",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324277",
+      "summary": "bbb코리아 · activityTypeID: 1 · 스크랩 48",
+      "deadline": "2026-06-10",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "사회복지사"
+      ],
+      "recommendationTags": [
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "2941b2ca2a7907a9",
+      "title": "피란수도 부산 시민 아카데미 글로벌 서포터즈 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324276",
+      "summary": "피란수도 부산 시민 아카데미 · activityTypeID: 1 · 스크랩 25",
+      "deadline": "2026-06-16",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "물류관리자"
+      ],
+      "recommendationTags": [
+        "trade",
+        "logistics",
+        "global",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "d38a257539083bd5",
+      "title": "한국탄소산업진흥원 2026년 온라인 소통 기자단 추가모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324268",
+      "summary": "주식회사 제이레퍼토리 · activityTypeID: 1 · 스크랩 62",
+      "deadline": "2026-06-09",
+      "publishedAt": "",
+      "careerTags": [
+        "언론고시 (기자/PD)",
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자"
+      ],
+      "recommendationTags": [
+        "media",
+        "contents",
+        "writing",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "8c56a74996ee42d5",
+      "title": "제5기 계룡소담(SNS 홍보 서포터즈) 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324037",
+      "summary": "계룡시청 · activityTypeID: 1 · 스크랩 9",
+      "deadline": "2026-06-11",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "홍보(PR)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "890e2d4776ab69d2",
+      "title": "2026 쉬운 우리말 쓰기 영상 제작 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107977",
+      "summary": "분야 : 광고/마케팅, 영상/UCC/사진, 웹/모바일/IT, 문학/글/시나리오, 예체능/미술/음악",
+      "deadline": "2026-06-30",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "영상편집자",
+        "프론트엔드개발자",
+        "앱개발자",
+        "소프트웨어개발자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "mobile",
+        "marketing",
+        "contents",
+        "media"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "a304911a24ef863d",
+      "title": "2026년 KB Dream Wave 2030 KB라스쿨 중등 ４기 멘토링 멘토 모집",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107939",
+      "summary": "분야 : 광고/마케팅, 예체능/미술/음악, 대외활동/서포터즈, 봉사활동, 취업/창업",
+      "deadline": "2026-06-17",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "사회복지사",
+        "브랜드마케터",
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "hr",
+        "education",
+        "management",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "554634f95ff95e95",
+      "title": "[무료] 2026년 6월 삼성생명 금융아카데미 참가자 모집",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107932",
+      "summary": "분야 : 기획/아이디어, 광고/마케팅, 대외활동/서포터즈, 취업/창업, 기타",
+      "deadline": "2026-06-19",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "금융/은행"
+      ],
+      "matchedCareerSubs": [
+        "은행원·텔러(IB/PB 등)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "finance",
+        "accounting",
+        "activity",
+        "volunteer",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "650909ad3f530d70",
+      "title": "2026 HiKR MEDIA ART(하이커 미디어 아트) 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107781",
+      "summary": "분야 : 광고/마케팅, 영상/UCC/사진, 건축/건설/인테리어, 예체능/미술/음악, 대외활동/서포터즈",
+      "deadline": "2026-07-31",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "언론고시 (기자/PD)"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "건축가",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "environment",
+        "architecture",
+        "engineering"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "19ec94f68802e41a",
+      "title": "한화생명금융서비스 WM컨설팅지사 금융영업캠퍼스 1기 모집",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107672",
+      "summary": "분야 : 기획/아이디어, 광고/마케팅, 대외활동/서포터즈, 취업/창업, 기타",
+      "deadline": "2026-06-12",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "금융/은행"
+      ],
+      "matchedCareerSubs": [
+        "은행원·텔러(IB/PB 등)",
+        "금융영업"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "finance",
+        "accounting",
+        "activity",
+        "volunteer",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "5820c8be837c4036",
+      "title": "제7회 계룡장학재단 건축 아이디어 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107651",
+      "summary": "분야 : 기획/아이디어, 논문/리포트, 건축/건설/인테리어, 예체능/미술/음악",
+      "deadline": "2026-07-05",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "건축가",
+        "건축기사"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "environment",
+        "architecture",
+        "engineering",
+        "energy",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "ca1d1629a66d3a6e",
+      "title": "서울 디자인 AI 영상 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107650",
+      "summary": "분야 : 광고/마케팅, 영상/UCC/사진, 웹/모바일/IT, 게임/소프트웨어, 예체능/미술/음악",
+      "deadline": "2026-06-30",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "패션/의류"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "소프트웨어개발자",
+        "프론트엔드개발자",
+        "앱개발자",
+        "MLOps엔지니어",
+        "그로스해커",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "mobile",
+        "ai",
+        "data",
+        "marketing"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "d74ea37de51331f4",
+      "title": "[한국문화정보원] 문화PD 24기 모집",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107645",
+      "summary": "분야 : 광고/마케팅, 영상/UCC/사진, 웹/모바일/IT, 대외활동/서포터즈",
+      "deadline": "2026-06-07",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "언론고시 (기자/PD)"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자",
+        "프론트엔드개발자",
+        "앱개발자",
+        "소프트웨어개발자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "mobile",
+        "marketing",
+        "contents",
+        "media"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "fcef03f441312d9c",
+      "title": "[국립아시아문화전당] 2026 ACC 민주·인권·평화 영상(+AI) 콘텐츠 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107427",
+      "summary": "분야 : 광고/마케팅, 영상/UCC/사진, 웹/모바일/IT, 게임/소프트웨어, 예체능/미술/음악, 기타",
+      "deadline": "2026-07-31",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "로스쿨 (법조인)",
+        "언론고시 (기자/PD)"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "소프트웨어개발자",
+        "프론트엔드개발자",
+        "앱개발자",
+        "MLOps엔지니어",
+        "그로스해커",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "mobile",
+        "ai",
+        "data",
+        "marketing"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "1a72be7ffeaa1289",
+      "title": "2026 한국수력원자력 기업이미지 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107426",
+      "summary": "분야 : 광고/마케팅, 디자인/캐릭터/웹툰, 웹/모바일/IT, 과학/공학, 예체능/미술/음악, 기타",
+      "deadline": "2026-07-30",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "패션/의류",
+        "반도체/엔지니어링"
+      ],
+      "matchedCareerSubs": [
+        "프론트엔드개발자",
+        "패션디자이너",
+        "크리에이티브디렉터",
+        "앱개발자",
+        "소프트웨어개발자",
+        "시각디자이너"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "mobile",
+        "marketing",
+        "contents",
+        "design"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "1faea4f87a610878",
+      "title": "2026 한국수력원자력 유튜브 짧은영상 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107425",
+      "summary": "분야 : 광고/마케팅, 영상/UCC/사진, 웹/모바일/IT, 과학/공학, 예체능/미술/음악, 기타",
+      "deadline": "2026-07-30",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "반도체/엔지니어링"
+      ],
+      "matchedCareerSubs": [
+        "영상디자이너",
+        "프론트엔드개발자",
+        "앱개발자",
+        "소프트웨어개발자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "mobile",
+        "marketing",
+        "contents",
+        "media"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "77e867bd6f14b24d",
+      "title": "2026 부산광역시 공공데이터•AI 활용 창업경진대회",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107424",
+      "summary": "분야 : 기획/아이디어, 광고/마케팅, 웹/모바일/IT, 게임/소프트웨어, 과학/공학, 취업/창업",
+      "deadline": "2026-06-25",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "반도체/엔지니어링"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "소프트웨어개발자",
+        "프론트엔드개발자",
+        "앱개발자"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "mobile",
+        "data",
+        "statistics",
+        "research"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "e86892d90cef2667",
+      "title": "제4회 문화체육관광 인공지능·데이터 활용 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=106965",
+      "summary": "분야 : 기획/아이디어, 논문/리포트, 웹/모바일/IT, 게임/소프트웨어, 과학/공학, 대외활동/서포터즈",
+      "deadline": "2026-06-26",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "반도체/엔지니어링"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "소프트웨어개발자",
+        "프론트엔드개발자",
+        "앱개발자"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "mobile",
+        "data",
+        "statistics",
+        "research"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "272469d7dfcdf28c",
+      "title": "2026년 전주MBC K-하이테크 플랫폼 제2회 가상현실 공간 창작 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=106656",
+      "summary": "분야 : 기획/아이디어, 영상/UCC/사진, 웹/모바일/IT, 게임/소프트웨어, 과학/공학, 건축/건설/인테리어, 기타",
+      "deadline": "2026-07-14",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "반도체/엔지니어링"
+      ],
+      "matchedCareerSubs": [
+        "프론트엔드개발자",
+        "앱개발자",
+        "소프트웨어개발자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "mobile",
+        "marketing",
+        "contents",
+        "media"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "3d5a0670e3b2a5cd",
+      "title": "2026년도 제31회 경기도 건축문화상 공모전 (계획작품 부문 / 사용승인 건축물 부문)",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=105948",
+      "summary": "분야 : 논문/리포트, 디자인/캐릭터/웹툰, 과학/공학, 건축/건설/인테리어, 예체능/미술/음악",
+      "deadline": "2026-06-29",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "패션/의류",
+        "반도체/엔지니어링"
+      ],
+      "matchedCareerSubs": [
+        "프론트엔드개발자",
+        "패션디자이너",
+        "크리에이티브디렉터",
+        "건축가",
+        "UI·UX디자이너",
+        "시각디자이너",
+        "웹디자이너",
+        "앱개발자"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "marketing",
+        "contents",
+        "design",
+        "ux"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "0e690a744e15056b",
+      "title": "2026 유새일 예스 여성공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107993",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-07-31",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "8a9c383ae5945966",
+      "title": "제6회 소방안전 빅데이터 활용 및 아이디어 경진대회",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107973",
+      "summary": "분야 : 기획/아이디어, 웹/모바일/IT, 게임/소프트웨어",
+      "deadline": "2026-08-05",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "소프트웨어개발자",
+        "프론트엔드개발자",
+        "앱개발자",
+        "데이터분석가",
+        "AI/ML엔지니어"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "mobile",
+        "data",
+        "statistics",
+        "research"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "676156f609baeea3",
+      "title": "가족을 이루다, 미래를 잇다 가족사진 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107967",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-07-10",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "4e70d8489f5c78ad",
+      "title": "제8회 시흥시 도시·건축드로잉 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107965",
+      "summary": "분야 : 건축/건설/인테리어",
+      "deadline": "2026-06-30",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "건축가",
+        "건축기사"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "environment",
+        "architecture",
+        "engineering",
+        "energy",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "06eab07b5d67add0",
+      "title": "[넥슨] 메이플스토리 글로벌 개발 콘테스트 (MapleStory Global Creator Challenge)",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107956",
+      "summary": "분야 : 게임/소프트웨어",
+      "deadline": "2026-10-07",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "물류관리자"
+      ],
+      "recommendationTags": [
+        "trade",
+        "logistics",
+        "global",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "de7f001a786abb77",
+      "title": "제4회 퀴즈노스 AI 영상 광고 챌린지",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107955",
+      "summary": "분야 : 광고/마케팅",
       "deadline": "2026-07-03",
       "publishedAt": "",
       "careerTags": [
@@ -53,28 +5413,2031 @@
         "기획/마케팅"
       ],
       "matchedCareerSubs": [
-        "그로스해커",
+        "AI/ML엔지니어",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "데이터사이언티스트",
+        "PD·감독"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "2c33f0f777ee489e",
+      "title": "제2회 원주시 공공데이터·AI 활용 아이디어 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107946",
+      "summary": "분야 : 기획/아이디어",
+      "deadline": "2026-07-08",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "AI/ML연구원",
+        "데이터사이언티스트",
+        "리서치(설문/통계)"
+      ],
+      "recommendationTags": [
+        "data",
+        "statistics",
+        "research",
+        "ai",
+        "marketing",
+        "contents",
+        "public"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "e8f4cfd06c0a3bc6",
+      "title": "2026 KT&G 상상마당 디자인 챌린지 (일러스트 · 캐릭터 만화 공모전)",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107942",
+      "summary": "분야 : 디자인/캐릭터/웹툰",
+      "deadline": "2026-07-05",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "패션/의류"
+      ],
+      "matchedCareerSubs": [
+        "프론트엔드개발자",
+        "패션디자이너",
+        "크리에이티브디렉터",
+        "UI·UX디자이너",
+        "시각디자이너",
+        "웹디자이너",
+        "앱개발자"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "marketing",
+        "contents",
+        "design",
+        "ux"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "f35a94fb4b45e8a0",
+      "title": "2026 핵심규제 합리화 숏폼 영상 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107931",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-06-30",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "영상디자이너",
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "78d3b00c1f952ef2",
+      "title": "2026 제11회 전국대학생 CM 시공 · 경진대회",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107924",
+      "summary": "분야 : 건축/건설/인테리어",
+      "deadline": "2026-06-22",
+      "publishedAt": "",
+      "careerTags": [],
+      "matchedCareerSubs": [
+        "건축가",
+        "건축기사"
+      ],
+      "recommendationTags": [
+        "environment",
+        "architecture",
+        "engineering",
+        "energy",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "4651022ca03a6185",
+      "title": "2026 중소벤처기업부 청년 서포터즈 영상 크리에이터 모집",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107922",
+      "summary": "분야 : 대외활동/서포터즈",
+      "deadline": "2026-06-22",
+      "publishedAt": "",
+      "careerTags": [],
+      "matchedCareerSubs": [
+        "PD·감독"
+      ],
+      "recommendationTags": [
+        "media",
+        "contents",
+        "writing",
+        "activity",
+        "volunteer",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "3cc293b239ee14bc",
+      "title": "2026 해양생물 콘텐츠 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107908",
+      "summary": "분야 : 예체능/미술/음악",
+      "deadline": "2026-07-15",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "언론고시 (기자/PD)"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "a0b0e06b84cfe759",
+      "title": "2026 경상남도 자원봉사 연구공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107906",
+      "summary": "분야 : 논문/리포트",
+      "deadline": "2026-07-10",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "사회복지사"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "activity",
+        "volunteer",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "8ee2d134aa3df031",
+      "title": "2026 H&W문화재단 영상콘텐츠공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107904",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-08-31",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "언론고시 (기자/PD)"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "c16d94dcd0a88bb9",
+      "title": "2026년 달성군시설관리공단 단-짝 대학생 기자단 모집",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107900",
+      "summary": "분야 : 대외활동/서포터즈",
+      "deadline": "2026-06-21",
+      "publishedAt": "",
+      "careerTags": [
+        "언론고시 (기자/PD)"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자"
+      ],
+      "recommendationTags": [
+        "media",
+        "contents",
+        "writing",
+        "activity",
+        "volunteer",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "393d1e4d17a88456",
+      "title": "[사이버외교사절단 반크] 글로벌 AI 국제기구 홍보대사 모집",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107894",
+      "summary": "분야 : 기타",
+      "deadline": "2026-06-28",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "홍보(PR)",
+        "물류관리자",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "trade",
+        "logistics",
+        "global"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "b5c27cd23ac9dd03",
+      "title": "2026 대구오페라하우스 온라인 홍보단 오페라팬 11기 모집",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107891",
+      "summary": "분야 : 대외활동/서포터즈",
+      "deadline": "2026-06-21",
+      "publishedAt": "",
+      "careerTags": [],
+      "matchedCareerSubs": [
+        "홍보(PR)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "activity",
+        "volunteer",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "4dbe9d2e7bc220fc",
+      "title": "2026년 한어교 세계 대학생·중고등학생·초등학생 중국어대회 한국예선",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107882",
+      "summary": "분야 : 예체능/미술/음악",
+      "deadline": "2026-06-05",
+      "publishedAt": "",
+      "careerTags": [],
+      "matchedCareerSubs": [
+        "통번역사"
+      ],
+      "recommendationTags": [
+        "competition",
+        "project",
+        "global",
+        "language"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "lang",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "a9bafd7dfb9ee054",
+      "title": "국가생명윤리정책원 2026년 제3기 국민참여단 모집",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107876",
+      "summary": "분야 : 대외활동/서포터즈",
+      "deadline": "2026-06-19",
+      "publishedAt": "",
+      "careerTags": [
+        "공기업 (NCS)",
+        "로스쿨 (법조인)"
+      ],
+      "matchedCareerSubs": [
+        "공기업(NCS 준비)",
+        "변호사(로스쿨)"
+      ],
+      "recommendationTags": [
+        "public",
+        "ncs",
+        "law",
+        "activity",
+        "volunteer",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "893e5442d6fd0205",
+      "title": "제1회 자유기업원 AI콘텐츠 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107874",
+      "summary": "분야 : 웹/모바일/IT",
+      "deadline": "2026-07-31",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "언론고시 (기자/PD)"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
         "소프트웨어개발자",
-        "컨설턴트",
-        "브랜드마케터",
+        "프론트엔드개발자",
         "앱개발자",
+        "MLOps엔지니어",
+        "그로스해커",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "mobile",
+        "ai",
+        "data",
+        "marketing"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "215aa81b4b2f7413",
+      "title": "카카오웹툰 드라마 웹툰 공모전 (당신의 드라마를 보여주세요!)",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107867",
+      "summary": "분야 : 디자인/캐릭터/웹툰",
+      "deadline": "2026-06-10",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "패션/의류"
+      ],
+      "matchedCareerSubs": [
+        "프론트엔드개발자",
+        "패션디자이너",
+        "크리에이티브디렉터",
+        "UI·UX디자이너",
+        "시각디자이너",
+        "웹디자이너",
+        "앱개발자"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "marketing",
+        "contents",
+        "design",
+        "ux"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "bdb43a04890f78e2",
+      "title": "전북특별자치도교육청 제8회 행복한 학교급식 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107866",
+      "summary": "분야 : 예체능/미술/음악",
+      "deadline": "2026-06-26",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "브랜드마케터",
         "HRD·HRM"
       ],
       "recommendationTags": [
-        "mobile",
-        "software",
         "marketing",
         "contents",
         "hr",
         "education",
+        "management",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "6779a765af6bca45",
+      "title": "제3회 옥천전국연극제 홍보 숏폼 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107864",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-06-30",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "홍보(PR)",
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "68a61c2cf605c7d9",
+      "title": "국민주권정부 1년 기념 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107863",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-06-22",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "c2ee54a8253e3133",
+      "title": "한글페스타 2026 세계인이 함께 쓰는 한글 영상 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107862",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-08-13",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "영상디자이너",
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "1754c967b3f90e86",
+      "title": "양산시 생활속 친환경 실천 SNS 챌린지",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107861",
+      "summary": "분야 : 광고/마케팅",
+      "deadline": "2026-06-30",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "환경기사"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "environment",
+        "architecture",
+        "engineering",
+        "energy",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "60d7658d1fc85c45",
+      "title": "2026 새마을 숏폼 영상 콘테스트",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107860",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-09-28",
+      "publishedAt": "",
+      "careerTags": [],
+      "matchedCareerSubs": [
+        "PD·감독"
+      ],
+      "recommendationTags": [
+        "media",
+        "contents",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "31ccebe3028fd2b5",
+      "title": "남동구도시관리공단 2026년 ESGI 주민참여 아이디어 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107859",
+      "summary": "분야 : 기획/아이디어",
+      "deadline": "2026-06-14",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "환경기사"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "environment",
+        "architecture",
+        "engineering",
+        "energy",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "92c17ea5ad895fd6",
+      "title": "제10회 전국청소년환경사랑그림공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107858",
+      "summary": "분야 : 예체능/미술/음악",
+      "deadline": "2026-06-14",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "환경기사"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "environment",
+        "architecture",
+        "engineering",
+        "energy",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "eccb3ed1b16c4ec8",
+      "title": "2026년 충청북도교육청 청렴 콘텐츠 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107857",
+      "summary": "분야 : 광고/마케팅",
+      "deadline": "2026-07-10",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "언론고시 (기자/PD)"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "브랜드마케터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "hr",
+        "education",
         "management"
       ],
-      "recommendationType": "internship",
-      "recommendationCat": "intern",
-      "baseWeight": 8,
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
       "recommendedGrades": [
-        3,
-        4
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "d32b95b9b65d6a96",
+      "title": "K-TECH 콘텐츠 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107856",
+      "summary": "분야 : 광고/마케팅",
+      "deadline": "2026-06-15",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "언론고시 (기자/PD)"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "13a7aebd6da4d943",
+      "title": "[국민경제자문회의] 청년 정책 아이디어 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107855",
+      "summary": "분야 : 기획/아이디어",
+      "deadline": "2026-07-08",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "금융/은행",
+        "공기업 (NCS)",
+        "로스쿨 (법조인)"
+      ],
+      "matchedCareerSubs": [
+        "공기업(NCS 준비)",
+        "변호사(로스쿨)",
+        "은행원·텔러(IB/PB 등)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "finance",
+        "accounting",
+        "public",
+        "ncs",
+        "law"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "4e27fa3bd33f709d",
+      "title": "2027 충청 유니버시아드대회 홍보 영상 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107854",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-06-19",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "홍보(PR)",
+        "영상디자이너",
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "d8395400f2723122",
+      "title": "제3회 울산관광 전국사진 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107848",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-10-07",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "329ffc50fa27461b",
+      "title": "부산광역시교육청 2026년 학교급식 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107845",
+      "summary": "분야 : 예체능/미술/음악",
+      "deadline": "2026-06-19",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "브랜드마케터",
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "hr",
+        "education",
+        "management",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "b90cd861a724d34c",
+      "title": "[(사)소비자공익네트워크 x 직접판매공제조합] 안심레인저 2기 SNS 서포터즈 모집",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107841",
+      "summary": "분야 : 대외활동/서포터즈",
+      "deadline": "2026-06-14",
+      "publishedAt": "",
+      "careerTags": [
+        "반도체/엔지니어링"
+      ],
+      "matchedCareerSubs": [
+        "반도체엔지니어",
+        "공정엔지니어"
+      ],
+      "recommendationTags": [
+        "semiconductor",
+        "engineering",
+        "activity",
+        "volunteer",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "416bca300d6528c1",
+      "title": "제16회 전국 고등학생 바이오안전성·바이오산업 토론대회",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107840",
+      "summary": "분야 : 기타",
+      "deadline": "2026-07-10",
+      "publishedAt": "",
+      "careerTags": [
+        "로스쿨 (법조인)"
+      ],
+      "matchedCareerSubs": [
+        "변호사(로스쿨)",
+        "바이오·제약연구원"
+      ],
+      "recommendationTags": [
+        "law",
+        "public",
+        "bio",
+        "healthcare",
+        "food",
+        "environment",
+        "architecture"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "8d9e39ef1fb1ad96",
+      "title": "DIVE 2026 해커톤 참가팀 모집",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107839",
+      "summary": "분야 : 웹/모바일/IT",
+      "deadline": "2026-06-24",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "프론트엔드개발자",
+        "앱개발자",
+        "소프트웨어개발자"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "mobile",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "8bb0a427165b5f4c",
+      "title": "[요기요 X 오라클 해커톤] 맛있는 일상 AI로 잇(IT)다 해커톤",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107837",
+      "summary": "분야 : 웹/모바일/IT",
+      "deadline": "2026-07-12",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "프론트엔드개발자",
+        "소프트웨어개발자",
+        "앱개발자",
+        "MLOps엔지니어",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "mobile",
+        "ai",
+        "data",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "4f9816b6ac94255c",
+      "title": "전국민 AI활용 사례 공모전 시즌 1",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107836",
+      "summary": "분야 : 기타",
+      "deadline": "2026-06-30",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "소프트웨어개발자",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "d254cc7120c93620",
+      "title": "부산시설공단 제16기 글로벌 대학생 홍보단(YOUNG BISCO) 모집",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107833",
+      "summary": "분야 : 대외활동/서포터즈",
+      "deadline": "2026-06-24",
+      "publishedAt": "",
+      "careerTags": [],
+      "matchedCareerSubs": [
+        "홍보(PR)",
+        "물류관리자"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "trade",
+        "logistics",
+        "global",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "9dde62d53edb2b8a",
+      "title": "청년 봉플루언서(BongFluencer) 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107831",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-07-13",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "24b1c89bd07e7445",
+      "title": "2026년 디지털윤리 창작콘텐츠 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107830",
+      "summary": "분야 : 예체능/미술/음악",
+      "deadline": "2026-10-02",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "언론고시 (기자/PD)"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "88ecd3fdb76ff0d2",
+      "title": "[메타툰] 여성향 단편 노블코믹스 작화 모집 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107829",
+      "summary": "분야 : 디자인/캐릭터/웹툰",
+      "deadline": "2026-07-15",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "패션/의류"
+      ],
+      "matchedCareerSubs": [
+        "프론트엔드개발자",
+        "패션디자이너",
+        "크리에이티브디렉터",
+        "UI·UX디자이너",
+        "시각디자이너",
+        "웹디자이너",
+        "앱개발자"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "marketing",
+        "contents",
+        "design",
+        "ux"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "c31edaf1b000df8b",
+      "title": "2026년 제 6회 메디칼타임즈 의대생 콘텐츠 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107827",
+      "summary": "분야 : 예체능/미술/음악",
+      "deadline": "2026-07-26",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "언론고시 (기자/PD)"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "03c7f16e9429fa3f",
+      "title": "2026 충청북도 60초 영상 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107826",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-08-14",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "영상디자이너",
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "a5fb1cda84b6bae3",
+      "title": "상상이 현실이 되는 경남여행 - 2026 경남 관광 AI 홍보 영상 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107825",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-07-31",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "홍보(PR)",
+        "AI/ML엔지니어",
+        "영상디자이너",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "카피라이터",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "26dfd1e47277833d",
+      "title": "2026 전국 고교 웹소설 슈퍼루키전 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107823",
+      "summary": "분야 : 문학/글/시나리오",
+      "deadline": "2026-07-31",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "프론트엔드개발자",
+        "앱개발자",
+        "게임개발자",
+        "크리에이티브디렉터"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "marketing",
+        "contents",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "b2ab6ca3b4d5f996",
+      "title": "2026년 거제시 정책 제안 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107816",
+      "summary": "분야 : 기획/아이디어",
+      "deadline": "2026-06-14",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "공기업 (NCS)",
+        "로스쿨 (법조인)"
+      ],
+      "matchedCareerSubs": [
+        "공기업(NCS 준비)",
+        "변호사(로스쿨)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "public",
+        "ncs",
+        "law",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "c1886898b44d5b31",
+      "title": "2026 문화예술 아이디어 공모전(AI 전환 시대 문화예술생태계 대응 아이디어 공모전)",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107815",
+      "summary": "분야 : 기획/아이디어",
+      "deadline": "2026-06-23",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "소프트웨어개발자",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "e20b8ed4170fcbd6",
+      "title": "2026년 창원시 AIㆍ데이터 활용 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107813",
+      "summary": "분야 : 웹/모바일/IT",
+      "deadline": "2026-09-30",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "소프트웨어개발자",
+        "프론트엔드개발자",
+        "앱개발자"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "mobile",
+        "data",
+        "statistics",
+        "research"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "96e853cecb4eef52",
+      "title": "서울특별시교육청정독도서관 개관 50주년 기념 슬로건 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107812",
+      "summary": "분야 : 네이밍/슬로건",
+      "deadline": "2026-06-21",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "브랜드마케터",
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "hr",
+        "education",
+        "management",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "6663ac77f53fdd67",
+      "title": "2026 40초로 즐기는 여수 숏폼 영상 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107811",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-07-10",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "영상디자이너",
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "4edc800039e0cad3",
+      "title": "2026년 장미원 사진공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107809",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-06-14",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "콘텐츠마케터",
+        "PD·감독",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "518e9b072e39f1b7",
+      "title": "AI-Kive 챌린지",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107803",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-07-05",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "소프트웨어개발자",
+        "데이터사이언티스트",
+        "PD·감독"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "media",
+        "contents",
+        "writing",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "6335de21ae891837",
+      "title": "한반도 평화교류 정책 AI영상 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107798",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-06-26",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "공기업 (NCS)",
+        "로스쿨 (법조인)"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "공기업(NCS 준비)",
+        "변호사(로스쿨)",
+        "영상디자이너",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "public",
+        "ncs",
+        "law"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "fc4d77fb3c23483a",
+      "title": "2026년 KOICA 공공데이터 활용 챌린지",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107795",
+      "summary": "분야 : 웹/모바일/IT",
+      "deadline": "2026-06-16",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "소프트웨어개발자",
+        "프론트엔드개발자",
+        "앱개발자",
+        "AI/ML엔지니어"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "mobile",
+        "data",
+        "statistics",
+        "research"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "c623bfe76b194d66",
+      "title": "2026년 청년문화예술패스 온라인 홍보 서포터스 모집",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107793",
+      "summary": "분야 : 대외활동/서포터즈",
+      "deadline": "2026-06-12",
+      "publishedAt": "",
+      "careerTags": [],
+      "matchedCareerSubs": [
+        "홍보(PR)"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "activity",
+        "volunteer",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "4128de7f6ebbc28c",
+      "title": "2026 울산조선해양축제 - 기발한 배 콘테스트 (참가비 있음)",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107792",
+      "summary": "분야 : 건축/건설/인테리어",
+      "deadline": "2026-06-19",
+      "publishedAt": "",
+      "careerTags": [],
+      "matchedCareerSubs": [
+        "건축가",
+        "건축기사"
+      ],
+      "recommendationTags": [
+        "environment",
+        "architecture",
+        "engineering",
+        "energy",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "983be88a80aa2a17",
+      "title": "2026 호반그룹×서울창업허브 오픈이노베이션_[2026 호반혁신기술공모전]",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107788",
+      "summary": "분야 : 건축/건설/인테리어",
+      "deadline": "2026-06-30",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "건축가",
+        "건축기사"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "environment",
+        "architecture",
+        "engineering",
+        "energy",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
       ],
       "taggedBy": "keyword",
       "active": true
