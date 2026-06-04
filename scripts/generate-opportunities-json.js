@@ -18,6 +18,8 @@ const TAG_VALUES = Object.values(TAGS);
 const OPENAI_MODEL = process.env.OPENAI_MODEL || 'gpt-4o-mini';
 const MAX_AI_TAG_ITEMS = Number.parseInt(process.env.OPPORTUNITY_AI_MAX_ITEMS || '10', 10);
 const MAX_ITEMS = Number.parseInt(process.env.OPPORTUNITY_MAX_ITEMS || '80', 10);
+const ALLOWED_SOURCE_DOMAINS = new Set(['linkareer.com', 'wevity.com']);
+const SOURCE_SITE_QUERIES = ['site:linkareer.com', 'site:wevity.com'];
 
 const toArray = (value) => (Array.isArray(value) ? value : []);
 const uniq = (values) => [...new Set(values.filter(Boolean).map((value) => String(value).trim()).filter(Boolean))];
@@ -44,6 +46,36 @@ const getDomain = (value) => {
   } catch {
     return '';
   }
+};
+
+const isAllowedSourceUrl = (value) => {
+  const domain = getDomain(value);
+  return ALLOWED_SOURCE_DOMAINS.has(domain) || [...ALLOWED_SOURCE_DOMAINS].some((allowed) => domain.endsWith(`.${allowed}`));
+};
+
+const normalizeSourceName = (url) => {
+  const domain = getDomain(url);
+  if (domain.includes('linkareer.com')) return '링커리어';
+  if (domain.includes('wevity.com')) return '위비티';
+  return domain || '공고 플랫폼';
+};
+
+const extractDeadline = (text) => {
+  const source = stripHtml(text);
+  const explicit = source.match(/(?:마감|접수\s*마감|모집\s*마감|기간|접수기간|신청기간)\s*[:：]?\s*(?:~|까지)?\s*(\d{4}[./-]\d{1,2}[./-]\d{1,2}|\d{1,2}[./-]\d{1,2})/);
+  const dateLike = explicit?.[1] || source.match(/(?:~|-|까지)\s*(\d{4}[./-]\d{1,2}[./-]\d{1,2}|\d{1,2}[./-]\d{1,2})/)?.[1];
+  if (!dateLike) {
+    if (/상시|수시|채용시|모집\s*중/.test(source)) return '상시';
+    return '확인 필요';
+  }
+
+  const normalized = dateLike.replace(/[./]/g, '-');
+  const parts = normalized.split('-');
+  if (parts.length === 2) {
+    const year = new Date().getFullYear();
+    return `${year}-${parts[0].padStart(2, '0')}-${parts[1].padStart(2, '0')}`;
+  }
+  return `${parts[0]}-${parts[1].padStart(2, '0')}-${parts[2].padStart(2, '0')}`;
 };
 
 const addTags = (set, ...tags) => tags.forEach((tag) => {
@@ -122,8 +154,9 @@ const normalizeItem = (raw) => {
   const summary = stripHtml(raw.description || raw.summary || '');
   const url = safeUrl(raw.url || raw.link || raw.originalLink);
   if (!title || !url) return null;
+  if (!isAllowedSourceUrl(url)) return null;
 
-  const source = raw.source || getDomain(url) || '검색 API';
+  const source = normalizeSourceName(url);
   const type = raw.type || getType(`${title} ${summary}`);
   const careerTags = uniq([...toArray(raw.careerTags), ...getCareerTags(`${title} ${summary}`)]);
   const text = `${title} ${summary} ${type} ${careerTags.join(' ')}`;
@@ -137,7 +170,7 @@ const normalizeItem = (raw) => {
     source,
     url,
     summary: summary || `${careerTags.slice(0, 2).join('·') || '관심 진로'}와 연결해 검토할 만한 ${type}입니다. 원문에서 모집 대상과 일정을 확인하세요.`,
-    deadline: '',
+    deadline: extractDeadline(`${title} ${summary}`),
     publishedAt: raw.publishedAt || '',
     careerTags,
     recommendationTags,
@@ -150,12 +183,14 @@ const normalizeItem = (raw) => {
   };
 };
 
-const buildQueries = () => uniq(Object.entries(CAREER_KEYWORDS).flatMap(([career, keywords]) => [
-  `${career} 공모전`,
-  `${career} 해커톤`,
-  `${career} 대외활동`,
-  ...keywords.slice(0, 2).map((keyword) => `${keyword} 공모전 해커톤 대외활동`),
-])).slice(0, 24);
+const buildQueries = () => uniq(Object.entries(CAREER_KEYWORDS).flatMap(([career, keywords]) => (
+  SOURCE_SITE_QUERIES.flatMap((siteQuery) => [
+    `${siteQuery} ${career} 공모전`,
+    `${siteQuery} ${career} 대외활동`,
+    `${siteQuery} ${career} 해커톤`,
+    ...keywords.slice(0, 2).map((keyword) => `${siteQuery} ${keyword} 공모전 대외활동 해커톤`),
+  ])
+))).slice(0, 48);
 
 const fetchNaverSearch = async () => {
   const clientId = process.env.NAVER_SEARCH_CLIENT_ID;
@@ -167,11 +202,10 @@ const fetchNaverSearch = async () => {
 
   const results = [];
   for (const query of buildQueries()) {
-    for (const searchType of ['news', 'blog']) {
+    for (const searchType of ['webkr']) {
       const url = new URL(`https://openapi.naver.com/v1/search/${searchType}.json`);
       url.searchParams.set('query', query);
-      url.searchParams.set('display', '5');
-      url.searchParams.set('sort', 'date');
+      url.searchParams.set('display', '10');
       const response = await fetch(url, {
         headers: {
           'X-Naver-Client-Id': clientId,
@@ -186,9 +220,8 @@ const fetchNaverSearch = async () => {
       results.push(...toArray(data.items).map((item) => normalizeItem({
         title: item.title,
         description: item.description,
-        url: item.originallink || item.link,
+        url: item.link,
         publishedAt: item.pubDate || item.postdate || '',
-        source: getDomain(item.originallink || item.link) || `Naver ${searchType}`,
         careerTags: getCareerTags(`${query} ${item.title} ${item.description}`),
       })).filter(Boolean));
     }
