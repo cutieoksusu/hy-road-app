@@ -53,7 +53,7 @@ npm run dev
 
 ### Cloud Functions + Scheduler
 
-`functions/`에는 앱에서 호출하는 HTTPS Function `getOpportunities`와 6시간마다 실행되는 `collectOpportunities` 스케줄 함수가 포함되어 있습니다. `getOpportunities`는 요청받은 진로 키워드로 허가된 API를 실시간 조회하고, API 남용을 막기 위해 기본 15분 TTL 캐시를 사용합니다. 함수는 저작권 침해를 피하기 위해 HTML 무단 스크래핑을 하지 않고 다음 출처만 사용합니다.
+`functions/`에는 앱에서 호출하는 HTTPS Function `getOpportunities`와 하루 1번, 매일 03:00 KST에 실행되는 `collectOpportunities` 스케줄 함수가 포함되어 있습니다. `getOpportunities`는 요청받은 진로 키워드로 허가된 API를 실시간 조회하고, API 남용을 막기 위해 기본 15분 TTL 캐시를 사용합니다. 함수는 저작권 침해를 피하기 위해 HTML 무단 스크래핑을 하지 않고 다음 출처만 사용합니다.
 
 1. 공공데이터포털 Open API (`PUBLIC_DATA_SERVICE_KEY`, `PUBLIC_DATA_ENDPOINTS`)
 2. 검색 API (`NAVER_SEARCH_CLIENT_ID`, `NAVER_SEARCH_CLIENT_SECRET`)

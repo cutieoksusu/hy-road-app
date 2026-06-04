@@ -493,7 +493,7 @@ const setCorsHeaders = (response) => {
 };
 
 export const collectOpportunities = onSchedule({
-  schedule: 'every 6 hours',
+  schedule: '0 3 * * *',
   timeZone: 'Asia/Seoul',
   region: process.env.FUNCTION_REGION || DEFAULT_REGION,
   memory: '512MiB',
