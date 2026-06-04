@@ -18,7 +18,7 @@ const TAG_VALUES = Object.values(TAGS);
 const OPENAI_MODEL = process.env.OPENAI_MODEL || 'gpt-4o-mini';
 const MAX_AI_TAG_ITEMS = Number.parseInt(process.env.OPPORTUNITY_AI_MAX_ITEMS || '10', 10);
 const MAX_ITEMS = Number.parseInt(process.env.OPPORTUNITY_MAX_ITEMS || '200', 10);
-const LINKAREER_MAX_PAGES = Number.parseInt(process.env.LINKAREER_MAX_PAGES || '10', 10);
+const LINKAREER_MAX_PAGES = Number.parseInt(process.env.LINKAREER_MAX_PAGES || '25', 10);
 const WEVITY_MAX_PAGES = Number.parseInt(process.env.WEVITY_MAX_PAGES || '10', 10);
 const REQUEST_DELAY_MS = Number.parseInt(process.env.OPPORTUNITY_REQUEST_DELAY_MS || '250', 10);
 
