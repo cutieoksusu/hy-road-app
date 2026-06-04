@@ -18,8 +18,7 @@ const TAG_VALUES = Object.values(TAGS);
 const OPENAI_MODEL = process.env.OPENAI_MODEL || 'gpt-4o-mini';
 const MAX_AI_TAG_ITEMS = Number.parseInt(process.env.OPPORTUNITY_AI_MAX_ITEMS || '10', 10);
 const MAX_ITEMS = Number.parseInt(process.env.OPPORTUNITY_MAX_ITEMS || '80', 10);
-const ALLOWED_SOURCE_DOMAINS = new Set(['linkareer.com', 'wevity.com']);
-const SOURCE_SITE_QUERIES = ['site:linkareer.com', 'site:wevity.com'];
+const SOURCE_SITE_QUERIES = ['site:linkareer.com/activity', 'site:wevity.com'];
 
 const toArray = (value) => (Array.isArray(value) ? value : []);
 const uniq = (values) => [...new Set(values.filter(Boolean).map((value) => String(value).trim()).filter(Boolean))];
@@ -49,8 +48,15 @@ const getDomain = (value) => {
 };
 
 const isAllowedSourceUrl = (value) => {
-  const domain = getDomain(value);
-  return ALLOWED_SOURCE_DOMAINS.has(domain) || [...ALLOWED_SOURCE_DOMAINS].some((allowed) => domain.endsWith(`.${allowed}`));
+  try {
+    const url = new URL(value);
+    const domain = url.hostname.replace(/^www\./, '');
+    if (domain === 'linkareer.com') return url.pathname.startsWith('/activity/');
+    if (domain === 'wevity.com') return true;
+    return false;
+  } catch {
+    return false;
+  }
 };
 
 const normalizeSourceName = (url) => {
@@ -62,7 +68,11 @@ const normalizeSourceName = (url) => {
 
 const extractDeadline = (text) => {
   const source = stripHtml(text);
-  const explicit = source.match(/(?:마감|접수\s*마감|모집\s*마감|기간|접수기간|신청기간)\s*[:：]?\s*(?:~|까지)?\s*(\d{4}[./-]\d{1,2}[./-]\d{1,2}|\d{1,2}[./-]\d{1,2})/);
+  const fullDates = [...source.matchAll(/\b(20\d{2})[./-]\s*(\d{1,2})[./-]\s*(\d{1,2})\b/g)]
+    .map(([, year, month, day]) => `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`);
+  if (fullDates.length) return fullDates.at(-1);
+
+  const explicit = source.match(/(?:마감|접수\s*마감|모집\s*마감|기간|접수기간|신청기간)\s*[:：]?\s*(?:~|까지)?\s*(\d{1,2}[./-]\d{1,2})/);
   const dateLike = explicit?.[1] || source.match(/(?:~|-|까지)\s*(\d{4}[./-]\d{1,2}[./-]\d{1,2}|\d{1,2}[./-]\d{1,2})/)?.[1];
   if (!dateLike) {
     if (/상시|수시|채용시|모집\s*중/.test(source)) return '상시';
@@ -77,6 +87,15 @@ const extractDeadline = (text) => {
   }
   return `${parts[0]}-${parts[1].padStart(2, '0')}-${parts[2].padStart(2, '0')}`;
 };
+
+const getTodayKst = () => new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'Asia/Seoul',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+}).format(new Date());
+
+const isExpiredDeadline = (deadline) => /^\d{4}-\d{2}-\d{2}$/.test(deadline) && deadline < getTodayKst();
 
 const addTags = (set, ...tags) => tags.forEach((tag) => {
   if (TAG_VALUES.includes(tag)) set.add(tag);
@@ -162,6 +181,8 @@ const normalizeItem = (raw) => {
   const text = `${title} ${summary} ${type} ${careerTags.join(' ')}`;
   const recommendationTags = inferRecommendationTags(text);
   const recommendationType = inferRecommendationType(type, text, recommendationTags);
+  const deadline = extractDeadline(`${title} ${summary}`);
+  if (deadline === '확인 필요' || isExpiredDeadline(deadline)) return null;
 
   return {
     id: crypto.createHash('sha1').update(url || title).digest('hex').slice(0, 16),
@@ -170,7 +191,7 @@ const normalizeItem = (raw) => {
     source,
     url,
     summary: summary || `${careerTags.slice(0, 2).join('·') || '관심 진로'}와 연결해 검토할 만한 ${type}입니다. 원문에서 모집 대상과 일정을 확인하세요.`,
-    deadline: extractDeadline(`${title} ${summary}`),
+    deadline,
     publishedAt: raw.publishedAt || '',
     careerTags,
     recommendationTags,
