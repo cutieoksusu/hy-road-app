@@ -778,19 +778,23 @@ const toRecommendationActivity = (item) => {
   };
 };
 
-const fetchOpportunityApi = async ({ careerSub, signal }) => {
-  const apiUrl = import.meta.env.VITE_OPPORTUNITY_API_URL;
-  if (!apiUrl) return [];
-
-  const url = new URL(apiUrl, window.location.origin);
-  url.searchParams.set('career', careerSub);
-  url.searchParams.set('maxItems', '12');
-
-  const response = await fetch(url, { signal });
-  if (!response.ok) throw new Error('opportunity-api-failed');
+const fetchStaticOpportunities = async ({ careerSub, signal }) => {
+  const response = await fetch(`${import.meta.env.BASE_URL}opportunities.json`, {
+    signal,
+    cache: 'no-store',
+  });
+  if (!response.ok) return [];
 
   const data = await response.json();
-  return Array.isArray(data.items) ? data.items.map(normalizeLiveActivity) : [];
+  const items = Array.isArray(data.items) ? data.items : [];
+  const normalizedCareer = String(careerSub || '').trim();
+  const activeItems = items.filter((item) => item.active !== false);
+  const matchedItems = normalizedCareer
+    ? activeItems.filter((item) => (item.careerTags || []).includes(normalizedCareer))
+    : activeItems;
+  return (matchedItems.length ? matchedItems : activeItems)
+    .slice(0, 12)
+    .map(normalizeLiveActivity);
 };
 
 const ScreenWrapper = ({ children, isActive }) => (
@@ -1120,29 +1124,19 @@ export default function App() {
     const loadLiveActivities = async () => {
       setIsLoadingLive(true);
       try {
-        const apiItems = await fetchOpportunityApi({
+        const staticItems = await fetchStaticOpportunities({
           careerSub: userProfile.careerSub,
           signal: controller.signal,
         });
         if (!isMounted) return;
-        if (apiItems.length) {
-          setLiveActivities(apiItems);
-          setOpportunityActivities(apiItems.map(toRecommendationActivity).filter(Boolean));
+        if (staticItems.length) {
+          setLiveActivities(staticItems);
+          setOpportunityActivities(staticItems.map(toRecommendationActivity).filter(Boolean));
           return;
         }
 
-        if (!isFirebaseConfigured) {
-          setLiveActivities(fallbackLinks);
-          setOpportunityActivities([]);
-          return;
-        }
-
-        const client = firebaseClient || await import('./firebase');
-        const remoteItems = await client.loadOpportunities({ careerSub: userProfile.careerSub });
-        if (!isMounted) return;
-        const normalizedRemoteItems = remoteItems.length ? remoteItems.map(normalizeLiveActivity) : fallbackLinks;
-        setLiveActivities(normalizedRemoteItems);
-        setOpportunityActivities(remoteItems.length ? normalizedRemoteItems.map(toRecommendationActivity).filter(Boolean) : []);
+        setLiveActivities(fallbackLinks);
+        setOpportunityActivities([]);
       } catch (error) {
         if (isMounted && error.name !== 'AbortError') {
           setLiveActivities(fallbackLinks);
@@ -1158,7 +1152,7 @@ export default function App() {
       isMounted = false;
       controller.abort();
     };
-  }, [firebaseClient, userProfile.careerSub]);
+  }, [userProfile.careerSub]);
 
   // OCR 사진 촬영 시뮬레이션 함수
   const simulatePhotoAuth = () => {

@@ -49,76 +49,27 @@ npm run dev
 
 ## 최신 공모전/해커톤 데이터 수집
 
-홈 화면의 `liveActivities` 영역은 `VITE_OPPORTUNITY_API_URL`이 설정되어 있으면 앱 진입/진로 변경 시 HTTPS Function `getOpportunities`를 호출해 최신 공모전·해커톤 정보를 동적으로 받아옵니다. API 응답이 없을 때는 Firestore `opportunities` 컬렉션을 읽고, 그래도 데이터가 없거나 Firebase를 사용할 수 없을 때만 기존 플랫폼 검색 링크로 fallback합니다.
+Firebase Functions 결제가 필요하지 않도록, 최신 공고 수집은 GitHub Actions가 하루 1번 실행해서 `public/opportunities.json` 파일을 갱신하는 방식으로 동작합니다. 앱은 이 정적 JSON 파일을 읽고, 각 공고의 `recommendationTags`, `baseWeight`, `recommendedGrades`를 기존 추천 엔진에 섞어 전공/직무/학년별로 다시 정렬합니다.
 
-### Cloud Functions + Scheduler
+### GitHub Actions 자동 수집
 
-`functions/`에는 앱에서 호출하는 HTTPS Function `getOpportunities`와 하루 1번, 매일 03:00 KST에 실행되는 `collectOpportunities` 스케줄 함수가 포함되어 있습니다. `getOpportunities`는 요청받은 진로 키워드로 허가된 API를 실시간 조회하고, API 남용을 막기 위해 기본 15분 TTL 캐시를 사용합니다. 함수는 저작권 침해를 피하기 위해 HTML 무단 스크래핑을 하지 않고 다음 출처만 사용합니다.
+`.github/workflows/update-opportunities.yml`이 매일 03:00 KST에 실행됩니다.
 
-1. 공공데이터포털 Open API (`PUBLIC_DATA_SERVICE_KEY`, `PUBLIC_DATA_ENDPOINTS`)
-2. 검색 API (`NAVER_SEARCH_CLIENT_ID`, `NAVER_SEARCH_CLIENT_SECRET`)
-3. 명시적으로 사용 허가를 받은 JSON 피드 (`PERMITTED_FEEDS`)
-
-수집된 항목은 원문 전체를 저장하지 않고 `title`, `deadline`, `source`, `originalLink`, 앱이 직접 생성한 짧은 `summary`, `careerTags`와 추천 엔진용 `recommendationTags`, `baseWeight`, `recommendedGrades`만 Firestore `opportunities` 컬렉션에 저장합니다. `OPENAI_API_KEY`가 있으면 OpenAI Responses API의 JSON Schema 출력으로 태그를 보정하고, 키가 없거나 실패하면 키워드 기반 태깅으로 fallback합니다.
-
-Firebase Functions v2 배포 환경에서는 API 키를 Firebase Secret Manager에 저장하세요. 로컬 테스트용 `.env`도 지원하지만, 실제 운영 키는 코드나 GitHub에 올리면 안 됩니다.
+필요한 GitHub Secrets:
 
 ```bash
-PUBLIC_DATA_SERVICE_KEY="공공데이터포털_서비스키"
-NAVER_SEARCH_CLIENT_ID="검색_API_Client_ID"
-NAVER_SEARCH_CLIENT_SECRET="검색_API_Client_Secret"
-PUBLIC_DATA_ENDPOINTS='[{"name":"공공데이터포털 승인 API","url":"https://apis.data.go.kr/...","itemsPath":"response.body.items.item","fields":{"title":"title","url":"url","deadline":"endDate","publishedAt":"createdAt"}}]'
-PERMITTED_FEEDS='[{"name":"제휴 피드명","url":"https://partner.example.com/opportunities.json","itemsPath":"items","fields":{"title":"title","url":"url","deadline":"deadline","publishedAt":"publishedAt","careerTags":"careerTags"}}]'
-OPPORTUNITY_CACHE_TTL_MINUTES=15
-OPPORTUNITY_ALLOWED_ORIGIN="https://cutieoksusu.github.io"
-OPENAI_API_KEY="선택_OPENAI_API_KEY"
-OPENAI_MODEL="gpt-4o-mini"
-OPPORTUNITY_AI_MAX_ITEMS=20
-# 비용을 더 쓰더라도 실시간 API 요청에서도 AI 태깅을 쓰려면 1로 설정합니다. 기본값은 비활성입니다.
-OPPORTUNITY_ENABLE_REALTIME_AI=0
+NAVER_SEARCH_CLIENT_ID
+NAVER_SEARCH_CLIENT_SECRET
+OPENAI_API_KEY
 ```
 
-Secret Manager 설정:
+OpenAI 사용량을 줄이고 싶으면 Repository Variables에 아래 값을 둘 수 있습니다.
 
 ```bash
-firebase functions:secrets:set NAVER_SEARCH_CLIENT_ID
-firebase functions:secrets:set NAVER_SEARCH_CLIENT_SECRET
-firebase functions:secrets:set OPENAI_API_KEY
+OPENAI_MODEL=gpt-4o-mini
+OPPORTUNITY_AI_MAX_ITEMS=10
 ```
 
-각 명령을 실행하면 터미널이 값을 물어봅니다. 발급받은 키를 붙여넣고 Enter를 누르면 됩니다.
+OpenAI 키가 없거나 실패해도 수집은 멈추지 않고 키워드 기반 태그/가중치로 fallback합니다. 네이버 검색 API 키가 없으면 `public/opportunities.json`은 빈 목록으로 유지됩니다.
 
-월 3천 원 안쪽 운영을 목표로 할 때는 ,  구성을 권장합니다. 이 경우 AI는 하루 1번 스케줄 수집에서만 제한된 개수의 공고를 태깅하고, 사용자가 앱에서 실시간 조회할 때는 키워드 태깅을 사용합니다.
-
-배포:
-
-```bash
-npm install --prefix functions
-firebase deploy --only functions
-```
-
-배포 후 프론트엔드 환경변수에 HTTPS Function URL을 넣어야 앱이 실제 API를 호출합니다.
-
-```bash
-VITE_OPPORTUNITY_API_URL=https://asia-northeast3-<project-id>.cloudfunctions.net/getOpportunities
-```
-
-### Firestore 보안 규칙 예시
-
-`opportunities`는 앱 홈 화면에 표시되는 공개 모집 정보이므로 읽기는 허용하고, 쓰기는 Cloud Functions Admin SDK만 수행하도록 클라이언트 쓰기를 차단합니다.
-
-```txt
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /users/{userId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
-    }
-
-    match /opportunities/{opportunityId} {
-      allow read: if true;
-      allow write: if false;
-    }
-  }
-}
-```
+HTML 무단 크롤링은 하지 않고, 네이버 검색 API 응답에서 제목/요약/원문 링크만 저장합니다.

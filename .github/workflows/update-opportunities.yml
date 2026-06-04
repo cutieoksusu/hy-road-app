@@ -1,0 +1,32 @@
+name: Update Opportunities
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 03:00 KST every day
+    - cron: '0 18 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Generate opportunities JSON
+        env:
+          NAVER_SEARCH_CLIENT_ID: ${{ secrets.NAVER_SEARCH_CLIENT_ID }}
+          NAVER_SEARCH_CLIENT_SECRET: ${{ secrets.NAVER_SEARCH_CLIENT_SECRET }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-4o-mini' }}
+          OPPORTUNITY_AI_MAX_ITEMS: ${{ vars.OPPORTUNITY_AI_MAX_ITEMS || '10' }}
+        run: node scripts/generate-opportunities-json.js
+      - name: Commit updated opportunities
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'Update daily opportunities feed'
+          file_pattern: public/opportunities.json
