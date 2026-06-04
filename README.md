@@ -73,6 +73,9 @@ OPPORTUNITY_CACHE_TTL_MINUTES=15
 OPPORTUNITY_ALLOWED_ORIGIN="https://cutieoksusu.github.io"
 OPENAI_API_KEY="선택_OPENAI_API_KEY"
 OPENAI_MODEL="gpt-4o-mini"
+OPPORTUNITY_AI_MAX_ITEMS=20
+# 비용을 더 쓰더라도 실시간 API 요청에서도 AI 태깅을 쓰려면 1로 설정합니다. 기본값은 비활성입니다.
+OPPORTUNITY_ENABLE_REALTIME_AI=0
 ```
 
 Secret Manager 설정:
@@ -84,6 +87,8 @@ firebase functions:secrets:set OPENAI_API_KEY
 ```
 
 각 명령을 실행하면 터미널이 값을 물어봅니다. 발급받은 키를 붙여넣고 Enter를 누르면 됩니다.
+
+월 3천 원 안쪽 운영을 목표로 할 때는 ,  구성을 권장합니다. 이 경우 AI는 하루 1번 스케줄 수집에서만 제한된 개수의 공고를 태깅하고, 사용자가 앱에서 실시간 조회할 때는 키워드 태깅을 사용합니다.
 
 배포:
 

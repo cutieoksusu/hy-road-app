@@ -59,6 +59,7 @@ const TAGS = {
 };
 const TAG_VALUES = Object.values(TAGS);
 const OPENAI_MODEL = process.env.OPENAI_MODEL || 'gpt-4o-mini';
+const MAX_AI_TAG_ITEMS = Number.parseInt(process.env.OPPORTUNITY_AI_MAX_ITEMS || '20', 10);
 
 const toArray = (value) => (Array.isArray(value) ? value : []);
 
@@ -378,7 +379,7 @@ const tagWithOpenAI = async (items) => {
       model: OPENAI_MODEL,
       input: [
         { role: 'system', content: 'Classify Korean undergraduate opportunities for a career recommendation app. Return schema-valid JSON only.' },
-        { role: 'user', content: JSON.stringify(items.slice(0, 40).map(({ id, title, type, source, summary, careerTags }) => ({ id, title, type, source, summary, careerTags }))) },
+        { role: 'user', content: JSON.stringify(items.slice(0, MAX_AI_TAG_ITEMS).map(({ id, title, type, source, summary, careerTags }) => ({ id, title, type, source, summary, careerTags }))) },
       ],
       text: { format: { type: 'json_schema', name: 'hy_road_opportunity_tags', strict: true, schema: {
         type: 'object', additionalProperties: false, required: ['items'], properties: { items: { type: 'array', items: {
@@ -560,7 +561,10 @@ export const getOpportunities = onRequest({
     const rawItems = await fetchAllowedSources({ career });
     const normalized = rawItems.map(normalizeItem).filter(Boolean);
     const uniqueMap = new Map(normalized.map((item) => [item.id, item]));
-    const enriched = await enrichRecommendationTags([...uniqueMap.values()]);
+    const baseItems = [...uniqueMap.values()];
+    const enriched = process.env.OPPORTUNITY_ENABLE_REALTIME_AI === '1'
+      ? await enrichRecommendationTags(baseItems)
+      : baseItems.map((item) => ({ ...item, taggedBy: item.taggedBy || 'keyword' }));
     const items = rankForCareer(enriched, career)
       .slice(0, maxItems)
       .map(toClientItem);
