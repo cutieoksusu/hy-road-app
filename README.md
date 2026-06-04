@@ -53,13 +53,13 @@ npm run dev
 
 ### Cloud Functions + Scheduler
 
-`functions/`에는 앱에서 호출하는 HTTPS Function `getOpportunities`와 6시간마다 실행되는 `collectOpportunities` 스케줄 함수가 포함되어 있습니다. `getOpportunities`는 요청받은 진로 키워드로 허가된 API를 실시간 조회하고, API 남용을 막기 위해 기본 15분 TTL 캐시를 사용합니다. 함수는 저작권 침해를 피하기 위해 HTML 무단 스크래핑을 하지 않고 다음 출처만 사용합니다.
+`functions/`에는 앱에서 호출하는 HTTPS Function `getOpportunities`와 하루 1번, 매일 03:00 KST에 실행되는 `collectOpportunities` 스케줄 함수가 포함되어 있습니다. `getOpportunities`는 요청받은 진로 키워드로 허가된 API를 실시간 조회하고, API 남용을 막기 위해 기본 15분 TTL 캐시를 사용합니다. 함수는 저작권 침해를 피하기 위해 HTML 무단 스크래핑을 하지 않고 다음 출처만 사용합니다.
 
 1. 공공데이터포털 Open API (`PUBLIC_DATA_SERVICE_KEY`, `PUBLIC_DATA_ENDPOINTS`)
 2. 검색 API (`NAVER_SEARCH_CLIENT_ID`, `NAVER_SEARCH_CLIENT_SECRET`)
 3. 명시적으로 사용 허가를 받은 JSON 피드 (`PERMITTED_FEEDS`)
 
-수집된 항목은 원문 전체를 저장하지 않고 `title`, `deadline`, `source`, `originalLink`, 앱이 직접 생성한 짧은 `summary`, `careerTags`만 Firestore `opportunities` 컬렉션에 저장합니다.
+수집된 항목은 원문 전체를 저장하지 않고 `title`, `deadline`, `source`, `originalLink`, 앱이 직접 생성한 짧은 `summary`, `careerTags`와 추천 엔진용 `recommendationTags`, `baseWeight`, `recommendedGrades`만 Firestore `opportunities` 컬렉션에 저장합니다. `OPENAI_API_KEY`가 있으면 OpenAI Responses API의 JSON Schema 출력으로 태그를 보정하고, 키가 없거나 실패하면 키워드 기반 태깅으로 fallback합니다.
 
 Firebase Functions v2 배포 환경에서는 Secret Manager, `.env`/`.env.<project-id>` 파일, 또는 CI/CD 환경변수로 아래 값을 주입하세요.
 
@@ -71,6 +71,8 @@ PUBLIC_DATA_ENDPOINTS='[{"name":"공공데이터포털 승인 API","url":"https:
 PERMITTED_FEEDS='[{"name":"제휴 피드명","url":"https://partner.example.com/opportunities.json","itemsPath":"items","fields":{"title":"title","url":"url","deadline":"deadline","publishedAt":"publishedAt","careerTags":"careerTags"}}]'
 OPPORTUNITY_CACHE_TTL_MINUTES=15
 OPPORTUNITY_ALLOWED_ORIGIN="https://cutieoksusu.github.io"
+OPENAI_API_KEY="선택_OPENAI_API_KEY"
+OPENAI_MODEL="gpt-4o-mini"
 ```
 
 배포:

@@ -27,6 +27,22 @@ const CAREER_KEYWORDS = {
 
 const BASE_KEYWORDS = ['공모전', '해커톤', '대외활동', '인턴십'];
 
+const TAGS = {
+  SOFTWARE: 'software', DATA: 'data', AI: 'ai', UX: 'ux', MARKETING: 'marketing',
+  FINANCE: 'finance', ACCOUNTING: 'accounting', PUBLIC: 'public', LAW: 'law',
+  MEDIA: 'media', CONTENTS: 'contents', ENGINEERING: 'engineering', SEMICONDUCTOR: 'semiconductor',
+  BIO: 'bio', ENERGY: 'energy', FOOD: 'food', DESIGN: 'design', EDUCATION: 'education',
+  RESEARCH: 'research', LANGUAGE: 'language', GLOBAL: 'global', MANAGEMENT: 'management',
+  CERTIFICATE: 'certificate', COMPETITION: 'competition', INTERNSHIP: 'internship', ACTIVITY: 'activity',
+  PROJECT: 'project', STARTUP: 'startup', NCS: 'ncs', FRONTEND: 'frontend', BACKEND: 'backend',
+  MOBILE: 'mobile', CLOUD: 'cloud', SECURITY: 'security', PRODUCT: 'product', STRATEGY: 'strategy',
+  SALES: 'sales', HR: 'hr', TRADE: 'trade', LOGISTICS: 'logistics', ARCHITECTURE: 'architecture',
+  ENVIRONMENT: 'environment', HEALTHCARE: 'healthcare', STATISTICS: 'statistics', WRITING: 'writing',
+  PORTFOLIO: 'portfolio', VOLUNTEER: 'volunteer',
+};
+const TAG_VALUES = Object.values(TAGS);
+const OPENAI_MODEL = process.env.OPENAI_MODEL || 'gpt-4o-mini';
+
 const toArray = (value) => (Array.isArray(value) ? value : []);
 
 const uniq = (values) => [...new Set(values.filter(Boolean).map((value) => String(value).trim()).filter(Boolean))];
@@ -91,6 +107,75 @@ const makeSummary = ({ type, source, careerTags }) => {
   return `${target}와 연결해 검토할 만한 ${type}입니다. ${source}의 원문에서 모집 대상, 일정, 제출 요건을 확인하세요.`;
 };
 
+const addTags = (set, ...tags) => tags.forEach((tag) => {
+  if (TAG_VALUES.includes(tag)) set.add(tag);
+});
+
+const inferRecommendationTags = (text) => {
+  const source = String(text || '').toLowerCase();
+  const tags = new Set();
+  if (/프론트|react|html|css|ui|웹|javascript|typescript/.test(source)) addTags(tags, TAGS.FRONTEND, TAGS.SOFTWARE, TAGS.PORTFOLIO);
+  if (/백엔드|서버|api|spring|node|django|database/.test(source)) addTags(tags, TAGS.BACKEND, TAGS.SOFTWARE, TAGS.CLOUD);
+  if (/앱|모바일|android|ios/.test(source)) addTags(tags, TAGS.MOBILE, TAGS.SOFTWARE);
+  if (/데이터|분석|통계|sql|빅데이터|대시보드|리서치/.test(source)) addTags(tags, TAGS.DATA, TAGS.STATISTICS, TAGS.RESEARCH);
+  if (/ai|인공지능|머신러닝|딥러닝|llm|생성형/.test(source)) addTags(tags, TAGS.AI, TAGS.DATA);
+  if (/마케팅|브랜드|광고|홍보|crm|퍼포먼스|캠페인/.test(source)) addTags(tags, TAGS.MARKETING, TAGS.CONTENTS);
+  if (/금융|투자|은행|회계|재무|핀테크|경제/.test(source)) addTags(tags, TAGS.FINANCE, TAGS.ACCOUNTING);
+  if (/공공|공기업|ncs|행정|정책|공공기관/.test(source)) addTags(tags, TAGS.PUBLIC, TAGS.NCS);
+  if (/법|로스쿨|노무|변리|특허|인권/.test(source)) addTags(tags, TAGS.LAW, TAGS.PUBLIC);
+  if (/영상|미디어|콘텐츠|기자|pd|방송|작가|뉴스레터/.test(source)) addTags(tags, TAGS.MEDIA, TAGS.CONTENTS, TAGS.WRITING);
+  if (/디자인|ux|ui|그래픽|브랜딩|포트폴리오/.test(source)) addTags(tags, TAGS.DESIGN, TAGS.UX, TAGS.PORTFOLIO);
+  if (/반도체|공정|전자|전기|기계|로봇|제조|품질/.test(source)) addTags(tags, TAGS.ENGINEERING, TAGS.SEMICONDUCTOR);
+  if (/바이오|제약|임상|보건|식품|영양|헬스/.test(source)) addTags(tags, TAGS.BIO, TAGS.HEALTHCARE, TAGS.FOOD);
+  if (/환경|건축|도시|안전|bim|cad|에너지/.test(source)) addTags(tags, TAGS.ENVIRONMENT, TAGS.ARCHITECTURE, TAGS.ENGINEERING, TAGS.ENERGY);
+  if (/무역|물류|유통|구매|해외영업|글로벌/.test(source)) addTags(tags, TAGS.TRADE, TAGS.LOGISTICS, TAGS.GLOBAL);
+  if (/인사|hr|채용|교육|멘토링/.test(source)) addTags(tags, TAGS.HR, TAGS.EDUCATION, TAGS.MANAGEMENT);
+  if (/봉사|서포터즈|기자단|대외활동|앰버서더/.test(source)) addTags(tags, TAGS.ACTIVITY, TAGS.VOLUNTEER);
+  if (/공모전|해커톤|대회|콘테스트|챌린지|아이디어/.test(source)) addTags(tags, TAGS.COMPETITION, TAGS.PROJECT);
+  if (/인턴|현장실습|실무/.test(source)) addTags(tags, TAGS.INTERNSHIP);
+  if (/자격|기사|시험|cert|certificate/.test(source)) addTags(tags, TAGS.CERTIFICATE);
+  if (/영어|일본|중국|해외|통번역|언어/.test(source)) addTags(tags, TAGS.GLOBAL, TAGS.LANGUAGE);
+  if (tags.size === 0) addTags(tags, TAGS.ACTIVITY, TAGS.PROJECT);
+  return [...tags].slice(0, 7);
+};
+
+const inferRecommendationType = (type, text, tags) => {
+  const source = `${type} ${text}`.toLowerCase();
+  if (source.includes('인턴') || tags.includes(TAGS.INTERNSHIP)) return 'internship';
+  if (source.includes('해커톤') || source.includes('공모전') || source.includes('대회') || tags.includes(TAGS.COMPETITION)) return 'competition';
+  if (source.includes('자격') || source.includes('시험') || tags.includes(TAGS.CERTIFICATE)) return 'certificate';
+  if (source.includes('프로젝트')) return 'project';
+  return 'activity';
+};
+
+const inferRecommendationCat = (recommendationType, tags) => {
+  if (tags.includes(TAGS.LANGUAGE)) return 'lang';
+  if (recommendationType === 'certificate') return 'cert';
+  if (recommendationType === 'internship') return 'intern';
+  if (recommendationType === 'competition' || recommendationType === 'project') return 'project';
+  return 'activity';
+};
+
+const inferRecommendedGrades = (recommendationType) => {
+  if (recommendationType === 'internship') return [3, 4];
+  if (recommendationType === 'certificate') return [2, 3, 4];
+  if (recommendationType === 'competition' || recommendationType === 'project') return [2, 3];
+  return [1, 2, 3];
+};
+
+const buildRecommendationFields = ({ title, description, type, careerTags }) => {
+  const text = `${title} ${description || ''} ${type || ''} ${toArray(careerTags).join(' ')}`;
+  const tags = inferRecommendationTags(text);
+  const recommendationType = inferRecommendationType(type, text, tags);
+  return {
+    recommendationTags: tags,
+    recommendationType,
+    recommendationCat: inferRecommendationCat(recommendationType, tags),
+    baseWeight: recommendationType === 'internship' ? 8 : recommendationType === 'competition' ? 7 : 6,
+    recommendedGrades: inferRecommendedGrades(recommendationType),
+  };
+};
+
 const makeId = ({ sourceType, source, originalLink, title }) => {
   const basis = safeUrl(originalLink) || `${source}:${title}`;
   return Buffer.from(`${sourceType}:${basis}`).toString('base64url').slice(0, 120);
@@ -121,6 +206,7 @@ const normalizeItem = (raw) => {
     publishedAt: publishedAt ? Timestamp.fromDate(publishedAt) : null,
     sourceType: raw.sourceType,
     active: !deadline || deadline.getTime() >= Date.now() - 24 * 60 * 60 * 1000,
+    ...buildRecommendationFields({ title, description: raw.description, type, careerTags }),
   };
 };
 
@@ -262,14 +348,56 @@ const fetchAllowedSources = async ({ career } = {}) => (await Promise.all([
   fetchPermittedFeeds(),
 ])).flat();
 
+const extractResponseText = (data) => data.output_text
+  || toArray(data.output).flatMap((item) => toArray(item.content)).find((item) => item.type === 'output_text')?.text;
+
+const tagWithOpenAI = async (items) => {
+  if (!process.env.OPENAI_API_KEY || items.length === 0) return items;
+  const response = await fetch('https://api.openai.com/v1/responses', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${process.env.OPENAI_API_KEY}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: OPENAI_MODEL,
+      input: [
+        { role: 'system', content: 'Classify Korean undergraduate opportunities for a career recommendation app. Return schema-valid JSON only.' },
+        { role: 'user', content: JSON.stringify(items.slice(0, 40).map(({ id, title, type, source, summary, careerTags }) => ({ id, title, type, source, summary, careerTags }))) },
+      ],
+      text: { format: { type: 'json_schema', name: 'hy_road_opportunity_tags', strict: true, schema: {
+        type: 'object', additionalProperties: false, required: ['items'], properties: { items: { type: 'array', items: {
+          type: 'object', additionalProperties: false, required: ['id', 'recommendationTags', 'recommendationType', 'recommendationCat', 'baseWeight', 'recommendedGrades', 'summary'], properties: {
+            id: { type: 'string' }, recommendationTags: { type: 'array', items: { type: 'string', enum: TAG_VALUES }, minItems: 1, maxItems: 7 },
+            recommendationType: { type: 'string', enum: ['certificate', 'activity', 'project', 'competition', 'internship', 'exam', 'language'] },
+            recommendationCat: { type: 'string', enum: ['lang', 'cert', 'activity', 'project', 'intern'] },
+            baseWeight: { type: 'integer', minimum: 1, maximum: 10 }, recommendedGrades: { type: 'array', items: { type: 'integer', minimum: 1, maximum: 4 }, minItems: 1, maxItems: 4 },
+            summary: { type: 'string' },
+          },
+        } } },
+      } } },
+    }),
+  });
+  if (!response.ok) throw new Error(`OpenAI tagging failed: ${response.status}`);
+  const parsed = JSON.parse(extractResponseText(await response.json()) || '{"items":[]}');
+  const byId = new Map(parsed.items.map((item) => [item.id, item]));
+  return items.map((item) => ({ ...item, ...(byId.get(item.id) || {}), taggedBy: byId.has(item.id) ? 'openai' : (item.taggedBy || 'keyword') }));
+};
+
+const enrichRecommendationTags = async (items) => {
+  try {
+    return await tagWithOpenAI(items);
+  } catch (error) {
+    logger.warn('AI 태깅 실패, 키워드 태그로 대체합니다.', { message: error.message });
+    return items.map((item) => ({ ...item, taggedBy: item.taggedBy || 'keyword' }));
+  }
+};
+
 export const collectOpportunitiesNow = async () => {
   const rawItems = await fetchAllowedSources();
 
   const normalized = rawItems.map(normalizeItem).filter(Boolean).slice(0, 200);
   const uniqueMap = new Map(normalized.map((item) => [item.id, item]));
-  const uniqueItems = [...uniqueMap.values()]
+  const uniqueItems = await enrichRecommendationTags([...uniqueMap.values()]
     .sort((a, b) => (b.publishedAt?.toMillis?.() || 0) - (a.publishedAt?.toMillis?.() || 0))
-    .slice(0, MAX_ITEMS_PER_SOURCE * 6);
+    .slice(0, MAX_ITEMS_PER_SOURCE * 6));
 
   if (uniqueItems.length === 0) {
     logger.info('수집된 공모전/해커톤 데이터가 없습니다. API 키와 허가 피드 설정을 확인하세요.');
@@ -308,6 +436,12 @@ const toClientItem = (item) => ({
   deadline: timestampToIso(item.deadline),
   publishedAt: timestampToIso(item.publishedAt),
   careerTags: item.careerTags || [],
+  recommendationTags: item.recommendationTags || [],
+  recommendationType: item.recommendationType || 'activity',
+  recommendationCat: item.recommendationCat || 'activity',
+  baseWeight: item.baseWeight || 6,
+  recommendedGrades: item.recommendedGrades || [1, 2, 3],
+  taggedBy: item.taggedBy || 'keyword',
   dynamicReason: item.sourceType === 'public-data-portal'
     ? '공공데이터 API'
     : item.sourceType?.includes('naver')
@@ -359,7 +493,7 @@ const setCorsHeaders = (response) => {
 };
 
 export const collectOpportunities = onSchedule({
-  schedule: 'every 6 hours',
+  schedule: '0 3 * * *',
   timeZone: 'Asia/Seoul',
   region: process.env.FUNCTION_REGION || DEFAULT_REGION,
   memory: '512MiB',
@@ -405,7 +539,8 @@ export const getOpportunities = onRequest({
     const rawItems = await fetchAllowedSources({ career });
     const normalized = rawItems.map(normalizeItem).filter(Boolean);
     const uniqueMap = new Map(normalized.map((item) => [item.id, item]));
-    const items = rankForCareer([...uniqueMap.values()], career)
+    const enriched = await enrichRecommendationTags([...uniqueMap.values()]);
+    const items = rankForCareer(enriched, career)
       .slice(0, maxItems)
       .map(toClientItem);
 
