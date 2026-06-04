@@ -168,6 +168,38 @@ const getTodayKst = () => new Intl.DateTimeFormat('en-CA', {
 
 const isExpiredDeadline = (deadline) => /^\d{4}-\d{2}-\d{2}$/.test(deadline) && deadline < getTodayKst();
 
+const hasOldYearMarker = (text) => {
+  const currentYear = Number.parseInt(getTodayKst().slice(0, 4), 10);
+  return [...String(text || '').matchAll(/\b(20\d{2})\b/g)]
+    .some(([, year]) => Number.parseInt(year, 10) < currentYear);
+};
+
+const isRelevantOpportunityText = (text) => {
+  const source = stripHtml(text);
+  const positive = /(공모전|대외활동|해커톤|서포터즈|기자단|홍보대사|앰버서더|챌린지|대회|콘테스트|아이디어\s*공모|봉사단|멘토링|캠페인|공개SW\s*컨트리뷰톤)/i;
+  const educationOnly = /(국비지원|무료교육|교육과정|수강생|부트캠프|양성과정|채용|신입사원|인턴연계|취업준비|직무교육|아카데미|훈련과정)/i;
+  if (!positive.test(source)) return false;
+  if (educationOnly.test(source) && !/(공모전|대외활동|해커톤|서포터즈|기자단|홍보대사|앰버서더|챌린지|대회|콘테스트)/i.test(source)) return false;
+  return true;
+};
+
+const getCanonicalOpportunityKey = (item) => {
+  try {
+    const url = new URL(item.url);
+    const domain = url.hostname.replace(/^www\./, '');
+    if (domain === 'wevity.com') {
+      const ix = url.searchParams.get('ix');
+      if (ix) return `wevity:${ix}`;
+    }
+    if (domain === 'linkareer.com' && url.pathname.startsWith('/activity/')) {
+      return `linkareer:${url.pathname.split('/').filter(Boolean).slice(0, 2).join('/')}`;
+    }
+  } catch {
+    // fall through to title/url key
+  }
+  return item.url || item.title;
+};
+
 const addTags = (set, ...tags) => tags.forEach((tag) => {
   if (TAG_VALUES.includes(tag)) set.add(tag);
 });
@@ -186,7 +218,8 @@ const inferRecommendationTags = (text) => {
   if (/법|로스쿨|노무|변리|특허|인권/.test(source)) addTags(tags, TAGS.LAW, TAGS.PUBLIC);
   if (/영상|미디어|콘텐츠|기자|pd|방송|작가|뉴스레터/.test(source)) addTags(tags, TAGS.MEDIA, TAGS.CONTENTS, TAGS.WRITING);
   if (/디자인|ux|ui|그래픽|브랜딩|포트폴리오/.test(source)) addTags(tags, TAGS.DESIGN, TAGS.UX, TAGS.PORTFOLIO);
-  if (/반도체|공정|전자|전기|기계|로봇|제조|품질/.test(source)) addTags(tags, TAGS.ENGINEERING, TAGS.SEMICONDUCTOR);
+  if (/반도체/.test(source)) addTags(tags, TAGS.SEMICONDUCTOR, TAGS.ENGINEERING);
+  if (/공정|전자|전기|기계|로봇|제조|품질/.test(source)) addTags(tags, TAGS.ENGINEERING);
   if (/바이오|제약|임상|보건|식품|영양|헬스/.test(source)) addTags(tags, TAGS.BIO, TAGS.HEALTHCARE, TAGS.FOOD);
   if (/환경|건축|도시|안전|bim|cad|에너지/.test(source)) addTags(tags, TAGS.ENVIRONMENT, TAGS.ARCHITECTURE, TAGS.ENGINEERING, TAGS.ENERGY);
   if (/무역|물류|유통|구매|해외영업|글로벌/.test(source)) addTags(tags, TAGS.TRADE, TAGS.LOGISTICS, TAGS.GLOBAL);
@@ -235,15 +268,18 @@ const getMatchedCareerSubs = (text, recommendationTags) => {
   const source = String(text || '').toLowerCase();
   const scored = Object.entries(CAREER_TAG_WEIGHTS).map(([careerSub, weights]) => {
     const tagScore = recommendationTags.reduce((score, tag) => score + (weights[tag] || 0), 0);
-    const keywordScore = (CAREER_SUB_SEARCH_KEYWORDS[careerSub] || [careerSub])
-      .some((keyword) => source.includes(String(keyword).toLowerCase().replace(/[()·/]/g, ' ').trim()))
+    const hasKeywordMatch = (CAREER_SUB_SEARCH_KEYWORDS[careerSub] || [careerSub])
+      .some((keyword) => source.includes(String(keyword).toLowerCase().replace(/[()·/]/g, ' ').trim()));
+    const keywordScore = hasKeywordMatch
       ? 12
       : 0;
-    return [careerSub, tagScore + keywordScore];
+    const hasPrimaryTagMatch = Object.entries(weights)
+      .some(([tag, weight]) => weight >= 8 && recommendationTags.includes(tag));
+    return [careerSub, tagScore + keywordScore, hasKeywordMatch || hasPrimaryTagMatch];
   });
 
   const strongMatches = scored
-    .filter(([, score]) => score >= 18)
+    .filter(([, score, hasStrongSignal]) => hasStrongSignal && score >= 18)
     .sort((a, b) => b[1] - a[1])
     .map(([careerSub]) => careerSub);
 
@@ -264,6 +300,7 @@ const normalizeItem = (raw) => {
   const url = safeUrl(raw.url || raw.link || raw.originalLink);
   if (!title || !url) return null;
   if (!isAllowedSourceUrl(url)) return null;
+  if (!isRelevantOpportunityText(`${title} ${summary}`)) return null;
 
   const source = normalizeSourceName(url);
   const type = raw.type || getType(`${title} ${summary}`);
@@ -273,6 +310,7 @@ const normalizeItem = (raw) => {
   const recommendationType = inferRecommendationType(type, text, recommendationTags);
   const deadline = extractDeadline(`${title} ${summary}`);
   if (deadline === '확인 필요' || isExpiredDeadline(deadline)) return null;
+  if (deadline === '상시' && hasOldYearMarker(`${title} ${summary}`)) return null;
   const matchedCareerSubs = getMatchedCareerSubs(text, recommendationTags);
   if (!matchedCareerSubs.length) return null;
 
@@ -393,7 +431,7 @@ const tagWithOpenAI = async (items) => {
 
 const main = async () => {
   const rawItems = await fetchNaverSearch();
-  const uniqueItems = [...new Map(rawItems.map((item) => [item.url || item.title, item])).values()].slice(0, MAX_ITEMS);
+  const uniqueItems = [...new Map(rawItems.map((item) => [getCanonicalOpportunityKey(item), item])).values()].slice(0, MAX_ITEMS);
   let items = uniqueItems;
   try {
     items = await tagWithOpenAI(uniqueItems);
