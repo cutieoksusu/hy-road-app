@@ -174,10 +174,12 @@ const hasOldYearMarker = (text) => {
     .some(([, year]) => Number.parseInt(year, 10) < currentYear);
 };
 
+const hasOldYearInTitle = (title) => hasOldYearMarker(title);
+
 const isRelevantOpportunityText = (text) => {
   const source = stripHtml(text);
   const positive = /(공모전|대외활동|해커톤|서포터즈|기자단|홍보대사|앰버서더|챌린지|대회|콘테스트|아이디어\s*공모|봉사단|멘토링|캠페인|공개SW\s*컨트리뷰톤)/i;
-  const educationOnly = /(국비지원|무료교육|교육과정|수강생|부트캠프|양성과정|채용|신입사원|인턴연계|취업준비|직무교육|아카데미|훈련과정)/i;
+  const educationOnly = /(국비지원|무료교육|교육과정|수강생|부트캠프|양성과정|채용|신입사원|인턴연계|취업준비|직무교육|아카데미|훈련과정|개발자\s*과정|엔지니어\s*과정|분석.*과정)/i;
   if (!positive.test(source)) return false;
   if (educationOnly.test(source) && !/(공모전|대외활동|해커톤|서포터즈|기자단|홍보대사|앰버서더|챌린지|대회|콘테스트)/i.test(source)) return false;
   return true;
@@ -300,6 +302,7 @@ const normalizeItem = (raw) => {
   const url = safeUrl(raw.url || raw.link || raw.originalLink);
   if (!title || !url) return null;
   if (!isAllowedSourceUrl(url)) return null;
+  if (hasOldYearInTitle(title)) return null;
   if (!isRelevantOpportunityText(`${title} ${summary}`)) return null;
 
   const source = normalizeSourceName(url);
