@@ -61,7 +61,7 @@ npm run dev
 
 수집된 항목은 원문 전체를 저장하지 않고 `title`, `deadline`, `source`, `originalLink`, 앱이 직접 생성한 짧은 `summary`, `careerTags`와 추천 엔진용 `recommendationTags`, `baseWeight`, `recommendedGrades`만 Firestore `opportunities` 컬렉션에 저장합니다. `OPENAI_API_KEY`가 있으면 OpenAI Responses API의 JSON Schema 출력으로 태그를 보정하고, 키가 없거나 실패하면 키워드 기반 태깅으로 fallback합니다.
 
-Firebase Functions v2 배포 환경에서는 Secret Manager, `.env`/`.env.<project-id>` 파일, 또는 CI/CD 환경변수로 아래 값을 주입하세요.
+Firebase Functions v2 배포 환경에서는 API 키를 Firebase Secret Manager에 저장하세요. 로컬 테스트용 `.env`도 지원하지만, 실제 운영 키는 코드나 GitHub에 올리면 안 됩니다.
 
 ```bash
 PUBLIC_DATA_SERVICE_KEY="공공데이터포털_서비스키"
@@ -74,6 +74,16 @@ OPPORTUNITY_ALLOWED_ORIGIN="https://cutieoksusu.github.io"
 OPENAI_API_KEY="선택_OPENAI_API_KEY"
 OPENAI_MODEL="gpt-4o-mini"
 ```
+
+Secret Manager 설정:
+
+```bash
+firebase functions:secrets:set NAVER_SEARCH_CLIENT_ID
+firebase functions:secrets:set NAVER_SEARCH_CLIENT_SECRET
+firebase functions:secrets:set OPENAI_API_KEY
+```
+
+각 명령을 실행하면 터미널이 값을 물어봅니다. 발급받은 키를 붙여넣고 Enter를 누르면 됩니다.
 
 배포:
 

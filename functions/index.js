@@ -3,6 +3,7 @@ import { getFirestore, FieldValue, Timestamp } from 'firebase-admin/firestore';
 import { onSchedule } from 'firebase-functions/v2/scheduler';
 import { onCall, onRequest, HttpsError } from 'firebase-functions/v2/https';
 import { logger } from 'firebase-functions';
+import { defineSecret } from 'firebase-functions/params';
 
 initializeApp();
 
@@ -12,6 +13,22 @@ const MAX_ITEMS_PER_SOURCE = 30;
 const DEFAULT_REGION = 'asia-northeast3';
 const CACHE_COLLECTION = 'opportunityQueryCache';
 const DEFAULT_CACHE_TTL_MINUTES = 15;
+const NAVER_SEARCH_CLIENT_ID_SECRET = defineSecret('NAVER_SEARCH_CLIENT_ID');
+const NAVER_SEARCH_CLIENT_SECRET_SECRET = defineSecret('NAVER_SEARCH_CLIENT_SECRET');
+const OPENAI_API_KEY_SECRET = defineSecret('OPENAI_API_KEY');
+const OPPORTUNITY_SECRETS = [
+  NAVER_SEARCH_CLIENT_ID_SECRET,
+  NAVER_SEARCH_CLIENT_SECRET_SECRET,
+  OPENAI_API_KEY_SECRET,
+];
+
+const secretOrEnv = (secret, envName) => {
+  try {
+    return secret.value() || process.env[envName] || "";
+  } catch {
+    return process.env[envName] || "";
+  }
+};
 
 const CAREER_KEYWORDS = {
   'IT/소프트웨어': ['IT', '소프트웨어', '개발', '인공지능', 'AI', '데이터', '해커톤', '프로그래밍'],
@@ -239,8 +256,8 @@ const buildOpportunityQueries = (career) => {
 };
 
 const fetchNaverSearch = async ({ career } = {}) => {
-  const clientId = process.env.NAVER_SEARCH_CLIENT_ID;
-  const clientSecret = process.env.NAVER_SEARCH_CLIENT_SECRET;
+  const clientId = secretOrEnv(NAVER_SEARCH_CLIENT_ID_SECRET, 'NAVER_SEARCH_CLIENT_ID');
+  const clientSecret = secretOrEnv(NAVER_SEARCH_CLIENT_SECRET_SECRET, 'NAVER_SEARCH_CLIENT_SECRET');
   if (!clientId || !clientSecret) return [];
 
   const uniqueQueries = buildOpportunityQueries(career);
@@ -352,10 +369,11 @@ const extractResponseText = (data) => data.output_text
   || toArray(data.output).flatMap((item) => toArray(item.content)).find((item) => item.type === 'output_text')?.text;
 
 const tagWithOpenAI = async (items) => {
-  if (!process.env.OPENAI_API_KEY || items.length === 0) return items;
+  const openAiApiKey = secretOrEnv(OPENAI_API_KEY_SECRET, 'OPENAI_API_KEY');
+  if (!openAiApiKey || items.length === 0) return items;
   const response = await fetch('https://api.openai.com/v1/responses', {
     method: 'POST',
-    headers: { Authorization: `Bearer ${process.env.OPENAI_API_KEY}`, 'Content-Type': 'application/json' },
+    headers: { Authorization: `Bearer ${openAiApiKey}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
       model: OPENAI_MODEL,
       input: [
@@ -498,11 +516,13 @@ export const collectOpportunities = onSchedule({
   region: process.env.FUNCTION_REGION || DEFAULT_REGION,
   memory: '512MiB',
   timeoutSeconds: 540,
+  secrets: OPPORTUNITY_SECRETS,
 }, collectOpportunitiesNow);
 
 export const refreshOpportunities = onCall({
   region: process.env.FUNCTION_REGION || DEFAULT_REGION,
   timeoutSeconds: 540,
+  secrets: OPPORTUNITY_SECRETS,
 }, async (request) => {
   if (!request.auth?.uid) {
     throw new HttpsError('unauthenticated', '로그인한 사용자만 수집을 수동 실행할 수 있습니다.');
@@ -515,6 +535,7 @@ export const getOpportunities = onRequest({
   region: process.env.FUNCTION_REGION || DEFAULT_REGION,
   memory: '512MiB',
   timeoutSeconds: 60,
+  secrets: OPPORTUNITY_SECRETS,
 }, async (request, response) => {
   setCorsHeaders(response);
   if (request.method === 'OPTIONS') {
