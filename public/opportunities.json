@@ -1,6 +1,971 @@
 {
-  "generatedAt": "2026-06-04T00:00:00.000Z",
+  "generatedAt": "2026-06-04T13:30:47.545Z",
   "source": "github-actions-static-json",
-  "itemCount": 0,
-  "items": []
+  "itemCount": 25,
+  "items": [
+    {
+      "id": "9f5da185b38d753c",
+      "title": "[kt cloud x goorm] 프론트엔드 개발자 과정 모집",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/283756",
+      "summary": "(주)구름 ; 교육분야 : 프론트엔드 개발 , 컴퓨터 공학/SW 엔지니어링 외 17, 온/오프라인 : 온라인, 접수기간 : 시작일 · 2025.11.20 · 마감일 · 2026.01.09, 활동 기간 : 시작일 · 2025.12.29 · 마감일 · 2026.07.16, 체험/채용연계 : 채용연계형, 활동 지역 : 지역 제한없음, 비용 : 무료(국비지원), 모집인원 : 50명",
+      "deadline": "2026-07-16",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "반도체/엔지니어링"
+      ],
+      "matchedCareerSubs": [
+        "프론트엔드개발자",
+        "반도체엔지니어",
+        "소프트웨어개발자"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "engineering",
+        "semiconductor",
+        "hr",
+        "education"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "d9aaec70e07cdb3f",
+      "title": "2019 공개SW 컨트리뷰톤 모집",
+      "type": "해커톤",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=34874",
+      "summary": "중요 - ‘ 해커톤 ’과 차이점 : “무엇을” 보다... React 및 React Native Module : Mobile, JavaScript, Node, React , React -Native 3.... webOS Open Source Edition 개선 활동 : Web 20. NNStreamer : AI, CI/CD, Multimedia...",
+      "deadline": "상시",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "프론트엔드개발자",
+        "AI/ML엔지니어",
+        "백엔드개발자",
+        "소프트웨어개발자",
+        "MLOps엔지니어",
+        "데이터사이언티스트",
+        "클라우드엔지니어"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "backend",
+        "cloud",
+        "ai",
+        "data"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "dffc86a20fcc30d1",
+      "title": "(무료) [멀티캠퍼스] 백엔드 개발 수강생 모집 중",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=idea&gbn=viewok&ix=84637",
+      "summary": "(무료) [멀티캠퍼스] 백엔드 개발 수강생 모집 중인강 결제하고 돈 날린 경험이 있다?헬스장 등록하고 몇... 백엔드 개발자 채용시장은 여전히 훈풍!이제 개발자 취업준비 전/략/적으로 준비하세요!...",
+      "deadline": "상시",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "백엔드개발자",
+        "소프트웨어개발자",
+        "클라우드엔지니어"
+      ],
+      "recommendationTags": [
+        "backend",
+        "software",
+        "cloud",
+        "marketing",
+        "contents",
+        "bio",
+        "healthcare"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "f5c693629f1750f6",
+      "title": "(무료) [멀티캠퍼스] 2024년 3월 백엔드 개발 수강생 모집 중",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=idea&gbn=viewok&ix=85446",
+      "summary": "(무료) [멀티캠퍼스] 2024년 3월 백엔드 개발 수강생 모집 중이 모든 수업과 혜택에 대한 비용은 0원!멀티캠퍼스와 함께 IT 개발자 로 취업하고 싶다면 를 클릭해주세요( 링크 )",
+      "deadline": "상시",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "백엔드개발자",
+        "소프트웨어개발자",
+        "프론트엔드개발자",
+        "클라우드엔지니어"
+      ],
+      "recommendationTags": [
+        "backend",
+        "software",
+        "cloud",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "466edb27616c5ffe",
+      "title": "(무료) [멀티캠퍼스] 백엔드 개발 수강생 모집 중",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=84637",
+      "summary": "(무료) [멀티캠퍼스] 백엔드 개발 수강생 모집 중 인강 결제하고 돈 날린 경험이 있다? 헬스장... 백엔드 개발자 채용시장은 여전히 훈풍! 이제 개발자 취업준비 전/략/적으로 준비하세요!...",
+      "deadline": "상시",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "백엔드개발자",
+        "소프트웨어개발자",
+        "클라우드엔지니어"
+      ],
+      "recommendationTags": [
+        "backend",
+        "software",
+        "cloud",
+        "bio",
+        "healthcare",
+        "food",
+        "hr"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "ce6a4a26f614b20e",
+      "title": "(무료) [멀티캠퍼스] 2024년 3월 백엔드 개발 수강생 모집 중",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=85446",
+      "summary": "(무료) [멀티캠퍼스] 2024년 3월 백엔드 개발 수강생 모집 중 이 모든 수업과 혜택에 대한 비용은 0원! 멀티캠퍼스와 함께 IT 개발자 로 취업하고 싶다면 를 클릭해주세요( 링크 )",
+      "deadline": "상시",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "백엔드개발자",
+        "소프트웨어개발자",
+        "프론트엔드개발자",
+        "클라우드엔지니어"
+      ],
+      "recommendationTags": [
+        "backend",
+        "software",
+        "cloud",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "2a209d829142796f",
+      "title": "(무료) [멀티캠퍼스] 백엔드 개발 수강생 모집 중",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=active&gbn=viewok&ix=84637",
+      "summary": "(무료) [멀티캠퍼스] 백엔드 개발 수강생 모집 중 인강 결제하고 돈 날린 경험이 있다? 헬스장... 백엔드 개발자 채용시장은 여전히 훈풍! 이제 개발자 취업준비 전/략/적으로 준비하세요!...",
+      "deadline": "상시",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "백엔드개발자",
+        "소프트웨어개발자",
+        "클라우드엔지니어"
+      ],
+      "recommendationTags": [
+        "backend",
+        "software",
+        "cloud",
+        "bio",
+        "healthcare",
+        "food",
+        "hr"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "c832baaaa894564f",
+      "title": "(무료) [멀티캠퍼스] 2024년 3월 백엔드 개발 수강생 모집 중",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=active&gbn=viewok&ix=85446",
+      "summary": "(무료) [멀티캠퍼스] 2024년 3월 백엔드 개발 수강생 모집 중 이 모든 수업과 혜택에 대한 비용은 0원! 멀티캠퍼스와 함께 IT 개발자 로 취업하고 싶다면 를 클릭해주세요( 링크 )",
+      "deadline": "상시",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "백엔드개발자",
+        "소프트웨어개발자",
+        "프론트엔드개발자",
+        "클라우드엔지니어"
+      ],
+      "recommendationTags": [
+        "backend",
+        "software",
+        "cloud",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "b36efae80b4ef857",
+      "title": "SM유니버스 웹/ 앱개발자 + 메타버스/버츄얼/가상콘텐츠 교육, 취업경쟁력 확실히 만들기!",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/277753",
+      "summary": "한국소프트웨어인재 개발 원 ; 교육분야 : 프론트엔드 개발 , 모바일 앱 개발 외 5, 온/오프라인 : 오프라인, 접수기간 : 시작일 · 2025.10.27 · 마감일 · 2025.11.25, 활동 기간 : 시작일 · 2025.11.25 · 마감일 · 2026.06.05, 체험/채용연계 : 채용연계형, 활동 지역 : 서울 금천구, 비용 : 무료(국비지원), 모집인원 : 20명, 홈페이지 : https://naver.me/xmBrY91h",
+      "deadline": "2026-06-05",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "언론고시 (기자/PD)"
+      ],
+      "matchedCareerSubs": [
+        "프론트엔드개발자",
+        "앱개발자",
+        "PD·감독",
+        "기자",
+        "소프트웨어개발자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "mobile",
+        "marketing",
+        "contents",
+        "media"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "7455656ee311d1fd",
+      "title": "[채용연계형] 2026년도 하반기 SW 풀스택 개발자 교육생 모집",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/324985?search=",
+      "summary": "한국 소프트웨어 기술진흥협회 ; 교육분야 : 프론트엔드 개발 , 백엔드 개발 외 3, 온/오프라인 : 오프라인, 접수기간 : 시작일 · 2026.05.28 · 마감일 · 2026.07.31, 활동 기간 : 시작일 · 2026.07.28 · 마감일 · 2026.12.31, 체험/채용연계 : 채용연계형, 활동 지역 : 서울 금천구, 비용 : 무료(국비지원), 모집인원 : 00명, 홈페이지 : https://kostaswedu.co.kr",
+      "deadline": "2026-12-31",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "프론트엔드개발자",
+        "백엔드개발자",
+        "소프트웨어개발자",
+        "클라우드엔지니어"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "backend",
+        "cloud",
+        "hr",
+        "education"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "0768bfbc15902c3f",
+      "title": "데이터 분석가 부트캠프(AI 활용) 2월 개강",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/287202",
+      "summary": "(주)멀티캠퍼스 ; 교육분야 : 데이터분석 , 데이터 엔지니어링 외 3, 온/오프라인 : 온라인, 접수기간 : 시작일 · 2025.12.08 · 마감일 · 2026.02.24, 활동 기간 : 시작일 · 2026.02.25 · 마감일 · 2026.07.23, 체험/채용연계 : 채용연계형, 활동 지역 : 지역 제한없음, 비용 : 50만원(국비지원), 모집인원 : 35명",
+      "deadline": "2026-07-23",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "반도체/엔지니어링"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "반도체엔지니어",
+        "AI/ML연구원",
+        "데이터사이언티스트",
+        "데이터분석가",
+        "R&D·연구원"
+      ],
+      "recommendationTags": [
+        "data",
+        "statistics",
+        "research",
+        "ai",
+        "engineering",
+        "semiconductor",
+        "hr"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "609c43eac5cf9f5d",
+      "title": "데이터 분석& 엔지니어 과정(Python)(~12/06)",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/158887",
+      "summary": "비영리단체/협회/재단 대외활동 인 데이터 분석& 엔지니어 과정(Python)(~12/06)입니다. 혜택으로는 실무 교육, 전문가/임직원 멘토링 등이 있습니다.",
+      "deadline": "2026-12-06",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "data",
+        "statistics",
+        "research",
+        "hr",
+        "education",
+        "management",
+        "activity"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "26173442a709986b",
+      "title": "[교육비 전액 정부 지원] 2022 AI 기반 엔지니어 양성과정 모집 (~7/29까지 모집)",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=65545",
+      "summary": "인프라( 클라우드 ) 엔지니어 링 전문가 과정(온오프라인) - (공통 멘토링) AI·SW 실무 프로젝트(온오프라인) ■ 신청 : http://kibwagg.org/ ■ 교육일정: 2022. 7. ~ 12.(총 240시간) ■ 교육장: 서울 강남 교육장...",
+      "deadline": "2026-07-29",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "소프트웨어개발자",
+        "데이터사이언티스트",
+        "AI기획자",
+        "AI사업전략",
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "hr",
+        "education",
+        "management",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "2456c82dcf7d5974",
+      "title": "2026 코드게이트 AI 스타트업 해커톤",
+      "type": "해커톤",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=107527",
+      "summary": "AI 해커톤 에 참여하여 아이디어를 실제 서비스(MVP)로 구현하고, 시장 가능성까지 직접 검증해보세요. ■ 신청안내 - 신청기간 : ~ 2026.07.08.(수) - 진행일정 : 2026.07.21.(화) ~ 07.23.(목), 21일 ~ 22일 무박2일 진행...",
+      "deadline": "2026-07-21",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "소프트웨어개발자",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "da25b9e51070a0f0",
+      "title": "재활 AI 챗봇 아이디어 해커톤 2024",
+      "type": "해커톤",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=89067",
+      "summary": "재활 AI 챗봇 아이디어 해커톤 2024 ■ 공모 주제 - '생성형 AI'를... 클릭하기 ■ 활동 내용(일정) - [ 해커톤 참가 신청] 7/3(수)~07/12(금)... 검증) ■ 공모전 시상내역 - 대상: 1팀 상금 500만 원 - 최우수상: 2팀...",
+      "deadline": "2026-07-12",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "AI콘텐츠크리에이터",
+        "소프트웨어개발자",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "competition",
+        "project"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "4aae362da24c679f",
+      "title": "[국비지원 무료교육] AI활용 클라우드 보안 엔지니어 (화이트해커) 양성과정",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/280262",
+      "summary": "연세IT미래교육원 ; 교육분야 : DevOps/Infra, 백엔드 개발 외 13, 온/오프라인 : 오프라인, 접수기간 : 시작일 · 2025.11.06 · 마감일 · 모집 시 마감, 활동 기간 : 시작일 · 2025.12.31 · 마감일 · 2026.09.03, 체험/채용연계 : 채용연계형, 활동 지역 : 지역 제한없음, 비용 : 무료(국비지원), 모집인원 : 00명, 홈페이지 : https://ysedu.or.kr/p/?j=265",
+      "deadline": "2026-09-03",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "백엔드개발자",
+        "AI/ML엔지니어",
+        "클라우드엔지니어",
+        "소프트웨어개발자",
+        "보안엔지니어",
+        "MLOps엔지니어",
+        "데이터사이언티스트"
+      ],
+      "recommendationTags": [
+        "backend",
+        "software",
+        "cloud",
+        "ai",
+        "data",
+        "hr",
+        "education"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "d86df652c9af3e57",
+      "title": "[ESTgames] 정보 보안 운영 관리 엔지니어 (Python, Linux)",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/245274",
+      "summary": "기업형태 : 중소기업, 접수기간 : 시작일 · 2026.04.01 · 마감일 · 2026.06.30, 채용형태 : 신입, 급여 : 연봉 4536만원 ~ 5616만원, 모집직무 : IT/인터넷, 근무지역 : 서울 서초구, 홈페이지 : https://www.estgames.co.kr/company",
+      "deadline": "2026-06-30",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "matchedCareerSubs": [
+        "UI·UX디자이너",
+        "서비스기획자(PM·PO)",
+        "HRD·HRM",
+        "웹기획자"
+      ],
+      "recommendationTags": [
+        "design",
+        "ux",
+        "portfolio",
+        "hr",
+        "education",
+        "management",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "8a645fc17d0e822b",
+      "title": "2020년 비대면 서비스 정보보호 해커톤",
+      "type": "해커톤",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=45386",
+      "summary": "비대면 서비스 환경에서 발생되는 문제와 해결방안을 자유롭게 제안 ■ 대회일정 - 접수( 공모 )기간 : 9.25(금) ~ 10.21(수) - 오리엔테이션 사전교육 : 10.30(수) - 온라인 해커톤 발표평가 : 10.30(수) ~ 11.06(금)...",
+      "deadline": "2026-09-25",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "환경기사"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "environment",
+        "architecture",
+        "engineering",
+        "energy",
+        "hr"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "0df957270210dd8e",
+      "title": "생성형 AI융합(영상제작&UIUX) 웹개발& 웹기획자 양성과정",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/287789",
+      "summary": "더조은컴퓨터아카데미 종로 ; 교육분야 : UX/UI, 2D/그래픽/브랜딩 외 5, 온/오프라인 : 오프라인, 접수기간 : 시작일 · 2025.12.10 · 마감일 · 2026.01.12, 활동 기간 : 시작일 · 2025.12.30 · 마감일 · 2026.06.16, 체험/채용연계 : 채용연계형, 활동 지역 : 서울 종로구, 비용 : 무료(국비지원), 모집인원 : 20명, 홈페이지 : https://jr.tjoeun.co.kr/campus/new_event_view/177",
+      "deadline": "2026-06-16",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "프론트엔드개발자",
+        "AI/ML엔지니어",
+        "브랜드마케터",
+        "AI콘텐츠크리에이터",
+        "소프트웨어개발자",
+        "MLOps엔지니어",
+        "웹기획자",
+        "그로스해커"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "ai",
+        "data",
+        "marketing",
+        "contents"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "23498a3af03af2f6",
+      "title": "(6주) 웹소설PD 도전 프로젝트! 참여자 모집 중",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=101175",
+      "summary": "이 거대한 흐름을 기획 하고, 작가와 함께 성공을 만들어가는... 작품의 가능성을 가장 먼저 발견하고, 작가와 함께 기획 방향을... 이제 독자에서 벗어나, 작가들과 소통하며 직접 원하는 작품을 기획 하고...",
+      "deadline": "상시",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "언론고시 (기자/PD)"
+      ],
+      "matchedCareerSubs": [
+        "PD·감독",
+        "기자",
+        "프론트엔드개발자",
+        "소프트웨어개발자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "작가",
+        "AE(광고기획자)"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "marketing",
+        "contents",
+        "media",
+        "writing"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "83ce07aad1405725",
+      "title": "(4주) 네이버 연재 작가님에게 웹소설 쓰기를 배워보세요! 참여자 모집 중",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=97553",
+      "summary": "그래서 저희와 뜻이 맞는 강사님을 오랫동안 찾아왔고, 긴 기획 기간 끝에 오픈할 수 있었습니다. 또한 ‘6주만에 웹소설 작가되기 프로젝트’에서는 커리큘럼 내 실제로 웹소설을 써보고, 추후...",
+      "deadline": "상시",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "프론트엔드개발자",
+        "소프트웨어개발자",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "작가",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "portfolio",
+        "marketing",
+        "contents",
+        "media",
+        "writing"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "e33ce2b36042cebc",
+      "title": "2025 한국 경영 인증원 브랜드 숏폼 공모전 , AI로 만드는 'Cre-AI-tive 숏폼 챌린지’ (기간연장 ~10/12)",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/267168",
+      "summary": "2025 한국 경영 인증원 브랜드 숏폼 공모전 , AI로 만드는 'Cre-AI-tive 숏폼 챌린지’ (기간연장 ~10/12)입니다. 혜택으로는 입사시 가산점, 상장 수여 등이 있습니다. 기획 /아이디어, 사진/영상/UCC에 관심있다면 지원해주세요!",
+      "deadline": "2026-10-12",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "패션/의류"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "콘텐츠마케터",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "데이터사이언티스트",
+        "PD·감독"
+      ],
+      "recommendationTags": [
+        "ai",
+        "data",
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "competition"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "1850cdd5567fed42",
+      "title": "[현대자동차] 2023년 12월 각 부문별 신입사원 채용",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/160430?search=",
+      "summary": "[현대자동차] 2023년 12월 각 부문별 신입사원 채용 (~12/14) [모집기간] [전형절차] 서류 - AI면접/인성검사 - 1차면접 - 2차면접 - 채용검진 [직무구분] ■ 연구개발 1. 연구개발 기획 - 연구개발 기획 2. 차량개발 - 구동/풀루이드 시스템 설계 - 차량 품질 확보 및 품질 정보 분석 3. 친환경차 개발 - 상용 전동화파워트레인 개발 - 승용 엔진 성능 개발 - 수서전기차(FCEV) 차량 성능 개발 4. 파...",
+      "deadline": "2026-12-14",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "AI/ML엔지니어",
+        "R&D·연구원",
+        "AI/ML연구원",
+        "데이터사이언티스트",
+        "리서치(설문/통계)",
+        "환경기사"
+      ],
+      "recommendationTags": [
+        "data",
+        "statistics",
+        "research",
+        "ai",
+        "marketing",
+        "contents",
+        "engineering"
+      ],
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "d1e08b161ee8f67d",
+      "title": "2022년 청년 컨설턴트 (SNS 콘텐츠 제작) 모집",
+      "type": "대외활동",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=64337",
+      "summary": "2022년 청년 컨설턴트 (SNS 콘텐츠 제작) 모집 ■ 모집규모 : 20팀 ■ 모집공고 : 6.7.(화) ~ 6.17.(금)... 7월~11월(총 5개월) ■ 대외활동 내용 : 자영업자별①일반콘텐츠(인스타그램) ②영상콘텐츠(인스타그램) 월...",
+      "deadline": "2026-06-17",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅",
+        "언론고시 (기자/PD)"
+      ],
+      "matchedCareerSubs": [
+        "콘텐츠마케터",
+        "PD·감독",
+        "기자",
+        "콘텐츠에디터",
+        "AE(광고기획자)",
+        "홍보(PR)",
+        "카피라이터",
+        "음반기획"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing",
+        "activity",
+        "volunteer"
+      ],
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "91ef8328649811ec",
+      "title": "[미니인턴X올마이투어] 그로스해커 지망생 주목! 여행 OTA 올마이투어닷컴 앱마케팅 전략 기획하고, 실무 경험 어....",
+      "type": "인턴십",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/187604",
+      "summary": "중소기업 대외활동 인 [미니인턴X올마이투어] 그로스해커 지망생 주목! 여행 OTA 올마이투어닷컴 앱마케팅 전략 기획하고, 실무 경험 어필하자! (~7/3)입니다. 혜택으로는 전문가/임직원 멘토링, 수료증 및 인증서 등이 있습니다.",
+      "deadline": "2026-07-03",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "matchedCareerSubs": [
+        "그로스해커",
+        "소프트웨어개발자",
+        "컨설턴트",
+        "브랜드마케터",
+        "앱개발자",
+        "HRD·HRM"
+      ],
+      "recommendationTags": [
+        "mobile",
+        "software",
+        "marketing",
+        "contents",
+        "hr",
+        "education",
+        "management"
+      ],
+      "recommendationType": "internship",
+      "recommendationCat": "intern",
+      "baseWeight": 8,
+      "recommendedGrades": [
+        3,
+        4
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    }
+  ]
 }
