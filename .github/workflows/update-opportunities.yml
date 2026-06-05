@@ -22,9 +22,9 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-4o-mini' }}
           OPPORTUNITY_AI_MAX_ITEMS: ${{ vars.OPPORTUNITY_AI_MAX_ITEMS || '0' }}
-          OPPORTUNITY_MAX_ITEMS: ${{ vars.OPPORTUNITY_MAX_ITEMS || '200' }}
-          LINKAREER_MAX_PAGES: ${{ vars.LINKAREER_MAX_PAGES || '25' }}
-          WEVITY_MAX_PAGES: ${{ vars.WEVITY_MAX_PAGES || '10' }}
+          OPPORTUNITY_MAX_ITEMS: ${{ vars.OPPORTUNITY_MAX_ITEMS || '1000' }}
+          LINKAREER_MAX_PAGES: ${{ vars.LINKAREER_MAX_PAGES || '80' }}
+          WEVITY_MAX_PAGES: ${{ vars.WEVITY_MAX_PAGES || '30' }}
         run: node scripts/generate-opportunities-json.js
       - name: Commit updated opportunities
         uses: stefanzweifel/git-auto-commit-action@v5

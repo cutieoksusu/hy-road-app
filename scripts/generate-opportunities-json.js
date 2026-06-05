@@ -17,9 +17,9 @@ const CAREER_KEYWORDS = {
 const TAG_VALUES = Object.values(TAGS);
 const OPENAI_MODEL = process.env.OPENAI_MODEL || 'gpt-4o-mini';
 const MAX_AI_TAG_ITEMS = Number.parseInt(process.env.OPPORTUNITY_AI_MAX_ITEMS || '10', 10);
-const MAX_ITEMS = Number.parseInt(process.env.OPPORTUNITY_MAX_ITEMS || '200', 10);
-const LINKAREER_MAX_PAGES = Number.parseInt(process.env.LINKAREER_MAX_PAGES || '25', 10);
-const WEVITY_MAX_PAGES = Number.parseInt(process.env.WEVITY_MAX_PAGES || '10', 10);
+const MAX_ITEMS = Number.parseInt(process.env.OPPORTUNITY_MAX_ITEMS || '1000', 10);
+const LINKAREER_MAX_PAGES = Number.parseInt(process.env.LINKAREER_MAX_PAGES || '80', 10);
+const WEVITY_MAX_PAGES = Number.parseInt(process.env.WEVITY_MAX_PAGES || '30', 10);
 const REQUEST_DELAY_MS = Number.parseInt(process.env.OPPORTUNITY_REQUEST_DELAY_MS || '250', 10);
 
 const CAREER_SUB_SEARCH_KEYWORDS = {
@@ -329,18 +329,18 @@ const inferRecommendationTags = (text) => {
   if (/앱|모바일|android|ios/.test(source)) addTags(tags, TAGS.MOBILE, TAGS.SOFTWARE);
   if (/데이터|분석|통계|sql|빅데이터|대시보드|리서치/.test(source)) addTags(tags, TAGS.DATA, TAGS.STATISTICS, TAGS.RESEARCH);
   if (/ai|인공지능|머신러닝|딥러닝|llm|생성형/.test(source)) addTags(tags, TAGS.AI, TAGS.DATA);
-  if (/마케팅|브랜드|광고|홍보|crm|퍼포먼스|캠페인/.test(source)) addTags(tags, TAGS.MARKETING, TAGS.CONTENTS);
+  if (/마케팅|브랜드|광고|홍보|pr|sns|서포터즈|앰버서더|크리에이터|쇼츠|캠페인|crm|퍼포먼스/.test(source)) addTags(tags, TAGS.MARKETING, TAGS.CONTENTS);
   if (/금융|투자|은행|회계|재무|핀테크|경제/.test(source)) addTags(tags, TAGS.FINANCE, TAGS.ACCOUNTING);
   if (/공공|공기업|ncs|행정|정책|공공기관/.test(source)) addTags(tags, TAGS.PUBLIC, TAGS.NCS);
   if (/법|로스쿨|노무|변리|특허|인권/.test(source)) addTags(tags, TAGS.LAW, TAGS.PUBLIC);
-  if (/영상|미디어|콘텐츠|기자|pd|방송|작가|뉴스레터/.test(source)) addTags(tags, TAGS.MEDIA, TAGS.CONTENTS, TAGS.WRITING);
+  if (/영상|미디어|콘텐츠|기자|pd|방송|작가|뉴스레터|도슨트|기획단|심사단|크리에이터|쇼츠/.test(source)) addTags(tags, TAGS.MEDIA, TAGS.CONTENTS, TAGS.WRITING);
   if (/디자인|ux|ui|그래픽|브랜딩|포트폴리오/.test(source)) addTags(tags, TAGS.DESIGN, TAGS.UX, TAGS.PORTFOLIO);
   if (/반도체/.test(source)) addTags(tags, TAGS.SEMICONDUCTOR, TAGS.ENGINEERING);
   if (/공정|전자|전기|기계|로봇|생산|품질/.test(source)) addTags(tags, TAGS.ENGINEERING);
   if (/바이오|제약|임상|보건|식품|영양|헬스/.test(source)) addTags(tags, TAGS.BIO, TAGS.HEALTHCARE, TAGS.FOOD);
   if (/환경|건축|도시|안전|bim|cad|에너지/.test(source)) addTags(tags, TAGS.ENVIRONMENT, TAGS.ARCHITECTURE, TAGS.ENGINEERING, TAGS.ENERGY);
   if (/무역|물류|유통|구매|해외영업|글로벌/.test(source)) addTags(tags, TAGS.TRADE, TAGS.LOGISTICS, TAGS.GLOBAL);
-  if (/인사|hr|채용|교육|멘토링/.test(source)) addTags(tags, TAGS.HR, TAGS.EDUCATION, TAGS.MANAGEMENT);
+  if (/인사|hr|채용|교육|멘토링|멘토|강연|커리어세션/.test(source)) addTags(tags, TAGS.HR, TAGS.EDUCATION, TAGS.MANAGEMENT);
   if (/봉사|서포터즈|기자단|대외활동|앰버서더/.test(source)) addTags(tags, TAGS.ACTIVITY, TAGS.VOLUNTEER);
   if (/공모전|해커톤|대회|콘테스트|챌린지|아이디어/.test(source)) addTags(tags, TAGS.COMPETITION, TAGS.PROJECT);
   if (/인턴|현장실습|실무/.test(source)) addTags(tags, TAGS.INTERNSHIP);
@@ -400,7 +400,14 @@ const getMatchedCareerSubs = (text, recommendationTags) => {
     .sort((a, b) => b[1] - a[1])
     .map(([careerSub]) => careerSub);
 
-  return uniq(strongMatches
+  const baseMatches = strongMatches.length
+    ? strongMatches
+    : scored
+      .filter(([, score]) => score >= 14)
+      .sort((a, b) => b[1] - a[1])
+      .map(([careerSub]) => careerSub);
+
+  return uniq(baseMatches
     .slice(0, 8)
     .flatMap((careerSub) => [careerSub, ...getRelatedCareerSubs(careerSub)]))
     .filter((careerSub) => CAREER_TAG_WEIGHTS[careerSub])
