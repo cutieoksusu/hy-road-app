@@ -29,6 +29,13 @@ const formatReason = (matchedTags, user) => {
   return `${labels.join(', ')} 태그가 전공/직무/학년 조건과 잘 맞아 추천합니다.`;
 };
 
+const getActivityTagWeight = (activity, tag) => {
+  if (activity.weightedTags && Number.isFinite(activity.weightedTags[tag])) {
+    return activity.weightedTags[tag];
+  }
+  return activity.tags.includes(tag) ? 10 : 0;
+};
+
 export const buildUserTagWeights = (user) => {
   const grade = getGrade(user.grade);
   return mergeWeights(
@@ -45,13 +52,10 @@ export const recommendActivities = ({ user, activities = ACTIVITIES, limit = 7 }
   const userWeights = buildUserTagWeights(user);
 
   const ranked = activities
-    .filter((activity) => {
-      if (!activity.isExternalOpportunity) return true;
-      const matchedCareerSubs = activity.matchedCareerSubs || [];
-      return matchedCareerSubs.includes(user.careerSub);
-    })
     .map((activity) => {
-      const tagScore = activity.tags.reduce((score, tag) => score + (userWeights[tag] || 0), 0);
+      const tagScore = activity.tags.reduce((score, tag) => (
+        score + ((userWeights[tag] || 0) * getActivityTagWeight(activity, tag) / 10)
+      ), 0);
       const gradeBonus = activity.recommendedGrades?.includes(grade) ? 8 : 0;
       const nearGradeBonus = activity.recommendedGrades?.some(item => Math.abs(item - grade) === 1) ? 3 : 0;
       const score = activity.baseWeight + tagScore + gradeBonus + nearGradeBonus;

@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 import crypto from 'node:crypto';
-import { CAREER_TAG_WEIGHTS, TAGS } from '../src/recommendationData.js';
+import { TAGS } from '../src/recommendationData.js';
 
 const CAREER_KEYWORDS = {
   'IT/소프트웨어': ['IT', '소프트웨어', '개발', '인공지능', 'AI', '데이터', '해커톤'],
@@ -21,107 +21,6 @@ const MAX_ITEMS = Number.parseInt(process.env.OPPORTUNITY_MAX_ITEMS || '1000', 1
 const LINKAREER_MAX_PAGES = Number.parseInt(process.env.LINKAREER_MAX_PAGES || '80', 10);
 const WEVITY_MAX_PAGES = Number.parseInt(process.env.WEVITY_MAX_PAGES || '30', 10);
 const REQUEST_DELAY_MS = Number.parseInt(process.env.OPPORTUNITY_REQUEST_DELAY_MS || '250', 10);
-
-const CAREER_SUB_SEARCH_KEYWORDS = {
-  '프론트엔드개발자': ['프론트엔드', 'React', '웹개발'],
-  '백엔드개발자': ['백엔드', '서버개발', 'API'],
-  '앱개발자': ['앱개발', '모바일앱'],
-  '소프트웨어개발자': ['소프트웨어', '개발자', '해커톤'],
-  '데이터사이언티스트': ['데이터사이언스', 'AI 데이터', '머신러닝'],
-  '데이터분석가': ['데이터분석', 'SQL', '빅데이터'],
-  '데이터엔지니어': ['데이터엔지니어', '데이터 파이프라인'],
-  'AI/ML엔지니어': ['AI', '머신러닝', '인공지능'],
-  'AI/ML연구원': ['AI 연구', '인공지능 연구'],
-  'MLOps엔지니어': ['MLOps', 'AI 엔지니어링'],
-  '보안엔지니어': ['보안', '해킹방어', 'CTF'],
-  '클라우드엔지니어': ['클라우드', 'AWS'],
-  '서비스기획자(PM·PO)': ['서비스기획', 'PM', '프로덕트'],
-  '웹기획자': ['웹기획', '서비스기획'],
-  '경영·비즈니스기획': ['비즈니스기획', '사업기획'],
-  'AI기획자': ['AI 기획', '인공지능 서비스'],
-  'AI사업전략': ['AI 사업', 'AI 전략'],
-  '컨설턴트': ['컨설팅', '전략'],
-  '브랜드마케터': ['브랜드마케팅', '브랜딩'],
-  '퍼포먼스마케터': ['퍼포먼스마케팅', '광고 데이터'],
-  '콘텐츠마케터': ['콘텐츠마케팅', 'SNS 콘텐츠'],
-  'CRM마케터': ['CRM', '고객 데이터'],
-  '그로스해커': ['그로스', '마케팅 데이터'],
-  '홍보(PR)': ['홍보', 'PR'],
-  'AE(광고기획자)': ['광고기획', '광고 공모전'],
-  '카피라이터': ['카피라이팅', '광고 문구'],
-  'MD': ['MD', '상품기획'],
-  'UI·UX디자이너': ['UX', 'UI', '서비스디자인'],
-  '웹디자이너': ['웹디자인', 'UI 디자인'],
-  '영상디자이너': ['영상디자인', '영상 공모전'],
-  '그래픽디자이너': ['그래픽디자인', '시각디자인'],
-  '패션디자이너': ['패션', '의류 디자인'],
-  '회계사(CPA)': ['회계', 'CPA'],
-  '세무사': ['세무', '세금'],
-  '회계담당자': ['회계', '재무회계'],
-  '재무담당자': ['재무', '기업분석'],
-  '애널리스트': ['애널리스트', '투자 리서치'],
-  '펀드매니저': ['투자', '자산운용'],
-  '은행원·텔러(IB/PB 등)': ['은행', '금융권'],
-  '반도체엔지니어': ['반도체', '공정'],
-  '공정엔지니어': ['공정', '제조'],
-  '전기·전자엔지니어': ['전기전자', '전자공학'],
-  '기계엔지니어': ['기계', '로봇'],
-  '화학엔지니어': ['화학공학', '화학'],
-  'R&D·연구원': ['R&D', '연구개발'],
-  '품질관리자(QA/QC)': ['품질관리', 'QA QC'],
-  '변호사(로스쿨)': ['법률', '로스쿨'],
-  '법무담당자': ['법무', '컴플라이언스'],
-  '공기업(NCS 준비)': ['공기업', 'NCS', '공공기관'],
-  '사회복지사': ['사회복지', '봉사'],
-  'PD·감독': ['PD', '영상기획'],
-  '기자': ['기자', '취재'],
-  '콘텐츠에디터': ['콘텐츠에디터', '에디터'],
-  '작가': ['작가', '글쓰기'],
-  '영상편집자': ['영상편집', '영상 제작'],
-  'AI콘텐츠크리에이터': ['AI 콘텐츠', '생성형 AI'],
-  '통번역사': ['통번역', '번역'],
-  '해외영업': ['해외영업', '글로벌 영업'],
-  '물류관리자': ['물류', 'SCM'],
-  '인사담당자': ['인사', 'HR'],
-  'HRD·HRM': ['HRD', 'HRM'],
-  '건축가': ['건축', '건축설계'],
-  '건축기사': ['건축기사', '건축'],
-  '환경기사': ['환경', 'ESG'],
-  '바이오·제약연구원': ['바이오', '제약'],
-  '임상연구원(CRA)': ['임상', 'CRA'],
-  '영양사': ['영양', '식품'],
-  '식품연구원': ['식품', '푸드테크'],
-};
-
-const CAREER_SUB_RELATIONS = {
-  '프론트엔드개발자': ['소프트웨어개발자', '웹디자이너', 'UI·UX디자이너'],
-  '백엔드개발자': ['소프트웨어개발자', '데이터엔지니어', '클라우드엔지니어', '보안엔지니어'],
-  '앱개발자': ['소프트웨어개발자', '프론트엔드개발자', 'UI·UX디자이너'],
-  '소프트웨어개발자': ['프론트엔드개발자', '백엔드개발자', '앱개발자', '데이터엔지니어'],
-  '데이터사이언티스트': ['데이터분석가', 'AI/ML엔지니어', 'AI/ML연구원', '리서치(설문/통계)'],
-  '데이터분석가': ['데이터사이언티스트', '리서치(설문/통계)', '퍼포먼스마케터', 'CRM마케터'],
-  '데이터엔지니어': ['백엔드개발자', '데이터사이언티스트', 'AI/ML엔지니어'],
-  'AI/ML엔지니어': ['AI/ML연구원', '데이터사이언티스트', 'AI로봇엔지니어', 'AI기획자'],
-  'AI/ML연구원': ['AI/ML엔지니어', '데이터사이언티스트', 'R&D·연구원'],
-  '반도체엔지니어': ['공정엔지니어', '전기·전자엔지니어', '통신/RF엔지니어', 'R&D·연구원'],
-  '공정엔지니어': ['반도체엔지니어', '생산·공정관리자', '품질관리자(QA/QC)', 'R&D·연구원'],
-  '전기·전자엔지니어': ['반도체엔지니어', '통신/RF엔지니어', '기계엔지니어', 'R&D·연구원'],
-  '기계엔지니어': ['전기·전자엔지니어', 'AI로봇엔지니어', '생산·공정관리자', '품질관리자(QA/QC)'],
-  '화학엔지니어': ['R&D·연구원', '바이오·제약연구원', '품질관리자(QA/QC)', '환경기사'],
-  'R&D·연구원': ['반도체엔지니어', '공정엔지니어', '전기·전자엔지니어', '화학엔지니어', '바이오·제약연구원'],
-  '품질관리자(QA/QC)': ['공정엔지니어', '생산·공정관리자', '기계엔지니어', '화학엔지니어', '식품연구원'],
-  '바이오·제약연구원': ['R&D·연구원', '임상연구원(CRA)', '화학엔지니어'],
-  '임상연구원(CRA)': ['바이오·제약연구원', 'R&D·연구원'],
-  '식품연구원': ['영양사', '품질관리자(QA/QC)', '바이오·제약연구원'],
-  '영양사': ['식품연구원', '품질관리자(QA/QC)'],
-};
-
-const getRelatedCareerSubs = (careerSub) => uniq([
-  ...(CAREER_SUB_RELATIONS[careerSub] || []),
-  ...Object.entries(CAREER_SUB_RELATIONS)
-    .filter(([, related]) => related.includes(careerSub))
-    .map(([relatedCareerSub]) => relatedCareerSub),
-]);
 
 const toArray = (value) => (Array.isArray(value) ? value : []);
 const uniq = (values) => [...new Set(values.filter(Boolean).map((value) => String(value).trim()).filter(Boolean))];
@@ -321,6 +220,129 @@ const addTags = (set, ...tags) => tags.forEach((tag) => {
   if (TAG_VALUES.includes(tag)) set.add(tag);
 });
 
+const addWeightedTag = (weights, tag, weight) => {
+  if (TAG_VALUES.includes(tag)) {
+    weights[tag] = Math.max(weights[tag] || 0, weight);
+  }
+};
+
+const inferWeightedRecommendationTags = (text) => {
+  const source = String(text || '').toLowerCase();
+  const weights = {};
+
+  if (/프론트|react|html|css|ui|웹|javascript|typescript/.test(source)) {
+    addWeightedTag(weights, TAGS.FRONTEND, 9);
+    addWeightedTag(weights, TAGS.SOFTWARE, 8);
+    addWeightedTag(weights, TAGS.PORTFOLIO, 6);
+  }
+  if (/백엔드|서버|api|spring|node|django|database/.test(source)) {
+    addWeightedTag(weights, TAGS.BACKEND, 9);
+    addWeightedTag(weights, TAGS.SOFTWARE, 8);
+    addWeightedTag(weights, TAGS.CLOUD, 5);
+  }
+  if (/앱|모바일|android|ios/.test(source)) {
+    addWeightedTag(weights, TAGS.MOBILE, 9);
+    addWeightedTag(weights, TAGS.SOFTWARE, 8);
+  }
+  if (/데이터|분석|통계|sql|빅데이터|대시보드|리서치/.test(source)) {
+    addWeightedTag(weights, TAGS.DATA, 9);
+    addWeightedTag(weights, TAGS.STATISTICS, 7);
+    addWeightedTag(weights, TAGS.RESEARCH, 5);
+  }
+  if (/ai|인공지능|머신러닝|딥러닝|llm|생성형/.test(source)) {
+    addWeightedTag(weights, TAGS.AI, 8);
+    addWeightedTag(weights, TAGS.DATA, 7);
+    addWeightedTag(weights, TAGS.SOFTWARE, 7);
+  }
+  if (/로봇|robot|robotics/.test(source)) {
+    addWeightedTag(weights, TAGS.ROBOTICS, 8);
+    addWeightedTag(weights, TAGS.ENGINEERING, 7);
+  }
+  if (/제어|제어\s*솔루션|control|자동제어/.test(source)) {
+    addWeightedTag(weights, TAGS.CONTROL, 8);
+    addWeightedTag(weights, TAGS.ENGINEERING, 7);
+  }
+  if (/마케팅|브랜드|광고|홍보|pr|sns|서포터즈|앰버서더|크리에이터|쇼츠|캠페인|crm|퍼포먼스/.test(source)) {
+    addWeightedTag(weights, TAGS.MARKETING, 8);
+    addWeightedTag(weights, TAGS.CONTENTS, 6);
+  }
+  if (/금융|투자|은행|회계|재무|핀테크|경제/.test(source)) {
+    addWeightedTag(weights, TAGS.FINANCE, 8);
+    addWeightedTag(weights, TAGS.ACCOUNTING, 6);
+  }
+  if (/공공|공기업|ncs|행정|정책|공공기관/.test(source)) {
+    addWeightedTag(weights, TAGS.PUBLIC, 8);
+    addWeightedTag(weights, TAGS.NCS, 6);
+  }
+  if (/법|로스쿨|노무|변리|특허|인권/.test(source)) {
+    addWeightedTag(weights, TAGS.LAW, 8);
+    addWeightedTag(weights, TAGS.PUBLIC, 5);
+  }
+  if (/영상|미디어|콘텐츠|기자|pd|방송|작가|뉴스레터|도슨트|기획단|심사단|크리에이터|쇼츠/.test(source)) {
+    addWeightedTag(weights, TAGS.MEDIA, 8);
+    addWeightedTag(weights, TAGS.CONTENTS, 8);
+    addWeightedTag(weights, TAGS.WRITING, 5);
+  }
+  if (/디자인|ux|ui|그래픽|브랜딩|포트폴리오/.test(source)) {
+    addWeightedTag(weights, TAGS.DESIGN, 8);
+    addWeightedTag(weights, TAGS.UX, 7);
+    addWeightedTag(weights, TAGS.PORTFOLIO, 5);
+  }
+  if (/반도체/.test(source)) {
+    addWeightedTag(weights, TAGS.SEMICONDUCTOR, 10);
+    addWeightedTag(weights, TAGS.ENGINEERING, 8);
+  }
+  if (/공정|전자|전기|기계|생산|품질/.test(source)) {
+    addWeightedTag(weights, TAGS.ENGINEERING, 8);
+  }
+  if (/바이오|제약|임상|보건|식품|영양|헬스/.test(source)) {
+    addWeightedTag(weights, TAGS.BIO, 8);
+    addWeightedTag(weights, TAGS.HEALTHCARE, 6);
+    addWeightedTag(weights, TAGS.FOOD, 6);
+  }
+  if (/환경|건축|도시|bim|cad|에너지/.test(source)) {
+    addWeightedTag(weights, TAGS.ENVIRONMENT, 7);
+    addWeightedTag(weights, TAGS.ARCHITECTURE, 6);
+    addWeightedTag(weights, TAGS.ENGINEERING, 5);
+    addWeightedTag(weights, TAGS.ENERGY, 5);
+  }
+  if (/무역|물류|유통|구매|해외영업|글로벌/.test(source)) {
+    addWeightedTag(weights, TAGS.TRADE, 8);
+    addWeightedTag(weights, TAGS.LOGISTICS, 7);
+    addWeightedTag(weights, TAGS.GLOBAL, 5);
+  }
+  if (/인사|hr|채용/.test(source)) {
+    addWeightedTag(weights, TAGS.HR, 7);
+    addWeightedTag(weights, TAGS.MANAGEMENT, 5);
+  }
+  if (/교육|멘토링|멘토|강연|커리어세션/.test(source)) {
+    addWeightedTag(weights, TAGS.EDUCATION, 5);
+    addWeightedTag(weights, TAGS.MANAGEMENT, 5);
+  }
+  if (/봉사|서포터즈|기자단|대외활동|앰버서더/.test(source)) {
+    addWeightedTag(weights, TAGS.ACTIVITY, 7);
+    addWeightedTag(weights, TAGS.VOLUNTEER, 4);
+  }
+  if (/공모전|해커톤|대회|콘테스트|챌린지|아이디어/.test(source)) {
+    addWeightedTag(weights, TAGS.COMPETITION, 7);
+    addWeightedTag(weights, TAGS.PROJECT, 6);
+  }
+  if (/인턴|현장실습|실무/.test(source)) addWeightedTag(weights, TAGS.INTERNSHIP, 8);
+  if (/자격|기사|시험|cert|certificate/.test(source)) addWeightedTag(weights, TAGS.CERTIFICATE, 8);
+  if (/영어|일본|중국|해외|통번역|언어/.test(source)) {
+    addWeightedTag(weights, TAGS.GLOBAL, 7);
+    addWeightedTag(weights, TAGS.LANGUAGE, 7);
+  }
+  if (Object.keys(weights).length === 0) {
+    addWeightedTag(weights, TAGS.ACTIVITY, 5);
+    addWeightedTag(weights, TAGS.PROJECT, 4);
+  }
+
+  return Object.fromEntries(Object.entries(weights)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10));
+};
+
 const inferRecommendationTags = (text) => {
   const source = String(text || '').toLowerCase();
   const tags = new Set();
@@ -381,39 +403,6 @@ const getCareerTags = (text) => {
     .map(([career]) => career);
 };
 
-const getMatchedCareerSubs = (text, recommendationTags) => {
-  const source = String(text || '').toLowerCase();
-  const scored = Object.entries(CAREER_TAG_WEIGHTS).map(([careerSub, weights]) => {
-    const tagScore = recommendationTags.reduce((score, tag) => score + (weights[tag] || 0), 0);
-    const hasKeywordMatch = (CAREER_SUB_SEARCH_KEYWORDS[careerSub] || [careerSub])
-      .some((keyword) => source.includes(String(keyword).toLowerCase().replace(/[()·/]/g, ' ').trim()));
-    const keywordScore = hasKeywordMatch
-      ? 12
-      : 0;
-    const hasPrimaryTagMatch = Object.entries(weights)
-      .some(([tag, weight]) => weight >= 8 && recommendationTags.includes(tag));
-    return [careerSub, tagScore + keywordScore, hasKeywordMatch || hasPrimaryTagMatch];
-  });
-
-  const strongMatches = scored
-    .filter(([, score, hasStrongSignal]) => hasStrongSignal && score >= 18)
-    .sort((a, b) => b[1] - a[1])
-    .map(([careerSub]) => careerSub);
-
-  const baseMatches = strongMatches.length
-    ? strongMatches
-    : scored
-      .filter(([, score]) => score >= 14)
-      .sort((a, b) => b[1] - a[1])
-      .map(([careerSub]) => careerSub);
-
-  return uniq(baseMatches
-    .slice(0, 8)
-    .flatMap((careerSub) => [careerSub, ...getRelatedCareerSubs(careerSub)]))
-    .filter((careerSub) => CAREER_TAG_WEIGHTS[careerSub])
-    .slice(0, 14);
-};
-
 const getType = (text) => {
   const source = String(text || '').toLowerCase();
   if (source.includes('해커톤')) return '해커톤';
@@ -436,13 +425,12 @@ const normalizeItem = (raw) => {
   const type = raw.type || getType(`${title} ${summary}`);
   const careerTags = uniq([...toArray(raw.careerTags), ...getCareerTags(`${title} ${summary}`)]);
   const text = `${title} ${summary} ${type}`;
-  const recommendationTags = inferRecommendationTags(text);
+  const weightedTags = inferWeightedRecommendationTags(text);
+  const recommendationTags = Object.keys(weightedTags);
   const recommendationType = inferRecommendationType(type, text, recommendationTags);
   const deadline = raw.deadline || extractDeadline(`${title} ${summary}`);
   if (deadline === '확인 필요' || isExpiredDeadline(deadline)) return null;
   if (deadline === '상시' && hasOldYearMarker(`${title} ${summary}`)) return null;
-  const matchedCareerSubs = getMatchedCareerSubs(text, recommendationTags);
-  if (!matchedCareerSubs.length) return null;
 
   return {
     id: crypto.createHash('sha1').update(url || title).digest('hex').slice(0, 16),
@@ -454,8 +442,8 @@ const normalizeItem = (raw) => {
     deadline,
     publishedAt: raw.publishedAt || '',
     careerTags,
-    matchedCareerSubs,
     recommendationTags,
+    weightedTags,
     recommendationType,
     recommendationCat: inferRecommendationCat(recommendationType, recommendationTags),
     baseWeight: recommendationType === 'internship' ? 8 : recommendationType === 'competition' ? 7 : 6,

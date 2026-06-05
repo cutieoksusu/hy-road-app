@@ -4,7 +4,7 @@ import {
   Clock, LogOut, ShieldCheck, BookOpen, CheckCircle2, TrendingUp, Search, 
   AlertCircle, ChevronLeft, Building, Target, Check, Sparkles, ExternalLink, Link as LinkIcon, Edit3, XCircle, Info, Award, FileText, Globe, Hourglass, Plus, Trash2, Loader2, Camera, PenTool, Image as ImageIcon
 } from 'lucide-react';
-import { recommendActivities } from './recommendationEngine';
+import { buildUserTagWeights, recommendActivities } from './recommendationEngine';
 import { ACTIVITIES } from './recommendationData';
 
 const CAMPUS_DATA = {
@@ -740,27 +740,6 @@ const buildFallbackLiveActivities = (careerSub) => ([
   },
 ]);
 
-const RELATED_CAREER_SUB_FALLBACKS = {
-  '반도체엔지니어': ['공정엔지니어', '전기·전자엔지니어', '기계엔지니어', 'R&D·연구원', '품질관리자(QA/QC)'],
-  '공정엔지니어': ['반도체엔지니어', '전기·전자엔지니어', '기계엔지니어', '생산·공정관리자', '품질관리자(QA/QC)', 'R&D·연구원'],
-  '전기·전자엔지니어': ['반도체엔지니어', '공정엔지니어', '기계엔지니어', 'AI로봇엔지니어', 'R&D·연구원'],
-  '기계엔지니어': ['전기·전자엔지니어', '공정엔지니어', '생산·공정관리자', '품질관리자(QA/QC)', 'AI로봇엔지니어'],
-  '화학엔지니어': ['R&D·연구원', '바이오·제약연구원', '품질관리자(QA/QC)', '환경기사', '식품연구원'],
-  'R&D·연구원': ['AI/ML연구원', '반도체엔지니어', '공정엔지니어', '전기·전자엔지니어', '화학엔지니어', '바이오·제약연구원'],
-  '품질관리자(QA/QC)': ['공정엔지니어', '생산·공정관리자', '기계엔지니어', '화학엔지니어', '식품연구원'],
-  '백엔드개발자': ['소프트웨어개발자', '데이터엔지니어', '클라우드엔지니어', '보안엔지니어'],
-  '데이터분석가': ['데이터사이언티스트', '데이터엔지니어', '리서치(설문/통계)', '퍼포먼스마케터', 'CRM마케터'],
-  '데이터엔지니어': ['데이터사이언티스트', '데이터분석가', '백엔드개발자', 'AI/ML엔지니어'],
-};
-
-const getRelatedCareerFallbacks = (careerSub) => {
-  const direct = RELATED_CAREER_SUB_FALLBACKS[careerSub] || [];
-  const reverse = Object.entries(RELATED_CAREER_SUB_FALLBACKS)
-    .filter(([, related]) => related.includes(careerSub))
-    .map(([relatedCareerSub]) => relatedCareerSub);
-  return [...new Set([...direct, ...reverse])];
-};
-
 const normalizeLiveActivity = (item) => ({
   id: item.id || item.url || item.originalLink || item.title,
   title: item.title || '제목 확인 필요',
@@ -770,12 +749,12 @@ const normalizeLiveActivity = (item) => ({
   summary: item.summary || '',
   deadline: item.deadline || '',
   recommendationTags: item.recommendationTags || item.tags || [],
+  weightedTags: item.weightedTags || {},
   recommendationType: item.recommendationType || 'activity',
   recommendationCat: item.recommendationCat || 'activity',
   baseWeight: item.baseWeight || 6,
   recommendedGrades: item.recommendedGrades || [1, 2, 3],
   taggedBy: item.taggedBy || 'keyword',
-  matchedCareerSubs: item.matchedCareerSubs || [],
   dynamicReason: item.dynamicReason || item.type || '실시간 API',
 });
 
@@ -797,11 +776,20 @@ const toRecommendationActivity = (item) => {
     url: item.url || '#',
     isExternalOpportunity: true,
     taggedBy: item.taggedBy || 'keyword',
-    matchedCareerSubs: item.matchedCareerSubs || [],
+    weightedTags: item.weightedTags || {},
   };
 };
 
-const fetchStaticOpportunities = async ({ careerSub, signal }) => {
+const scoreStaticOpportunity = (item, userWeights) => {
+  const weightedTags = item.weightedTags || {};
+  const tags = item.recommendationTags || Object.keys(weightedTags);
+  return tags.reduce((score, tag) => {
+    const opportunityWeight = weightedTags[tag] || 10;
+    return score + ((userWeights[tag] || 0) * opportunityWeight / 10);
+  }, 0);
+};
+
+const fetchStaticOpportunities = async ({ user, signal }) => {
   const response = await fetch(`${import.meta.env.BASE_URL}opportunities.json`, {
     signal,
     cache: 'no-store',
@@ -810,24 +798,15 @@ const fetchStaticOpportunities = async ({ careerSub, signal }) => {
 
   const data = await response.json();
   const items = Array.isArray(data.items) ? data.items : [];
-  const normalizedCareer = String(careerSub || '').trim();
+  const userWeights = buildUserTagWeights(user || {});
   const activeItems = items.filter((item) => item.active !== false);
-  const matchedItems = normalizedCareer
-    ? activeItems.filter((item) => (item.matchedCareerSubs || []).includes(normalizedCareer))
-    : activeItems;
-
-  const relatedCareerSubs = getRelatedCareerFallbacks(normalizedCareer);
-  const relatedItems = normalizedCareer && !matchedItems.length
-    ? activeItems
-      .filter((item) => (item.matchedCareerSubs || []).some((careerSub) => relatedCareerSubs.includes(careerSub)))
-      .map((item) => ({
-        ...item,
-        matchedCareerSubs: [...new Set([...(item.matchedCareerSubs || []), normalizedCareer])],
-        dynamicReason: `${relatedCareerSubs.slice(0, 2).join(', ')}와 연결되는 계열 공고입니다.`,
-      }))
-    : [];
-
-  return (matchedItems.length ? matchedItems : relatedItems)
+  return activeItems
+    .map((item) => ({
+      ...item,
+      score: scoreStaticOpportunity(item, userWeights),
+    }))
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score || (b.baseWeight || 0) - (a.baseWeight || 0))
     .slice(0, 12)
     .map(normalizeLiveActivity);
 };
@@ -1160,7 +1139,13 @@ export default function App() {
       setIsLoadingLive(true);
       try {
         const staticItems = await fetchStaticOpportunities({
-          careerSub: userProfile.careerSub,
+          user: {
+            college: userProfile.college,
+            major: userProfile.department,
+            grade: userProfile.grade,
+            careerMain: userProfile.careerMain,
+            careerSub: userProfile.careerSub,
+          },
           signal: controller.signal,
         });
         if (!isMounted) return;
