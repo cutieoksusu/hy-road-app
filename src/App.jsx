@@ -798,6 +798,8 @@ const scoreStaticOpportunity = (item, userWeights) => {
   }, 0);
 };
 
+const MIN_STATIC_OPPORTUNITY_SCORE = 12;
+
 const fetchStaticOpportunities = async ({ user, signal }) => {
   const response = await fetch(`${import.meta.env.BASE_URL}opportunities.json`, {
     signal,
@@ -814,7 +816,7 @@ const fetchStaticOpportunities = async ({ user, signal }) => {
       ...item,
       score: scoreStaticOpportunity(item, userWeights),
     }))
-    .filter((item) => item.score > 0)
+    .filter((item) => item.score >= MIN_STATIC_OPPORTUNITY_SCORE)
     .sort((a, b) => b.score - a.score || (b.baseWeight || 0) - (a.baseWeight || 0))
     .slice(0, 12)
     .map(normalizeLiveActivity);

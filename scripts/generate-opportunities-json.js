@@ -250,9 +250,9 @@ const inferWeightedRecommendationTags = (text) => {
     addWeightedTag(weights, TAGS.RESEARCH, 5);
   }
   if (/ai|인공지능|머신러닝|딥러닝|llm|생성형/.test(source)) {
-    addWeightedTag(weights, TAGS.AI, 8);
-    addWeightedTag(weights, TAGS.DATA, 7);
-    addWeightedTag(weights, TAGS.SOFTWARE, 7);
+    const hasTechnicalAiContext = /활용|개발|프로그래밍|경진대회|해커톤|분석|모델|솔루션|제어|데이터/.test(source);
+    addWeightedTag(weights, TAGS.AI, hasTechnicalAiContext ? 8 : 4);
+    if (hasTechnicalAiContext) addWeightedTag(weights, TAGS.SOFTWARE, 6);
   }
   if (/로봇|robot|robotics/.test(source)) {
     addWeightedTag(weights, TAGS.ROBOTICS, 8);
@@ -272,11 +272,11 @@ const inferWeightedRecommendationTags = (text) => {
   if (/회계|재무|세무|감사|cpa|ifrs|결산|원가/.test(source)) {
     addWeightedTag(weights, TAGS.ACCOUNTING, 6);
   }
-  if (/공공|공기업|ncs|행정|정책|공공기관/.test(source)) {
+  if (/공공|공기업|ncs|행정|정책|공공기관|전자정부/.test(source)) {
     addWeightedTag(weights, TAGS.PUBLIC, 8);
     addWeightedTag(weights, TAGS.NCS, 6);
   }
-  if (/법|로스쿨|노무|변리|특허|인권/.test(source)) {
+  if (/법률|법무|로스쿨|노무|변리|특허|인권/.test(source)) {
     addWeightedTag(weights, TAGS.LAW, 8);
     addWeightedTag(weights, TAGS.PUBLIC, 5);
   }
@@ -294,7 +294,7 @@ const inferWeightedRecommendationTags = (text) => {
     addWeightedTag(weights, TAGS.SEMICONDUCTOR, 10);
     addWeightedTag(weights, TAGS.ENGINEERING, 8);
   }
-  if (/공정|전자|전기|기계|생산|품질/.test(source)) {
+  if (/공정|전기|기계|생산|품질|전자공학|전자기기|전자부품|전자회로|전자제어|반도체/.test(source)) {
     addWeightedTag(weights, TAGS.ENGINEERING, 8);
   }
   if (/바이오|제약|임상|보건|식품|영양|헬스/.test(source)) {

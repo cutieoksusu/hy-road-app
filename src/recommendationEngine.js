@@ -49,6 +49,8 @@ const getTagScoreMultiplier = (activity, tag) => (
   activity.isExternalOpportunity ? (EXTERNAL_TAG_SCORE_MULTIPLIERS[tag] ?? 1) : 1
 );
 
+const MIN_EXTERNAL_TAG_SCORE = 12;
+
 export const buildUserTagWeights = (user) => {
   const grade = getGrade(user.grade);
   return mergeWeights(
@@ -83,7 +85,10 @@ export const recommendActivities = ({ user, activities = ACTIVITIES, limit = 7 }
         dynamicReason: formatReason(matchedTags, user),
       };
     })
-    .filter(activity => activity.score > activity.baseWeight && (!activity.isExternalOpportunity || activity.matchedTags.length > 0))
+    .filter(activity => (
+      activity.score > activity.baseWeight
+      && (!activity.isExternalOpportunity || (activity.matchedTags.length > 0 && activity.score - activity.baseWeight >= MIN_EXTERNAL_TAG_SCORE))
+    ))
     .sort((a, b) => b.score - a.score || b.baseWeight - a.baseWeight);
 
   const picked = [];

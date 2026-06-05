@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-05T04:09:49.150Z",
+  "generatedAt": "2026-06-05T04:27:15.364Z",
   "source": "github-actions-static-json",
   "itemCount": 911,
   "items": [
@@ -209,16 +209,14 @@
       ],
       "recommendationTags": [
         "ai",
-        "data",
-        "software",
         "competition",
+        "software",
         "project"
       ],
       "weightedTags": {
         "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6
       },
       "recommendationType": "competition",
@@ -285,19 +283,15 @@
       ],
       "recommendationTags": [
         "robotics",
-        "law",
         "engineering",
         "competition",
-        "project",
-        "public"
+        "project"
       ],
       "weightedTags": {
         "robotics": 8,
-        "law": 8,
         "engineering": 7,
         "competition": 7,
-        "project": 6,
-        "public": 5
+        "project": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -424,16 +418,14 @@
       ],
       "recommendationTags": [
         "ai",
-        "data",
-        "software",
         "competition",
+        "software",
         "project"
       ],
       "weightedTags": {
         "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6
       },
       "recommendationType": "competition",
@@ -622,16 +614,14 @@
       ],
       "recommendationTags": [
         "ai",
-        "data",
-        "software",
         "competition",
+        "software",
         "project"
       ],
       "weightedTags": {
         "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6
       },
       "recommendationType": "competition",
@@ -685,7 +675,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/326143",
-      "summary": "소방안전 빅데이터 플랫폼 운영 사업단 · activityTypeID: 3",
+      "summary": "소방안전 빅데이터 플랫폼 운영 사업단 · activityTypeID: 3 · 스크랩 1",
       "deadline": "2026-08-05",
       "publishedAt": "",
       "careerTags": [
@@ -838,7 +828,6 @@
         "mobile",
         "software",
         "ai",
-        "data",
         "competition",
         "portfolio",
         "project"
@@ -848,7 +837,6 @@
         "mobile": 9,
         "software": 8,
         "ai": 8,
-        "data": 7,
         "competition": 7,
         "portfolio": 6,
         "project": 6
@@ -958,16 +946,14 @@
       ],
       "recommendationTags": [
         "ai",
-        "data",
-        "software",
         "competition",
+        "software",
         "project"
       ],
       "weightedTags": {
         "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6
       },
       "recommendationType": "competition",
@@ -1134,7 +1120,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/326081",
-      "summary": "세라퀸즈 · activityTypeID: 1 · 스크랩 11",
+      "summary": "세라퀸즈 · activityTypeID: 1 · 스크랩 12",
       "deadline": "2026-06-12",
       "publishedAt": "",
       "careerTags": [
@@ -1241,7 +1227,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/326048",
-      "summary": "컴퍼니에스에스 · activityTypeID: 3 · 스크랩 16",
+      "summary": "컴퍼니에스에스 · activityTypeID: 3 · 스크랩 17",
       "deadline": "2026-07-05",
       "publishedAt": "",
       "careerTags": [
@@ -1318,7 +1304,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/326043",
-      "summary": "주식회사 어치브모먼트 · activityTypeID: 3 · 스크랩 21",
+      "summary": "주식회사 어치브모먼트 · activityTypeID: 3 · 스크랩 22",
       "deadline": "2026-06-21",
       "publishedAt": "",
       "careerTags": [
@@ -1359,7 +1345,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/321113",
-      "summary": "삼양그룹 · activityTypeID: 1 · 스크랩 1135",
+      "summary": "삼양그룹 · activityTypeID: 1 · 스크랩 1138",
       "deadline": "2026-06-09",
       "publishedAt": "",
       "careerTags": [
@@ -1436,10 +1422,9 @@
         "ai",
         "robotics",
         "control",
-        "data",
-        "software",
         "engineering",
         "activity",
+        "software",
         "education",
         "management",
         "volunteer"
@@ -1448,10 +1433,9 @@
         "ai": 8,
         "robotics": 8,
         "control": 8,
-        "data": 7,
-        "software": 7,
         "engineering": 7,
         "activity": 7,
+        "software": 6,
         "education": 5,
         "management": 5,
         "volunteer": 4
@@ -1483,8 +1467,8 @@
         "data",
         "ai",
         "statistics",
-        "software",
         "competition",
+        "software",
         "project",
         "research"
       ],
@@ -1492,8 +1476,8 @@
         "data": 9,
         "ai": 8,
         "statistics": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6,
         "research": 5
       },
@@ -1513,7 +1497,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/325266",
-      "summary": "SK mySUNI · activityTypeID: 1 · 스크랩 211",
+      "summary": "SK mySUNI · activityTypeID: 1 · 스크랩 214",
       "deadline": "2026-06-14",
       "publishedAt": "",
       "careerTags": [
@@ -1544,7 +1528,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/321019",
-      "summary": "롯데월드 · activityTypeID: 3 · 스크랩 369",
+      "summary": "롯데월드 · activityTypeID: 3 · 스크랩 370",
       "deadline": "2026-09-06",
       "publishedAt": "",
       "careerTags": [
@@ -1692,7 +1676,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/325763",
-      "summary": "농심 · activityTypeID: 3 · 스크랩 143",
+      "summary": "농심 · activityTypeID: 3 · 스크랩 144",
       "deadline": "2026-07-10",
       "publishedAt": "",
       "careerTags": [
@@ -1847,7 +1831,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/326034",
-      "summary": "강원대학교 원주캠퍼스, 한라대학교 · activityTypeID: 3 · 스크랩 10",
+      "summary": "강원대학교 원주캠퍼스, 한라대학교 · activityTypeID: 3 · 스크랩 11",
       "deadline": "2026-07-08",
       "publishedAt": "",
       "careerTags": [
@@ -1859,8 +1843,8 @@
         "ai",
         "public",
         "statistics",
-        "software",
         "competition",
+        "software",
         "ncs",
         "project",
         "research"
@@ -1870,8 +1854,8 @@
         "ai": 8,
         "public": 8,
         "statistics": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "ncs": 6,
         "project": 6,
         "research": 5
@@ -1996,7 +1980,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/325973",
-      "summary": "독립기념관 · activityTypeID: 3 · 스크랩 9",
+      "summary": "독립기념관 · activityTypeID: 3 · 스크랩 10",
       "deadline": "2026-08-20",
       "publishedAt": "",
       "careerTags": [
@@ -2213,7 +2197,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/325950",
-      "summary": "방위사업청 · activityTypeID: 3 · 스크랩 7",
+      "summary": "방위사업청 · activityTypeID: 3 · 스크랩 8",
       "deadline": "2026-06-30",
       "publishedAt": "",
       "careerTags": [
@@ -2250,27 +2234,23 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "ai",
         "marketing",
         "trade",
-        "data",
-        "software",
         "logistics",
         "activity",
         "contents",
         "global",
+        "ai",
         "volunteer"
       ],
       "weightedTags": {
-        "ai": 8,
         "marketing": 8,
         "trade": 8,
-        "data": 7,
-        "software": 7,
         "logistics": 7,
         "activity": 7,
         "contents": 6,
         "global": 5,
+        "ai": 4,
         "volunteer": 4
       },
       "recommendationType": "activity",
@@ -2527,7 +2507,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/325694",
-      "summary": "(주)클리오 · activityTypeID: 1 · 스크랩 85",
+      "summary": "(주)클리오 · activityTypeID: 1 · 스크랩 86",
       "deadline": "2026-06-09",
       "publishedAt": "",
       "careerTags": [
@@ -2737,7 +2717,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/325674",
-      "summary": "법무법인 해율 · activityTypeID: 1 · 스크랩 88",
+      "summary": "법무법인 해율 · activityTypeID: 1 · 스크랩 90",
       "deadline": "2026-06-16",
       "publishedAt": "",
       "careerTags": [
@@ -2810,7 +2790,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/325670",
-      "summary": "소비자시민모임 · activityTypeID: 1 · 스크랩 76",
+      "summary": "소비자시민모임 · activityTypeID: 1 · 스크랩 77",
       "deadline": "2026-06-23",
       "publishedAt": "",
       "careerTags": [
@@ -2853,26 +2833,22 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
         "marketing",
         "contents",
         "media",
-        "data",
-        "software",
         "competition",
         "project",
-        "writing"
+        "writing",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
         "marketing": 8,
         "contents": 8,
         "media": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "project": 6,
-        "writing": 5
+        "writing": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -2890,7 +2866,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/325664",
-      "summary": "디베이트코리아 · activityTypeID: 1 · 스크랩 174",
+      "summary": "디베이트코리아 · activityTypeID: 1 · 스크랩 176",
       "deadline": "2026-06-14",
       "publishedAt": "",
       "careerTags": [
@@ -3142,21 +3118,17 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "media",
         "contents",
         "competition",
         "project",
-        "public",
         "writing"
       ],
       "weightedTags": {
-        "law": 8,
         "media": 8,
         "contents": 8,
         "competition": 7,
         "project": 6,
-        "public": 5,
         "writing": 5
       },
       "recommendationType": "competition",
@@ -3182,17 +3154,13 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "activity",
-        "public",
         "education",
         "management",
         "volunteer"
       ],
       "weightedTags": {
-        "law": 8,
         "activity": 7,
-        "public": 5,
         "education": 5,
         "management": 5,
         "volunteer": 4
@@ -3396,27 +3364,21 @@
         "공기업 (NCS)"
       ],
       "recommendationTags": [
-        "ai",
         "marketing",
         "public",
-        "engineering",
-        "data",
-        "software",
         "activity",
         "contents",
         "ncs",
+        "ai",
         "volunteer"
       ],
       "weightedTags": {
-        "ai": 8,
         "marketing": 8,
         "public": 8,
-        "engineering": 8,
-        "data": 7,
-        "software": 7,
         "activity": 7,
         "contents": 6,
         "ncs": 6,
+        "ai": 4,
         "volunteer": 4
       },
       "recommendationType": "activity",
@@ -3727,26 +3689,22 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
         "marketing",
         "contents",
         "media",
-        "data",
-        "software",
         "competition",
         "project",
-        "writing"
+        "writing",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
         "marketing": 8,
         "contents": 8,
         "media": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "project": 6,
-        "writing": 5
+        "writing": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -3764,7 +3722,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/325366",
-      "summary": "노주노교 · activityTypeID: 1 · 스크랩 24",
+      "summary": "노주노교 · activityTypeID: 1 · 스크랩 25",
       "deadline": "2026-06-12",
       "publishedAt": "",
       "careerTags": [
@@ -3834,7 +3792,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/325363",
-      "summary": "맛픽(Mat-Pick) · activityTypeID: 1 · 스크랩 118",
+      "summary": "맛픽(Mat-Pick) · activityTypeID: 1 · 스크랩 117",
       "deadline": "2026-06-13",
       "publishedAt": "",
       "careerTags": [
@@ -3880,7 +3838,6 @@
       "recommendationTags": [
         "media",
         "contents",
-        "engineering",
         "certificate",
         "competition",
         "project",
@@ -3889,7 +3846,6 @@
       "weightedTags": {
         "media": 8,
         "contents": 8,
-        "engineering": 8,
         "certificate": 8,
         "competition": 7,
         "project": 6,
@@ -3911,7 +3867,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/325358",
-      "summary": "한국투자신탁운용(주) · activityTypeID: 1 · 스크랩 84",
+      "summary": "한국투자신탁운용(주) · activityTypeID: 1 · 스크랩 86",
       "deadline": "2026-06-30",
       "publishedAt": "",
       "careerTags": [
@@ -4133,18 +4089,14 @@
       ],
       "recommendationTags": [
         "marketing",
-        "law",
         "activity",
         "contents",
-        "public",
         "volunteer"
       ],
       "weightedTags": {
         "marketing": 8,
-        "law": 8,
         "activity": 7,
         "contents": 6,
-        "public": 5,
         "volunteer": 4
       },
       "recommendationType": "activity",
@@ -4273,7 +4225,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/325229",
-      "summary": "(주)밸런스빌더즈 · activityTypeID: 1 · 스크랩 74",
+      "summary": "(주)밸런스빌더즈 · activityTypeID: 1 · 스크랩 75",
       "deadline": "2026-06-28",
       "publishedAt": "",
       "careerTags": [
@@ -4551,7 +4503,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/325191",
-      "summary": "TJ미디어 · activityTypeID: 1 · 스크랩 64",
+      "summary": "TJ미디어 · activityTypeID: 1 · 스크랩 65",
       "deadline": "2026-06-10",
       "publishedAt": "",
       "careerTags": [
@@ -4628,7 +4580,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/325190",
-      "summary": "(주)도서출판 길벗 · activityTypeID: 1 · 스크랩 139",
+      "summary": "(주)도서출판 길벗 · activityTypeID: 1 · 스크랩 140",
       "deadline": "2026-06-15",
       "publishedAt": "",
       "careerTags": [
@@ -4702,18 +4654,14 @@
       ],
       "recommendationTags": [
         "marketing",
-        "law",
         "activity",
         "contents",
-        "public",
         "volunteer"
       ],
       "weightedTags": {
         "marketing": 8,
-        "law": 8,
         "activity": 7,
         "contents": 6,
-        "public": 5,
         "volunteer": 4
       },
       "recommendationType": "activity",
@@ -5142,7 +5090,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/325399",
-      "summary": "국민경제자문회의 · activityTypeID: 3 · 스크랩 58",
+      "summary": "국민경제자문회의 · activityTypeID: 3 · 스크랩 59",
       "deadline": "2026-07-08",
       "publishedAt": "",
       "careerTags": [
@@ -5261,17 +5209,13 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "activity",
-        "public",
         "education",
         "management",
         "volunteer"
       ],
       "weightedTags": {
-        "law": 8,
         "activity": 7,
-        "public": 5,
         "education": 5,
         "management": 5,
         "volunteer": 4
@@ -5302,28 +5246,20 @@
         "언론고시 (기자/PD)"
       ],
       "recommendationTags": [
-        "ai",
-        "law",
         "media",
         "contents",
-        "data",
-        "software",
         "competition",
         "project",
-        "public",
-        "writing"
+        "writing",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
-        "law": 8,
         "media": 8,
         "contents": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "project": 6,
-        "public": 5,
-        "writing": 5
+        "writing": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -5515,18 +5451,14 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "ai",
-        "data",
-        "software",
         "competition",
-        "project"
+        "project",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
-        "project": 6
+        "project": 6,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -5656,8 +5588,8 @@
         "data",
         "ai",
         "statistics",
-        "software",
         "competition",
+        "software",
         "project",
         "research"
       ],
@@ -5665,8 +5597,8 @@
         "data": 9,
         "ai": 8,
         "statistics": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6,
         "research": 5
       },
@@ -5728,16 +5660,12 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "competition",
-        "project",
-        "public"
+        "project"
       ],
       "weightedTags": {
-        "law": 8,
         "competition": 7,
-        "project": 6,
-        "public": 5
+        "project": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -5950,16 +5878,14 @@
       ],
       "recommendationTags": [
         "ai",
-        "data",
-        "software",
         "competition",
+        "software",
         "project"
       ],
       "weightedTags": {
         "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6
       },
       "recommendationType": "competition",
@@ -6021,16 +5947,12 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "competition",
-        "project",
-        "public"
+        "project"
       ],
       "weightedTags": {
-        "law": 8,
         "competition": 7,
-        "project": 6,
-        "public": 5
+        "project": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -6196,21 +6118,17 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "ai",
         "marketing",
-        "data",
-        "software",
         "activity",
         "contents",
+        "ai",
         "volunteer"
       ],
       "weightedTags": {
-        "ai": 8,
         "marketing": 8,
-        "data": 7,
-        "software": 7,
         "activity": 7,
         "contents": 6,
+        "ai": 4,
         "volunteer": 4
       },
       "recommendationType": "activity",
@@ -6470,7 +6388,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/324325",
-      "summary": "벨르랑코 · activityTypeID: 1 · 스크랩 57",
+      "summary": "벨르랑코 · activityTypeID: 1 · 스크랩 56",
       "deadline": "2026-06-05",
       "publishedAt": "",
       "careerTags": [
@@ -6727,28 +6645,24 @@
         "로스쿨 (법조인)"
       ],
       "recommendationTags": [
-        "ai",
         "public",
         "media",
         "contents",
-        "data",
-        "software",
         "competition",
         "ncs",
         "project",
-        "writing"
+        "writing",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
         "public": 8,
         "media": 8,
         "contents": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "ncs": 6,
         "project": 6,
-        "writing": 5
+        "writing": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -7015,18 +6929,14 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "ai",
-        "data",
-        "software",
         "competition",
-        "project"
+        "project",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
-        "project": 6
+        "project": 6,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -7095,22 +7005,14 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
-        "law",
-        "data",
-        "software",
         "competition",
         "project",
-        "public"
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
-        "law": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "project": 6,
-        "public": 5
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -7206,7 +7108,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/323950",
-      "summary": "패션학교 · activityTypeID: 1 · 스크랩 67",
+      "summary": "패션학교 · activityTypeID: 1 · 스크랩 66",
       "deadline": "2026-06-05",
       "publishedAt": "",
       "careerTags": [
@@ -7279,7 +7181,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/323828",
-      "summary": "사하구정신건강복지센터 · activityTypeID: 1 · 스크랩 17",
+      "summary": "사하구정신건강복지센터 · activityTypeID: 1 · 스크랩 16",
       "deadline": "2026-06-05",
       "publishedAt": "",
       "careerTags": [
@@ -7344,7 +7246,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/323781",
-      "summary": "하엔 · activityTypeID: 1 · 스크랩 29",
+      "summary": "하엔 · activityTypeID: 1 · 스크랩 28",
       "deadline": "2026-06-05",
       "publishedAt": "",
       "careerTags": [
@@ -7764,24 +7666,20 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/323433",
-      "summary": "사회복지법인 케이티앤지복지재단 · activityTypeID: 1 · 스크랩 161",
+      "summary": "사회복지법인 케이티앤지복지재단 · activityTypeID: 1 · 스크랩 162",
       "deadline": "2026-06-24",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "activity",
-        "public",
         "education",
         "management",
         "volunteer"
       ],
       "weightedTags": {
-        "law": 8,
         "activity": 7,
-        "public": 5,
         "education": 5,
         "management": 5,
         "volunteer": 4
@@ -8523,9 +8421,8 @@
         "marketing",
         "contents",
         "media",
-        "data",
-        "software",
         "competition",
+        "software",
         "project",
         "writing"
       ],
@@ -8534,9 +8431,8 @@
         "marketing": 8,
         "contents": 8,
         "media": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6,
         "writing": 5
       },
@@ -9239,7 +9135,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/322408",
-      "summary": "(주)제이숲 · activityTypeID: 1 · 스크랩 62",
+      "summary": "(주)제이숲 · activityTypeID: 1 · 스크랩 61",
       "deadline": "2026-06-07",
       "publishedAt": "",
       "careerTags": [
@@ -9532,17 +9428,13 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "activity",
-        "public",
         "education",
         "management",
         "volunteer"
       ],
       "weightedTags": {
-        "law": 8,
         "activity": 7,
-        "public": 5,
         "education": 5,
         "management": 5,
         "volunteer": 4
@@ -9887,15 +9779,11 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "activity",
-        "public",
         "volunteer"
       ],
       "weightedTags": {
-        "law": 8,
         "activity": 7,
-        "public": 5,
         "volunteer": 4
       },
       "recommendationType": "activity",
@@ -10055,18 +9943,14 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
-        "data",
-        "software",
         "competition",
-        "project"
+        "project",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
-        "project": 6
+        "project": 6,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -10589,17 +10473,13 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "activity",
-        "public",
         "education",
         "management",
         "volunteer"
       ],
       "weightedTags": {
-        "law": 8,
         "activity": 7,
-        "public": 5,
         "education": 5,
         "management": 5,
         "volunteer": 4
@@ -10696,21 +10576,17 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "design",
         "ux",
         "competition",
         "project",
-        "public",
         "portfolio"
       ],
       "weightedTags": {
-        "law": 8,
         "design": 8,
         "ux": 7,
         "competition": 7,
         "project": 6,
-        "public": 5,
         "portfolio": 5
       },
       "recommendationType": "competition",
@@ -10990,18 +10866,14 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
-        "data",
-        "software",
         "competition",
-        "project"
+        "project",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
-        "project": 6
+        "project": 6,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -11136,16 +11008,12 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "competition",
-        "project",
-        "public"
+        "project"
       ],
       "weightedTags": {
-        "law": 8,
         "competition": 7,
-        "project": 6,
-        "public": 5
+        "project": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -12805,16 +12673,14 @@
       ],
       "recommendationTags": [
         "ai",
-        "data",
-        "software",
         "competition",
+        "software",
         "project"
       ],
       "weightedTags": {
         "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6
       },
       "recommendationType": "competition",
@@ -13319,11 +13185,9 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "environment",
         "activity",
         "architecture",
-        "public",
         "engineering",
         "energy",
         "education",
@@ -13331,11 +13195,9 @@
         "volunteer"
       ],
       "weightedTags": {
-        "law": 8,
         "environment": 7,
         "activity": 7,
         "architecture": 6,
-        "public": 5,
         "engineering": 5,
         "energy": 5,
         "education": 5,
@@ -13583,7 +13445,6 @@
       ],
       "recommendationTags": [
         "public",
-        "law",
         "bio",
         "competition",
         "ncs",
@@ -13595,7 +13456,6 @@
       ],
       "weightedTags": {
         "public": 8,
-        "law": 8,
         "bio": 8,
         "competition": 7,
         "ncs": 6,
@@ -14422,24 +14282,20 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
         "media",
         "contents",
-        "data",
-        "software",
         "competition",
         "project",
-        "writing"
+        "writing",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
         "media": 8,
         "contents": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "project": 6,
-        "writing": 5
+        "writing": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -14651,26 +14507,22 @@
         "공기업 (NCS)"
       ],
       "recommendationTags": [
-        "ai",
         "marketing",
         "public",
-        "data",
-        "software",
         "competition",
         "contents",
         "ncs",
-        "project"
+        "project",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
         "marketing": 8,
         "public": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "contents": 6,
         "ncs": 6,
-        "project": 6
+        "project": 6,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -14732,24 +14584,20 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
         "media",
         "contents",
-        "data",
-        "software",
         "competition",
         "project",
-        "writing"
+        "writing",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
         "media": 8,
         "contents": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "project": 6,
-        "writing": 5
+        "writing": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -14883,16 +14731,12 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "competition",
-        "project",
-        "public"
+        "project"
       ],
       "weightedTags": {
-        "law": 8,
         "competition": 7,
-        "project": 6,
-        "public": 5
+        "project": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -15425,7 +15269,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/323144",
-      "summary": "경상북도 · activityTypeID: 3 · 스크랩 57",
+      "summary": "경상북도 · activityTypeID: 3 · 스크랩 58",
       "deadline": "2026-07-03",
       "publishedAt": "",
       "careerTags": [
@@ -15725,24 +15569,20 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
         "media",
         "contents",
-        "data",
-        "software",
         "competition",
         "project",
-        "writing"
+        "writing",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
         "media": 8,
         "contents": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "project": 6,
-        "writing": 5
+        "writing": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -16099,21 +15939,17 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "media",
         "contents",
         "competition",
         "project",
-        "public",
         "writing"
       ],
       "weightedTags": {
-        "law": 8,
         "media": 8,
         "contents": 8,
         "competition": 7,
         "project": 6,
-        "public": 5,
         "writing": 5
       },
       "recommendationType": "competition",
@@ -16358,7 +16194,6 @@
       "careerTags": [],
       "recommendationTags": [
         "marketing",
-        "engineering",
         "activity",
         "competition",
         "contents",
@@ -16367,7 +16202,6 @@
       ],
       "weightedTags": {
         "marketing": 8,
-        "engineering": 8,
         "activity": 7,
         "competition": 7,
         "contents": 6,
@@ -16432,25 +16266,25 @@
         "frontend",
         "mobile",
         "software",
-        "ai",
         "marketing",
         "contents",
         "media",
-        "data",
         "activity",
-        "competition"
+        "competition",
+        "portfolio",
+        "project"
       ],
       "weightedTags": {
         "frontend": 9,
         "mobile": 9,
         "software": 8,
-        "ai": 8,
         "marketing": 8,
         "contents": 8,
         "media": 8,
-        "data": 7,
         "activity": 7,
-        "competition": 7
+        "competition": 7,
+        "portfolio": 6,
+        "project": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -16552,9 +16386,8 @@
         "ai",
         "media",
         "contents",
-        "data",
-        "software",
         "competition",
+        "software",
         "project",
         "writing"
       ],
@@ -16562,9 +16395,8 @@
         "ai": 8,
         "media": 8,
         "contents": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6,
         "writing": 5
       },
@@ -16952,28 +16784,24 @@
         "언론고시 (기자/PD)"
       ],
       "recommendationTags": [
-        "ai",
         "law",
         "media",
         "contents",
-        "data",
-        "software",
         "competition",
         "project",
         "public",
-        "writing"
+        "writing",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
         "law": 8,
         "media": 8,
         "contents": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "project": 6,
         "public": 5,
-        "writing": 5
+        "writing": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -17139,8 +16967,8 @@
         "ai",
         "public",
         "statistics",
-        "software",
         "competition",
+        "software",
         "ncs",
         "project",
         "research"
@@ -17150,8 +16978,8 @@
         "ai": 8,
         "public": 8,
         "statistics": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "ncs": 6,
         "project": 6,
         "research": 5
@@ -17246,16 +17074,14 @@
       ],
       "recommendationTags": [
         "ai",
-        "data",
-        "software",
         "competition",
+        "software",
         "project"
       ],
       "weightedTags": {
         "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6
       },
       "recommendationType": "competition",
@@ -17322,8 +17148,8 @@
         "ai",
         "public",
         "statistics",
-        "software",
         "competition",
+        "software",
         "ncs",
         "project",
         "research"
@@ -17333,8 +17159,8 @@
         "ai": 8,
         "public": 8,
         "statistics": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "ncs": 6,
         "project": 6,
         "research": 5
@@ -17530,16 +17356,14 @@
       ],
       "recommendationTags": [
         "ai",
-        "data",
-        "software",
         "competition",
+        "software",
         "project"
       ],
       "weightedTags": {
         "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6
       },
       "recommendationType": "competition",
@@ -17702,28 +17526,20 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
-        "law",
         "media",
         "contents",
-        "data",
-        "software",
         "competition",
         "project",
-        "public",
-        "writing"
+        "writing",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
-        "law": 8,
         "media": 8,
         "contents": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "project": 6,
-        "public": 5,
-        "writing": 5
+        "writing": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -17784,18 +17600,14 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
-        "data",
-        "software",
         "competition",
-        "project"
+        "project",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
-        "project": 6
+        "project": 6,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -18276,24 +18088,20 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
         "media",
         "contents",
-        "data",
-        "software",
         "competition",
         "project",
-        "writing"
+        "writing",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
         "media": 8,
         "contents": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "project": 6,
-        "writing": 5
+        "writing": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -18357,24 +18165,20 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
         "media",
         "contents",
-        "data",
-        "software",
         "competition",
         "project",
-        "writing"
+        "writing",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
         "media": 8,
         "contents": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "project": 6,
-        "writing": 5
+        "writing": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -18606,18 +18410,14 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
-        "data",
-        "software",
         "competition",
-        "project"
+        "project",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
-        "project": 6
+        "project": 6,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -18740,7 +18540,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/321039",
-      "summary": "식품의약품안전처 · activityTypeID: 3 · 스크랩 53",
+      "summary": "식품의약품안전처 · activityTypeID: 3 · 스크랩 52",
       "deadline": "2026-06-19",
       "publishedAt": "",
       "careerTags": [
@@ -18836,24 +18636,20 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
         "media",
         "contents",
-        "data",
-        "software",
         "competition",
         "project",
-        "writing"
+        "writing",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
         "media": 8,
         "contents": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "project": 6,
-        "writing": 5
+        "writing": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -18988,21 +18784,17 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "media",
         "contents",
         "competition",
         "project",
-        "public",
         "writing"
       ],
       "weightedTags": {
-        "law": 8,
         "media": 8,
         "contents": 8,
         "competition": 7,
         "project": 6,
-        "public": 5,
         "writing": 5
       },
       "recommendationType": "competition",
@@ -19061,16 +18853,14 @@
       ],
       "recommendationTags": [
         "ai",
-        "data",
-        "software",
         "competition",
+        "software",
         "project"
       ],
       "weightedTags": {
         "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6
       },
       "recommendationType": "competition",
@@ -19355,16 +19145,12 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "competition",
-        "project",
-        "public"
+        "project"
       ],
       "weightedTags": {
-        "law": 8,
         "competition": 7,
-        "project": 6,
-        "public": 5
+        "project": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -19490,24 +19276,18 @@
       "recommendationTags": [
         "ai",
         "control",
-        "law",
-        "data",
-        "software",
         "engineering",
         "competition",
-        "project",
-        "public"
+        "software",
+        "project"
       ],
       "weightedTags": {
         "ai": 8,
         "control": 8,
-        "law": 8,
-        "data": 7,
-        "software": 7,
         "engineering": 7,
         "competition": 7,
-        "project": 6,
-        "public": 5
+        "software": 6,
+        "project": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -19563,18 +19343,14 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "competition",
         "project",
-        "public",
         "education",
         "management"
       ],
       "weightedTags": {
-        "law": 8,
         "competition": 7,
         "project": 6,
-        "public": 5,
         "education": 5,
         "management": 5
       },
@@ -19601,18 +19377,14 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "competition",
         "project",
-        "public",
         "education",
         "management"
       ],
       "weightedTags": {
-        "law": 8,
         "competition": 7,
         "project": 6,
-        "public": 5,
         "education": 5,
         "management": 5
       },
@@ -20304,8 +20076,8 @@
         "public",
         "bio",
         "statistics",
-        "software",
         "competition",
+        "software",
         "ncs",
         "healthcare",
         "food"
@@ -20316,8 +20088,8 @@
         "public": 8,
         "bio": 8,
         "statistics": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "ncs": 6,
         "healthcare": 6,
         "food": 6
@@ -20377,22 +20149,18 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "environment",
         "competition",
         "architecture",
         "project",
-        "public",
         "engineering",
         "energy"
       ],
       "weightedTags": {
-        "law": 8,
         "environment": 7,
         "competition": 7,
         "architecture": 6,
         "project": 6,
-        "public": 5,
         "engineering": 5,
         "energy": 5
       },
@@ -20760,18 +20528,14 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
-        "data",
-        "software",
         "competition",
-        "project"
+        "project",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
-        "project": 6
+        "project": 6,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -20797,18 +20561,14 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
-        "data",
-        "software",
         "competition",
-        "project"
+        "project",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
-        "project": 6
+        "project": 6,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -21171,22 +20931,18 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
-        "data",
-        "software",
         "competition",
         "project",
         "education",
-        "management"
+        "management",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "project": 6,
         "education": 5,
-        "management": 5
+        "management": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -21398,16 +21154,12 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "competition",
-        "project",
-        "public"
+        "project"
       ],
       "weightedTags": {
-        "law": 8,
         "competition": 7,
-        "project": 6,
-        "public": 5
+        "project": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -22443,9 +22195,9 @@
         "ai",
         "public",
         "statistics",
-        "software",
         "environment",
         "competition",
+        "software",
         "ncs",
         "architecture",
         "project"
@@ -22455,9 +22207,9 @@
         "ai": 8,
         "public": 8,
         "statistics": 7,
-        "software": 7,
         "environment": 7,
         "competition": 7,
+        "software": 6,
         "ncs": 6,
         "architecture": 6,
         "project": 6
@@ -23402,7 +23154,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/316561",
-      "summary": "산업안전상생재단 · activityTypeID: 3 · 스크랩 57",
+      "summary": "산업안전상생재단 · activityTypeID: 3 · 스크랩 56",
       "deadline": "2026-06-19",
       "publishedAt": "",
       "careerTags": [
@@ -23614,16 +23366,12 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "competition",
-        "project",
-        "public"
+        "project"
       ],
       "weightedTags": {
-        "law": 8,
         "competition": 7,
-        "project": 6,
-        "public": 5
+        "project": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -23744,8 +23492,8 @@
         "ai",
         "public",
         "statistics",
-        "software",
         "competition",
+        "software",
         "ncs",
         "project",
         "research"
@@ -23755,8 +23503,8 @@
         "ai": 8,
         "public": 8,
         "statistics": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "ncs": 6,
         "project": 6,
         "research": 5
@@ -23846,16 +23594,14 @@
       ],
       "recommendationTags": [
         "ai",
-        "data",
-        "software",
         "competition",
+        "software",
         "project"
       ],
       "weightedTags": {
         "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6
       },
       "recommendationType": "competition",
@@ -23961,28 +23707,26 @@
         "패션/의류"
       ],
       "recommendationTags": [
-        "ai",
         "media",
         "contents",
         "design",
-        "data",
-        "software",
         "ux",
         "competition",
         "project",
-        "writing"
+        "writing",
+        "portfolio",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
         "media": 8,
         "contents": 8,
         "design": 8,
-        "data": 7,
-        "software": 7,
         "ux": 7,
         "competition": 7,
         "project": 6,
-        "writing": 5
+        "writing": 5,
+        "portfolio": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -24114,18 +23858,14 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "ai",
-        "data",
-        "software",
         "competition",
-        "project"
+        "project",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
-        "project": 6
+        "project": 6,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -24219,16 +23959,14 @@
       ],
       "recommendationTags": [
         "ai",
-        "data",
-        "software",
         "competition",
+        "software",
         "project"
       ],
       "weightedTags": {
         "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6
       },
       "recommendationType": "competition",
@@ -24286,16 +24024,12 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "competition",
-        "project",
-        "public"
+        "project"
       ],
       "weightedTags": {
-        "law": 8,
         "competition": 7,
-        "project": 6,
-        "public": 5
+        "project": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -24401,8 +24135,8 @@
         "ai",
         "public",
         "statistics",
-        "software",
         "competition",
+        "software",
         "ncs",
         "project",
         "research"
@@ -24412,8 +24146,8 @@
         "ai": 8,
         "public": 8,
         "statistics": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "ncs": 6,
         "project": 6,
         "research": 5
@@ -24764,16 +24498,14 @@
       ],
       "recommendationTags": [
         "ai",
-        "data",
-        "software",
         "competition",
+        "software",
         "project"
       ],
       "weightedTags": {
         "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6
       },
       "recommendationType": "competition",
@@ -24965,14 +24697,12 @@
       ],
       "recommendationTags": [
         "public",
-        "law",
         "competition",
         "ncs",
         "project"
       ],
       "weightedTags": {
         "public": 8,
-        "law": 8,
         "competition": 7,
         "ncs": 6,
         "project": 6
@@ -25037,16 +24767,12 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "competition",
-        "project",
-        "public"
+        "project"
       ],
       "weightedTags": {
-        "law": 8,
         "competition": 7,
-        "project": 6,
-        "public": 5
+        "project": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -25141,24 +24867,20 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
         "media",
         "contents",
-        "data",
-        "software",
         "competition",
         "project",
-        "writing"
+        "writing",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
         "media": 8,
         "contents": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "project": 6,
-        "writing": 5
+        "writing": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -25423,8 +25145,8 @@
         "ai",
         "public",
         "statistics",
-        "software",
         "competition",
+        "software",
         "ncs",
         "project",
         "research"
@@ -25434,8 +25156,8 @@
         "ai": 8,
         "public": 8,
         "statistics": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "ncs": 6,
         "project": 6,
         "research": 5
@@ -25931,16 +25653,14 @@
       ],
       "recommendationTags": [
         "ai",
-        "data",
-        "software",
         "competition",
+        "software",
         "project"
       ],
       "weightedTags": {
         "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6
       },
       "recommendationType": "competition",
@@ -25967,22 +25687,18 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "environment",
         "competition",
         "architecture",
         "project",
-        "public",
         "engineering",
         "energy"
       ],
       "weightedTags": {
-        "law": 8,
         "environment": 7,
         "competition": 7,
         "architecture": 6,
         "project": 6,
-        "public": 5,
         "engineering": 5,
         "energy": 5
       },
@@ -26402,16 +26118,12 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
         "competition",
-        "project",
-        "public"
+        "project"
       ],
       "weightedTags": {
-        "law": 8,
         "competition": 7,
-        "project": 6,
-        "public": 5
+        "project": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -27808,26 +27520,22 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
         "marketing",
         "contents",
         "media",
-        "data",
-        "software",
         "competition",
         "project",
-        "writing"
+        "writing",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
         "marketing": 8,
         "contents": 8,
         "media": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "project": 6,
-        "writing": 5
+        "writing": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -28082,8 +27790,8 @@
         "ai",
         "public",
         "statistics",
-        "software",
         "competition",
+        "software",
         "ncs",
         "project",
         "research"
@@ -28093,8 +27801,8 @@
         "ai": 8,
         "public": 8,
         "statistics": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "ncs": 6,
         "project": 6,
         "research": 5
@@ -29210,18 +28918,14 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
-        "data",
-        "software",
         "competition",
-        "project"
+        "project",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
-        "project": 6
+        "project": 6,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -29312,18 +29016,14 @@
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "ai",
-        "data",
-        "software",
         "competition",
-        "project"
+        "project",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
-        "project": 6
+        "project": 6,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -29419,26 +29119,26 @@
       "recommendationTags": [
         "frontend",
         "software",
-        "ai",
         "design",
-        "data",
         "ux",
         "competition",
         "portfolio",
         "project",
-        "education"
+        "education",
+        "management",
+        "ai"
       ],
       "weightedTags": {
         "frontend": 9,
         "software": 8,
-        "ai": 8,
         "design": 8,
-        "data": 7,
         "ux": 7,
         "competition": 7,
         "portfolio": 6,
         "project": 6,
-        "education": 5
+        "education": 5,
+        "management": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -29829,26 +29529,22 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
         "marketing",
         "contents",
         "media",
-        "data",
-        "software",
         "competition",
         "project",
-        "writing"
+        "writing",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
         "marketing": 8,
         "contents": 8,
         "media": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "project": 6,
-        "writing": 5
+        "writing": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -30161,24 +29857,20 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
         "media",
         "contents",
-        "data",
-        "software",
         "competition",
         "project",
-        "writing"
+        "writing",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
         "media": 8,
         "contents": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "project": 6,
-        "writing": 5
+        "writing": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -30546,9 +30238,8 @@
         "marketing",
         "contents",
         "media",
-        "data",
-        "software",
         "competition",
+        "software",
         "project",
         "writing"
       ],
@@ -30557,9 +30248,8 @@
         "marketing": 8,
         "contents": 8,
         "media": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6,
         "writing": 5
       },
@@ -30805,24 +30495,20 @@
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai",
         "media",
         "contents",
-        "data",
-        "software",
         "competition",
         "project",
-        "writing"
+        "writing",
+        "ai"
       ],
       "weightedTags": {
-        "ai": 8,
         "media": 8,
         "contents": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
         "project": 6,
-        "writing": 5
+        "writing": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -30851,21 +30537,19 @@
         "frontend",
         "mobile",
         "software",
-        "ai",
-        "data",
         "competition",
         "portfolio",
-        "project"
+        "project",
+        "ai"
       ],
       "weightedTags": {
         "frontend": 9,
         "mobile": 9,
         "software": 8,
-        "ai": 8,
-        "data": 7,
         "competition": 7,
         "portfolio": 6,
-        "project": 6
+        "project": 6,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -31516,16 +31200,14 @@
       ],
       "recommendationTags": [
         "ai",
-        "data",
-        "software",
         "competition",
+        "software",
         "project"
       ],
       "weightedTags": {
         "ai": 8,
-        "data": 7,
-        "software": 7,
         "competition": 7,
+        "software": 6,
         "project": 6
       },
       "recommendationType": "competition",
