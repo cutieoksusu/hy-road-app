@@ -269,6 +269,12 @@ const inferWeightedRecommendationTags = (text) => {
   if (/금융|투자|은행|핀테크|경제|자산운용|증권|보험/.test(source)) {
     addWeightedTag(weights, TAGS.FINANCE, 8);
   }
+  if (/투자|자산운용|증권|etf|펀드|주식|가치투자|밸류에이션|포트폴리오|리서치/.test(source)) {
+    addWeightedTag(weights, TAGS.INVESTMENT, 8);
+  }
+  if (/경제|거시|미시|산업분석|시장분석|정책금융/.test(source)) {
+    addWeightedTag(weights, TAGS.ECONOMICS, 7);
+  }
   if (/회계|재무|세무|감사|cpa|ifrs|결산|원가/.test(source)) {
     addWeightedTag(weights, TAGS.ACCOUNTING, 6);
   }
@@ -321,25 +327,11 @@ const inferWeightedRecommendationTags = (text) => {
     addWeightedTag(weights, TAGS.EDUCATION, 5);
     addWeightedTag(weights, TAGS.MANAGEMENT, 5);
   }
-  if (/봉사|서포터즈|기자단|대외활동|앰버서더/.test(source)) {
-    addWeightedTag(weights, TAGS.ACTIVITY, 7);
-    addWeightedTag(weights, TAGS.VOLUNTEER, 4);
-  }
-  if (/공모전|해커톤|대회|콘테스트|챌린지|아이디어/.test(source)) {
-    addWeightedTag(weights, TAGS.COMPETITION, 7);
-    addWeightedTag(weights, TAGS.PROJECT, 6);
-  }
-  if (/인턴|현장실습|실무/.test(source)) addWeightedTag(weights, TAGS.INTERNSHIP, 8);
-  if (/자격|기사|시험|cert|certificate/.test(source)) addWeightedTag(weights, TAGS.CERTIFICATE, 8);
+  if (/인턴|현장실습|실무/.test(source)) addWeightedTag(weights, TAGS.INTERNSHIP, 5);
   if (/영어|일본|중국|해외|통번역|언어/.test(source)) {
     addWeightedTag(weights, TAGS.GLOBAL, 7);
     addWeightedTag(weights, TAGS.LANGUAGE, 7);
   }
-  if (Object.keys(weights).length === 0) {
-    addWeightedTag(weights, TAGS.ACTIVITY, 5);
-    addWeightedTag(weights, TAGS.PROJECT, 4);
-  }
-
   return Object.fromEntries(Object.entries(weights)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 10));
@@ -428,6 +420,7 @@ const normalizeItem = (raw) => {
   const careerTags = uniq([...toArray(raw.careerTags), ...getCareerTags(`${title} ${summary}`)]);
   const text = `${title} ${summary} ${type}`;
   const weightedTags = inferWeightedRecommendationTags(text);
+  if (!Object.keys(weightedTags).length) return null;
   const recommendationTags = Object.keys(weightedTags);
   const recommendationType = inferRecommendationType(type, text, recommendationTags);
   const deadline = raw.deadline || extractDeadline(`${title} ${summary}`);
