@@ -36,6 +36,19 @@ const getActivityTagWeight = (activity, tag) => {
   return activity.tags.includes(tag) ? 10 : 0;
 };
 
+const EXTERNAL_TAG_SCORE_MULTIPLIERS = {
+  competition: 0.15,
+  activity: 0.15,
+  project: 0.15,
+  volunteer: 0.2,
+  internship: 0.45,
+  certificate: 0.45,
+};
+
+const getTagScoreMultiplier = (activity, tag) => (
+  activity.isExternalOpportunity ? (EXTERNAL_TAG_SCORE_MULTIPLIERS[tag] ?? 1) : 1
+);
+
 export const buildUserTagWeights = (user) => {
   const grade = getGrade(user.grade);
   return mergeWeights(
@@ -54,7 +67,7 @@ export const recommendActivities = ({ user, activities = ACTIVITIES, limit = 7 }
   const ranked = activities
     .map((activity) => {
       const tagScore = activity.tags.reduce((score, tag) => (
-        score + ((userWeights[tag] || 0) * getActivityTagWeight(activity, tag) / 10)
+        score + ((userWeights[tag] || 0) * getActivityTagWeight(activity, tag) * getTagScoreMultiplier(activity, tag) / 10)
       ), 0);
       const gradeBonus = activity.recommendedGrades?.includes(grade) ? 8 : 0;
       const nearGradeBonus = activity.recommendedGrades?.some(item => Math.abs(item - grade) === 1) ? 3 : 0;
@@ -70,7 +83,7 @@ export const recommendActivities = ({ user, activities = ACTIVITIES, limit = 7 }
         dynamicReason: formatReason(matchedTags, user),
       };
     })
-    .filter(activity => activity.score > activity.baseWeight)
+    .filter(activity => activity.score > activity.baseWeight && (!activity.isExternalOpportunity || activity.matchedTags.length > 0))
     .sort((a, b) => b.score - a.score || b.baseWeight - a.baseWeight);
 
   const picked = [];

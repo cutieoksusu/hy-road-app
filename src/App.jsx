@@ -783,9 +783,18 @@ const toRecommendationActivity = (item) => {
 const scoreStaticOpportunity = (item, userWeights) => {
   const weightedTags = item.weightedTags || {};
   const tags = item.recommendationTags || Object.keys(weightedTags);
+  const lowSignalMultipliers = {
+    competition: 0.15,
+    activity: 0.15,
+    project: 0.15,
+    volunteer: 0.2,
+    internship: 0.45,
+    certificate: 0.45,
+  };
   return tags.reduce((score, tag) => {
     const opportunityWeight = weightedTags[tag] || 10;
-    return score + ((userWeights[tag] || 0) * opportunityWeight / 10);
+    const multiplier = lowSignalMultipliers[tag] ?? 1;
+    return score + ((userWeights[tag] || 0) * opportunityWeight * multiplier / 10);
   }, 0);
 };
 

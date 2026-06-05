@@ -266,8 +266,10 @@ const inferWeightedRecommendationTags = (text) => {
     addWeightedTag(weights, TAGS.MARKETING, 8);
     addWeightedTag(weights, TAGS.CONTENTS, 6);
   }
-  if (/금융|투자|은행|회계|재무|핀테크|경제/.test(source)) {
+  if (/금융|투자|은행|핀테크|경제|자산운용|증권|보험/.test(source)) {
     addWeightedTag(weights, TAGS.FINANCE, 8);
+  }
+  if (/회계|재무|세무|감사|cpa|ifrs|결산|원가/.test(source)) {
     addWeightedTag(weights, TAGS.ACCOUNTING, 6);
   }
   if (/공공|공기업|ncs|행정|정책|공공기관/.test(source)) {
