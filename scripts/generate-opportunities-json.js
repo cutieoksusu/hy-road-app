@@ -8,7 +8,7 @@ const CAREER_KEYWORDS = {
   '식품/F&B': ['식품', 'F&B', '푸드', '외식', '영양'],
   '패션/의류': ['패션', '의류', '디자인', '브랜드'],
   '금융/은행': ['금융', '은행', '핀테크', '투자', '경제'],
-  '반도체/엔지니어링': ['반도체', '공학', '엔지니어링', '제조', '로봇'],
+  '반도체/엔지니어링': ['반도체', '공정', '엔지니어링', '로봇'],
   '공기업 (NCS)': ['공공기관', '공기업', 'NCS', '정책', '행정'],
   '로스쿨 (법조인)': ['법률', '법무', '인권', '정책', '토론'],
   '언론고시 (기자/PD)': ['언론', '기자', 'PD', '방송', '미디어', '콘텐츠'],
@@ -92,6 +92,36 @@ const CAREER_SUB_SEARCH_KEYWORDS = {
   '영양사': ['영양', '식품'],
   '식품연구원': ['식품', '푸드테크'],
 };
+
+const CAREER_SUB_RELATIONS = {
+  '프론트엔드개발자': ['소프트웨어개발자', '웹디자이너', 'UI·UX디자이너'],
+  '백엔드개발자': ['소프트웨어개발자', '데이터엔지니어', '클라우드엔지니어', '보안엔지니어'],
+  '앱개발자': ['소프트웨어개발자', '프론트엔드개발자', 'UI·UX디자이너'],
+  '소프트웨어개발자': ['프론트엔드개발자', '백엔드개발자', '앱개발자', '데이터엔지니어'],
+  '데이터사이언티스트': ['데이터분석가', 'AI/ML엔지니어', 'AI/ML연구원', '리서치(설문/통계)'],
+  '데이터분석가': ['데이터사이언티스트', '리서치(설문/통계)', '퍼포먼스마케터', 'CRM마케터'],
+  '데이터엔지니어': ['백엔드개발자', '데이터사이언티스트', 'AI/ML엔지니어'],
+  'AI/ML엔지니어': ['AI/ML연구원', '데이터사이언티스트', 'AI로봇엔지니어', 'AI기획자'],
+  'AI/ML연구원': ['AI/ML엔지니어', '데이터사이언티스트', 'R&D·연구원'],
+  '반도체엔지니어': ['공정엔지니어', '전기·전자엔지니어', '통신/RF엔지니어', 'R&D·연구원'],
+  '공정엔지니어': ['반도체엔지니어', '생산·공정관리자', '품질관리자(QA/QC)', 'R&D·연구원'],
+  '전기·전자엔지니어': ['반도체엔지니어', '통신/RF엔지니어', '기계엔지니어', 'R&D·연구원'],
+  '기계엔지니어': ['전기·전자엔지니어', 'AI로봇엔지니어', '생산·공정관리자', '품질관리자(QA/QC)'],
+  '화학엔지니어': ['R&D·연구원', '바이오·제약연구원', '품질관리자(QA/QC)', '환경기사'],
+  'R&D·연구원': ['반도체엔지니어', '공정엔지니어', '전기·전자엔지니어', '화학엔지니어', '바이오·제약연구원'],
+  '품질관리자(QA/QC)': ['공정엔지니어', '생산·공정관리자', '기계엔지니어', '화학엔지니어', '식품연구원'],
+  '바이오·제약연구원': ['R&D·연구원', '임상연구원(CRA)', '화학엔지니어'],
+  '임상연구원(CRA)': ['바이오·제약연구원', 'R&D·연구원'],
+  '식품연구원': ['영양사', '품질관리자(QA/QC)', '바이오·제약연구원'],
+  '영양사': ['식품연구원', '품질관리자(QA/QC)'],
+};
+
+const getRelatedCareerSubs = (careerSub) => uniq([
+  ...(CAREER_SUB_RELATIONS[careerSub] || []),
+  ...Object.entries(CAREER_SUB_RELATIONS)
+    .filter(([, related]) => related.includes(careerSub))
+    .map(([relatedCareerSub]) => relatedCareerSub),
+]);
 
 const toArray = (value) => (Array.isArray(value) ? value : []);
 const uniq = (values) => [...new Set(values.filter(Boolean).map((value) => String(value).trim()).filter(Boolean))];
@@ -224,6 +254,53 @@ const getCanonicalOpportunityKey = (item) => {
   return item.url || item.title;
 };
 
+const normalizeTitleKey = (title) => String(title || '')
+  .replace(/\[[^\]]+\]/g, '')
+  .replace(/[^\p{L}\p{N}]+/gu, '')
+  .toLowerCase();
+
+const getOpportunityBucket = (item) => {
+  const source = `${item.type || ''} ${item.title || ''} ${item.summary || ''}`;
+  if (/대외활동|서포터즈|기자단|홍보대사|앰버서더|봉사단|멘토링|캠페인/.test(source)) return 'activity';
+  if (/해커톤/.test(source)) return 'hackathon';
+  if (/인턴/.test(source)) return 'internship';
+  if (/공모전|대회|콘테스트|챌린지/.test(source)) return 'contest';
+  return 'other';
+};
+
+const selectBalancedItems = (items, limit) => {
+  const seenKeys = new Set();
+  const uniqueItems = [];
+  items.forEach((item) => {
+    const keys = [
+      getCanonicalOpportunityKey(item),
+      normalizeTitleKey(item.title),
+    ].filter(Boolean);
+    if (keys.some((key) => seenKeys.has(key))) return;
+    keys.forEach((key) => seenKeys.add(key));
+    uniqueItems.push(item);
+  });
+
+  const bucketOrder = ['activity', 'contest', 'hackathon', 'internship', 'other'];
+  const buckets = new Map(bucketOrder.map((bucket) => [bucket, []]));
+
+  uniqueItems.forEach((item) => {
+    const bucket = getOpportunityBucket(item);
+    buckets.set(bucket, [...(buckets.get(bucket) || []), item]);
+  });
+
+  const selected = [];
+  let cursor = 0;
+  while (selected.length < limit && [...buckets.values()].some((bucketItems) => bucketItems.length)) {
+    const bucketName = bucketOrder[cursor % bucketOrder.length];
+    const item = buckets.get(bucketName)?.shift();
+    if (item) selected.push(item);
+    cursor += 1;
+  }
+
+  return selected;
+};
+
 const fetchText = async (url) => {
   const parsedUrl = new URL(url);
   const response = await fetch(url, {
@@ -259,7 +336,7 @@ const inferRecommendationTags = (text) => {
   if (/영상|미디어|콘텐츠|기자|pd|방송|작가|뉴스레터/.test(source)) addTags(tags, TAGS.MEDIA, TAGS.CONTENTS, TAGS.WRITING);
   if (/디자인|ux|ui|그래픽|브랜딩|포트폴리오/.test(source)) addTags(tags, TAGS.DESIGN, TAGS.UX, TAGS.PORTFOLIO);
   if (/반도체/.test(source)) addTags(tags, TAGS.SEMICONDUCTOR, TAGS.ENGINEERING);
-  if (/공정|전자|전기|기계|로봇|제조|품질/.test(source)) addTags(tags, TAGS.ENGINEERING);
+  if (/공정|전자|전기|기계|로봇|생산|품질/.test(source)) addTags(tags, TAGS.ENGINEERING);
   if (/바이오|제약|임상|보건|식품|영양|헬스/.test(source)) addTags(tags, TAGS.BIO, TAGS.HEALTHCARE, TAGS.FOOD);
   if (/환경|건축|도시|안전|bim|cad|에너지/.test(source)) addTags(tags, TAGS.ENVIRONMENT, TAGS.ARCHITECTURE, TAGS.ENGINEERING, TAGS.ENERGY);
   if (/무역|물류|유통|구매|해외영업|글로벌/.test(source)) addTags(tags, TAGS.TRADE, TAGS.LOGISTICS, TAGS.GLOBAL);
@@ -323,7 +400,11 @@ const getMatchedCareerSubs = (text, recommendationTags) => {
     .sort((a, b) => b[1] - a[1])
     .map(([careerSub]) => careerSub);
 
-  return strongMatches.slice(0, 8);
+  return uniq(strongMatches
+    .slice(0, 8)
+    .flatMap((careerSub) => [careerSub, ...getRelatedCareerSubs(careerSub)]))
+    .filter((careerSub) => CAREER_TAG_WEIGHTS[careerSub])
+    .slice(0, 14);
 };
 
 const getType = (text) => {
@@ -347,7 +428,7 @@ const normalizeItem = (raw) => {
   const source = normalizeSourceName(url);
   const type = raw.type || getType(`${title} ${summary}`);
   const careerTags = uniq([...toArray(raw.careerTags), ...getCareerTags(`${title} ${summary}`)]);
-  const text = `${title} ${summary} ${type} ${careerTags.join(' ')}`;
+  const text = `${title} ${summary} ${type}`;
   const recommendationTags = inferRecommendationTags(text);
   const recommendationType = inferRecommendationType(type, text, recommendationTags);
   const deadline = raw.deadline || extractDeadline(`${title} ${summary}`);
@@ -526,7 +607,7 @@ const tagWithOpenAI = async (items) => {
 
 const main = async () => {
   const rawItems = await fetchAllowedSources();
-  const uniqueItems = [...new Map(rawItems.map((item) => [getCanonicalOpportunityKey(item), item])).values()].slice(0, MAX_ITEMS);
+  const uniqueItems = selectBalancedItems(rawItems, MAX_ITEMS);
   let items = uniqueItems;
   try {
     items = await tagWithOpenAI(uniqueItems);

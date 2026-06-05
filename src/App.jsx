@@ -740,6 +740,27 @@ const buildFallbackLiveActivities = (careerSub) => ([
   },
 ]);
 
+const RELATED_CAREER_SUB_FALLBACKS = {
+  '반도체엔지니어': ['공정엔지니어', '전기·전자엔지니어', '기계엔지니어', 'R&D·연구원', '품질관리자(QA/QC)'],
+  '공정엔지니어': ['반도체엔지니어', '전기·전자엔지니어', '기계엔지니어', '생산·공정관리자', '품질관리자(QA/QC)', 'R&D·연구원'],
+  '전기·전자엔지니어': ['반도체엔지니어', '공정엔지니어', '기계엔지니어', 'AI로봇엔지니어', 'R&D·연구원'],
+  '기계엔지니어': ['전기·전자엔지니어', '공정엔지니어', '생산·공정관리자', '품질관리자(QA/QC)', 'AI로봇엔지니어'],
+  '화학엔지니어': ['R&D·연구원', '바이오·제약연구원', '품질관리자(QA/QC)', '환경기사', '식품연구원'],
+  'R&D·연구원': ['AI/ML연구원', '반도체엔지니어', '공정엔지니어', '전기·전자엔지니어', '화학엔지니어', '바이오·제약연구원'],
+  '품질관리자(QA/QC)': ['공정엔지니어', '생산·공정관리자', '기계엔지니어', '화학엔지니어', '식품연구원'],
+  '백엔드개발자': ['소프트웨어개발자', '데이터엔지니어', '클라우드엔지니어', '보안엔지니어'],
+  '데이터분석가': ['데이터사이언티스트', '데이터엔지니어', '리서치(설문/통계)', '퍼포먼스마케터', 'CRM마케터'],
+  '데이터엔지니어': ['데이터사이언티스트', '데이터분석가', '백엔드개발자', 'AI/ML엔지니어'],
+};
+
+const getRelatedCareerFallbacks = (careerSub) => {
+  const direct = RELATED_CAREER_SUB_FALLBACKS[careerSub] || [];
+  const reverse = Object.entries(RELATED_CAREER_SUB_FALLBACKS)
+    .filter(([, related]) => related.includes(careerSub))
+    .map(([relatedCareerSub]) => relatedCareerSub);
+  return [...new Set([...direct, ...reverse])];
+};
+
 const normalizeLiveActivity = (item) => ({
   id: item.id || item.url || item.originalLink || item.title,
   title: item.title || '제목 확인 필요',
@@ -794,7 +815,19 @@ const fetchStaticOpportunities = async ({ careerSub, signal }) => {
   const matchedItems = normalizedCareer
     ? activeItems.filter((item) => (item.matchedCareerSubs || []).includes(normalizedCareer))
     : activeItems;
-  return matchedItems
+
+  const relatedCareerSubs = getRelatedCareerFallbacks(normalizedCareer);
+  const relatedItems = normalizedCareer && !matchedItems.length
+    ? activeItems
+      .filter((item) => (item.matchedCareerSubs || []).some((careerSub) => relatedCareerSubs.includes(careerSub)))
+      .map((item) => ({
+        ...item,
+        matchedCareerSubs: [...new Set([...(item.matchedCareerSubs || []), normalizedCareer])],
+        dynamicReason: `${relatedCareerSubs.slice(0, 2).join(', ')}와 연결되는 계열 공고입니다.`,
+      }))
+    : [];
+
+  return (matchedItems.length ? matchedItems : relatedItems)
     .slice(0, 12)
     .map(normalizeLiveActivity);
 };
