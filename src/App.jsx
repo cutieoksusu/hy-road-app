@@ -701,45 +701,6 @@ const getMilestoneTiming = (spec) => ({
   duration: getSpecDuration(spec),
 });
 
-const generatePlatformSearchLink = (careerSub, platformStr) => {
-  const keywordMap = {
-    'IT/소프트웨어': 'IT', '기획/마케팅': '마케팅', '식품/F&B': '식품', '패션/섬유': '패션',
-    '금융/투자': '금융', '반도체/엔지니어링': '엔지니어', '공기업(NCS)': '공기업',
-    '로스쿨(법조인)': '법무', '언론고시 (기자/PD)': '언론',
-  };
-  const keyword = keywordMap[careerSub] || careerSub || '대외활동';
-  const encoded = encodeURIComponent(keyword);
-
-  if (platformStr === '링커리어' || platformStr.includes('링커리어')) return `https://linkareer.com/search?keyword=${encoded}&tab=activity`;
-  if (platformStr === '캠퍼스픽' || platformStr.includes('캠퍼스픽')) return `https://www.campuspick.com/search?keyword=${encoded}`;
-  if (platformStr === '위비티' || platformStr.includes('위비티')) return `https://www.wevity.com/?c=find&s=1&gbn=viewok&ctg=21&sw=${encoded}`;
-  return '#';
-};
-
-const buildFallbackLiveActivities = (careerSub) => ([
-  {
-    title: `[${careerSub}] 링커리어 공고 바로가기`,
-    dDay: '실시간',
-    url: generatePlatformSearchLink(careerSub, '링커리어'),
-    source: '링커리어 검색',
-    summary: '실시간 API 응답이 없을 때만 제공되는 플랫폼 검색 링크입니다.',
-  },
-  {
-    title: `[${careerSub}] 캠퍼스픽 활동 바로가기`,
-    dDay: '실시간',
-    url: generatePlatformSearchLink(careerSub, '캠퍼스픽'),
-    source: '캠퍼스픽 검색',
-    summary: '실시간 API 응답이 없을 때만 제공되는 플랫폼 검색 링크입니다.',
-  },
-  {
-    title: `[${careerSub}] 위비티 공모전 바로가기`,
-    dDay: '실시간',
-    url: generatePlatformSearchLink(careerSub, '위비티'),
-    source: '위비티 검색',
-    summary: '실시간 API 응답이 없을 때만 제공되는 플랫폼 검색 링크입니다.',
-  },
-]);
-
 const normalizeLiveActivity = (item) => ({
   id: item.id || item.url || item.originalLink || item.title,
   title: item.title || '제목 확인 필요',
@@ -921,6 +882,7 @@ export default function App() {
   const [selectedRoadmapBriefing, setSelectedRoadmapBriefing] = useState(null);
   const [showAllLiveActivities, setShowAllLiveActivities] = useState(false);
   const [showAllMilestones, setShowAllMilestones] = useState(false);
+  const [todayKey, setTodayKey] = useState(() => new Date().toDateString());
   
   // 스펙 사진 인증(OCR)용 State
   const [selectedSpec, setSelectedSpec] = useState('');
@@ -1058,6 +1020,12 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    const refreshTodayKey = () => setTodayKey(new Date().toDateString());
+    const timer = window.setInterval(refreshTodayKey, 60 * 1000);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
     if (splashFinished && currentScreen === 'splash') {
       setCurrentScreen('auth');
     }
@@ -1127,7 +1095,6 @@ export default function App() {
 
     let isMounted = true;
     const controller = new AbortController();
-    const fallbackLinks = buildFallbackLiveActivities(userProfile.careerSub);
 
     const loadLiveActivities = async () => {
       setIsLoadingLive(true);
@@ -1149,11 +1116,11 @@ export default function App() {
           return;
         }
 
-        setLiveActivities(fallbackLinks);
+        setLiveActivities([]);
         setOpportunityActivities([]);
       } catch (error) {
         if (isMounted && error.name !== 'AbortError') {
-          setLiveActivities(fallbackLinks);
+          setLiveActivities([]);
           setOpportunityActivities([]);
         }
       } finally {
@@ -1166,7 +1133,7 @@ export default function App() {
       isMounted = false;
       controller.abort();
     };
-  }, [userProfile.careerSub, userProfile.careerMain, userProfile.college, userProfile.department, userProfile.grade]);
+  }, [userProfile.careerSub, userProfile.careerMain, userProfile.college, userProfile.department, userProfile.grade, todayKey]);
 
   // OCR 사진 촬영 시뮬레이션 함수
   const simulatePhotoAuth = () => {
@@ -1294,7 +1261,7 @@ export default function App() {
       courses: recommendedCourses, 
       gradInfo: req 
     };
-  }, [userProfile, achievedSpecs, customMilestones, opportunityActivities]);
+  }, [userProfile, achievedSpecs, customMilestones, opportunityActivities, todayKey]);
 
   const renderAuth = () => (
     <div className="absolute inset-0 z-50 bg-white flex flex-col h-full overflow-y-auto px-6 py-12">
@@ -1786,6 +1753,12 @@ export default function App() {
             <div className="flex flex-col items-center justify-center py-8 bg-gray-50 rounded-3xl border border-gray-100">
               <Loader2 className="animate-spin text-blue-400 mb-2" size={24} />
               <p className="text-xs text-gray-500 font-bold">플랫폼 연결 중...</p>
+            </div>
+          ) : liveActivities.length === 0 ? (
+            <div className="rounded-3xl border-2 border-dashed border-gray-100 bg-gray-50 px-5 py-8 text-center">
+              <Sparkles size={28} className="mx-auto mb-3 text-gray-300" />
+              <p className="text-sm font-black text-gray-700">해당 직무와 관련된 공모전/대외활동이 없습니다.</p>
+              <p className="mt-2 text-[11px] font-bold leading-relaxed text-gray-400">새로운 공고가 수집되면 이 영역에 자동으로 표시됩니다.</p>
             </div>
           ) : (
             <div className="flex gap-3 overflow-x-auto pb-4 snap-x">

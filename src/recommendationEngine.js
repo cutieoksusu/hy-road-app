@@ -75,6 +75,38 @@ const hasExcludedExternalTag = (activity, user) => {
   return excludedTags.some(tag => getActivityTagWeight(activity, tag) >= 7);
 };
 
+const getDeadlinePriority = (deadline) => {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(deadline || '')) return 0;
+  const target = new Date(`${deadline}T00:00:00`);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const daysLeft = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+  if (daysLeft < 0) return -20;
+  if (daysLeft <= 3) return -2;
+  if (daysLeft <= 21) return 4;
+  if (daysLeft <= 60) return 3;
+  if (daysLeft <= 120) return 1;
+  return 0;
+};
+
+const getOpportunityTypePriority = (activity) => {
+  const source = `${activity.recommendationType || ''} ${activity.type || ''} ${activity.title || ''}`;
+  if (/인턴|internship/i.test(source)) return 6;
+  if (/해커톤/i.test(source)) return 5;
+  if (/논문|경진대회|공모전|대회|contest|competition/i.test(source)) return 4;
+  if (/프로젝트|챌린지|project/i.test(source)) return 2;
+  if (/서포터즈|기자단|홍보대사|앰버서더/i.test(source)) return -3;
+  return 0;
+};
+
+const getDistractorPenalty = (activity, careerWeights) => {
+  const softDistractorTags = ['marketing', 'media', 'contents', 'public', 'ncs', 'startup', 'education', 'management'];
+  return softDistractorTags.reduce((penalty, tag) => {
+    if (careerWeights[tag]) return penalty;
+    return penalty + (getActivityTagWeight(activity, tag) >= 7 ? 2.5 : 0);
+  }, 0);
+};
+
 export const buildUserTagWeights = (user) => {
   const grade = getGrade(user.grade);
   return mergeWeights(
@@ -114,8 +146,11 @@ export const scoreExternalOpportunity = (activity, user = {}) => {
   const gradeBonus = activity.recommendedGrades?.includes(grade) ? 4 : 0;
   const nearGradeBonus = activity.recommendedGrades?.some(item => Math.abs(item - grade) === 1) ? 1.5 : 0;
 
+  const priorityScore = getOpportunityTypePriority(activity) + getDeadlinePriority(activity.deadline || activity.targetDate);
+  const distractorPenalty = getDistractorPenalty(activity, careerWeights);
+
   return {
-    score: (activity.baseWeight || 0) + (coreScore * 1.8) + (contextScore * 0.25) + gradeBonus + nearGradeBonus,
+    score: (activity.baseWeight || 0) + (coreScore * 2.3) + (contextScore * 0.15) + priorityScore + gradeBonus + nearGradeBonus - distractorPenalty,
     matchedTags: coreMatchedTags,
     coreScore,
   };
