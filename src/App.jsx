@@ -4,7 +4,7 @@ import {
   Clock, LogOut, ShieldCheck, BookOpen, CheckCircle2, TrendingUp, Search, 
   AlertCircle, ChevronLeft, Building, Target, Check, Sparkles, ExternalLink, Link as LinkIcon, Edit3, XCircle, Info, Award, FileText, Globe, Hourglass, Plus, Trash2, Loader2, Camera, PenTool, Image as ImageIcon
 } from 'lucide-react';
-import { buildUserTagWeights, recommendActivities } from './recommendationEngine';
+import { recommendActivities, scoreExternalOpportunity } from './recommendationEngine';
 import { ACTIVITIES } from './recommendationData';
 
 const CAMPUS_DATA = {
@@ -133,7 +133,7 @@ const CAREER_CATEGORIES = [
   {
     categoryName: '전문직·공직·법무',
     subCategories: [
-      { subCategoryName: '전문직/법무', jobs: ['변호사(로스쿨)', '변리사', '노무사', '법무담당자'] },
+      { subCategoryName: '전문직/법무', jobs: ['변호사(로스쿨)', '변리사', '노무사', '법무사', '법무담당자'] },
       { subCategoryName: '공공/행정', jobs: ['공기업(NCS 준비)', '5급 행정고시', '5급 기술고시', '사회복지사', '사서'] },
     ],
   },
@@ -780,26 +780,6 @@ const toRecommendationActivity = (item) => {
   };
 };
 
-const scoreStaticOpportunity = (item, userWeights) => {
-  const weightedTags = item.weightedTags || {};
-  const tags = item.recommendationTags || Object.keys(weightedTags);
-  const lowSignalMultipliers = {
-    competition: 0.15,
-    activity: 0.15,
-    project: 0.15,
-    volunteer: 0.2,
-    internship: 0.45,
-    certificate: 0.45,
-  };
-  return tags.reduce((score, tag) => {
-    const opportunityWeight = weightedTags[tag] || 10;
-    const multiplier = lowSignalMultipliers[tag] ?? 1;
-    return score + ((userWeights[tag] || 0) * opportunityWeight * multiplier / 10);
-  }, 0);
-};
-
-const MIN_STATIC_OPPORTUNITY_SCORE = 12;
-
 const fetchStaticOpportunities = async ({ user, signal }) => {
   const response = await fetch(`${import.meta.env.BASE_URL}opportunities.json`, {
     signal,
@@ -809,14 +789,17 @@ const fetchStaticOpportunities = async ({ user, signal }) => {
 
   const data = await response.json();
   const items = Array.isArray(data.items) ? data.items : [];
-  const userWeights = buildUserTagWeights(user || {});
   const activeItems = items.filter((item) => item.active !== false);
   return activeItems
-    .map((item) => ({
-      ...item,
-      score: scoreStaticOpportunity(item, userWeights),
-    }))
-    .filter((item) => item.score >= MIN_STATIC_OPPORTUNITY_SCORE)
+    .map((item) => {
+      const result = scoreExternalOpportunity(item, user || {});
+      return {
+        ...item,
+        score: result.score,
+        matchedTags: result.matchedTags,
+      };
+    })
+    .filter((item) => item.score > 0)
     .sort((a, b) => b.score - a.score || (b.baseWeight || 0) - (a.baseWeight || 0))
     .slice(0, 12)
     .map(normalizeLiveActivity);
@@ -1183,7 +1166,7 @@ export default function App() {
       isMounted = false;
       controller.abort();
     };
-  }, [userProfile.careerSub]);
+  }, [userProfile.careerSub, userProfile.careerMain, userProfile.college, userProfile.department, userProfile.grade]);
 
   // OCR 사진 촬영 시뮬레이션 함수
   const simulatePhotoAuth = () => {
@@ -2035,8 +2018,20 @@ export default function App() {
       ...Array.from({ length: daysInMonth }, (_, index) => index + 1),
     ];
     const calendarEvents = [
-      ...liveActivities.map(item => ({ title: item.dynamicReason || item.source || '활동', date: item.targetDate || item.deadline, tone: 'activity' })),
-      ...((userRoadmapData?.milestones || []).map(item => ({ title: item.title, date: item.targetDate, tone: item.cat === 'lang' ? 'lang' : 'cert' }))),
+      ...liveActivities.map(item => ({
+        title: item.title || item.source || '추천 활동',
+        date: item.targetDate || item.deadline,
+        tone: 'activity',
+        url: item.url,
+        source: item.source,
+      })),
+      ...((userRoadmapData?.milestones || []).map(item => ({
+        title: item.title,
+        date: item.targetDate,
+        tone: item.cat === 'lang' ? 'lang' : 'cert',
+        url: item.url,
+        source: item.source,
+      }))),
     ].filter(event => {
       if (!event.date) return false;
       const date = new Date(event.date);
@@ -2124,9 +2119,26 @@ export default function App() {
                     <div className={`mx-auto mb-1 flex h-6 w-6 items-center justify-center rounded-full text-xs font-black ${isToday ? 'bg-[#00307B] text-white' : 'text-gray-900'}`}>{day}</div>
                     <div className="space-y-1">
                       {events.map((event, eventIdx) => (
-                        <div key={`${event.title}-${eventIdx}`} className={`truncate rounded-md px-1.5 py-0.5 text-[8px] font-black ${event.tone === 'activity' ? 'bg-blue-100 text-[#00307B]' : 'bg-[#00307B] text-white'}`}>
-                          {event.title}
-                        </div>
+                        event.url && event.url !== '#' ? (
+                          <a
+                            key={`${event.title}-${eventIdx}`}
+                            href={event.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            title={`${event.title}${event.source ? ` · ${event.source}` : ''}`}
+                            className={`block truncate rounded-md px-1.5 py-0.5 text-[8px] font-black ${event.tone === 'activity' ? 'bg-blue-100 text-[#00307B]' : 'bg-[#00307B] text-white'}`}
+                          >
+                            {event.title}
+                          </a>
+                        ) : (
+                          <div
+                            key={`${event.title}-${eventIdx}`}
+                            title={`${event.title}${event.source ? ` · ${event.source}` : ''}`}
+                            className={`truncate rounded-md px-1.5 py-0.5 text-[8px] font-black ${event.tone === 'activity' ? 'bg-blue-100 text-[#00307B]' : 'bg-[#00307B] text-white'}`}
+                          >
+                            {event.title}
+                          </div>
+                        )
                       ))}
                     </div>
                   </>

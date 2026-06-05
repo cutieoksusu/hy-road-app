@@ -33,7 +33,7 @@ const getActivityTagWeight = (activity, tag) => {
   if (activity.weightedTags && Number.isFinite(activity.weightedTags[tag])) {
     return activity.weightedTags[tag];
   }
-  return activity.tags.includes(tag) ? 10 : 0;
+  return activity.tags?.includes(tag) ? 10 : 0;
 };
 
 const EXTERNAL_TAG_SCORE_MULTIPLIERS = {
@@ -49,7 +49,31 @@ const getTagScoreMultiplier = (activity, tag) => (
   activity.isExternalOpportunity ? (EXTERNAL_TAG_SCORE_MULTIPLIERS[tag] ?? 1) : 1
 );
 
-const MIN_EXTERNAL_TAG_SCORE = 12;
+const getExternalTagScoreMultiplier = (tag) => EXTERNAL_TAG_SCORE_MULTIPLIERS[tag] ?? 1;
+
+const CORE_CAREER_TAG_MIN_WEIGHT = 7;
+const MIN_EXTERNAL_CORE_SCORE = 8;
+const EXCLUDED_EXTERNAL_TAGS_BY_CAREER = {
+  '손해사정사': ['ai', 'data', 'software', 'startup', 'marketing', 'contents', 'media'],
+  '법무사': ['ai', 'data', 'software', 'startup', 'robotics', 'control', 'patent'],
+  '법무담당자': ['ai', 'data', 'software', 'startup', 'robotics', 'control', 'patent'],
+  '변호사(로스쿨)': ['ai', 'data', 'software', 'startup', 'robotics', 'control', 'patent'],
+};
+
+const getOpportunityTags = (activity) => {
+  const weightedTags = activity.weightedTags || {};
+  return [...new Set([
+    ...(activity.tags || []),
+    ...(activity.recommendationTags || []),
+    ...Object.keys(weightedTags),
+  ])];
+};
+
+const hasExcludedExternalTag = (activity, user) => {
+  const excludedTags = EXCLUDED_EXTERNAL_TAGS_BY_CAREER[user.careerSub] || [];
+  if (!excludedTags.length) return false;
+  return excludedTags.some(tag => getActivityTagWeight(activity, tag) >= 7);
+};
 
 export const buildUserTagWeights = (user) => {
   const grade = getGrade(user.grade);
@@ -62,12 +86,57 @@ export const buildUserTagWeights = (user) => {
   );
 };
 
+export const scoreExternalOpportunity = (activity, user = {}) => {
+  const careerWeights = CAREER_TAG_WEIGHTS[user.careerSub] || {};
+  const userWeights = buildUserTagWeights(user);
+  const grade = getGrade(user.grade);
+  const tags = getOpportunityTags(activity);
+
+  if (!Object.keys(careerWeights).length || hasExcludedExternalTag(activity, user)) {
+    return { score: 0, matchedTags: [], coreScore: 0 };
+  }
+
+  const coreMatchedTags = tags
+    .filter(tag => (careerWeights[tag] || 0) >= CORE_CAREER_TAG_MIN_WEIGHT && getActivityTagWeight(activity, tag) >= 4)
+    .sort((a, b) => careerWeights[b] - careerWeights[a]);
+
+  const coreScore = coreMatchedTags.reduce((score, tag) => (
+    score + ((careerWeights[tag] || 0) * getActivityTagWeight(activity, tag) / 10)
+  ), 0);
+
+  if (coreMatchedTags.length === 0 || coreScore < MIN_EXTERNAL_CORE_SCORE) {
+    return { score: 0, matchedTags: [], coreScore };
+  }
+
+  const contextScore = tags.reduce((score, tag) => (
+    score + ((userWeights[tag] || 0) * getActivityTagWeight(activity, tag) * getExternalTagScoreMultiplier(tag) / 10)
+  ), 0);
+  const gradeBonus = activity.recommendedGrades?.includes(grade) ? 4 : 0;
+  const nearGradeBonus = activity.recommendedGrades?.some(item => Math.abs(item - grade) === 1) ? 1.5 : 0;
+
+  return {
+    score: (activity.baseWeight || 0) + (coreScore * 1.8) + (contextScore * 0.25) + gradeBonus + nearGradeBonus,
+    matchedTags: coreMatchedTags,
+    coreScore,
+  };
+};
+
 export const recommendActivities = ({ user, activities = ACTIVITIES, limit = 7 }) => {
   const grade = getGrade(user.grade);
   const userWeights = buildUserTagWeights(user);
 
   const ranked = activities
     .map((activity) => {
+      if (activity.isExternalOpportunity) {
+        const externalScore = scoreExternalOpportunity(activity, user);
+        return {
+          ...activity,
+          score: externalScore.score,
+          matchedTags: externalScore.matchedTags,
+          dynamicReason: formatReason(externalScore.matchedTags, user),
+        };
+      }
+
       const tagScore = activity.tags.reduce((score, tag) => (
         score + ((userWeights[tag] || 0) * getActivityTagWeight(activity, tag) * getTagScoreMultiplier(activity, tag) / 10)
       ), 0);
@@ -87,7 +156,7 @@ export const recommendActivities = ({ user, activities = ACTIVITIES, limit = 7 }
     })
     .filter(activity => (
       activity.score > activity.baseWeight
-      && (!activity.isExternalOpportunity || (activity.matchedTags.length > 0 && activity.score - activity.baseWeight >= MIN_EXTERNAL_TAG_SCORE))
+      && (!activity.isExternalOpportunity || activity.matchedTags.length > 0)
     ))
     .sort((a, b) => b.score - a.score || b.baseWeight - a.baseWeight);
 
