@@ -17,6 +17,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
       - name: Generate opportunities JSON
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -31,3 +34,10 @@ jobs:
         with:
           commit_message: 'Update daily opportunities feed'
           file_pattern: public/opportunities.json
+      - name: Build site
+        run: npm run build
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
