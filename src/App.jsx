@@ -2,7 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Home, Map, Settings, Bell, ChevronRight, Calendar, User, Briefcase, GraduationCap, 
   Clock, LogOut, ShieldCheck, BookOpen, CheckCircle2, TrendingUp, Search, 
-  AlertCircle, ChevronLeft, Building, Target, Check, Sparkles, ExternalLink, Link as LinkIcon, Edit3, XCircle, Info, Award, FileText, Globe, Hourglass, Plus, Trash2, Loader2, Camera, PenTool, Image as ImageIcon
+  AlertCircle, ChevronLeft, Building, Target, Check, Sparkles, ExternalLink, Link as LinkIcon, Edit3, XCircle, Info, Award, FileText, Globe, Hourglass, Plus, Trash2, Loader2, Camera, PenTool, Image as ImageIcon,
+  Wallet, Coffee, Gift, CreditCard
 } from 'lucide-react';
 import { recommendActivities } from './recommendationEngine';
 
@@ -1829,6 +1830,189 @@ export default function App() {
     );
   };
 
+  const renderHanyangWallet = () => {
+    const walletSummary = {
+      balance: 1250,
+      earnedThisMonth: 380,
+      spentThisMonth: 300,
+      nextReward: 120,
+    };
+    const walletActions = [
+      {
+        icon: Coffee,
+        title: '선배와 커피챗 연결/선물하기',
+        desc: '관심 직무 선배에게 커피챗 요청',
+        cost: '300냥부터',
+      },
+      {
+        icon: Gift,
+        title: '기프티콘',
+        desc: '카페·편의점 쿠폰으로 교환',
+        cost: '500냥부터',
+      },
+    ];
+
+    return (
+      <div className="min-h-full bg-gray-50 animate-fade-in-up">
+        <div className="bg-[#00307B] px-6 pt-10 pb-14 text-white">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <p className="text-blue-200 text-xs font-black tracking-[0.16em] mb-2">HYANG WALLET</p>
+              <h1 className="text-white text-2xl font-black leading-tight">하냥 지갑</h1>
+            </div>
+            <div className="w-12 h-12 rounded-2xl bg-white/15 flex items-center justify-center">
+              <Wallet size={24} strokeWidth={2.8} />
+            </div>
+          </div>
+
+          <div className="bg-white text-gray-900 rounded-[2rem] p-6 shadow-xl shadow-blue-950/20">
+            <div className="flex items-start justify-between gap-4 mb-6">
+              <div>
+                <p className="text-xs font-black text-gray-400 mb-2">보유 하냥</p>
+                <div className="flex items-end gap-2">
+                  <span className="text-5xl font-black tracking-normal leading-none">{walletSummary.balance.toLocaleString()}</span>
+                  <span className="text-xl font-black text-gray-500 mb-1">냥</span>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => alert('하냥 충전 기능은 준비 중입니다.')}
+                className="shrink-0 bg-[#1f55d8] text-white px-4 py-3 rounded-2xl text-sm font-black flex items-center gap-1.5 active:bg-blue-800"
+              >
+                <Plus size={16} strokeWidth={3} /> 충전
+              </button>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <div className="rounded-2xl bg-blue-50 px-4 py-4">
+                <p className="text-[11px] font-black text-gray-400 mb-2">이번 달 획득</p>
+                <p className="text-xl font-black text-[#1f55d8] leading-none">+{walletSummary.earnedThisMonth}냥</p>
+              </div>
+              <div className="rounded-2xl bg-gray-50 px-4 py-4">
+                <p className="text-[11px] font-black text-gray-400 mb-2">이번 달 사용</p>
+                <p className="text-xl font-black text-gray-800 leading-none">-{walletSummary.spentThisMonth}냥</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="-mt-8 px-6 pb-28">
+          <button
+            type="button"
+            onClick={() => alert('하냥 충전 기능은 준비 중입니다.')}
+            className="w-full bg-white rounded-[1.75rem] p-5 mb-6 flex items-center justify-between border border-gray-100 shadow-sm active:bg-gray-50"
+          >
+            <div className="flex items-center gap-4 text-left">
+              <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#00307B] flex items-center justify-center">
+                <CreditCard size={22} strokeWidth={2.7} />
+              </div>
+              <div>
+                <p className="text-base font-black text-gray-900 leading-relaxed">충전하기</p>
+                <p className="text-xs font-bold text-gray-500 leading-relaxed">다음 리워드까지 {walletSummary.nextReward}냥 남았어요.</p>
+              </div>
+            </div>
+            <ChevronRight size={20} className="text-gray-300 shrink-0" />
+          </button>
+
+          <div className="mb-6">
+            <h2 className="text-lg font-black text-gray-900 mb-4">하냥 사용하기</h2>
+            <div className="grid grid-cols-2 gap-3">
+              {walletActions.map(action => (
+                <button
+                  key={action.title}
+                  type="button"
+                  onClick={() => alert(`${action.title} 기능은 준비 중입니다.`)}
+                  className="bg-white rounded-[1.75rem] p-5 min-h-[178px] border border-gray-100 shadow-sm text-left flex flex-col justify-between active:bg-gray-50"
+                >
+                  <div>
+                    <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#00307B] flex items-center justify-center mb-4">
+                      <action.icon size={23} strokeWidth={2.7} />
+                    </div>
+                    <h3 className="text-sm font-black text-gray-900 leading-snug break-keep">{action.title}</h3>
+                    <p className="text-[11px] font-bold text-gray-500 leading-relaxed mt-2 break-keep">{action.desc}</p>
+                  </div>
+                  <p className="text-[11px] font-black text-[#00307B] mt-4">{action.cost}</p>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-[1.75rem] bg-white border border-gray-100 p-5 shadow-sm">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-black text-gray-900">최근 하냥 내역</h2>
+              <span className="text-[11px] font-black text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">임시 데이터</span>
+            </div>
+            {[
+              { label: '활동 일지 작성 리워드', amount: '+80냥', tone: 'text-blue-600' },
+              { label: '커피챗 선물 예약', amount: '-300냥', tone: 'text-gray-800' },
+            ].map(item => (
+              <div key={item.label} className="flex items-center justify-between py-3 border-t border-gray-50">
+                <p className="text-sm font-bold text-gray-700">{item.label}</p>
+                <p className={`text-sm font-black ${item.tone}`}>{item.amount}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderPremiumSubscription = () => (
+    <div className="absolute inset-0 z-50 bg-white animate-fade-in-up overflow-y-auto">
+      <section className="bg-[#243985] text-white px-6 pt-7 pb-12 rounded-b-[2.5rem]">
+        <button
+          type="button"
+          onClick={() => setCurrentScreen('settings')}
+          aria-label="마이페이지로 돌아가기"
+          className="w-14 h-14 bg-white/15 hover:bg-white/20 rounded-3xl flex items-center justify-center transition-colors"
+        >
+          <ChevronLeft size={30} strokeWidth={3} />
+        </button>
+
+        <div className="mt-14 text-center">
+          <p className="text-blue-100 text-xs font-black tracking-[0.18em] mb-5">HY ROAD PLUS</p>
+          <h1 className="text-white text-3xl font-black tracking-normal leading-tight">HY-ROAD PREMIUM</h1>
+          <p className="mt-8 text-[15px] font-bold leading-[1.9] tracking-normal text-blue-50 break-keep">
+            <span className="block">로드맵, 일정, 활동 기록을 기반으로</span>
+            <span className="block mt-2">더 깊은 추천과 브리핑을 받아보세요.</span>
+          </p>
+
+          <div className="mt-8 grid grid-cols-2 gap-4">
+            {[
+              { label: '월 구독', price: '3,900원' },
+              { label: '학기 구독', price: '14,900원' },
+            ].map(plan => (
+              <button
+                key={plan.label}
+                type="button"
+                className="rounded-[1.5rem] bg-white/10 border border-white/25 px-4 py-6 text-center shadow-[0_12px_32px_rgba(0,0,0,0.14)] active:bg-white/20 transition-colors"
+              >
+                <span className="block text-sm font-black tracking-normal leading-relaxed text-blue-50 mb-4">{plan.label}</span>
+                <span className="block text-3xl font-black tracking-normal leading-none">{plan.price}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white px-6 pt-7 pb-12 text-gray-900">
+        <h2 className="text-xl font-black text-center leading-relaxed tracking-normal mb-6">맞춤 활동 브리핑</h2>
+        <div className="space-y-4">
+          {[
+            '내 로드맵과 진로 목표에 맞춘 활동을 우선순위로 정리해 드립니다.',
+            '다가오는 마감 일정과 준비 포인트를 보기 쉽게 묶어 제공합니다.',
+            '활동 기록을 바탕으로 다음에 채워야 할 경험을 추천합니다.',
+          ].map((feature, index) => (
+            <div key={index} className="flex items-start gap-3 rounded-2xl bg-gray-50 px-4 py-4 border border-gray-100">
+              <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-[#00307B]" />
+              <p className="text-[13px] font-bold leading-[1.75] tracking-normal text-gray-600 break-keep text-left">{feature}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+
   const renderSettings = () => (
     <div className="p-6 pt-10 animate-fade-in-up">
       <h1 className="text-2xl font-black mb-8">마이 페이지</h1>
@@ -1838,6 +2022,19 @@ export default function App() {
         <p className="text-sm text-gray-400 font-bold mt-1">{userProfile.department} • {userProfile.studentId}학번</p>
         <div className="mt-4 inline-block px-4 py-2 bg-blue-50 text-[#00307B] rounded-2xl text-xs font-black">{userProfile.careerSub} 목표</div>
       </div>
+
+      <button
+        type="button"
+        onClick={() => setCurrentScreen('premium')}
+        className="w-full bg-[#00307B] text-white p-6 rounded-[2rem] mb-8 flex items-center justify-between shadow-lg shadow-blue-900/10 active:bg-blue-900 transition-colors"
+      >
+        <div className="text-left">
+          <p className="text-[11px] font-black text-blue-200 tracking-[0.12em] mb-2">HY ROAD PLUS</p>
+          <h3 className="text-lg font-black leading-relaxed tracking-normal">프리미엄 구독하기</h3>
+          <p className="text-xs font-bold text-blue-100 leading-relaxed mt-2 break-keep">더 깊은 추천과 활동 브리핑을 받아보세요.</p>
+        </div>
+        <ChevronRight size={24} className="shrink-0 text-blue-100" />
+      </button>
 
       <div className="bg-white rounded-[2rem] p-6 shadow-sm border border-gray-100 mb-8">
         <div className="flex items-start justify-between gap-3 mb-5">
@@ -1992,15 +2189,17 @@ export default function App() {
 
         {currentScreen === 'auth' && renderAuth()}
         {currentScreen === 'onboarding' && renderOnboarding()}
+        {currentScreen === 'premium' && renderPremiumSubscription()}
 
-        <div className={`absolute inset-0 transition-opacity duration-300 ${currentScreen !== 'auth' && currentScreen !== 'onboarding' && currentScreen !== 'splash' ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`absolute inset-0 transition-opacity duration-300 ${currentScreen !== 'auth' && currentScreen !== 'onboarding' && currentScreen !== 'splash' && currentScreen !== 'premium' ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
           <ScreenWrapper isActive={currentScreen === 'home'}>{renderHome()}</ScreenWrapper>
           <ScreenWrapper isActive={currentScreen === 'roadmap'}>{renderRoadmap()}</ScreenWrapper>
+          <ScreenWrapper isActive={currentScreen === 'hanyang'}>{renderHanyangWallet()}</ScreenWrapper>
           <ScreenWrapper isActive={currentScreen === 'settings'}>{renderSettings()}</ScreenWrapper>
           
           {/* Bottom Tab Bar */}
           <div className="absolute bottom-0 w-full bg-white/80 backdrop-blur-xl border-t border-gray-100 px-8 py-4 pb-8 flex justify-around items-center z-40">
-            {[{ id: 'home', icon: Home, label: '가이드' }, { id: 'roadmap', icon: Map, label: '로드맵' }, { id: 'settings', icon: 'MY' }].map(tab => {
+            {[{ id: 'home', icon: Home, label: '홈' }, { id: 'roadmap', icon: Map, label: '로드맵' }, { id: 'hanyang', icon: Wallet, label: '하냥' }, { id: 'settings', icon: Settings, label: '설정' }].map(tab => {
               const isActive = currentScreen === tab.id;
               return (
                 <button key={tab.id} onClick={() => setCurrentScreen(tab.id)} className={`flex flex-col items-center gap-1 transition-all ${isActive ? 'scale-110' : 'opacity-40 hover:opacity-100'}`}>

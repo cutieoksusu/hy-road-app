@@ -9,9 +9,14 @@ initializeApp();
 const db = getFirestore();
 const COLLECTION = 'opportunities';
 const MAX_ITEMS_PER_SOURCE = 30;
+const MAX_DAILY_ITEMS = MAX_ITEMS_PER_SOURCE * 8;
+const STORED_QUERY_LIMIT = 120;
 const DEFAULT_REGION = 'asia-northeast3';
 const CACHE_COLLECTION = 'opportunityQueryCache';
-const DEFAULT_CACHE_TTL_MINUTES = 15;
+const META_COLLECTION = 'opportunityMeta';
+const DAILY_CRAWLER_META_DOC = 'dailyCrawler';
+const DEFAULT_CACHE_TTL_MINUTES = 60 * 24;
+const DEFAULT_DAILY_SCHEDULE = '0 7 * * *';
 
 const CAREER_KEYWORDS = {
   'IT/소프트웨어': ['IT', '소프트웨어', '개발', '인공지능', 'AI', '데이터', '해커톤', '프로그래밍'],
@@ -26,8 +31,14 @@ const CAREER_KEYWORDS = {
 };
 
 const BASE_KEYWORDS = ['공모전', '해커톤', '대외활동', '인턴십'];
+const DEFAULT_CRAWL_CAREERS = Object.keys(CAREER_KEYWORDS);
 
-const toArray = (value) => (Array.isArray(value) ? value : []);
+const toArray = (value) => {
+  if (Array.isArray(value)) return value;
+  if (typeof value === 'string') return value.split(',').map((item) => item.trim()).filter(Boolean);
+  if (value && typeof value === 'object') return [value];
+  return [];
+};
 
 const uniq = (values) => [...new Set(values.filter(Boolean).map((value) => String(value).trim()).filter(Boolean))];
 
@@ -133,6 +144,14 @@ const readJsonEnv = (name, fallback) => {
     logger.warn(`${name} 환경변수를 JSON으로 해석하지 못했습니다.`, { message: error.message });
     return fallback;
   }
+};
+
+const getConfiguredCrawlCareers = () => {
+  const configured = readJsonEnv('OPPORTUNITY_CRAWL_CAREERS', null);
+  if (Array.isArray(configured) && configured.length > 0) {
+    return uniq(configured);
+  }
+  return DEFAULT_CRAWL_CAREERS;
 };
 
 const buildOpportunityQueries = (career) => {
@@ -262,22 +281,38 @@ const fetchAllowedSources = async ({ career } = {}) => (await Promise.all([
   fetchPermittedFeeds(),
 ])).flat();
 
-export const collectOpportunitiesNow = async () => {
-  const rawItems = await fetchAllowedSources();
+const getTimestampMillis = (value) => {
+  if (!value) return 0;
+  if (typeof value.toMillis === 'function') return value.toMillis();
+  if (typeof value.toDate === 'function') return value.toDate().getTime();
+  if (value instanceof Date && !Number.isNaN(value.getTime())) return value.getTime();
+  const parsed = Date.parse(String(value));
+  return Number.isNaN(parsed) ? 0 : parsed;
+};
 
-  const normalized = rawItems.map(normalizeItem).filter(Boolean).slice(0, 200);
-  const uniqueMap = new Map(normalized.map((item) => [item.id, item]));
-  const uniqueItems = [...uniqueMap.values()]
-    .sort((a, b) => (b.publishedAt?.toMillis?.() || 0) - (a.publishedAt?.toMillis?.() || 0))
-    .slice(0, MAX_ITEMS_PER_SOURCE * 6);
+const getFreshnessMillis = (item) => (
+  getTimestampMillis(item.publishedAt)
+    || getTimestampMillis(item.collectedAt)
+    || getTimestampMillis(item.updatedAt)
+);
 
-  if (uniqueItems.length === 0) {
-    logger.info('수집된 공모전/해커톤 데이터가 없습니다. API 키와 허가 피드 설정을 확인하세요.');
-    return { saved: 0 };
+const fetchDailySources = async ({ careers }) => {
+  const [publicItems, permittedItems] = await Promise.all([
+    fetchPublicDataPortal(),
+    fetchPermittedFeeds(),
+  ]);
+  const searchItems = [];
+
+  for (const career of careers) {
+    searchItems.push(...await fetchNaverSearch({ career }));
   }
 
+  return [...publicItems, ...permittedItems, ...searchItems];
+};
+
+const saveOpportunityItems = async (items) => {
   const writer = db.bulkWriter();
-  uniqueItems.forEach((item) => {
+  items.forEach((item) => {
     const { id, ...data } = item;
     writer.set(db.collection(COLLECTION).doc(id), {
       ...data,
@@ -286,8 +321,54 @@ export const collectOpportunitiesNow = async () => {
     }, { merge: true });
   });
   await writer.close();
-  logger.info('opportunities 컬렉션 저장 완료', { count: uniqueItems.length });
-  return { saved: uniqueItems.length };
+  return items.length;
+};
+
+const clearCachedQueries = async () => {
+  const snapshot = await db.collection(CACHE_COLLECTION).limit(300).get();
+  if (snapshot.empty) return 0;
+
+  const writer = db.bulkWriter();
+  snapshot.docs.forEach((item) => writer.delete(item.ref));
+  await writer.close();
+  return snapshot.size;
+};
+
+const saveCrawlerMeta = async ({ saved, careers }) => {
+  await db.collection(META_COLLECTION).doc(DAILY_CRAWLER_META_DOC).set({
+    saved,
+    careers,
+    schedule: process.env.OPPORTUNITY_CRAWL_SCHEDULE || DEFAULT_DAILY_SCHEDULE,
+    lastCollectedAt: FieldValue.serverTimestamp(),
+  }, { merge: true });
+};
+
+export const collectOpportunitiesNow = async ({ careers } = {}) => {
+  const crawlCareers = uniq(careers?.length ? careers : getConfiguredCrawlCareers());
+  const rawItems = await fetchDailySources({ careers: crawlCareers });
+
+  const normalized = rawItems.map(normalizeItem).filter(Boolean);
+  const uniqueMap = new Map(normalized.map((item) => [item.id, item]));
+  const uniqueItems = [...uniqueMap.values()]
+    .sort((a, b) => getFreshnessMillis(b) - getFreshnessMillis(a))
+    .slice(0, MAX_DAILY_ITEMS);
+
+  if (uniqueItems.length === 0) {
+    logger.info('수집된 공모전/해커톤 데이터가 없습니다. API 키와 허가 피드 설정을 확인하세요.');
+    await saveCrawlerMeta({ saved: 0, careers: crawlCareers });
+    return { saved: 0, careers: crawlCareers.length };
+  }
+
+  const saved = await saveOpportunityItems(uniqueItems);
+  const cacheCleared = await clearCachedQueries();
+  await saveCrawlerMeta({ saved, careers: crawlCareers });
+
+  logger.info('opportunities 컬렉션 일일 업데이트 완료', {
+    count: saved,
+    careers: crawlCareers.length,
+    cacheCleared,
+  });
+  return { saved, careers: crawlCareers.length, cacheCleared };
 };
 
 
@@ -296,6 +377,12 @@ const timestampToIso = (value) => {
   if (typeof value.toDate === 'function') return value.toDate().toISOString();
   if (value instanceof Date && !Number.isNaN(value.getTime())) return value.toISOString();
   return String(value);
+};
+
+const getSourceLabel = (sourceType) => {
+  if (sourceType === 'public-data-portal') return '매일 업데이트 · 공공데이터 API';
+  if (sourceType?.includes('naver')) return '매일 업데이트 · 검색 API';
+  return '매일 업데이트 · 허가 피드';
 };
 
 const toClientItem = (item) => ({
@@ -307,12 +394,10 @@ const toClientItem = (item) => ({
   summary: item.summary,
   deadline: timestampToIso(item.deadline),
   publishedAt: timestampToIso(item.publishedAt),
+  collectedAt: timestampToIso(item.collectedAt),
+  updatedAt: timestampToIso(item.updatedAt || item.collectedAt),
   careerTags: item.careerTags || [],
-  dynamicReason: item.sourceType === 'public-data-portal'
-    ? '공공데이터 API'
-    : item.sourceType?.includes('naver')
-      ? '검색 API 실시간 조회'
-      : '허가 피드',
+  dynamicReason: getSourceLabel(item.sourceType),
 });
 
 const getCacheTtlMs = () => {
@@ -326,29 +411,68 @@ const getCachedQuery = async (career) => {
   const data = snapshot.data();
   const cachedAt = data.cachedAt?.toDate?.();
   if (!cachedAt || Date.now() - cachedAt.getTime() > getCacheTtlMs()) return null;
-  return toArray(data.items);
+  return {
+    items: toArray(data.items),
+    source: data.source || 'cache',
+    updatedAt: timestampToIso(data.updatedAt),
+  };
 };
 
-const saveCachedQuery = async (career, items) => {
+const saveCachedQuery = async (career, items, meta = {}) => {
   await db.collection(CACHE_COLLECTION).doc(Buffer.from(career).toString('base64url')).set({
     career,
     items,
+    ...meta,
     cachedAt: FieldValue.serverTimestamp(),
   }, { merge: true });
 };
 
+const getCareerMatchScore = (item, career) => {
+  const normalizedCareer = String(career || '').trim().toLowerCase();
+  if (!normalizedCareer) return 0;
+
+  const careerTags = toArray(item.careerTags).map((tag) => String(tag).trim().toLowerCase());
+  const keywords = toArray(item.keywords).map((keyword) => String(keyword).trim().toLowerCase());
+  const searchable = [
+    item.title,
+    item.summary,
+    item.type,
+    item.source,
+    ...careerTags,
+    ...keywords,
+  ].join(' ').toLowerCase();
+
+  if (careerTags.includes(normalizedCareer)) return 4;
+  if (searchable.includes(normalizedCareer)) return 3;
+
+  const relatedKeywords = CAREER_KEYWORDS[career] || [];
+  if (relatedKeywords.some((keyword) => searchable.includes(keyword.toLowerCase()))) return 2;
+  return 0;
+};
+
 const rankForCareer = (items, career) => {
-  const normalizedCareer = String(career || '').toLowerCase();
   return [...items]
     .filter((item) => item.active !== false)
     .sort((a, b) => {
-      const aText = `${a.title} ${(a.careerTags || []).join(' ')}`.toLowerCase();
-      const bText = `${b.title} ${(b.careerTags || []).join(' ')}`.toLowerCase();
-      const aCareerMatch = normalizedCareer && aText.includes(normalizedCareer) ? 1 : 0;
-      const bCareerMatch = normalizedCareer && bText.includes(normalizedCareer) ? 1 : 0;
-      if (aCareerMatch !== bCareerMatch) return bCareerMatch - aCareerMatch;
-      return (b.publishedAt?.toMillis?.() || 0) - (a.publishedAt?.toMillis?.() || 0);
+      const aCareerScore = getCareerMatchScore(a, career);
+      const bCareerScore = getCareerMatchScore(b, career);
+      if (aCareerScore !== bCareerScore) return bCareerScore - aCareerScore;
+      return getFreshnessMillis(b) - getFreshnessMillis(a);
     });
+};
+
+const loadStoredOpportunities = async ({ career, maxItems }) => {
+  const snapshot = await db.collection(COLLECTION)
+    .orderBy('publishedAt', 'desc')
+    .limit(STORED_QUERY_LIMIT)
+    .get();
+  const items = snapshot.docs.map((item) => ({ id: item.id, ...item.data() }));
+  return rankForCareer(items, career).slice(0, maxItems);
+};
+
+const getCrawlerMeta = async () => {
+  const snapshot = await db.collection(META_COLLECTION).doc(DAILY_CRAWLER_META_DOC).get();
+  return snapshot.exists ? snapshot.data() : {};
 };
 
 const setCorsHeaders = (response) => {
@@ -359,7 +483,7 @@ const setCorsHeaders = (response) => {
 };
 
 export const collectOpportunities = onSchedule({
-  schedule: 'every 6 hours',
+  schedule: process.env.OPPORTUNITY_CRAWL_SCHEDULE || DEFAULT_DAILY_SCHEDULE,
   timeZone: 'Asia/Seoul',
   region: process.env.FUNCTION_REGION || DEFAULT_REGION,
   memory: '512MiB',
@@ -373,7 +497,10 @@ export const refreshOpportunities = onCall({
   if (!request.auth?.uid) {
     throw new HttpsError('unauthenticated', '로그인한 사용자만 수집을 수동 실행할 수 있습니다.');
   }
-  return collectOpportunitiesNow();
+  const requestedCareers = uniq(toArray(request.data?.careers)).slice(0, 20);
+  return collectOpportunitiesNow({
+    careers: requestedCareers.length ? requestedCareers : undefined,
+  });
 });
 
 
@@ -393,24 +520,58 @@ export const getOpportunities = onRequest({
   }
 
   const career = stripHtml(request.query.career || request.query.careerSub || '관심 진로');
-  const maxItems = Math.min(Number(request.query.maxItems) || 12, 30);
+  const maxItems = Math.min(Math.max(Number(request.query.maxItems) || 12, 1), 30);
 
   try {
     const cached = await getCachedQuery(career);
     if (cached) {
-      response.json({ items: cached.slice(0, maxItems), cached: true, career });
+      response.json({
+        items: cached.items.slice(0, maxItems),
+        cached: true,
+        career,
+        source: cached.source,
+        updatedAt: cached.updatedAt,
+      });
+      return;
+    }
+
+    const crawlerMeta = await getCrawlerMeta();
+    const storedItems = await loadStoredOpportunities({ career, maxItems });
+    if (storedItems.length) {
+      const items = storedItems.map(toClientItem);
+      const updatedAt = crawlerMeta.lastCollectedAt || storedItems[0].collectedAt || storedItems[0].updatedAt;
+      await saveCachedQuery(career, items, {
+        source: 'firestore-daily-crawl',
+        updatedAt,
+      });
+      response.json({
+        items,
+        cached: false,
+        career,
+        source: 'firestore-daily-crawl',
+        updatedAt: timestampToIso(updatedAt),
+      });
       return;
     }
 
     const rawItems = await fetchAllowedSources({ career });
     const normalized = rawItems.map(normalizeItem).filter(Boolean);
     const uniqueMap = new Map(normalized.map((item) => [item.id, item]));
-    const items = rankForCareer([...uniqueMap.values()], career)
-      .slice(0, maxItems)
-      .map(toClientItem);
+    const liveItems = rankForCareer([...uniqueMap.values()], career).slice(0, maxItems);
+    if (liveItems.length) await saveOpportunityItems(liveItems);
+    const items = liveItems.map(toClientItem);
 
-    await saveCachedQuery(career, items);
-    response.json({ items, cached: false, career });
+    await saveCachedQuery(career, items, {
+      source: 'live-api-fallback',
+      updatedAt: Timestamp.now(),
+    });
+    response.json({
+      items,
+      cached: false,
+      career,
+      source: 'live-api-fallback',
+      updatedAt: new Date().toISOString(),
+    });
   } catch (error) {
     logger.error('실시간 모집 정보 조회 실패', { message: error.message, career });
     response.status(500).json({ items: [], error: '모집 정보를 불러오지 못했습니다.' });
