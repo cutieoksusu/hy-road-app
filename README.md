@@ -49,59 +49,30 @@ npm run dev
 
 ## 최신 공모전/해커톤 데이터 수집
 
-홈 화면의 `liveActivities` 영역은 `VITE_OPPORTUNITY_API_URL`이 설정되어 있으면 앱 진입/진로 변경 시 HTTPS Function `getOpportunities`를 호출해 최신 공모전·해커톤 정보를 동적으로 받아옵니다. API 응답이 없을 때는 Firestore `opportunities` 컬렉션을 읽고, 그래도 데이터가 없거나 Firebase를 사용할 수 없을 때만 기존 플랫폼 검색 링크로 fallback합니다.
+Firebase Functions 결제가 필요하지 않도록, 최신 공고 수집은 GitHub Actions가 하루 1번 실행해서 `public/opportunities.json` 파일을 갱신하는 방식으로 동작합니다. 앱은 이 정적 JSON 파일을 읽고, 각 공고의 `recommendationTags`, `baseWeight`, `recommendedGrades`를 기존 추천 엔진에 섞어 전공/직무/학년별로 다시 정렬합니다.
 
-### Cloud Functions + Scheduler
+### GitHub Actions 자동 수집
 
-`functions/`에는 앱에서 호출하는 HTTPS Function `getOpportunities`와 6시간마다 실행되는 `collectOpportunities` 스케줄 함수가 포함되어 있습니다. `getOpportunities`는 요청받은 진로 키워드로 허가된 API를 실시간 조회하고, API 남용을 막기 위해 기본 15분 TTL 캐시를 사용합니다. 함수는 저작권 침해를 피하기 위해 HTML 무단 스크래핑을 하지 않고 다음 출처만 사용합니다.
+`.github/workflows/update-opportunities.yml`이 매일 03:00 KST에 실행됩니다.
 
-1. 공공데이터포털 Open API (`PUBLIC_DATA_SERVICE_KEY`, `PUBLIC_DATA_ENDPOINTS`)
-2. 검색 API (`NAVER_SEARCH_CLIENT_ID`, `NAVER_SEARCH_CLIENT_SECRET`)
-3. 명시적으로 사용 허가를 받은 JSON 피드 (`PERMITTED_FEEDS`)
-
-수집된 항목은 원문 전체를 저장하지 않고 `title`, `deadline`, `source`, `originalLink`, 앱이 직접 생성한 짧은 `summary`, `careerTags`만 Firestore `opportunities` 컬렉션에 저장합니다.
-
-Firebase Functions v2 배포 환경에서는 Secret Manager, `.env`/`.env.<project-id>` 파일, 또는 CI/CD 환경변수로 아래 값을 주입하세요.
+선택 GitHub Secret:
 
 ```bash
-PUBLIC_DATA_SERVICE_KEY="공공데이터포털_서비스키"
-NAVER_SEARCH_CLIENT_ID="검색_API_Client_ID"
-NAVER_SEARCH_CLIENT_SECRET="검색_API_Client_Secret"
-PUBLIC_DATA_ENDPOINTS='[{"name":"공공데이터포털 승인 API","url":"https://apis.data.go.kr/...","itemsPath":"response.body.items.item","fields":{"title":"title","url":"url","deadline":"endDate","publishedAt":"createdAt"}}]'
-PERMITTED_FEEDS='[{"name":"제휴 피드명","url":"https://partner.example.com/opportunities.json","itemsPath":"items","fields":{"title":"title","url":"url","deadline":"deadline","publishedAt":"publishedAt","careerTags":"careerTags"}}]'
-OPPORTUNITY_CACHE_TTL_MINUTES=15
-OPPORTUNITY_ALLOWED_ORIGIN="https://cutieoksusu.github.io"
+OPENAI_API_KEY
 ```
 
-배포:
+수집량과 OpenAI 사용량을 조절하고 싶으면 Repository Variables에 아래 값을 둘 수 있습니다.
 
 ```bash
-npm install --prefix functions
-firebase deploy --only functions
+OPENAI_MODEL=gpt-4o-mini
+OPPORTUNITY_AI_MAX_ITEMS=10
+OPPORTUNITY_MAX_ITEMS=1000
+LINKAREER_MAX_PAGES=80
+WEVITY_MAX_PAGES=30
 ```
 
-배포 후 프론트엔드 환경변수에 HTTPS Function URL을 넣어야 앱이 실제 API를 호출합니다.
+OpenAI 키가 없거나 실패해도 수집은 멈추지 않고 키워드 기반 태그/가중치로 fallback합니다.
 
-```bash
-VITE_OPPORTUNITY_API_URL=https://asia-northeast3-<project-id>.cloudfunctions.net/getOpportunities
-```
+수집기는 링커리어 공모전/대외활동 목록과 위비티 공모전/대외활동 목록을 여러 페이지 순회합니다. 저장 필드는 제목, 짧은 요약, 마감일, 본문 링크, 추천 태그/가중치입니다. 마감일을 찾지 못했거나 이미 마감된 항목, 오래된 상시 공고, 교육/채용성 글은 추천 피드에서 제외합니다.
 
-### Firestore 보안 규칙 예시
-
-`opportunities`는 앱 홈 화면에 표시되는 공개 모집 정보이므로 읽기는 허용하고, 쓰기는 Cloud Functions Admin SDK만 수행하도록 클라이언트 쓰기를 차단합니다.
-
-```txt
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /users/{userId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
-    }
-
-    match /opportunities/{opportunityId} {
-      allow read: if true;
-      allow write: if false;
-    }
-  }
-}
-```
+추천 로직은 전공/단과대/희망직무/학년을 태그 가중치로 합산한 뒤, 각 활동의 태그와 비교해 점수를 냅니다. 실시간 공고는 추가로 `matchedCareerSubs`에 사용자가 선택한 세부 직무가 포함된 경우에만 추천 후보에 들어갑니다. 맞는 공고가 없을 때 전체 공고를 대신 보여주지는 않습니다.

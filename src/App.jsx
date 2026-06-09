@@ -5,7 +5,8 @@ import {
   AlertCircle, ChevronLeft, Building, Target, Check, Sparkles, ExternalLink, Link as LinkIcon, Edit3, XCircle, Info, Award, FileText, Globe, Hourglass, Plus, Trash2, Loader2, Camera, PenTool, Image as ImageIcon,
   Wallet, Coffee, Gift, CreditCard
 } from 'lucide-react';
-import { recommendActivities } from './recommendationEngine';
+import { recommendActivities, scoreExternalOpportunity } from './recommendationEngine';
+import { ACTIVITIES } from './recommendationData';
 
 const CAMPUS_DATA = {
   SEOUL: {
@@ -133,7 +134,7 @@ const CAREER_CATEGORIES = [
   {
     categoryName: '전문직·공직·법무',
     subCategories: [
-      { subCategoryName: '전문직/법무', jobs: ['변호사(로스쿨)', '변리사', '노무사', '법무담당자'] },
+      { subCategoryName: '전문직/법무', jobs: ['변호사(로스쿨)', '변리사', '노무사', '법무사', '법무담당자'] },
       { subCategoryName: '공공/행정', jobs: ['공기업(NCS 준비)', '5급 행정고시', '5급 기술고시', '사회복지사', '사서'] },
     ],
   },
@@ -701,45 +702,6 @@ const getMilestoneTiming = (spec) => ({
   duration: getSpecDuration(spec),
 });
 
-const generatePlatformSearchLink = (careerSub, platformStr) => {
-  const keywordMap = {
-    'IT/소프트웨어': 'IT', '기획/마케팅': '마케팅', '식품/F&B': '식품', '패션/의류': '패션',
-    '금융/은행': '금융', '반도체/엔지니어링': '엔지니어', '공기업 (NCS)': '공공기관',
-    '로스쿨 (법조인)': '법무', '언론고시 (기자/PD)': '언론',
-  };
-  const keyword = keywordMap[careerSub] || careerSub || '대외활동';
-  const encoded = encodeURIComponent(keyword);
-
-  if (platformStr === '링커리어') return `https://linkareer.com/search?keyword=${encoded}&tab=activity`;
-  if (platformStr === '캠퍼스픽') return `https://www.campuspick.com/search?keyword=${encoded}`;
-  if (platformStr === '위비티') return `https://www.wevity.com/?c=find&s=1&gbn=viewok&ctg=21&sw=${encoded}`;
-  return '#';
-};
-
-const buildFallbackLiveActivities = (careerSub) => ([
-  {
-    title: `[${careerSub}] 링커리어 공고 바로가기`,
-    dDay: '실시간',
-    url: generatePlatformSearchLink(careerSub, '링커리어'),
-    source: '링커리어 검색',
-    summary: '실시간 API 응답이 없을 때만 제공되는 플랫폼 검색 링크입니다.',
-  },
-  {
-    title: `[${careerSub}] 캠퍼스픽 활동 바로가기`,
-    dDay: '실시간',
-    url: generatePlatformSearchLink(careerSub, '캠퍼스픽'),
-    source: '캠퍼스픽 검색',
-    summary: '실시간 API 응답이 없을 때만 제공되는 플랫폼 검색 링크입니다.',
-  },
-  {
-    title: `[${careerSub}] 위비티 공모전 바로가기`,
-    dDay: '실시간',
-    url: generatePlatformSearchLink(careerSub, '위비티'),
-    source: '위비티 검색',
-    summary: '실시간 API 응답이 없을 때만 제공되는 플랫폼 검색 링크입니다.',
-  },
-]);
-
 const normalizeLiveActivity = (item) => ({
   id: item.id || item.url || item.originalLink || item.title,
   title: item.title || '제목 확인 필요',
@@ -747,22 +709,62 @@ const normalizeLiveActivity = (item) => ({
   url: item.url || item.originalLink || '#',
   source: item.source || item.sourceName || '허가된 출처',
   summary: item.summary || '',
+  deadline: item.deadline || '',
+  recommendationTags: item.recommendationTags || item.tags || [],
+  weightedTags: item.weightedTags || {},
+  recommendationType: item.recommendationType || 'activity',
+  recommendationCat: item.recommendationCat || 'activity',
+  baseWeight: item.baseWeight || 6,
+  recommendedGrades: item.recommendedGrades || [1, 2, 3],
+  taggedBy: item.taggedBy || 'keyword',
   dynamicReason: item.dynamicReason || item.type || '실시간 API',
 });
 
-const fetchOpportunityApi = async ({ careerSub, signal }) => {
-  const apiUrl = import.meta.env.VITE_OPPORTUNITY_API_URL;
-  if (!apiUrl) return [];
+const toRecommendationActivity = (item) => {
+  const tags = item.recommendationTags || [];
+  if (!tags.length) return null;
+  return {
+    id: `opportunity-${item.id || item.url || item.title}`,
+    title: item.title,
+    cat: item.recommendationCat || 'activity',
+    type: item.recommendationType || 'activity',
+    tags,
+    baseWeight: item.baseWeight || 6,
+    recommendedGrades: item.recommendedGrades || [1, 2, 3],
+    source: item.source,
+    targetDate: item.deadline || '',
+    duration: '공고 확인',
+    desc: item.summary || '외부 API에서 수집한 최신 활동입니다.',
+    url: item.url || '#',
+    isExternalOpportunity: true,
+    taggedBy: item.taggedBy || 'keyword',
+    weightedTags: item.weightedTags || {},
+  };
+};
 
-  const url = new URL(apiUrl, window.location.origin);
-  url.searchParams.set('career', careerSub);
-  url.searchParams.set('maxItems', '12');
-
-  const response = await fetch(url, { signal });
-  if (!response.ok) throw new Error('opportunity-api-failed');
+const fetchStaticOpportunities = async ({ user, signal }) => {
+  const response = await fetch(`${import.meta.env.BASE_URL}opportunities.json`, {
+    signal,
+    cache: 'no-store',
+  });
+  if (!response.ok) return [];
 
   const data = await response.json();
-  return Array.isArray(data.items) ? data.items.map(normalizeLiveActivity) : [];
+  const items = Array.isArray(data.items) ? data.items : [];
+  const activeItems = items.filter((item) => item.active !== false);
+  return activeItems
+    .map((item) => {
+      const result = scoreExternalOpportunity(item, user || {});
+      return {
+        ...item,
+        score: result.score,
+        matchedTags: result.matchedTags,
+      };
+    })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score || (b.baseWeight || 0) - (a.baseWeight || 0))
+    .slice(0, 12)
+    .map(normalizeLiveActivity);
 };
 
 const ScreenWrapper = ({ children, isActive }) => (
@@ -876,6 +878,12 @@ export default function App() {
   // 나의 대외활동 일지 관리용 State
   const [journals, setJournals] = useState(() => readStoredValue(STORAGE_KEYS.journals, []));
   const [isJournalModalOpen, setIsJournalModalOpen] = useState(false);
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const [onboardingReturnScreen, setOnboardingReturnScreen] = useState(null);
+  const [selectedRoadmapBriefing, setSelectedRoadmapBriefing] = useState(null);
+  const [showAllLiveActivities, setShowAllLiveActivities] = useState(false);
+  const [showAllMilestones, setShowAllMilestones] = useState(false);
+  const [todayKey, setTodayKey] = useState(() => new Date().toDateString());
   
   // 스펙 사진 인증(OCR)용 State
   const [selectedSpec, setSelectedSpec] = useState('');
@@ -888,6 +896,7 @@ export default function App() {
   const [verificationSuccess, setVerificationSuccess] = useState(false);
 
   const [liveActivities, setLiveActivities] = useState([]);
+  const [opportunityActivities, setOpportunityActivities] = useState([]);
   const [isLoadingLive, setIsLoadingLive] = useState(false);
   const [firebaseUser, setFirebaseUser] = useState(null);
   const [authMode, setAuthMode] = useState('signin');
@@ -909,6 +918,29 @@ export default function App() {
 
   const handleProfileChange = (key, value) => setUserProfile(prev => ({ ...prev, [key]: value }));
   const handleCreditChange = (key, value) => setUserProfile(prev => ({ ...prev, credits: { ...prev.credits, [key]: value } }));
+  const openOnboarding = (step, returnScreen = null) => {
+    setOnboardingReturnScreen(returnScreen);
+    setOnboardingStep(step);
+    setCurrentScreen('onboarding');
+  };
+  const handleOnboardingBack = () => {
+    if (onboardingStep > 1) {
+      setOnboardingStep(step => step - 1);
+      return;
+    }
+    if (onboardingReturnScreen) {
+      setCurrentScreen(onboardingReturnScreen);
+      setOnboardingReturnScreen(null);
+    }
+  };
+  const handleOnboardingNext = () => {
+    if (onboardingStep === 8) {
+      setCurrentScreen(onboardingReturnScreen || 'home');
+      setOnboardingReturnScreen(null);
+      return;
+    }
+    setOnboardingStep(step => step + 1);
+  };
   const canContinueOnboarding = () => {
     if (onboardingStep === 1) return isAcademicProfileComplete(userProfile);
     if (onboardingStep === 2) return isBasicProfileComplete(userProfile);
@@ -989,6 +1021,12 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    const refreshTodayKey = () => setTodayKey(new Date().toDateString());
+    const timer = window.setInterval(refreshTodayKey, 60 * 1000);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
     if (splashFinished && currentScreen === 'splash') {
       setCurrentScreen('auth');
     }
@@ -1058,32 +1096,34 @@ export default function App() {
 
     let isMounted = true;
     const controller = new AbortController();
-    const fallbackLinks = buildFallbackLiveActivities(userProfile.careerSub);
 
     const loadLiveActivities = async () => {
       setIsLoadingLive(true);
       try {
-        const apiItems = await fetchOpportunityApi({
-          careerSub: userProfile.careerSub,
+        const staticItems = await fetchStaticOpportunities({
+          user: {
+            college: userProfile.college,
+            major: userProfile.department,
+            grade: userProfile.grade,
+            careerMain: userProfile.careerMain,
+            careerSub: userProfile.careerSub,
+          },
           signal: controller.signal,
         });
         if (!isMounted) return;
-        if (apiItems.length) {
-          setLiveActivities(apiItems);
+        if (staticItems.length) {
+          setLiveActivities(staticItems);
+          setOpportunityActivities(staticItems.map(toRecommendationActivity).filter(Boolean));
           return;
         }
 
-        if (!isFirebaseConfigured) {
-          setLiveActivities(fallbackLinks);
-          return;
-        }
-
-        const client = firebaseClient || await import('./firebase');
-        const remoteItems = await client.loadOpportunities({ careerSub: userProfile.careerSub });
-        if (!isMounted) return;
-        setLiveActivities(remoteItems.length ? remoteItems.map(normalizeLiveActivity) : fallbackLinks);
+        setLiveActivities([]);
+        setOpportunityActivities([]);
       } catch (error) {
-        if (isMounted && error.name !== 'AbortError') setLiveActivities(fallbackLinks);
+        if (isMounted && error.name !== 'AbortError') {
+          setLiveActivities([]);
+          setOpportunityActivities([]);
+        }
       } finally {
         if (isMounted) setIsLoadingLive(false);
       }
@@ -1094,7 +1134,7 @@ export default function App() {
       isMounted = false;
       controller.abort();
     };
-  }, [firebaseClient, userProfile.careerSub]);
+  }, [userProfile.careerSub, userProfile.careerMain, userProfile.college, userProfile.department, userProfile.grade, todayKey]);
 
   // OCR 사진 촬영 시뮬레이션 함수
   const simulatePhotoAuth = () => {
@@ -1148,6 +1188,7 @@ export default function App() {
         careerMain: userProfile.careerMain,
         careerSub: userProfile.careerSub,
       },
+      activities: [...ACTIVITIES, ...opportunityActivities],
       limit: 7,
     });
     const categorizedSpecs = specs.reduce((acc, spec) => {
@@ -1221,7 +1262,7 @@ export default function App() {
       courses: recommendedCourses, 
       gradInfo: req 
     };
-  }, [userProfile, achievedSpecs, customMilestones]);
+  }, [userProfile, achievedSpecs, customMilestones, opportunityActivities, todayKey]);
 
   const renderAuth = () => (
     <div className="absolute inset-0 z-50 bg-white flex flex-col h-full overflow-y-auto px-6 py-12">
@@ -1279,7 +1320,7 @@ export default function App() {
   const renderOnboarding = () => (
     <div className="absolute inset-0 z-50 bg-white flex flex-col h-full overflow-hidden">
       <div className="pt-12 px-6 pb-4 flex items-center justify-between sticky top-0 z-10 bg-white">
-        <button onClick={() => setOnboardingStep(s => Math.max(1, s - 1))} className="p-2"><ChevronLeft size={24} /></button>
+        <button onClick={handleOnboardingBack} className="p-2"><ChevronLeft size={24} /></button>
         <div className="flex gap-1 flex-1 px-8">{[1, 2, 3, 4, 5, 6, 7, 8].map(s => <div key={s} className={`h-1 flex-1 rounded-full ${s <= onboardingStep ? 'bg-[#00307B]' : 'bg-gray-200'}`}></div>)}</div>
       </div>
 
@@ -1613,7 +1654,7 @@ export default function App() {
       <div className="p-6 bg-white border-t sticky bottom-0 z-20">
         <button
           disabled={!canContinueOnboarding()}
-          onClick={() => onboardingStep === 8 ? setCurrentScreen('home') : setOnboardingStep(s => s + 1)}
+          onClick={handleOnboardingNext}
           className="w-full py-5 bg-[#00307B] disabled:bg-gray-300 disabled:shadow-none text-white font-black text-lg rounded-[2rem] shadow-xl transition-colors"
         >
           {onboardingStep === 8 ? '시작하기' : '다음 단계로'}
@@ -1626,11 +1667,77 @@ export default function App() {
     const data = userRoadmapData;
     if (!data) return null;
 
+    const upcomingMilestones = data.milestones
+      .filter(spec => typeof spec.dDay === 'string' && (spec.dDay.includes('D-') || spec.dDay === 'D-Day'))
+      .slice(0, 3)
+      .map(spec => ({
+        title: spec.title,
+        message: spec.dDay === 'D-Day' ? '오늘 마감되는 목표가 있어요.' : `${spec.dDay} 남은 목표를 확인해 보세요.`,
+        meta: spec.dDay,
+        tone: 'red',
+      }));
+    const liveActivityNotifications = liveActivities.slice(0, 2).map(live => ({
+      title: live.title,
+      message: live.dynamicReason || '새로운 활동 정보를 확인할 수 있어요.',
+      meta: 'LIVE',
+      tone: 'blue',
+    }));
+    const achievedNotifications = data.achieved.slice(0, 1).map(spec => ({
+      title: spec.title,
+      message: '달성한 스펙으로 표시되어 있어요.',
+      meta: '완료',
+      tone: 'green',
+    }));
+    const notifications = [...upcomingMilestones, ...liveActivityNotifications, ...achievedNotifications].slice(0, 6);
+    const visibleLiveActivities = showAllLiveActivities ? liveActivities : liveActivities.slice(0, 3);
+    const visibleMilestones = showAllMilestones ? data.milestones : data.milestones.slice(0, 3);
+
     return (
       <div className="p-6 pt-10 animate-fade-in-up">
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex justify-between items-center mb-8 relative">
           <div className="bg-[#00307B] text-white px-3 py-1 rounded-lg text-xs font-black tracking-widest">HY ROAD</div>
-          <Bell size={20} className="text-gray-400" />
+          <button
+            type="button"
+            onClick={() => setIsNotificationOpen(prev => !prev)}
+            aria-label="알림 열기"
+            aria-expanded={isNotificationOpen}
+            className={`relative h-10 w-10 rounded-2xl border flex items-center justify-center transition-all ${isNotificationOpen ? 'bg-[#00307B] border-[#00307B] text-white shadow-lg shadow-blue-100' : 'bg-white border-gray-100 text-gray-400 shadow-sm hover:text-[#00307B]'}`}
+          >
+            <Bell size={20} />
+            {notifications.length > 0 && (
+              <span className="absolute right-2 top-2 h-2.5 w-2.5 rounded-full bg-red-500 ring-2 ring-white" />
+            )}
+          </button>
+          {isNotificationOpen && (
+            <div className="absolute right-0 top-12 z-50 w-80 max-w-[calc(100vw-3rem)] rounded-[2rem] border border-gray-100 bg-white p-4 text-left shadow-2xl shadow-gray-200/80">
+              <div className="mb-3 flex items-center justify-between">
+                <div>
+                  <p className="text-[10px] font-black tracking-widest text-[#00307B]">NOTIFICATIONS</p>
+                  <h3 className="text-base font-black text-gray-900">알림</h3>
+                </div>
+                <span className="rounded-full bg-gray-100 px-2.5 py-1 text-[10px] font-black text-gray-500">{notifications.length}</span>
+              </div>
+              {notifications.length === 0 ? (
+                <div className="rounded-3xl border-2 border-dashed border-gray-100 bg-gray-50 px-5 py-8 text-center">
+                  <Bell size={28} className="mx-auto mb-3 text-gray-300" />
+                  <p className="text-sm font-black text-gray-600">알림이 오지 않았어요</p>
+                  <p className="mt-1 text-[11px] font-bold leading-relaxed text-gray-400">새로운 마감이나 추천 활동이 생기면 여기에 표시됩니다.</p>
+                </div>
+              ) : (
+                <div className="max-h-80 space-y-2 overflow-y-auto pr-1">
+                  {notifications.map((notification, idx) => (
+                    <div key={`${notification.title}-${idx}`} className="rounded-2xl border border-gray-100 bg-gray-50 p-3">
+                      <div className="mb-1.5 flex items-start justify-between gap-3">
+                        <p className="line-clamp-2 text-xs font-black leading-snug text-gray-900">{notification.title}</p>
+                        <span className={`shrink-0 rounded-full px-2 py-0.5 text-[9px] font-black ${notification.tone === 'red' ? 'bg-red-100 text-red-600' : notification.tone === 'green' ? 'bg-green-100 text-green-600' : 'bg-blue-100 text-[#00307B]'}`}>{notification.meta}</span>
+                      </div>
+                      <p className="text-[11px] font-bold leading-relaxed text-gray-500">{notification.message}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
         <h2 className="text-2xl font-black leading-tight mb-8">
           {userProfile.name}님을 위한<br/>
@@ -1648,22 +1755,35 @@ export default function App() {
               <Loader2 className="animate-spin text-blue-400 mb-2" size={24} />
               <p className="text-xs text-gray-500 font-bold">플랫폼 연결 중...</p>
             </div>
+          ) : liveActivities.length === 0 ? (
+            <div className="rounded-3xl border-2 border-dashed border-gray-100 bg-gray-50 px-5 py-8 text-center">
+              <Sparkles size={28} className="mx-auto mb-3 text-gray-300" />
+              <p className="text-sm font-black text-gray-700">해당 직무와 관련된 공모전/대외활동이 없습니다.</p>
+              <p className="mt-2 text-[11px] font-bold leading-relaxed text-gray-400">새로운 공고가 수집되면 이 영역에 자동으로 표시됩니다.</p>
+            </div>
           ) : (
             <div className="flex gap-3 overflow-x-auto pb-4 snap-x">
-              {liveActivities.map((live, idx) => (
+              {visibleLiveActivities.map((live, idx) => (
                 <a key={live.id || idx} href={live.url} target="_blank" rel="noreferrer" className="shrink-0 w-72 bg-white border border-gray-200 rounded-3xl p-5 shadow-sm snap-start hover:border-blue-300 transition-colors block">
                   <div className="flex justify-between items-center mb-3 gap-3">
                     <span className="text-[10px] font-black text-red-500 bg-red-50 px-2 py-1 rounded-md">{live.dDay || '일정 확인'}</span>
-                    <span className="text-[10px] text-gray-400 font-bold truncate">{live.source}</span>
+                    <span className="text-[10px] text-gray-400 font-bold truncate">{live.source || live.dynamicReason}</span>
                   </div>
                   <h4 className="font-black text-gray-900 text-sm leading-snug line-clamp-2 mb-3">{live.title}</h4>
-                  <p className="text-[11px] text-gray-500 font-bold leading-relaxed line-clamp-3 mb-4">{live.summary}</p>
+                  <p className="text-[11px] text-gray-500 font-bold leading-relaxed line-clamp-3 mb-4">{live.summary || live.dynamicReason || '추천 활동 정보를 확인해 보세요.'}</p>
                   <div className="flex items-center gap-1 text-[10px] font-black text-[#00307B]">
-                    원문 링크 <ExternalLink size={12} />
+                    <span>원문 링크</span>
+                    <span className="text-[9px] text-blue-400">{live.taggedBy === 'openai' ? 'AI 태그' : '키워드 태그'}</span>
+                    <ExternalLink size={12} />
                   </div>
                 </a>
               ))}
             </div>
+          )}
+          {liveActivities.length > 3 && (
+            <button type="button" onClick={() => setShowAllLiveActivities(prev => !prev)} className="w-full py-3 bg-white border border-blue-100 text-[#00307B] text-xs font-black rounded-2xl shadow-sm">
+              {showAllLiveActivities ? '접기' : `더보기 (${liveActivities.length - 3}개 더)`}
+            </button>
           )}
         </div>
 
@@ -1698,7 +1818,7 @@ export default function App() {
             <Target size={20} className="text-[#00307B]" /> 앞으로의 마일스톤
           </h3>
           <div className="space-y-4">
-            {data.milestones.map((spec, i) => (
+            {visibleMilestones.map((spec, i) => (
               <div key={i} className="bg-white border-2 border-gray-50 rounded-[2.5rem] p-6 shadow-sm group">
                 <div className="flex justify-between items-start mb-3">
                   <div className="flex items-center gap-2">
@@ -1728,6 +1848,11 @@ export default function App() {
               </div>
             ))}
           </div>
+          {data.milestones.length > 3 && (
+            <button type="button" onClick={() => setShowAllMilestones(prev => !prev)} className="w-full mt-4 py-3 bg-white border border-gray-200 text-gray-700 text-xs font-black rounded-2xl shadow-sm">
+              {showAllMilestones ? '접기' : `마일스톤 더보기 (${data.milestones.length - 3}개 더)`}
+            </button>
+          )}
         </div>
       </div>
     );
@@ -1739,6 +1864,13 @@ export default function App() {
 
     const req = data.gradInfo;
     const current = userProfile.credits;
+    const roadmapList = YEARLY_ROADMAP_DB[getCareerRecommendationKey(userProfile)] || YEARLY_ROADMAP_DB['default'];
+    const buildYearBriefing = (roadmap) => ([
+      { label: '추천 공모전', value: `${userProfile.careerSub} 문제 해결형 공모전`, desc: `${roadmap.grade}학년 단계에서는 결과물 1개를 남길 수 있는 팀 프로젝트형 공모전이 좋습니다.` },
+      { label: '추천 인턴십', value: `${userProfile.careerSub} 체험형/전환형 인턴`, desc: roadmap.grade >= 3 ? '실무 과제, 포트폴리오, 면접 경험을 동시에 쌓을 수 있는 공고를 우선 확인하세요.' : '저학년은 직무 탐색형 현장실습이나 단기 실습부터 시작하는 편이 부담이 적습니다.' },
+      { label: '준비 스펙', value: data.milestones[0]?.title || '어학/자격증 목표 1개 선정', desc: '마감일이 가까운 목표부터 캘린더에 넣고 주 단위로 체크하는 흐름을 추천합니다.' },
+      { label: '이번 달 액션', value: roadmap.items[0] || '로드맵 첫 과제 실행', desc: '학년 로드맵의 첫 항목을 한 달 안에 완료할 수 있는 작은 과제로 쪼개보세요.' },
+    ]);
 
     return (
       <div className="p-6 pt-10 animate-fade-in-up">
@@ -1758,7 +1890,7 @@ export default function App() {
         {/* 상세 졸업 사정표 */}
         <h3 className="font-black text-lg mb-6 flex items-center gap-2"><GraduationCap size={22} className="text-[#00307B]" /> 실시간 졸업 사정 상세</h3>
         <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-200 mb-10">
-          <div className="bg-indigo-50 p-4 border-b flex justify-between items-center"><h3 className="font-bold text-indigo-900 text-xs">한양대학교 졸업요건 기준</h3><button onClick={() => { setOnboardingStep(3); setCurrentScreen('onboarding'); }} className="text-[10px] bg-white text-indigo-700 px-2 py-1 rounded border font-bold flex items-center gap-1"><Edit3 size={10}/> 학점 수정</button></div>
+          <div className="bg-indigo-50 p-4 border-b flex justify-between items-center"><h3 className="font-bold text-indigo-900 text-xs">한양대학교 졸업요건 기준</h3><button onClick={() => openOnboarding(3, 'roadmap')} className="text-[10px] bg-white text-indigo-700 px-2 py-1 rounded border font-bold flex items-center gap-1"><Edit3 size={10}/> 학점 수정</button></div>
           <div className="p-4 bg-white overflow-x-auto"><table className="w-full text-left text-[11px] sm:text-xs border-collapse min-w-[280px]"><thead><tr className="border-b-2 border-gray-200 text-gray-500 font-bold"><th className="pb-2 w-1/3">항목</th><th className="pb-2 text-center">취득</th><th className="pb-2 text-center">배당</th><th className="pb-2 text-center">잔여</th><th className="pb-2 text-center">판정</th></tr></thead><tbody className="divide-y divide-gray-100">
             <tr><td className="py-2.5 font-bold text-gray-800">졸업학점</td><td className="text-center">{current.total}</td><td className="text-center text-gray-400">{req.total}</td><td className="text-center text-red-500">{getStatus(current.total, req.total).remain || ''}</td><td className="text-center">{getStatus(current.total, req.total).ui}</td></tr>
             <tr><td className="py-2.5 font-bold text-gray-800">전공학점</td><td className="text-center">{current.majorTotal}</td><td className="text-center text-gray-400">{req.majorTotal}</td><td className="text-center text-red-500">{getStatus(current.majorTotal, req.majorTotal).remain || ''}</td><td className="text-center">{getStatus(current.majorTotal, req.majorTotal).ui}</td></tr>
@@ -1802,10 +1934,10 @@ export default function App() {
           <Map size={22} className="text-[#00307B]" /> {userProfile.careerSub} 로드맵 지도
         </h3>
         <div className="relative pl-6 border-l-2 border-dashed border-blue-200 space-y-8 pb-4">
-          {(YEARLY_ROADMAP_DB[getCareerRecommendationKey(userProfile)] || YEARLY_ROADMAP_DB['default']).map((roadmap, idx) => (
+          {roadmapList.map((roadmap, idx) => (
             <div key={idx} className="relative">
               <div className="absolute -left-[33px] top-1 w-4 h-4 bg-white border-4 border-[#00307B] rounded-full z-10"></div>
-              <div className="bg-white rounded-[2rem] p-5 shadow-sm border-2 border-blue-50 relative ml-2 group hover:border-[#00307B] transition-colors">
+              <button type="button" onClick={() => setSelectedRoadmapBriefing(selectedRoadmapBriefing === idx ? null : idx)} className="w-full text-left bg-white rounded-[2rem] p-5 shadow-sm border-2 border-blue-50 relative ml-2 group hover:border-[#00307B] transition-colors">
                 <div className="absolute -left-3 top-2 w-0 h-0 border-t-[8px] border-t-transparent border-r-[12px] border-r-blue-50 border-b-[8px] border-b-transparent group-hover:border-r-[#00307B] transition-colors"></div>
                 <div className="absolute -left-2 top-2.5 w-0 h-0 border-t-[6px] border-t-transparent border-r-[9px] border-r-white border-b-[6px] border-b-transparent z-10"></div>
                 
@@ -1821,7 +1953,25 @@ export default function App() {
                     </li>
                   ))}
                 </ul>
-              </div>
+                <p className="mt-4 text-[10px] font-black text-[#00307B]">{selectedRoadmapBriefing === idx ? '브리핑 접기' : '활동 세부 브리핑 보기'}</p>
+              </button>
+              {selectedRoadmapBriefing === idx && (
+                <div className="ml-2 mt-3 rounded-[2rem] border border-blue-100 bg-blue-50/60 p-4 animate-fade-in-up">
+                  <div className="mb-3 flex items-center justify-between">
+                    <h4 className="text-sm font-black text-[#00307B]">{roadmap.grade}학년 활동 브리핑</h4>
+                    <span className="rounded-full bg-white px-2.5 py-1 text-[10px] font-black text-blue-500">맞춤 추천</span>
+                  </div>
+                  <div className="space-y-2">
+                    {buildYearBriefing(roadmap).map(item => (
+                      <div key={item.label} className="rounded-2xl bg-white p-3 shadow-sm">
+                        <p className="text-[10px] font-black text-blue-500">{item.label}</p>
+                        <p className="mt-1 text-sm font-black text-gray-900">{item.value}</p>
+                        <p className="mt-1 text-[11px] font-bold leading-relaxed text-gray-500">{item.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -1957,63 +2107,39 @@ export default function App() {
     );
   };
 
-  const renderPremiumSubscription = () => (
-    <div className="absolute inset-0 z-50 bg-white animate-fade-in-up overflow-y-auto">
-      <section className="bg-[#243985] text-white px-6 pt-7 pb-12 rounded-b-[2.5rem]">
-        <button
-          type="button"
-          onClick={() => setCurrentScreen('settings')}
-          aria-label="마이페이지로 돌아가기"
-          className="w-14 h-14 bg-white/15 hover:bg-white/20 rounded-3xl flex items-center justify-center transition-colors"
-        >
-          <ChevronLeft size={30} strokeWidth={3} />
-        </button>
+  const renderSettings = () => {
+    const today = new Date();
+    const calendarYear = today.getFullYear();
+    const calendarMonth = today.getMonth();
+    const monthStart = new Date(calendarYear, calendarMonth, 1);
+    const firstDay = monthStart.getDay();
+    const daysInMonth = new Date(calendarYear, calendarMonth + 1, 0).getDate();
+    const calendarCells = [
+      ...Array.from({ length: firstDay }, () => null),
+      ...Array.from({ length: daysInMonth }, (_, index) => index + 1),
+    ];
+    const calendarEvents = [
+      ...liveActivities.map(item => ({
+        title: item.title || item.source || '추천 활동',
+        date: item.targetDate || item.deadline,
+        tone: 'activity',
+        url: item.url,
+        source: item.source,
+      })),
+      ...((userRoadmapData?.milestones || []).map(item => ({
+        title: item.title,
+        date: item.targetDate,
+        tone: item.cat === 'lang' ? 'lang' : 'cert',
+        url: item.url,
+        source: item.source,
+      }))),
+    ].filter(event => {
+      if (!event.date) return false;
+      const date = new Date(event.date);
+      return date.getFullYear() === calendarYear && date.getMonth() === calendarMonth;
+    });
 
-        <div className="mt-14 text-center">
-          <p className="text-blue-100 text-xs font-black tracking-[0.18em] mb-5">HY ROAD PLUS</p>
-          <h1 className="text-white text-3xl font-black tracking-normal leading-tight">HY-ROAD PREMIUM</h1>
-          <p className="mt-8 text-[15px] font-bold leading-[1.9] tracking-normal text-blue-50 break-keep">
-            <span className="block">로드맵, 일정, 활동 기록을 기반으로</span>
-            <span className="block mt-2">더 깊은 추천과 브리핑을 받아보세요.</span>
-          </p>
-
-          <div className="mt-8 grid grid-cols-2 gap-4">
-            {[
-              { label: '월 구독', price: '3,900원' },
-              { label: '학기 구독', price: '14,900원' },
-            ].map(plan => (
-              <button
-                key={plan.label}
-                type="button"
-                className="rounded-[1.5rem] bg-white/10 border border-white/25 px-4 py-6 text-center shadow-[0_12px_32px_rgba(0,0,0,0.14)] active:bg-white/20 transition-colors"
-              >
-                <span className="block text-sm font-black tracking-normal leading-relaxed text-blue-50 mb-4">{plan.label}</span>
-                <span className="block text-3xl font-black tracking-normal leading-none">{plan.price}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white px-6 pt-7 pb-12 text-gray-900">
-        <h2 className="text-xl font-black text-center leading-relaxed tracking-normal mb-6">맞춤 활동 브리핑</h2>
-        <div className="space-y-4">
-          {[
-            '내 로드맵과 진로 목표에 맞춘 활동을 우선순위로 정리해 드립니다.',
-            '다가오는 마감 일정과 준비 포인트를 보기 쉽게 묶어 제공합니다.',
-            '활동 기록을 바탕으로 다음에 채워야 할 경험을 추천합니다.',
-          ].map((feature, index) => (
-            <div key={index} className="flex items-start gap-3 rounded-2xl bg-gray-50 px-4 py-4 border border-gray-100">
-              <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-[#00307B]" />
-              <p className="text-[13px] font-bold leading-[1.75] tracking-normal text-gray-600 break-keep text-left">{feature}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-    </div>
-  );
-
-  const renderSettings = () => (
+    return (
     <div className="p-6 pt-10 animate-fade-in-up">
       <h1 className="text-2xl font-black mb-8">마이 페이지</h1>
       <div className="bg-white rounded-[2.5rem] p-8 shadow-sm border border-gray-100 mb-8 text-center">
@@ -2022,19 +2148,6 @@ export default function App() {
         <p className="text-sm text-gray-400 font-bold mt-1">{userProfile.department} • {userProfile.studentId}학번</p>
         <div className="mt-4 inline-block px-4 py-2 bg-blue-50 text-[#00307B] rounded-2xl text-xs font-black">{userProfile.careerSub} 목표</div>
       </div>
-
-      <button
-        type="button"
-        onClick={() => setCurrentScreen('premium')}
-        className="w-full bg-[#00307B] text-white p-6 rounded-[2rem] mb-8 flex items-center justify-between shadow-lg shadow-blue-900/10 active:bg-blue-900 transition-colors"
-      >
-        <div className="text-left">
-          <p className="text-[11px] font-black text-blue-200 tracking-[0.12em] mb-2">HY ROAD PLUS</p>
-          <h3 className="text-lg font-black leading-relaxed tracking-normal">프리미엄 구독하기</h3>
-          <p className="text-xs font-bold text-blue-100 leading-relaxed mt-2 break-keep">더 깊은 추천과 활동 브리핑을 받아보세요.</p>
-        </div>
-        <ChevronRight size={24} className="shrink-0 text-blue-100" />
-      </button>
 
       <div className="bg-white rounded-[2rem] p-6 shadow-sm border border-gray-100 mb-8">
         <div className="flex items-start justify-between gap-3 mb-5">
@@ -2083,6 +2196,60 @@ export default function App() {
         {authMessage && <p className={`mt-4 p-3 rounded-xl text-[11px] font-bold ${syncStatus.includes('실패') || authMessage.includes('오류') || authMessage.includes('확인') ? 'bg-red-50 text-red-600' : 'bg-blue-50 text-[#00307B]'}`}>{authMessage}</p>}
       </div>
       
+      <div className="bg-white text-gray-900 rounded-[2rem] p-5 shadow-sm border border-blue-100 mb-8 overflow-hidden">
+        <div className="flex items-end justify-between mb-5">
+          <div>
+            <p className="text-[10px] font-black tracking-widest text-[#00307B]">MONTHLY PLAN</p>
+            <h3 className="text-3xl font-black text-gray-900">{monthStart.toLocaleString('en-US', { month: 'short' })}</h3>
+          </div>
+          <Calendar size={24} className="text-[#00307B]" />
+        </div>
+        <div className="grid grid-cols-7 border-b border-blue-100 pb-2 mb-2">
+          {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, idx) => (
+            <div key={`${day}-${idx}`} className="text-center text-[11px] font-black text-gray-400">{day}</div>
+          ))}
+        </div>
+        <div className="grid grid-cols-7 gap-y-2">
+          {calendarCells.map((day, idx) => {
+            const events = day ? calendarEvents.filter(event => new Date(event.date).getDate() === day).slice(0, 2) : [];
+            const isToday = day === today.getDate();
+            return (
+              <div key={idx} className="min-h-[54px] px-0.5">
+                {day && (
+                  <>
+                    <div className={`mx-auto mb-1 flex h-6 w-6 items-center justify-center rounded-full text-xs font-black ${isToday ? 'bg-[#00307B] text-white' : 'text-gray-900'}`}>{day}</div>
+                    <div className="space-y-1">
+                      {events.map((event, eventIdx) => (
+                        event.url && event.url !== '#' ? (
+                          <a
+                            key={`${event.title}-${eventIdx}`}
+                            href={event.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            title={`${event.title}${event.source ? ` · ${event.source}` : ''}`}
+                            className={`block truncate rounded-md px-1.5 py-0.5 text-[8px] font-black ${event.tone === 'activity' ? 'bg-blue-100 text-[#00307B]' : 'bg-[#00307B] text-white'}`}
+                          >
+                            {event.title}
+                          </a>
+                        ) : (
+                          <div
+                            key={`${event.title}-${eventIdx}`}
+                            title={`${event.title}${event.source ? ` · ${event.source}` : ''}`}
+                            className={`truncate rounded-md px-1.5 py-0.5 text-[8px] font-black ${event.tone === 'activity' ? 'bg-blue-100 text-[#00307B]' : 'bg-[#00307B] text-white'}`}
+                          >
+                            {event.title}
+                          </div>
+                        )
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
       {/* 나의 대외활동 일지 관리 섹션 */}
       <div className="mb-8">
         <div className="flex justify-between items-end mb-4">
@@ -2116,9 +2283,18 @@ export default function App() {
         )}
       </div>
 
+      <button type="button" onClick={() => setCurrentScreen('subscription')} className="w-full mb-8 bg-white text-gray-900 p-5 rounded-[2rem] flex items-center justify-between shadow-sm border border-blue-100 active:scale-[0.99] transition-transform">
+        <div className="text-left">
+          <p className="text-[10px] font-black tracking-widest text-[#00307B]">PREMIUM</p>
+          <p className="mt-1 text-base font-black">구독 페이지로 이동</p>
+          <p className="mt-1 text-[11px] font-bold text-gray-500">맞춤 자소서, 영상 통화, 심층 활동 추천을 확인하세요.</p>
+        </div>
+        <ChevronRight size={22} className="text-[#00307B]" />
+      </button>
+
       <div className="space-y-3">
         {[{ icon: GraduationCap, label: '학적 및 이수학점 수정', step: 1 }, { icon: Award, label: '보유 스펙 관리', step: 7 }, { icon: Target, label: '진로 목표 변경', step: 4 }].map((item, i) => (
-          <button key={i} onClick={() => { setOnboardingStep(item.step); setCurrentScreen('onboarding'); }} className="w-full bg-white p-6 rounded-3xl flex items-center justify-between border border-gray-50 shadow-sm active:bg-gray-50">
+          <button key={i} onClick={() => openOnboarding(item.step, 'settings')} className="w-full bg-white p-6 rounded-3xl flex items-center justify-between border border-gray-50 shadow-sm active:bg-gray-50">
             <div className="flex items-center gap-4">
               <div className="p-2 bg-gray-50 rounded-xl text-gray-400"><item.icon size={20}/></div>
               <span className="font-bold text-gray-800">{item.label}</span>
@@ -2173,6 +2349,57 @@ export default function App() {
          </div>
       )}
     </div>
+    );
+  };
+
+  const renderSubscription = () => (
+    <div className="min-h-full bg-white animate-fade-in-up">
+      <div className="relative overflow-hidden bg-[#00307B] px-6 pb-10 pt-10 text-white">
+        <button type="button" onClick={() => setCurrentScreen('settings')} className="mb-8 flex h-10 w-10 items-center justify-center rounded-2xl bg-white/15 text-white">
+          <ChevronLeft size={22} />
+        </button>
+        <p className="text-[11px] font-black tracking-widest text-blue-200">HY ROAD PLUS</p>
+        <h1 className="mt-4 text-2xl font-black leading-tight text-white">HY-ROAD PREMIUM</h1>
+        <p className="mt-6 text-sm font-bold leading-[1.9] text-blue-100 break-keep">
+          <span className="block">로드맵, 일정, 활동 기록을 기반으로</span>
+          <span className="mt-1.5 block">더 깊은 추천과 브리핑을 받아보세요.</span>
+        </p>
+        <div className="mt-7 grid grid-cols-2 gap-3">
+          <div className="rounded-2xl border border-white/20 bg-white/10 px-4 py-5">
+            <p className="text-xs font-black leading-relaxed text-blue-100">월 구독</p>
+            <p className="mt-3 text-2xl font-black leading-none text-white">3,900원</p>
+          </div>
+          <div className="rounded-2xl border border-white/30 bg-white/20 px-4 py-5">
+            <p className="text-xs font-black leading-relaxed text-blue-100">학기 구독</p>
+            <p className="mt-3 text-2xl font-black leading-none text-white">14,900원</p>
+          </div>
+        </div>
+      </div>
+      <div className="-mt-6 rounded-t-[2.5rem] bg-white px-6 pb-28 pt-8">
+        <div className="space-y-5">
+          {[
+            { title: '맞춤 활동 브리핑', desc: '학년별 공모전, 인턴십, 자격증 우선순위를 정리합니다.' },
+            { title: '자소서/면접 코칭', desc: '활동 일지를 기반으로 자기소개서 소재를 뽑아줍니다.' },
+            { title: '일정 알림 강화', desc: 'D-Day와 대외활동 마감 일정을 놓치지 않게 관리합니다.' },
+            { title: '광고 제거', desc: '더 조용하고 집중하기 쉬운 화면으로 사용할 수 있습니다.' },
+          ].map(item => (
+            <div key={item.title} className="flex items-start gap-4">
+              <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[#00307B]">
+                <CheckCircle2 size={18} />
+              </div>
+              <div>
+                <p className="text-sm font-black text-gray-900">{item.title}</p>
+                <p className="mt-1 text-xs font-bold leading-relaxed text-gray-500">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <button type="button" className="mt-8 w-full rounded-2xl bg-[#00307B] py-4 text-sm font-black text-white shadow-lg shadow-blue-200">
+          부스트 구독 시작하기
+        </button>
+        <p className="mt-4 text-center text-[11px] font-bold text-gray-400">언제든지 MY 페이지에서 구독 상태를 확인할 수 있어요.</p>
+      </div>
+    </div>
   );
 
   return (
@@ -2189,16 +2416,16 @@ export default function App() {
 
         {currentScreen === 'auth' && renderAuth()}
         {currentScreen === 'onboarding' && renderOnboarding()}
-        {currentScreen === 'premium' && renderPremiumSubscription()}
 
-        <div className={`absolute inset-0 transition-opacity duration-300 ${currentScreen !== 'auth' && currentScreen !== 'onboarding' && currentScreen !== 'splash' && currentScreen !== 'premium' ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`absolute inset-0 transition-opacity duration-300 ${currentScreen !== 'auth' && currentScreen !== 'onboarding' && currentScreen !== 'splash' ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
           <ScreenWrapper isActive={currentScreen === 'home'}>{renderHome()}</ScreenWrapper>
           <ScreenWrapper isActive={currentScreen === 'roadmap'}>{renderRoadmap()}</ScreenWrapper>
           <ScreenWrapper isActive={currentScreen === 'hanyang'}>{renderHanyangWallet()}</ScreenWrapper>
           <ScreenWrapper isActive={currentScreen === 'settings'}>{renderSettings()}</ScreenWrapper>
+          <ScreenWrapper isActive={currentScreen === 'subscription'}>{renderSubscription()}</ScreenWrapper>
           
           {/* Bottom Tab Bar */}
-          <div className="absolute bottom-0 w-full bg-white/80 backdrop-blur-xl border-t border-gray-100 px-8 py-4 pb-8 flex justify-around items-center z-40">
+          <div className={`absolute bottom-0 w-full bg-white/80 backdrop-blur-xl border-t border-gray-100 px-8 py-4 pb-8 justify-around items-center z-40 ${currentScreen === 'subscription' ? 'hidden' : 'flex'}`}>
             {[{ id: 'home', icon: Home, label: '홈' }, { id: 'roadmap', icon: Map, label: '로드맵' }, { id: 'hanyang', icon: Wallet, label: '하냥' }, { id: 'settings', icon: Settings, label: '설정' }].map(tab => {
               const isActive = currentScreen === tab.id;
               return (

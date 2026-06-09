@@ -29,6 +29,84 @@ const formatReason = (matchedTags, user) => {
   return `${labels.join(', ')} 태그가 전공/직무/학년 조건과 잘 맞아 추천합니다.`;
 };
 
+const getActivityTagWeight = (activity, tag) => {
+  if (activity.weightedTags && Number.isFinite(activity.weightedTags[tag])) {
+    return activity.weightedTags[tag];
+  }
+  return activity.tags?.includes(tag) ? 10 : 0;
+};
+
+const EXTERNAL_TAG_SCORE_MULTIPLIERS = {
+  competition: 0.15,
+  activity: 0.15,
+  project: 0.15,
+  volunteer: 0.2,
+  internship: 0.45,
+  certificate: 0.45,
+};
+
+const getTagScoreMultiplier = (activity, tag) => (
+  activity.isExternalOpportunity ? (EXTERNAL_TAG_SCORE_MULTIPLIERS[tag] ?? 1) : 1
+);
+
+const getExternalTagScoreMultiplier = (tag) => EXTERNAL_TAG_SCORE_MULTIPLIERS[tag] ?? 1;
+
+const CORE_CAREER_TAG_MIN_WEIGHT = 7;
+const MIN_EXTERNAL_CORE_SCORE = 8;
+const EXCLUDED_EXTERNAL_TAGS_BY_CAREER = {
+  '손해사정사': ['ai', 'data', 'software', 'startup', 'marketing', 'contents', 'media'],
+  '법무사': ['ai', 'data', 'software', 'startup', 'robotics', 'control', 'patent'],
+  '법무담당자': ['ai', 'data', 'software', 'startup', 'robotics', 'control', 'patent'],
+  '변호사(로스쿨)': ['ai', 'data', 'software', 'startup', 'robotics', 'control', 'patent'],
+};
+
+const getOpportunityTags = (activity) => {
+  const weightedTags = activity.weightedTags || {};
+  return [...new Set([
+    ...(activity.tags || []),
+    ...(activity.recommendationTags || []),
+    ...Object.keys(weightedTags),
+  ])];
+};
+
+const hasExcludedExternalTag = (activity, user) => {
+  const excludedTags = EXCLUDED_EXTERNAL_TAGS_BY_CAREER[user.careerSub] || [];
+  if (!excludedTags.length) return false;
+  return excludedTags.some(tag => getActivityTagWeight(activity, tag) >= 7);
+};
+
+const getDeadlinePriority = (deadline) => {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(deadline || '')) return 0;
+  const target = new Date(`${deadline}T00:00:00`);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const daysLeft = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+  if (daysLeft < 0) return -20;
+  if (daysLeft <= 3) return -2;
+  if (daysLeft <= 21) return 4;
+  if (daysLeft <= 60) return 3;
+  if (daysLeft <= 120) return 1;
+  return 0;
+};
+
+const getOpportunityTypePriority = (activity) => {
+  const source = `${activity.recommendationType || ''} ${activity.type || ''} ${activity.title || ''}`;
+  if (/인턴|internship/i.test(source)) return 6;
+  if (/해커톤/i.test(source)) return 5;
+  if (/논문|경진대회|공모전|대회|contest|competition/i.test(source)) return 4;
+  if (/프로젝트|챌린지|project/i.test(source)) return 2;
+  if (/서포터즈|기자단|홍보대사|앰버서더/i.test(source)) return -3;
+  return 0;
+};
+
+const getDistractorPenalty = (activity, careerWeights) => {
+  const softDistractorTags = ['marketing', 'media', 'contents', 'public', 'ncs', 'startup', 'education', 'management'];
+  return softDistractorTags.reduce((penalty, tag) => {
+    if (careerWeights[tag]) return penalty;
+    return penalty + (getActivityTagWeight(activity, tag) >= 7 ? 2.5 : 0);
+  }, 0);
+};
+
 export const buildUserTagWeights = (user) => {
   const grade = getGrade(user.grade);
   return mergeWeights(
@@ -40,13 +118,63 @@ export const buildUserTagWeights = (user) => {
   );
 };
 
+export const scoreExternalOpportunity = (activity, user = {}) => {
+  const careerWeights = CAREER_TAG_WEIGHTS[user.careerSub] || {};
+  const userWeights = buildUserTagWeights(user);
+  const grade = getGrade(user.grade);
+  const tags = getOpportunityTags(activity);
+
+  if (!Object.keys(careerWeights).length || hasExcludedExternalTag(activity, user)) {
+    return { score: 0, matchedTags: [], coreScore: 0 };
+  }
+
+  const coreMatchedTags = tags
+    .filter(tag => (careerWeights[tag] || 0) >= CORE_CAREER_TAG_MIN_WEIGHT && getActivityTagWeight(activity, tag) >= 4)
+    .sort((a, b) => careerWeights[b] - careerWeights[a]);
+
+  const coreScore = coreMatchedTags.reduce((score, tag) => (
+    score + ((careerWeights[tag] || 0) * getActivityTagWeight(activity, tag) / 10)
+  ), 0);
+
+  if (coreMatchedTags.length === 0 || coreScore < MIN_EXTERNAL_CORE_SCORE) {
+    return { score: 0, matchedTags: [], coreScore };
+  }
+
+  const contextScore = tags.reduce((score, tag) => (
+    score + ((userWeights[tag] || 0) * getActivityTagWeight(activity, tag) * getExternalTagScoreMultiplier(tag) / 10)
+  ), 0);
+  const gradeBonus = activity.recommendedGrades?.includes(grade) ? 4 : 0;
+  const nearGradeBonus = activity.recommendedGrades?.some(item => Math.abs(item - grade) === 1) ? 1.5 : 0;
+
+  const priorityScore = getOpportunityTypePriority(activity) + getDeadlinePriority(activity.deadline || activity.targetDate);
+  const distractorPenalty = getDistractorPenalty(activity, careerWeights);
+
+  return {
+    score: (activity.baseWeight || 0) + (coreScore * 2.3) + (contextScore * 0.15) + priorityScore + gradeBonus + nearGradeBonus - distractorPenalty,
+    matchedTags: coreMatchedTags,
+    coreScore,
+  };
+};
+
 export const recommendActivities = ({ user, activities = ACTIVITIES, limit = 7 }) => {
   const grade = getGrade(user.grade);
   const userWeights = buildUserTagWeights(user);
 
   const ranked = activities
     .map((activity) => {
-      const tagScore = activity.tags.reduce((score, tag) => score + (userWeights[tag] || 0), 0);
+      if (activity.isExternalOpportunity) {
+        const externalScore = scoreExternalOpportunity(activity, user);
+        return {
+          ...activity,
+          score: externalScore.score,
+          matchedTags: externalScore.matchedTags,
+          dynamicReason: formatReason(externalScore.matchedTags, user),
+        };
+      }
+
+      const tagScore = activity.tags.reduce((score, tag) => (
+        score + ((userWeights[tag] || 0) * getActivityTagWeight(activity, tag) * getTagScoreMultiplier(activity, tag) / 10)
+      ), 0);
       const gradeBonus = activity.recommendedGrades?.includes(grade) ? 8 : 0;
       const nearGradeBonus = activity.recommendedGrades?.some(item => Math.abs(item - grade) === 1) ? 3 : 0;
       const score = activity.baseWeight + tagScore + gradeBonus + nearGradeBonus;
@@ -61,7 +189,10 @@ export const recommendActivities = ({ user, activities = ACTIVITIES, limit = 7 }
         dynamicReason: formatReason(matchedTags, user),
       };
     })
-    .filter(activity => activity.score > activity.baseWeight)
+    .filter(activity => (
+      activity.score > activity.baseWeight
+      && (!activity.isExternalOpportunity || activity.matchedTags.length > 0)
+    ))
     .sort((a, b) => b.score - a.score || b.baseWeight - a.baseWeight);
 
   const picked = [];

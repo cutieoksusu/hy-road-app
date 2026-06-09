@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "opportunities:generate": "node scripts/generate-opportunities-json.js"
   },
   "dependencies": {
     "firebase": "^12.13.0",
