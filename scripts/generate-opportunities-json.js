@@ -216,10 +216,6 @@ const fetchText = async (url) => {
   return response.text();
 };
 
-const addTags = (set, ...tags) => tags.forEach((tag) => {
-  if (TAG_VALUES.includes(tag)) set.add(tag);
-});
-
 const addWeightedTag = (weights, tag, weight) => {
   if (TAG_VALUES.includes(tag)) {
     weights[tag] = Math.max(weights[tag] || 0, weight);
@@ -348,38 +344,6 @@ const inferWeightedRecommendationTags = (text) => {
   return Object.fromEntries(Object.entries(weights)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 10));
-};
-
-const inferRecommendationTags = (text) => {
-  const source = String(text || '').toLowerCase();
-  const tags = new Set();
-  if (/프론트|react|html|css|ui|웹|javascript|typescript/.test(source)) addTags(tags, TAGS.FRONTEND, TAGS.SOFTWARE, TAGS.PORTFOLIO);
-  if (/백엔드|서버|api|spring|node|django|database/.test(source)) addTags(tags, TAGS.BACKEND, TAGS.SOFTWARE, TAGS.CLOUD);
-  if (/앱|모바일|android|ios/.test(source)) addTags(tags, TAGS.MOBILE, TAGS.SOFTWARE);
-  if (/데이터|분석|통계|sql|빅데이터|대시보드|리서치/.test(source)) addTags(tags, TAGS.DATA, TAGS.STATISTICS, TAGS.RESEARCH);
-  if (/ai|인공지능|머신러닝|딥러닝|llm|생성형/.test(source)) addTags(tags, TAGS.AI, TAGS.DATA);
-  if (/마케팅|브랜드|광고|홍보|pr|sns|서포터즈|앰버서더|크리에이터|쇼츠|캠페인|crm|퍼포먼스/.test(source)) addTags(tags, TAGS.MARKETING, TAGS.CONTENTS);
-  if (/금융|투자|은행|회계|재무|핀테크|경제/.test(source)) addTags(tags, TAGS.FINANCE, TAGS.ACCOUNTING);
-  if (/손해사정|손해\s*배상|자동차사고|보험금|보상|보험\s*사고|배상책임|보험계리|리스크|위험관리|심사|여신/.test(source)) addTags(tags, TAGS.INSURANCE, TAGS.RISK);
-  if (/공공|공기업|ncs|행정|정책|공공기관/.test(source)) addTags(tags, TAGS.PUBLIC, TAGS.NCS);
-  if (/특허|상표|지식재산|저작권|ip\s/.test(source)) addTags(tags, TAGS.PATENT);
-  if (/법률|법무|로스쿨|노무|인권|계약|소송|판례|법제|법원|법학/.test(source)) addTags(tags, TAGS.LAW, TAGS.PUBLIC);
-  if (/영상|미디어|콘텐츠|기자|pd|방송|작가|뉴스레터|도슨트|기획단|심사단|크리에이터|쇼츠/.test(source)) addTags(tags, TAGS.MEDIA, TAGS.CONTENTS, TAGS.WRITING);
-  if (/디자인|ux|ui|그래픽|브랜딩|포트폴리오/.test(source)) addTags(tags, TAGS.DESIGN, TAGS.UX, TAGS.PORTFOLIO);
-  if (/반도체/.test(source)) addTags(tags, TAGS.SEMICONDUCTOR, TAGS.ENGINEERING);
-  if (/공정|전자|전기|기계|로봇|생산|품질/.test(source)) addTags(tags, TAGS.ENGINEERING);
-  if (/바이오|제약|임상|보건|식품|영양|헬스/.test(source)) addTags(tags, TAGS.BIO, TAGS.HEALTHCARE, TAGS.FOOD);
-  if (/환경|건축|도시|안전|bim|cad|에너지/.test(source)) addTags(tags, TAGS.ENVIRONMENT, TAGS.ARCHITECTURE, TAGS.ENGINEERING, TAGS.ENERGY);
-  if (/무역|물류|유통|구매|해외영업|글로벌/.test(source)) addTags(tags, TAGS.TRADE, TAGS.LOGISTICS, TAGS.GLOBAL);
-  if (/인사|hr|채용|교육|멘토링|멘토|강연|커리어세션/.test(source)) addTags(tags, TAGS.HR, TAGS.EDUCATION, TAGS.MANAGEMENT);
-  if (/봉사|서포터즈|기자단|대외활동|앰버서더/.test(source)) addTags(tags, TAGS.ACTIVITY, TAGS.VOLUNTEER);
-  if (/공모전|해커톤|대회|콘테스트|챌린지|아이디어/.test(source)) addTags(tags, TAGS.COMPETITION, TAGS.PROJECT);
-  if (/창업|스타트업|사업화/.test(source)) addTags(tags, TAGS.STARTUP);
-  if (/인턴|현장실습|실무/.test(source)) addTags(tags, TAGS.INTERNSHIP);
-  if (/자격|기사|시험|cert|certificate/.test(source)) addTags(tags, TAGS.CERTIFICATE);
-  if (/영어|일본|중국|해외|통번역|언어/.test(source)) addTags(tags, TAGS.GLOBAL, TAGS.LANGUAGE);
-  if (tags.size === 0) addTags(tags, TAGS.ACTIVITY, TAGS.PROJECT);
-  return [...tags].slice(0, 7);
 };
 
 const inferRecommendationType = (type, text, tags) => {

@@ -908,6 +908,15 @@ export default function App() {
   const [syncStatus, setSyncStatus] = useState('로컬에 저장됨');
   const [firebaseClient, setFirebaseClient] = useState(null);
 
+  const showPreparingMessage = (featureName) => {
+    alert(`${featureName} 기능은 준비 중입니다.`);
+  };
+
+  const handlePreparingLink = (event, featureName) => {
+    event.preventDefault();
+    showPreparingMessage(featureName);
+  };
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoaded(true);
@@ -1260,7 +1269,8 @@ export default function App() {
       achieved: categorizedSpecs.achieved, 
       milestones: [...categorizedSpecs.milestones, ...customMilestones], 
       courses: recommendedCourses, 
-      gradInfo: req 
+      gradInfo: req,
+      dayKey: todayKey,
     };
   }, [userProfile, achievedSpecs, customMilestones, opportunityActivities, todayKey]);
 
@@ -1763,8 +1773,11 @@ export default function App() {
             </div>
           ) : (
             <div className="flex gap-3 overflow-x-auto pb-4 snap-x">
-              {visibleLiveActivities.map((live, idx) => (
-                <a key={live.id || idx} href={live.url} target="_blank" rel="noreferrer" className="shrink-0 w-72 bg-white border border-gray-200 rounded-3xl p-5 shadow-sm snap-start hover:border-blue-300 transition-colors block">
+              {visibleLiveActivities.map((live, idx) => {
+                const liveUrl = live.url || '#';
+                const hasLiveUrl = liveUrl !== '#';
+                return (
+                <a key={live.id || idx} href={liveUrl} target={hasLiveUrl ? '_blank' : undefined} rel={hasLiveUrl ? 'noreferrer' : undefined} onClick={hasLiveUrl ? undefined : (event) => handlePreparingLink(event, `${live.title} 링크`)} className="shrink-0 w-72 bg-white border border-gray-200 rounded-3xl p-5 shadow-sm snap-start hover:border-blue-300 transition-colors block">
                   <div className="flex justify-between items-center mb-3 gap-3">
                     <span className="text-[10px] font-black text-red-500 bg-red-50 px-2 py-1 rounded-md">{live.dDay || '일정 확인'}</span>
                     <span className="text-[10px] text-gray-400 font-bold truncate">{live.source || live.dynamicReason}</span>
@@ -1777,7 +1790,8 @@ export default function App() {
                     <ExternalLink size={12} />
                   </div>
                 </a>
-              ))}
+                );
+              })}
             </div>
           )}
           {liveActivities.length > 3 && (
@@ -1825,7 +1839,13 @@ export default function App() {
                     <span className={`px-2 py-0.5 rounded text-[10px] font-black ${spec.cat === 'lang' ? 'bg-blue-100 text-blue-700' : 'bg-purple-100 text-purple-700'}`}>{spec.cat === 'lang' ? '어학' : (spec.cat === 'cert' ? '자격증' : '대외활동')}</span>
                     <h4 className="font-black text-gray-900">{spec.title}</h4>
                   </div>
-                  <a href={spec.url} target="_blank" rel="noreferrer" className="text-gray-300 group-hover:text-[#00307B] transition-all"><ExternalLink size={16}/></a>
+                  {spec.url && spec.url !== '#' ? (
+                    <a href={spec.url} target="_blank" rel="noreferrer" className="text-gray-300 group-hover:text-[#00307B] transition-all"><ExternalLink size={16}/></a>
+                  ) : (
+                    <button type="button" onClick={() => showPreparingMessage(`${spec.title} 링크`)} className="text-gray-300 transition-all group-hover:text-[#00307B]" aria-label={`${spec.title} 링크 준비 중`}>
+                      <ExternalLink size={16}/>
+                    </button>
+                  )}
                 </div>
                 <p className="text-xs text-gray-500 font-bold mb-4 leading-relaxed break-keep">{spec.desc}</p>
                 <div className="flex flex-wrap items-center gap-2">
@@ -2026,7 +2046,7 @@ export default function App() {
               </div>
               <button
                 type="button"
-                onClick={() => alert('하냥 충전 기능은 준비 중입니다.')}
+                onClick={() => showPreparingMessage('하냥 충전')}
                 className="shrink-0 bg-[#1f55d8] text-white px-4 py-3 rounded-2xl text-sm font-black flex items-center gap-1.5 active:bg-blue-800"
               >
                 <Plus size={16} strokeWidth={3} /> 충전
@@ -2049,7 +2069,7 @@ export default function App() {
         <div className="-mt-8 px-6 pb-28">
           <button
             type="button"
-            onClick={() => alert('하냥 충전 기능은 준비 중입니다.')}
+            onClick={() => showPreparingMessage('하냥 충전')}
             className="w-full bg-white rounded-[1.75rem] p-5 mb-6 flex items-center justify-between border border-gray-100 shadow-sm active:bg-gray-50"
           >
             <div className="flex items-center gap-4 text-left">
@@ -2071,7 +2091,7 @@ export default function App() {
                 <button
                   key={action.title}
                   type="button"
-                  onClick={() => alert(`${action.title} 기능은 준비 중입니다.`)}
+                  onClick={() => showPreparingMessage(action.title)}
                   className="bg-white rounded-[1.75rem] p-5 min-h-[178px] border border-gray-100 shadow-sm text-left flex flex-col justify-between active:bg-gray-50"
                 >
                   <div>
@@ -2394,7 +2414,7 @@ export default function App() {
             </div>
           ))}
         </div>
-        <button type="button" className="mt-8 w-full rounded-2xl bg-[#00307B] py-4 text-sm font-black text-white shadow-lg shadow-blue-200">
+        <button type="button" onClick={() => showPreparingMessage('부스트 구독 시작하기')} className="mt-8 w-full rounded-2xl bg-[#00307B] py-4 text-sm font-black text-white shadow-lg shadow-blue-200">
           부스트 구독 시작하기
         </button>
         <p className="mt-4 text-center text-[11px] font-bold text-gray-400">언제든지 MY 페이지에서 구독 상태를 확인할 수 있어요.</p>

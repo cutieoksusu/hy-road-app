@@ -59,6 +59,11 @@ const EXCLUDED_EXTERNAL_TAGS_BY_CAREER = {
   '법무담당자': ['ai', 'data', 'software', 'startup', 'robotics', 'control', 'patent'],
   '변호사(로스쿨)': ['ai', 'data', 'software', 'startup', 'robotics', 'control', 'patent'],
 };
+const EXCLUDED_ACTIVITY_TAGS_BY_CAREER_MAIN = {
+  '기획·마케팅·광고': ['law', 'patent'],
+  '미디어·문화·콘텐츠': ['law', 'patent'],
+  '디자인': ['law', 'patent'],
+};
 
 const getOpportunityTags = (activity) => {
   const weightedTags = activity.weightedTags || {};
@@ -71,6 +76,12 @@ const getOpportunityTags = (activity) => {
 
 const hasExcludedExternalTag = (activity, user) => {
   const excludedTags = EXCLUDED_EXTERNAL_TAGS_BY_CAREER[user.careerSub] || [];
+  if (!excludedTags.length) return false;
+  return excludedTags.some(tag => getActivityTagWeight(activity, tag) >= 7);
+};
+
+const hasExcludedActivityTag = (activity, user) => {
+  const excludedTags = EXCLUDED_ACTIVITY_TAGS_BY_CAREER_MAIN[user.careerMain] || [];
   if (!excludedTags.length) return false;
   return excludedTags.some(tag => getActivityTagWeight(activity, tag) >= 7);
 };
@@ -124,7 +135,7 @@ export const scoreExternalOpportunity = (activity, user = {}) => {
   const grade = getGrade(user.grade);
   const tags = getOpportunityTags(activity);
 
-  if (!Object.keys(careerWeights).length || hasExcludedExternalTag(activity, user)) {
+  if (!Object.keys(careerWeights).length || hasExcludedExternalTag(activity, user) || hasExcludedActivityTag(activity, user)) {
     return { score: 0, matchedTags: [], coreScore: 0 };
   }
 
@@ -162,6 +173,15 @@ export const recommendActivities = ({ user, activities = ACTIVITIES, limit = 7 }
 
   const ranked = activities
     .map((activity) => {
+      if (hasExcludedActivityTag(activity, user)) {
+        return {
+          ...activity,
+          score: 0,
+          matchedTags: [],
+          dynamicReason: formatReason([], user),
+        };
+      }
+
       if (activity.isExternalOpportunity) {
         const externalScore = scoreExternalOpportunity(activity, user);
         return {
