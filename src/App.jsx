@@ -702,6 +702,575 @@ const getMilestoneTiming = (spec) => ({
   duration: getSpecDuration(spec),
 });
 
+const CLUB_TAGS_BY_CAREER_MAIN = {
+  'IT·AI·데이터': ['software', 'data', 'ai', 'product', 'startup', 'security'],
+  '기획·마케팅·광고': ['marketing', 'strategy', 'management', 'contents', 'media', 'design'],
+  '디자인': ['design', 'contents', 'media', 'portfolio', 'fashion'],
+  '금융·재무·회계': ['finance', 'investment', 'accounting', 'economics', 'insurance', 'quant', 'research'],
+  '엔지니어링·제조': ['engineering', 'technology', 'research', 'semiconductor', 'public'],
+  '전문직·공직·법무': ['public', 'law', 'policy', 'debate', 'global', 'exam'],
+  '미디어·문화·콘텐츠': ['media', 'contents', 'writing', 'speech', 'culture', 'performance'],
+  '물류·무역·영업·HR': ['global', 'trade', 'management', 'sales', 'hr', 'service'],
+  '건축·환경·의료·바이오': ['research', 'bio', 'healthcare', 'environment', 'volunteer', 'architecture'],
+};
+
+const CLUB_TAGS_BY_CAREER_SUB = {
+  '프론트엔드개발자': ['software', 'frontend', 'product'],
+  '백엔드개발자': ['software', 'backend', 'data'],
+  '앱개발자': ['software', 'mobile'],
+  '게임개발자': ['software', 'game', 'contents'],
+  '소프트웨어개발자': ['software', 'technology'],
+  '데이터사이언티스트': ['data', 'ai', 'research', 'quant'],
+  '데이터분석가': ['data', 'research', 'marketing', 'finance'],
+  'AI/ML엔지니어': ['ai', 'software', 'data'],
+  '서비스기획자(PM·PO)': ['product', 'strategy', 'management', 'technology'],
+  '브랜드마케터': ['marketing', 'contents', 'brand', 'strategy'],
+  '퍼포먼스마케터': ['marketing', 'data', 'contents'],
+  '콘텐츠마케터': ['marketing', 'contents', 'media', 'writing'],
+  '홍보(PR)': ['marketing', 'media', 'speech', 'writing'],
+  'AE(광고기획자)': ['marketing', 'contents', 'strategy'],
+  '카피라이터': ['writing', 'contents', 'marketing'],
+  '크리에이티브디렉터': ['contents', 'design', 'media', 'strategy'],
+  '회계사(CPA)': ['accounting', 'finance', 'exam'],
+  '세무사': ['accounting', 'finance', 'exam'],
+  '회계담당자': ['accounting', 'finance'],
+  '재무담당자': ['finance', 'accounting', 'investment'],
+  'IR·공시': ['finance', 'accounting', 'writing'],
+  '애널리스트': ['finance', 'investment', 'research', 'economics'],
+  '펀드매니저': ['finance', 'investment', 'markets', 'quant'],
+  '은행원·텔러(IB/PB 등)': ['finance', 'banking', 'investment', 'service'],
+  '손해사정사': ['insurance', 'risk', 'law'],
+  '심사역': ['finance', 'investment', 'startup', 'research'],
+  '금융영업': ['finance', 'sales', 'service'],
+  '공기업(NCS 준비)': ['public', 'ncs', 'exam', 'policy'],
+  '5급 행정고시': ['public', 'policy', 'exam', 'law'],
+  '5급 기술고시': ['public', 'engineering', 'exam', 'technology'],
+  'PD·감독': ['media', 'contents', 'performance'],
+  '기자': ['media', 'writing', 'speech', 'public'],
+  '아나운서': ['media', 'speech', 'writing'],
+  '리포터': ['media', 'speech', 'writing'],
+  '콘텐츠에디터': ['contents', 'writing', 'media'],
+  '영상편집자': ['media', 'contents', 'design'],
+  '통번역사': ['language', 'global', 'writing'],
+  'R&D·연구원': ['research', 'technology', 'engineering'],
+  '바이오·제약연구원': ['bio', 'research', 'healthcare'],
+  '임상연구원(CRA)': ['bio', 'research', 'healthcare'],
+  '식품연구원': ['food', 'bio', 'research'],
+};
+
+const CLUB_TAGS_BY_DEPARTMENT_KEYWORD = [
+  { keyword: '경영', tags: ['management', 'strategy', 'finance', 'accounting', 'marketing'] },
+  { keyword: '경제', tags: ['economics', 'finance', 'investment', 'public'] },
+  { keyword: '파이낸스', tags: ['finance', 'investment', 'accounting'] },
+  { keyword: '회계', tags: ['accounting', 'finance'] },
+  { keyword: '광고홍보', tags: ['marketing', 'contents', 'media', 'speech'] },
+  { keyword: '미디어', tags: ['media', 'contents', 'writing'] },
+  { keyword: '문화콘텐츠', tags: ['contents', 'culture', 'media'] },
+  { keyword: '컴퓨터', tags: ['software', 'data', 'ai'] },
+  { keyword: '소프트웨어', tags: ['software', 'data', 'ai'] },
+  { keyword: '데이터', tags: ['data', 'ai', 'research'] },
+  { keyword: '정책', tags: ['public', 'law', 'policy', 'exam'] },
+  { keyword: '행정', tags: ['public', 'policy', 'exam'] },
+  { keyword: '정치외교', tags: ['public', 'global', 'policy', 'diplomacy'] },
+  { keyword: '국제', tags: ['global', 'language', 'diplomacy', 'trade'] },
+  { keyword: '영어', tags: ['language', 'global', 'writing'] },
+  { keyword: '교육', tags: ['education', 'volunteer', 'writing'] },
+  { keyword: '디자인', tags: ['design', 'portfolio', 'contents'] },
+  { keyword: '의류', tags: ['fashion', 'design', 'marketing'] },
+  { keyword: '생명', tags: ['bio', 'research', 'healthcare'] },
+  { keyword: '식품', tags: ['food', 'bio', 'research'] },
+  { keyword: '공학', tags: ['engineering', 'technology', 'research'] },
+];
+
+const CLUB_RECOMMENDATIONS = [
+  {
+    id: 'hama',
+    title: '한양경영연구회 HAMA',
+    type: '중앙동아리',
+    source: '26-1 중앙동아리 소개집 p.30',
+    division: '학술분과',
+    tags: ['management', 'marketing', 'strategy', 'research'],
+    desc: '경영·마케팅 지식 공유와 실무 적용을 목표로 케이스 스터디와 트렌드 분석을 진행합니다.',
+    feed: '브랜드/마케팅, 경영기획, 컨설팅 목표라면 케이스 스터디 경험을 포트폴리오 소재로 만들기 좋습니다.',
+  },
+  {
+    id: 'forif',
+    title: 'FORIF',
+    type: '중앙동아리',
+    source: '26-1 중앙동아리 소개집 p.31',
+    division: '학술분과',
+    tags: ['software', 'technology', 'project', 'mentoring'],
+    desc: '프로그래밍을 사랑하는 사람들이 스터디, 팀 프로젝트, 멘토링으로 개발 역량을 키우는 중앙 학술 동아리입니다.',
+    feed: '개발·데이터·AI 목표에서는 팀 프로젝트와 스터디 경험을 로드맵의 실무 마일스톤으로 연결할 수 있습니다.',
+    url: 'https://forif.org/',
+  },
+  {
+    id: 'aprime',
+    title: 'A;prime',
+    type: '중앙동아리',
+    source: '26-1 중앙동아리 소개집 p.31',
+    division: '학술분과',
+    tags: ['technology', 'software', 'public', 'startup', 'project'],
+    desc: '사회공헌기술을 가치로 삼아 기술 기반으로 주변의 사회문제를 해결하는 커뮤니티를 지향합니다.',
+    feed: '공공 문제 해결, 소셜벤처, 기술기획 목표라면 문제정의와 구현 경험을 함께 쌓기 좋습니다.',
+  },
+  {
+    id: 'huhs',
+    title: 'HUHS',
+    type: '중앙동아리',
+    source: '26-1 중앙동아리 소개집 p.32',
+    division: '학술분과',
+    tags: ['software', 'technology', 'study', 'network'],
+    desc: '컴퓨터 분야 학술 스터디와 정기 집회를 통해 전공과 관계없이 선후배 네트워크를 이어가는 동아리입니다.',
+    feed: '개발·데이터 진로에서 기초 스터디와 네트워킹을 동시에 챙기고 싶을 때 추천합니다.',
+  },
+  {
+    id: 'ooparts',
+    title: 'OOPArts',
+    type: '중앙동아리',
+    source: '26-1 중앙동아리 소개집 p.33',
+    division: '학술분과',
+    tags: ['software', 'game', 'contents', 'project'],
+    desc: '한양대학교 유일 게임 개발 중앙동아리로, 시대를 뛰어넘는 게임 제작을 목표로 합니다.',
+    feed: '게임개발자, 콘텐츠/인터랙티브 미디어 목표라면 실제 제작물 중심 포트폴리오를 만들 수 있습니다.',
+  },
+  {
+    id: 'hygenic',
+    title: '하이제닉 HYGENIC',
+    type: '중앙동아리',
+    source: '26-1 중앙동아리 소개집 p.18',
+    division: '전시창작분과',
+    tags: ['fashion', 'culture', 'contents', 'media', 'design', 'marketing'],
+    desc: '한양대 유일 패션·문화 매거진 동아리로 매월 매거진과 영상 콘텐츠를 제작합니다.',
+    feed: '콘텐츠마케터, 브랜드마케터, 에디터 목표에서는 기획·디자인·미디어팀 활동을 결과물로 남기기 좋습니다.',
+  },
+  {
+    id: 'lami',
+    title: '라미문학회',
+    type: '중앙동아리',
+    source: '26-1 중앙동아리 소개집 p.18',
+    division: '전시창작분과',
+    tags: ['writing', 'contents', 'culture', 'portfolio'],
+    desc: '한양대 유일 문예창작 동아리로 매주 창작 작품 합평회를 열고 학기말 문집을 제작합니다.',
+    feed: '카피라이터, 콘텐츠에디터, 기자 목표라면 글쓰기 산출물과 피드백 기록을 쌓기 좋습니다.',
+  },
+  {
+    id: 'grilmadang',
+    title: '그릴마당',
+    type: '중앙동아리',
+    source: '26-1 중앙동아리 소개집 p.17',
+    division: '전시창작분과',
+    tags: ['public', 'media', 'contents', 'writing', 'culture'],
+    desc: '시사만화 동아리로 시사모임과 만화모임을 거쳐 에세이와 만화를 담은 회지를 제작합니다.',
+    feed: '기자, 콘텐츠마케터, 공공/정책 목표에서는 사회 이슈 분석과 콘텐츠 제작 경험을 함께 보여줄 수 있습니다.',
+  },
+  {
+    id: 'husec',
+    title: '후세문화회 HUSE-C',
+    type: '중앙동아리',
+    source: '26-1 중앙동아리 소개집 p.31',
+    division: '학술분과',
+    tags: ['speech', 'writing', 'media', 'public', 'presentation'],
+    desc: '교내 유일 한국어 스피치 동아리로 개인 스피치부터 전공 발표까지 원하는 주제로 말하고 교류합니다.',
+    feed: 'PR, 기자, 아나운서, 공직 면접 목표라면 발표·스피치 루틴을 만들기 좋습니다.',
+  },
+  {
+    id: 'time',
+    title: 'TIME',
+    type: '중앙동아리',
+    source: '26-1 중앙동아리 소개집 p.33',
+    division: '학술분과',
+    tags: ['language', 'global', 'debate', 'speech', 'public'],
+    desc: '50년 전통의 영어 토론 학술동아리로 매주 하나의 주제에 대해 발표하고 의견을 교환합니다.',
+    feed: '국제, 공직, 언론, 통번역 목표에서는 영어 토론과 시사 발표 경험을 연결하기 좋습니다.',
+  },
+  {
+    id: 'hecc',
+    title: 'HECC',
+    type: '중앙동아리',
+    source: '26-1 중앙동아리 소개집 p.32',
+    division: '학술분과',
+    tags: ['language', 'global', 'communication'],
+    desc: 'Hanyang English Communication Club으로 다양한 국적의 사람들과 영어 회화와 문화 이해도를 높입니다.',
+    feed: '글로벌 직무, 해외영업, 통번역, 외교 준비 목표라면 회화 루틴을 만들기 좋습니다.',
+  },
+  {
+    id: 'kusa',
+    title: 'KUSA',
+    type: '중앙동아리',
+    source: '26-1 중앙동아리 소개집 p.33',
+    division: '학술분과',
+    tags: ['public', 'global', 'policy', 'campaign', 'culture'],
+    desc: '한국의 사회 이슈 탐구를 취지로 한 학술동아리로 정기 활동, 캠페인, 연합활동을 진행합니다.',
+    feed: '공직, 정책, 외교, 공공기관 목표에서는 사회 이슈 탐구와 캠페인 경험을 자기소개 소재로 쓰기 좋습니다.',
+  },
+  {
+    id: 'erdia',
+    title: '에르디아 ERDIA',
+    type: '중앙동아리',
+    source: '26-1 중앙동아리 소개집 p.30',
+    division: '학술분과',
+    tags: ['reading', 'debate', 'writing', 'research', 'culture'],
+    desc: '매주 책 또는 콘텐츠에서 발제한 질문으로 조별 자유 토론을 진행하는 독서토론 동아리입니다.',
+    feed: '기자, 연구원, 공직, 콘텐츠 직무에서 독해·토론·발제 역량을 쌓기 좋습니다.',
+  },
+  {
+    id: 'hantomak',
+    title: '한토막 HANTOMAK',
+    type: '중앙동아리',
+    source: '26-1 중앙동아리 소개집 p.30',
+    division: '학술분과',
+    tags: ['debate', 'public', 'research', 'speech', 'policy'],
+    desc: '다양한 전공의 학생들이 매주 폭넓은 주제로 토론하며 논거를 다듬고 합리적 합의를 연습합니다.',
+    feed: '공직, 언론, 리서치 목표에서 논리 구성과 토론 경험을 만들기 좋습니다.',
+  },
+  {
+    id: 'hypo',
+    title: 'HYPO',
+    type: '중앙동아리',
+    source: '26-1 중앙동아리 소개집 p.19',
+    division: '전시창작분과',
+    tags: ['media', 'design', 'portfolio', 'contents'],
+    desc: '정기 출사와 학기별 출사를 통해 사진 역량을 키우고 전시 활동으로 예술 문화를 만들어갑니다.',
+    feed: '디자인, 영상, 콘텐츠 목표라면 시각 포트폴리오와 전시 경험을 함께 남길 수 있습니다.',
+  },
+  {
+    id: 'nyangvoice',
+    title: '냥보이스',
+    type: '중앙동아리',
+    source: '26-1 중앙동아리 소개집 p.17',
+    division: '전시창작분과',
+    tags: ['media', 'contents', 'speech', 'performance'],
+    desc: '애니메이션, 게임, 영화 등 다양한 장르의 캐릭터를 연기하며 목소리 연기의 즐거움을 공유합니다.',
+    feed: '아나운서, 리포터, 영상 콘텐츠 목표에서 보이스·표현력 훈련 소재로 연결하기 좋습니다.',
+  },
+  {
+    id: 'hanyang-children-school',
+    title: '한양어린이학교',
+    type: '중앙동아리',
+    source: '26-1 중앙동아리 소개집 p.16',
+    division: '교양분과',
+    tags: ['education', 'volunteer', 'public', 'healthcare'],
+    desc: '소아암 환아 교육 지원에서 시작해 병원과 지역아동센터로 범위를 넓혀 교육 봉사를 진행합니다.',
+    feed: '교육, 공공, 보건계열 목표에서는 지속적인 봉사 경험과 책임감을 보여주기 좋습니다.',
+  },
+  {
+    id: 'humanist',
+    title: '휴머니스트 HYMANIST',
+    type: '중앙동아리',
+    source: '26-1 중앙동아리 소개집 p.16',
+    division: '교양분과',
+    tags: ['environment', 'volunteer', 'public'],
+    desc: '한양대학교 유일 중앙 환경봉사동아리입니다.',
+    feed: '환경, 공공, ESG, 사회공헌 목표에서 봉사와 문제의식 경험을 쌓기 좋습니다.',
+  },
+  {
+    id: 'hyfin',
+    title: '재무금융학회 HY-FIN',
+    type: '학회',
+    source: '사용자 제공 학회 정보',
+    division: '금융 학회',
+    tags: ['finance', 'insurance', 'quant', 'research', 'backtest', 'risk', 'data'],
+    careers: ['애널리스트', '펀드매니저', '손해사정사', '심사역', '재무담당자'],
+    desc: '보험, 퀀트 금융, 리서치/알파설계, 백테스트 등을 다루는 재무금융 학회입니다.',
+    feed: '금융 리서치와 정량 분석 목표라면 백테스트와 리서치 결과물을 포트폴리오로 만들기 좋습니다.',
+  },
+  {
+    id: 'gamma',
+    title: 'Global Markets 학회 GAMMA',
+    type: '학회',
+    source: '사용자 제공 학회 정보',
+    division: '금융 학회',
+    tags: ['finance', 'markets', 'global', 'investment', 'economics'],
+    careers: ['애널리스트', '펀드매니저', '은행원·텔러(IB/PB 등)', '재무담당자'],
+    desc: '글로벌 및 국내 금융시장을 심도 있게 다루는 학회입니다.',
+    feed: '거시경제, 글로벌 마켓, 금융시장 분석을 원하는 목표에 잘 맞습니다.',
+  },
+  {
+    id: 'stockwars',
+    title: '가치투자학회 STOCKWARS',
+    type: '학회',
+    source: '사용자 제공 학회 정보',
+    division: '금융 학회',
+    tags: ['finance', 'investment', 'valuation', 'research', 'writing'],
+    careers: ['애널리스트', '펀드매니저', '심사역', 'IR·공시'],
+    desc: '주식 관련 학회로 기업 리포트 작성·발표, 기업 분석, 밸류에이션 지식 함양을 중심으로 활동합니다.',
+    feed: '기업 분석 리포트와 발표 경험을 남겨 애널리스트/투자 직무 소재로 쓰기 좋습니다.',
+  },
+  {
+    id: 'hibs',
+    title: '기업금융학회 HIBS',
+    type: '학회',
+    source: '사용자 제공 학회 정보',
+    division: '금융 학회',
+    tags: ['finance', 'corporate-finance', 'ib', 'pe', 'investment', 'strategy'],
+    careers: ['은행원·텔러(IB/PB 등)', '심사역', '재무담당자', '애널리스트'],
+    desc: 'IB, PE, HF 등 금융권의 다양한 분야를 아우르는 한양대학교 최초의 기업금융학회입니다.',
+    feed: 'IB/PE/HF 관심이 있으면 기업금융 케이스와 딜 구조 이해를 쌓기 좋습니다.',
+  },
+  {
+    id: 'hyfe',
+    title: '금융공학회 HYFE',
+    type: '학회',
+    source: '사용자 제공 학회 정보',
+    division: '금융 학회',
+    tags: ['finance', 'quant', 'derivatives', 'research', 'ib', 'data'],
+    careers: ['애널리스트', '펀드매니저', '심사역', '데이터분석가'],
+    desc: '리서치, IBD, 파생상품, 퀀트 등 금융공학 주제를 다루는 학회입니다.',
+    feed: '파생상품·퀀트·리서치 기반 금융 커리어에 필요한 분석 경험을 만들기 좋습니다.',
+  },
+  {
+    id: 'hea',
+    title: '한양경제학회 HEA',
+    type: '학회',
+    source: '사용자 제공 학회 정보',
+    division: '경제 학회',
+    tags: ['economics', 'finance', 'public', 'research'],
+    careers: ['애널리스트', '공기업(NCS 준비)', '5급 행정고시'],
+    desc: '경제학 관련 주제를 다루는 학회입니다.',
+    feed: '경제학 기반 공공·금융·리서치 목표에 필요한 이론과 시사 분석을 보완할 수 있습니다.',
+  },
+  {
+    id: 'share',
+    title: 'SHARE',
+    type: '학회',
+    source: '사용자 제공 학회 정보',
+    division: '부동산 학회',
+    tags: ['real-estate', 'finance', 'investment', 'research'],
+    careers: ['애널리스트', '심사역', '재무담당자'],
+    desc: '부동산을 다루는 학회입니다.',
+    feed: '대체투자, 부동산 금융, 자산 분석 관심이 있다면 투자 관점을 넓히기 좋습니다.',
+  },
+  {
+    id: 'his',
+    title: '한양보험학회 HIS',
+    type: '학회',
+    source: '사용자 제공 학회 정보',
+    division: '보험 학회',
+    tags: ['insurance', 'risk', 'finance', 'law'],
+    careers: ['손해사정사', '심사역', '금융영업'],
+    desc: '보험 분야를 다루는 한양보험학회입니다.',
+    feed: '보험, 리스크, 손해사정 목표라면 도메인 지식과 사례 분석을 쌓기 좋습니다.',
+  },
+  {
+    id: 'hyblock',
+    title: '블록체인학회 HYBLOCK',
+    type: '학회',
+    source: '사용자 제공 학회 정보',
+    division: '블록체인 학회',
+    tags: ['blockchain', 'fintech', 'software', 'finance', 'startup'],
+    careers: ['소프트웨어개발자', '데이터분석가', '핀테크', '심사역'],
+    desc: '블록체인 분야를 다루는 학회입니다.',
+    feed: '핀테크, Web3, 블록체인 서비스 기획·개발 목표에 연결하기 좋습니다.',
+  },
+  {
+    id: 'kidari-bank',
+    title: '협동조합 키다리은행',
+    type: '학회',
+    source: '사용자 제공 학회 정보',
+    division: '금융/사회공헌',
+    tags: ['finance', 'banking', 'public', 'service', 'volunteer'],
+    careers: ['은행원·텔러(IB/PB 등)', '금융영업', '공기업(NCS 준비)'],
+    desc: '금융과 협동조합 기반의 사회적 활동을 연결하는 조직입니다.',
+    feed: '은행권, 공공금융, 사회적 금융 목표라면 서비스 경험과 금융 이해를 함께 보여줄 수 있습니다.',
+  },
+  {
+    id: 'hesa',
+    title: '경영전략학회 HESA',
+    type: '학회',
+    source: '사용자 제공 학회 정보',
+    division: '경영전략 학회',
+    tags: ['strategy', 'management', 'accounting', 'consulting', 'finance'],
+    careers: ['컨설턴트', '경영·비즈니스기획', '재무담당자', '회계담당자'],
+    desc: '산학협력, 재무제표 학습 등을 다루는 경영전략학회입니다.',
+    feed: '컨설팅, 전략기획, 기업분석 목표라면 케이스와 재무제표 해석 경험을 쌓기 좋습니다.',
+  },
+  {
+    id: 'tech-exam',
+    title: '한양대 기술고시반',
+    type: '공식 링크',
+    source: '한양대 기술고시반',
+    division: '고시반',
+    tags: ['public', 'engineering', 'exam', 'technology'],
+    careers: ['5급 기술고시'],
+    desc: '5급 기술고시 준비생을 위한 공식 고시반 정보와 공지 확인 링크입니다.',
+    feed: '입반 공지, 시험 일정, 제출 서류를 공식 사이트에서 확인하도록 연결합니다.',
+    features: ['입반 시험 일정 확인', '기술직 직렬별 준비 로드맵 연결', '2차 전공 과목 학습 계획 점검'],
+    url: 'http://tech-exam.hanyang.ac.kr/',
+  },
+  {
+    id: 'admin-exam',
+    title: '행정고시반',
+    type: '공식 링크',
+    source: '행정고시반',
+    division: '고시반',
+    tags: ['public', 'policy', 'exam', 'law'],
+    careers: ['5급 행정고시', '공기업(NCS 준비)'],
+    desc: '행정고시, 공직 준비 관련 공지와 준비반 정보를 확인할 수 있는 공식 링크입니다.',
+    feed: '행정고시·입법고시 등 시험 일정과 입반 정보를 확인하는 첫 화면으로 연결합니다.',
+    features: ['고시반 공지사항 확인', '입반 시험·제출 서류 체크', '공직 시험 캘린더 등록 후보'],
+    url: 'https://admin-exam.hanyang.ac.kr/home',
+  },
+  {
+    id: 'diplomacy-exam',
+    title: '국립외교원반',
+    type: '공식 링크',
+    source: '국립외교원반',
+    division: '고시반',
+    tags: ['public', 'global', 'diplomacy', 'exam', 'language'],
+    desc: '외교관후보자 선발시험과 국제 분야 진로를 준비하는 학생에게 연결되는 공식 링크입니다.',
+    feed: '정치외교·국제학 계열 또는 공직/글로벌 목표라면 시험 정보 확인용으로 추천합니다.',
+    features: ['외교원 시험 정보 확인', '국제정치·어학 준비 루틴 점검', '면접/논술 준비 일정 관리'],
+    url: 'http://hany.theweb.co.kr/',
+  },
+  {
+    id: 'journalism-exam',
+    title: '언론고시반',
+    type: '공식 링크',
+    source: '언론고시반',
+    division: '고시반',
+    tags: ['media', 'writing', 'speech', 'exam'],
+    careers: ['PD·감독', '기자', '아나운서', '리포터', '콘텐츠에디터', '영상편집자'],
+    desc: '기자, PD, 아나운서 등 언론 진로 준비생을 위한 공식 링크입니다.',
+    feed: '논술·작문·시사 스터디와 언론사 전형 준비 흐름을 연결합니다.',
+    features: ['언론고시반 공지 확인', '논술·작문 스터디 연결', '카메라테스트/면접 준비 일정화'],
+    url: 'https://journalism.hanyang.ac.kr/home',
+  },
+  {
+    id: 'cpa-room',
+    title: '공인회계사반 관형재',
+    type: '공식 링크',
+    source: '공인회계사반',
+    division: '고시반',
+    tags: ['accounting', 'finance', 'exam'],
+    careers: ['회계사(CPA)', '세무사', '회계담당자', '세무담당자'],
+    desc: 'CPA 준비반 공지와 학습 정보를 확인할 수 있는 공식 커뮤니티 링크입니다.',
+    feed: '1차·2차 시험 일정, 회계/세법 과목 준비 시기, 스터디 연결에 활용합니다.',
+    features: ['CPA 준비반 공지 일정 확인', '1차·2차 시험 로드맵 점검', '스터디그룹·학회 연결'],
+    url: 'https://m.cafe.daum.net/hyucpaban/_rec',
+  },
+  {
+    id: 'graduate-school-guide',
+    title: '대학원 진학 준비 가이드',
+    type: '준비 기능',
+    source: '진로 목표 유형별 세부 기능',
+    division: '대학원',
+    tags: ['research', 'graduate-school', 'language', 'writing'],
+    careers: ['AI/ML연구원', 'R&D·연구원', '바이오·제약연구원', '임상연구원(CRA)', '식품연구원'],
+    desc: '학과별 대학원 세부 전공, 필수 이수 과목, 학부 연구생 참여 시기, GRE/TOEFL 준비 흐름을 안내하는 카드입니다.',
+    feed: '연구직 목표라면 전공 필수, 지도교수 탐색, 영어 면접 준비를 한 화면에서 추적하도록 확장할 수 있습니다.',
+    features: ['세부 전공 분야 안내', '대학원 필수 과목 추천', '학부 연구생·지도교수 탐색', 'GRE/TOEFL 준비 일정'],
+  },
+];
+
+const CLUB_TAG_LABELS = {
+  software: '개발',
+  frontend: '프론트',
+  backend: '백엔드',
+  mobile: '모바일',
+  data: '데이터',
+  ai: 'AI',
+  product: '기획',
+  startup: '스타트업',
+  security: '보안',
+  marketing: '마케팅',
+  strategy: '전략',
+  management: '경영',
+  contents: '콘텐츠',
+  media: '미디어',
+  design: '디자인',
+  fashion: '패션',
+  portfolio: '포트폴리오',
+  project: '프로젝트',
+  mentoring: '멘토링',
+  study: '스터디',
+  network: '네트워크',
+  communication: '회화',
+  finance: '금융',
+  investment: '투자',
+  accounting: '회계',
+  economics: '경제',
+  insurance: '보험',
+  quant: '퀀트',
+  research: '리서치',
+  banking: '은행',
+  markets: '시장',
+  'corporate-finance': '기업금융',
+  ib: 'IB',
+  pe: 'PE',
+  derivatives: '파생상품',
+  'real-estate': '부동산',
+  risk: '리스크',
+  backtest: '백테스트',
+  valuation: '밸류에이션',
+  consulting: '컨설팅',
+  blockchain: '블록체인',
+  fintech: '핀테크',
+  public: '공공',
+  policy: '정책',
+  law: '법무',
+  debate: '토론',
+  exam: '고시',
+  ncs: 'NCS',
+  diplomacy: '외교',
+  global: '글로벌',
+  language: '어학',
+  trade: '무역',
+  speech: '스피치',
+  writing: '글쓰기',
+  culture: '문화',
+  campaign: '캠페인',
+  reading: '독서',
+  presentation: '발표',
+  performance: '공연',
+  education: '교육',
+  volunteer: '봉사',
+  service: '서비스',
+  sales: '영업',
+  hr: 'HR',
+  environment: '환경',
+  bio: '바이오',
+  healthcare: '보건',
+  food: '식품',
+  engineering: '공학',
+  technology: '기술',
+  semiconductor: '반도체',
+  'graduate-school': '대학원',
+};
+
+const getClubProfileTags = (profile) => {
+  const tags = new Set([
+    ...(CLUB_TAGS_BY_CAREER_MAIN[profile.careerMain] || []),
+    ...(CLUB_TAGS_BY_CAREER_SUB[profile.careerSub] || []),
+  ]);
+  const departmentText = `${profile.college || ''} ${profile.department || ''} ${profile.secondDepartment || ''}`;
+  CLUB_TAGS_BY_DEPARTMENT_KEYWORD.forEach(({ keyword, tags: matchedTags }) => {
+    if (departmentText.includes(keyword)) matchedTags.forEach(tag => tags.add(tag));
+  });
+  return tags;
+};
+
+const getClubRecommendations = (profile) => {
+  const profileTags = getClubProfileTags(profile);
+  const isPublicTrack = profile.careerMain === '전문직·공직·법무';
+  const isInternationalTrack = /정치외교|국제/.test(`${profile.department || ''} ${profile.secondDepartment || ''}`);
+
+  return CLUB_RECOMMENDATIONS
+    .map((club) => {
+      const matchedTags = (club.tags || []).filter(tag => profileTags.has(tag));
+      const exactCareer = (club.careers || []).includes(profile.careerSub);
+      const diplomacyBoost = club.id === 'diplomacy-exam' && (isPublicTrack || isInternationalTrack);
+      const score = (exactCareer ? 80 : 0)
+        + (diplomacyBoost ? 35 : 0)
+        + (matchedTags.length * 12)
+        + ((club.type === '공식 링크' && matchedTags.length > 0) ? 12 : 0)
+        + ((club.type === '학회' && matchedTags.length > 0) ? 8 : 0);
+      return { ...club, matchedTags, score };
+    })
+    .filter(club => club.score > 0)
+    .sort((a, b) => b.score - a.score || (b.matchedTags.length - a.matchedTags.length) || a.title.localeCompare(b.title, 'ko'));
+};
+
 const normalizeLiveActivity = (item) => ({
   id: item.id || item.url || item.originalLink || item.title,
   title: item.title || '제목 확인 필요',
@@ -881,7 +1450,9 @@ export default function App() {
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [onboardingReturnScreen, setOnboardingReturnScreen] = useState(null);
   const [selectedRoadmapBriefing, setSelectedRoadmapBriefing] = useState(null);
+  const [homeRecommendationTab, setHomeRecommendationTab] = useState('activities');
   const [showAllLiveActivities, setShowAllLiveActivities] = useState(false);
+  const [showAllClubRecommendations, setShowAllClubRecommendations] = useState(false);
   const [showAllMilestones, setShowAllMilestones] = useState(false);
   const [todayKey, setTodayKey] = useState(() => new Date().toDateString());
   
@@ -1701,6 +2272,12 @@ export default function App() {
     const notifications = [...upcomingMilestones, ...liveActivityNotifications, ...achievedNotifications].slice(0, 6);
     const visibleLiveActivities = showAllLiveActivities ? liveActivities : liveActivities.slice(0, 3);
     const visibleMilestones = showAllMilestones ? data.milestones : data.milestones.slice(0, 3);
+    const clubRecommendations = getClubRecommendations(userProfile);
+    const visibleClubRecommendations = showAllClubRecommendations ? clubRecommendations : clubRecommendations.slice(0, 4);
+    const homeRecommendationTabs = [
+      { id: 'activities', label: '대외활동', count: liveActivities.length },
+      { id: 'clubs', label: '동아리·학회', count: clubRecommendations.length },
+    ];
 
     return (
       <div className="p-6 pt-10 animate-fade-in-up">
@@ -1755,49 +2332,133 @@ export default function App() {
           맞춤 가이드입니다 🚀
         </h2>
 
-        {/* 대외활동 아웃링크 */}
+        {/* 대외활동 / 동아리·학회 추천 */}
         <div className="mb-10">
-          <h3 className="font-black text-lg text-gray-900 mb-4 flex items-center gap-2">
-            <Sparkles size={20} className="text-blue-500" /> 맞춤 대외활동 찾아보기 <span className="text-[9px] bg-red-100 text-red-600 px-2 py-0.5 rounded-full ml-auto animate-pulse">LIVE</span>
-          </h3>
-          {isLoadingLive ? (
-            <div className="flex flex-col items-center justify-center py-8 bg-gray-50 rounded-3xl border border-gray-100">
-              <Loader2 className="animate-spin text-blue-400 mb-2" size={24} />
-              <p className="text-xs text-gray-500 font-bold">플랫폼 연결 중...</p>
-            </div>
-          ) : liveActivities.length === 0 ? (
-            <div className="rounded-3xl border-2 border-dashed border-gray-100 bg-gray-50 px-5 py-8 text-center">
-              <Sparkles size={28} className="mx-auto mb-3 text-gray-300" />
-              <p className="text-sm font-black text-gray-700">해당 직무와 관련된 공모전/대외활동이 없습니다.</p>
-              <p className="mt-2 text-[11px] font-bold leading-relaxed text-gray-400">새로운 공고가 수집되면 이 영역에 자동으로 표시됩니다.</p>
-            </div>
+          <div className="mb-4 flex items-center justify-between gap-3">
+            <h3 className="font-black text-lg text-gray-900 flex items-center gap-2">
+              <Sparkles size={20} className="text-blue-500" /> 맞춤 추천
+            </h3>
+            <span className="rounded-full bg-blue-50 px-2.5 py-1 text-[9px] font-black text-[#00307B]">CAREER MATCH</span>
+          </div>
+
+          <div className="mb-4 grid grid-cols-2 gap-2 rounded-2xl bg-gray-100 p-1">
+            {homeRecommendationTabs.map(tab => (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setHomeRecommendationTab(tab.id)}
+                className={`rounded-xl px-3 py-2.5 text-xs font-black transition-all ${homeRecommendationTab === tab.id ? 'bg-white text-[#00307B] shadow-sm' : 'text-gray-400'}`}
+              >
+                {tab.label}
+                <span className={`ml-1.5 rounded-full px-1.5 py-0.5 text-[9px] ${homeRecommendationTab === tab.id ? 'bg-blue-50 text-[#00307B]' : 'bg-white/70 text-gray-400'}`}>{tab.count}</span>
+              </button>
+            ))}
+          </div>
+
+          {homeRecommendationTab === 'activities' ? (
+            <>
+              {isLoadingLive ? (
+                <div className="flex flex-col items-center justify-center py-8 bg-gray-50 rounded-3xl border border-gray-100">
+                  <Loader2 className="animate-spin text-blue-400 mb-2" size={24} />
+                  <p className="text-xs text-gray-500 font-bold">플랫폼 연결 중...</p>
+                </div>
+              ) : liveActivities.length === 0 ? (
+                <div className="rounded-3xl border-2 border-dashed border-gray-100 bg-gray-50 px-5 py-8 text-center">
+                  <Sparkles size={28} className="mx-auto mb-3 text-gray-300" />
+                  <p className="text-sm font-black text-gray-700">해당 직무와 관련된 공모전/대외활동이 없습니다.</p>
+                  <p className="mt-2 text-[11px] font-bold leading-relaxed text-gray-400">새로운 공고가 수집되면 이 영역에 자동으로 표시됩니다.</p>
+                </div>
+              ) : (
+                <div className="flex gap-3 overflow-x-auto pb-4 snap-x">
+                  {visibleLiveActivities.map((live, idx) => {
+                    const liveUrl = live.url || '#';
+                    const hasLiveUrl = liveUrl !== '#';
+                    return (
+                    <a key={live.id || idx} href={liveUrl} target={hasLiveUrl ? '_blank' : undefined} rel={hasLiveUrl ? 'noreferrer' : undefined} onClick={hasLiveUrl ? undefined : (event) => handlePreparingLink(event, `${live.title} 링크`)} className="shrink-0 w-72 bg-white border border-gray-200 rounded-3xl p-5 shadow-sm snap-start hover:border-blue-300 transition-colors block">
+                      <div className="flex justify-between items-center mb-3 gap-3">
+                        <span className="text-[10px] font-black text-red-500 bg-red-50 px-2 py-1 rounded-md">{live.dDay || '일정 확인'}</span>
+                        <span className="text-[10px] text-gray-400 font-bold truncate">{live.source || live.dynamicReason}</span>
+                      </div>
+                      <h4 className="font-black text-gray-900 text-sm leading-snug line-clamp-2 mb-3">{live.title}</h4>
+                      <p className="text-[11px] text-gray-500 font-bold leading-relaxed line-clamp-3 mb-4">{live.summary || live.dynamicReason || '추천 활동 정보를 확인해 보세요.'}</p>
+                      <div className="flex items-center gap-1 text-[10px] font-black text-[#00307B]">
+                        <span>원문 링크</span>
+                        <span className="text-[9px] text-blue-400">{live.taggedBy === 'openai' ? 'AI 태그' : '키워드 태그'}</span>
+                        <ExternalLink size={12} />
+                      </div>
+                    </a>
+                    );
+                  })}
+                </div>
+              )}
+              {liveActivities.length > 3 && (
+                <button type="button" onClick={() => setShowAllLiveActivities(prev => !prev)} className="w-full py-3 bg-white border border-blue-100 text-[#00307B] text-xs font-black rounded-2xl shadow-sm">
+                  {showAllLiveActivities ? '접기' : `더보기 (${liveActivities.length - 3}개 더)`}
+                </button>
+              )}
+            </>
           ) : (
-            <div className="flex gap-3 overflow-x-auto pb-4 snap-x">
-              {visibleLiveActivities.map((live, idx) => {
-                const liveUrl = live.url || '#';
-                const hasLiveUrl = liveUrl !== '#';
-                return (
-                <a key={live.id || idx} href={liveUrl} target={hasLiveUrl ? '_blank' : undefined} rel={hasLiveUrl ? 'noreferrer' : undefined} onClick={hasLiveUrl ? undefined : (event) => handlePreparingLink(event, `${live.title} 링크`)} className="shrink-0 w-72 bg-white border border-gray-200 rounded-3xl p-5 shadow-sm snap-start hover:border-blue-300 transition-colors block">
-                  <div className="flex justify-between items-center mb-3 gap-3">
-                    <span className="text-[10px] font-black text-red-500 bg-red-50 px-2 py-1 rounded-md">{live.dDay || '일정 확인'}</span>
-                    <span className="text-[10px] text-gray-400 font-bold truncate">{live.source || live.dynamicReason}</span>
+            <div className="space-y-3">
+              {clubRecommendations.length === 0 ? (
+                <div className="rounded-3xl border-2 border-dashed border-gray-100 bg-gray-50 px-5 py-8 text-center">
+                  <BookOpen size={28} className="mx-auto mb-3 text-gray-300" />
+                  <p className="text-sm font-black text-gray-700">연결할 동아리·학회를 찾는 중입니다.</p>
+                  <p className="mt-2 text-[11px] font-bold leading-relaxed text-gray-400">진로 목표나 전공 정보를 더 채우면 추천이 정교해집니다.</p>
+                </div>
+              ) : (
+                visibleClubRecommendations.map((club) => (
+                  <div key={club.id} className="rounded-[1.75rem] border border-blue-100 bg-white p-5 shadow-sm">
+                    <div className="mb-3 flex items-start justify-between gap-3">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-[#00307B]">
+                          {club.type === '공식 링크' ? <Building size={21} /> : club.type === '학회' ? <Briefcase size={21} /> : <BookOpen size={21} />}
+                        </div>
+                        <div>
+                          <div className="mb-1 flex flex-wrap items-center gap-1.5">
+                            <span className="rounded-md bg-[#00307B] px-2 py-0.5 text-[9px] font-black text-white">{club.type}</span>
+                            <span className="rounded-md bg-gray-100 px-2 py-0.5 text-[9px] font-black text-gray-500">{club.division}</span>
+                          </div>
+                          <h4 className="text-base font-black leading-snug text-gray-900 break-keep">{club.title}</h4>
+                        </div>
+                      </div>
+                      {club.url && (
+                        <a href={club.url} target="_blank" rel="noreferrer" className="shrink-0 rounded-xl border border-blue-100 bg-blue-50 p-2 text-[#00307B]" aria-label={`${club.title} 공식 링크 열기`}>
+                          <ExternalLink size={16} />
+                        </a>
+                      )}
+                    </div>
+
+                    <p className="text-xs font-bold leading-relaxed text-gray-500 break-keep">{club.desc}</p>
+                    <div className="mt-4 rounded-2xl border border-blue-100 bg-blue-50/70 px-4 py-3">
+                      <p className="text-[11px] font-black leading-relaxed text-[#00307B] break-keep">{club.feed}</p>
+                    </div>
+
+                    {club.features && (
+                      <div className="mt-4 grid gap-2">
+                        {club.features.slice(0, 4).map(feature => (
+                          <div key={feature} className="flex items-start gap-2 rounded-xl bg-gray-50 px-3 py-2">
+                            <CheckCircle2 size={13} className="mt-0.5 shrink-0 text-[#00307B]" />
+                            <p className="text-[11px] font-bold leading-relaxed text-gray-600">{feature}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    <div className="mt-4 flex flex-wrap items-center gap-2">
+                      {(club.matchedTags.length ? club.matchedTags : club.tags.slice(0, 3)).slice(0, 4).map(tag => (
+                        <span key={tag} className="rounded-full bg-gray-100 px-2.5 py-1 text-[10px] font-black text-gray-500">#{CLUB_TAG_LABELS[tag] || tag}</span>
+                      ))}
+                      <span className="ml-auto text-[9px] font-black text-gray-300">{club.source}</span>
+                    </div>
                   </div>
-                  <h4 className="font-black text-gray-900 text-sm leading-snug line-clamp-2 mb-3">{live.title}</h4>
-                  <p className="text-[11px] text-gray-500 font-bold leading-relaxed line-clamp-3 mb-4">{live.summary || live.dynamicReason || '추천 활동 정보를 확인해 보세요.'}</p>
-                  <div className="flex items-center gap-1 text-[10px] font-black text-[#00307B]">
-                    <span>원문 링크</span>
-                    <span className="text-[9px] text-blue-400">{live.taggedBy === 'openai' ? 'AI 태그' : '키워드 태그'}</span>
-                    <ExternalLink size={12} />
-                  </div>
-                </a>
-                );
-              })}
+                ))
+              )}
+              {clubRecommendations.length > 4 && (
+                <button type="button" onClick={() => setShowAllClubRecommendations(prev => !prev)} className="w-full py-3 bg-white border border-blue-100 text-[#00307B] text-xs font-black rounded-2xl shadow-sm">
+                  {showAllClubRecommendations ? '접기' : `동아리·학회 더보기 (${clubRecommendations.length - 4}개 더)`}
+                </button>
+              )}
             </div>
-          )}
-          {liveActivities.length > 3 && (
-            <button type="button" onClick={() => setShowAllLiveActivities(prev => !prev)} className="w-full py-3 bg-white border border-blue-100 text-[#00307B] text-xs font-black rounded-2xl shadow-sm">
-              {showAllLiveActivities ? '접기' : `더보기 (${liveActivities.length - 3}개 더)`}
-            </button>
           )}
         </div>
 
