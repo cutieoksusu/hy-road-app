@@ -1238,6 +1238,91 @@ const CLUB_TAG_LABELS = {
   'graduate-school': '대학원',
 };
 
+const REPRESENTATIVE_COMPANY_CASES = [
+  {
+    id: 'software-platform',
+    tags: ['software', 'frontend', 'backend', 'mobile', 'data', 'ai', 'product', 'security', 'project'],
+    careerKeywords: ['개발', '데이터', 'AI', '보안', 'QA', '기획'],
+    companies: ['네이버', '카카오', '라인플러스'],
+    activities: '프로덕트 스터디, 팀 프로젝트, 해커톤 결과물, GitHub 포트폴리오',
+  },
+  {
+    id: 'finance-bank-securities',
+    tags: ['finance', 'banking', 'investment', 'accounting', 'economics', 'markets', 'quant', 'risk', 'insurance', 'valuation', 'ib', 'pe'],
+    careerKeywords: ['금융', '은행', '증권', '보험', '회계', '재무', '애널리스트', '펀드', '심사역'],
+    companies: ['KB국민은행', '미래에셋증권', 'NH투자증권'],
+    activities: '기업 리포트 작성, 밸류에이션 발표, 금융권 대외활동, 모의투자 기록',
+  },
+  {
+    id: 'marketing-advertising',
+    tags: ['marketing', 'contents', 'media', 'strategy', 'campaign', 'speech', 'writing', 'presentation'],
+    careerKeywords: ['마케팅', '광고', 'PR', '브랜드', '콘텐츠', 'AE', '카피'],
+    companies: ['제일기획', '이노션', 'HSAD'],
+    activities: '브랜드 캠페인 기획서, 공모전 제안서, 콘텐츠 채널 운영, 발표 피드백',
+  },
+  {
+    id: 'media-entertainment',
+    tags: ['media', 'contents', 'culture', 'performance', 'writing', 'speech', 'portfolio', 'design'],
+    careerKeywords: ['PD', '기자', '방송', '영상', '콘텐츠', '에디터', '문화'],
+    companies: ['CJ ENM', 'HYBE', 'SBS'],
+    activities: '기사·영상 포트폴리오, 시사 스터디, 제작 실습, 인터뷰·발표 경험',
+  },
+  {
+    id: 'semiconductor-manufacturing',
+    tags: ['semiconductor', 'engineering', 'technology', 'research', 'data', 'ai'],
+    careerKeywords: ['반도체', '공정', '전기', '전자', '기계', 'R&D', '품질'],
+    companies: ['삼성전자', 'SK하이닉스', '현대자동차'],
+    activities: '공정 실습, 전공 세미나, 실험 데이터 정리, 기술 발표 포트폴리오',
+  },
+  {
+    id: 'public-policy',
+    tags: ['public', 'policy', 'exam', 'law', 'ncs', 'diplomacy', 'volunteer', 'global'],
+    careerKeywords: ['공기업', '공공', '행정', '고시', '외교', '법무', 'NCS'],
+    companies: ['한국전력공사', '한국철도공사', '한국토지주택공사'],
+    activities: 'NCS 스터디, 정책 토론, 공공기관 서포터즈, 장기 봉사 활동',
+  },
+  {
+    id: 'logistics-trade-sales',
+    tags: ['logistics', 'trade', 'sales', 'service', 'global', 'language', 'management', 'hr'],
+    careerKeywords: ['물류', '무역', '영업', '해외', 'HR', '서비스'],
+    companies: ['CJ대한통운', '현대글로비스', '삼성물산'],
+    activities: '무역 케이스 스터디, 글로벌 커뮤니케이션 활동, B2B 제안서 작성, 운영진 경험',
+  },
+  {
+    id: 'bio-food-healthcare',
+    tags: ['bio', 'food', 'healthcare', 'research', 'environment', 'education', 'volunteer'],
+    careerKeywords: ['바이오', '제약', '식품', '임상', '보건', '환경'],
+    companies: ['삼성바이오로직스', '셀트리온', 'CJ제일제당'],
+    activities: '논문 리뷰, 실험·품질관리 기록, 보건·교육 봉사, 전공 연구 프로젝트',
+  },
+  {
+    id: 'design-fashion',
+    tags: ['design', 'fashion', 'portfolio', 'contents', 'culture', 'marketing'],
+    careerKeywords: ['디자인', '패션', 'UX', '브랜드', 'MD', '공간'],
+    companies: ['무신사', 'F&F', '현대백화점'],
+    activities: '브랜드 리서치, 시각 포트폴리오, 매거진 제작, 사용자 경험 개선안',
+  },
+];
+
+const getClubAlumniStories = (club, profile) => {
+  const clubTags = new Set([...(club.tags || []), ...(club.matchedTags || [])]);
+  const careerText = `${profile.careerMain || ''} ${profile.careerSubCategory || ''} ${profile.careerSub || ''}`;
+
+  return REPRESENTATIVE_COMPANY_CASES
+    .map((caseItem) => {
+      const matchedTags = caseItem.tags.filter(tag => clubTags.has(tag));
+      const careerMatch = caseItem.careerKeywords.some(keyword => careerText.includes(keyword));
+      return {
+        ...caseItem,
+        matchedTags,
+        score: (matchedTags.length * 10) + (careerMatch ? 20 : 0),
+      };
+    })
+    .filter(caseItem => caseItem.score > 0)
+    .sort((a, b) => b.score - a.score || b.matchedTags.length - a.matchedTags.length)
+    .slice(0, 2);
+};
+
 const getClubProfileTags = (profile) => {
   const tags = new Set([
     ...(CLUB_TAGS_BY_CAREER_MAIN[profile.careerMain] || []),
@@ -1265,7 +1350,8 @@ const getClubRecommendations = (profile) => {
         + (matchedTags.length * 12)
         + ((club.type === '공식 링크' && matchedTags.length > 0) ? 12 : 0)
         + ((club.type === '학회' && matchedTags.length > 0) ? 8 : 0);
-      return { ...club, matchedTags, score };
+      const scoredClub = { ...club, matchedTags, score };
+      return { ...scoredClub, alumniStories: getClubAlumniStories(scoredClub, profile) };
     })
     .filter(club => club.score > 0)
     .sort((a, b) => b.score - a.score || (b.matchedTags.length - a.matchedTags.length) || a.title.localeCompare(b.title, 'ko'));
@@ -2432,6 +2518,24 @@ export default function App() {
                     <div className="mt-4 rounded-2xl border border-blue-100 bg-blue-50/70 px-4 py-3">
                       <p className="text-[11px] font-black leading-relaxed text-[#00307B] break-keep">{club.feed}</p>
                     </div>
+
+                    {club.alumniStories?.length > 0 && (
+                      <div className="mt-4 rounded-2xl border border-blue-100 bg-[#F7FAFF] px-4 py-3">
+                        <div className="mb-2 flex items-center gap-2">
+                          <Award size={14} className="shrink-0 text-[#00307B]" />
+                          <span className="text-[10px] font-black text-[#00307B]">대표 기업 합격 패턴</span>
+                          <span className="ml-auto rounded-full bg-white px-2 py-0.5 text-[8px] font-black text-blue-400">MOCK</span>
+                        </div>
+                        <div className="space-y-2">
+                          {club.alumniStories.map(story => (
+                            <p key={`${club.id}-${story.id}`} className="text-[11px] font-bold leading-relaxed text-gray-600 break-keep">
+                              <span className="font-black text-[#00307B] underline decoration-blue-200 underline-offset-2">{story.companies.slice(0, 3).join('·')}</span>
+                              에 합격한 선배들은 주로 <span className="font-black text-gray-900">{club.title}</span>에서 {story.activities}을 했어요.
+                            </p>
+                          ))}
+                        </div>
+                      </div>
+                    )}
 
                     {club.features && (
                       <div className="mt-4 grid gap-2">
