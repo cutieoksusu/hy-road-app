@@ -2412,9 +2412,9 @@ export default function App() {
             </div>
           )}
         </div>
-        <h2 className="text-2xl font-black leading-tight mb-8">
+        <h2 className="text-2xl font-black leading-tight mb-8 text-gray-950">
           {userProfile.name}님을 위한<br/>
-          <span className="text-[#00307B]">{userProfile.careerSub}</span> 직무<br/>
+          <span className="text-[#001F5C]">{userProfile.careerSub}</span> 직무<br/>
           맞춤 가이드입니다 🚀
         </h2>
 
