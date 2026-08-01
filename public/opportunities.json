@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-07-31T19:40:43.713Z",
+  "generatedAt": "2026-08-01T19:15:14.055Z",
   "source": "github-actions-static-json",
-  "itemCount": 516,
+  "itemCount": 514,
   "items": [
     {
       "id": "9be62b779c22240a",
@@ -9,7 +9,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/331344",
-      "summary": "EC21 · activityTypeID: 3 · 스크랩 2",
+      "summary": "EC21 · activityTypeID: 3 · 스크랩 1",
       "deadline": "2026-08-02",
       "publishedAt": "",
       "careerTags": [
@@ -43,7 +43,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/339504",
-      "summary": "(사)대한영양사협회 · activityTypeID: 3 · 스크랩 11",
+      "summary": "(사)대한영양사협회 · activityTypeID: 3 · 스크랩 21",
       "deadline": "2026-08-28",
       "publishedAt": "",
       "careerTags": [
@@ -77,7 +77,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/334248",
-      "summary": "NHN · activityTypeID: 3 · 스크랩 49",
+      "summary": "NHN · activityTypeID: 3 · 스크랩 51",
       "deadline": "2026-08-10",
       "publishedAt": "",
       "careerTags": [
@@ -137,7 +137,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/339396",
-      "summary": "스마트크리에이터 · activityTypeID: 3 · 스크랩 4",
+      "summary": "스마트크리에이터 · activityTypeID: 3 · 스크랩 5",
       "deadline": "2026-09-07",
       "publishedAt": "",
       "careerTags": [
@@ -175,7 +175,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338955",
-      "summary": "사단법인 한국AI스마트홈산업협회 · activityTypeID: 3 · 스크랩 11",
+      "summary": "사단법인 한국AI스마트홈산업협회 · activityTypeID: 3 · 스크랩 16",
       "deadline": "2026-09-11",
       "publishedAt": "",
       "careerTags": [
@@ -244,7 +244,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/339395",
-      "summary": "거창군 · activityTypeID: 3 · 스크랩 25",
+      "summary": "거창군 · activityTypeID: 3 · 스크랩 36",
       "deadline": "2026-09-30",
       "publishedAt": "",
       "careerTags": [
@@ -282,7 +282,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/337974",
-      "summary": "마이스플랜즈 · activityTypeID: 3 · 스크랩 46",
+      "summary": "마이스플랜즈 · activityTypeID: 3 · 스크랩 51",
       "deadline": "2026-08-05",
       "publishedAt": "",
       "careerTags": [
@@ -318,7 +318,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/339534",
-      "summary": "포칫 · activityTypeID: 1 · 스크랩 6",
+      "summary": "포칫 · activityTypeID: 1 · 스크랩 11",
       "deadline": "2026-08-03",
       "publishedAt": "",
       "careerTags": [
@@ -349,7 +349,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/339377",
-      "summary": "문화체육관광부 · activityTypeID: 3 · 스크랩 7",
+      "summary": "문화체육관광부 · activityTypeID: 3 · 스크랩 10",
       "deadline": "2026-10-04",
       "publishedAt": "",
       "careerTags": [
@@ -415,7 +415,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/339533",
-      "summary": "주식회사 에이비엠랩 · activityTypeID: 1 · 스크랩 24",
+      "summary": "주식회사 에이비엠랩 · activityTypeID: 1 · 스크랩 41",
       "deadline": "2026-08-12",
       "publishedAt": "",
       "careerTags": [
@@ -450,7 +450,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/339347",
-      "summary": "수성문화재단 · activityTypeID: 3 · 스크랩 5",
+      "summary": "수성문화재단 · activityTypeID: 3 · 스크랩 9",
       "deadline": "2026-09-11",
       "publishedAt": "",
       "careerTags": [
@@ -515,7 +515,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/339527",
-      "summary": "TUOMIO (뚜오미오) · activityTypeID: 1 · 스크랩 29",
+      "summary": "TUOMIO (뚜오미오) · activityTypeID: 1 · 스크랩 57",
       "deadline": "2026-08-09",
       "publishedAt": "",
       "careerTags": [
@@ -605,7 +605,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/339525",
-      "summary": "ruuve (러베) · activityTypeID: 1 · 스크랩 12",
+      "summary": "ruuve (러베) · activityTypeID: 1 · 스크랩 19",
       "deadline": "2026-08-07",
       "publishedAt": "",
       "careerTags": [
@@ -636,7 +636,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/337870",
-      "summary": "한국산업기술기획평가원 · activityTypeID: 3 · 스크랩 38",
+      "summary": "한국산업기술기획평가원 · activityTypeID: 3 · 스크랩 80",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -696,7 +696,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/339523",
-      "summary": "주식회사 에이비엠랩 · activityTypeID: 1 · 스크랩 26",
+      "summary": "주식회사 에이비엠랩 · activityTypeID: 1 · 스크랩 44",
       "deadline": "2026-08-12",
       "publishedAt": "",
       "careerTags": [
@@ -731,7 +731,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/329022",
-      "summary": "금융감독원 · activityTypeID: 3 · 스크랩 642",
+      "summary": "금융감독원 · activityTypeID: 3 · 스크랩 668",
       "deadline": "2026-09-02",
       "publishedAt": "",
       "careerTags": [
@@ -756,13 +756,13 @@
       "active": true
     },
     {
-      "id": "5b387e0334672cce",
-      "title": "[THE 해커톤] 흑백개발자: THE 해커톤 대학생 공식 서포터즈 1기 모집",
+      "id": "2a98b14165716c13",
+      "title": "[굿네이버스] 자소서 소재도 얻고, 취향도 겟! ㅣ사회문제 해결 서포터즈 '취향고백'",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/339522",
-      "summary": "THE 해커톤 · activityTypeID: 1 · 스크랩 11",
-      "deadline": "2026-08-01",
+      "url": "https://linkareer.com/activity/339520",
+      "summary": "굿네이버스 경기2사업본부 · activityTypeID: 1 · 스크랩 35",
+      "deadline": "2026-08-27",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -775,10 +775,11 @@
         "marketing": 8,
         "contents": 6
       },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
       "recommendedGrades": [
+        1,
         2,
         3
       ],
@@ -791,7 +792,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/334947",
-      "summary": "매일유업 · activityTypeID: 3 · 스크랩 543",
+      "summary": "매일유업 · activityTypeID: 3 · 스크랩 564",
       "deadline": "2026-08-17",
       "publishedAt": "",
       "careerTags": [
@@ -821,13 +822,13 @@
       "active": true
     },
     {
-      "id": "2a98b14165716c13",
-      "title": "[굿네이버스] 자소서 소재도 얻고, 취향도 겟! ㅣ사회문제 해결 서포터즈 '취향고백'",
+      "id": "e59b1de7de5e25e2",
+      "title": "[드림프렌즈 4기 서포터즈] 모집 안내",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/339520",
-      "summary": "굿네이버스 경기2사업본부 · activityTypeID: 1 · 스크랩 20",
-      "deadline": "2026-08-27",
+      "url": "https://linkareer.com/activity/339519",
+      "summary": "드림널스 · activityTypeID: 1 · 스크랩 8",
+      "deadline": "2026-08-13",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -852,31 +853,26 @@
       "active": true
     },
     {
-      "id": "715553776e3ea2f1",
-      "title": "[국토부장관상 포함] 2026 AI 도시지역혁신 아이디어 공모전 (~8/28)",
+      "id": "cde57d2d1b9d2fdd",
+      "title": "2026 정부광고 아이디어 공모전",
       "type": "공모전",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/332498",
-      "summary": "2026 도시·지역혁신 산업박람회 · activityTypeID: 3 · 스크랩 261",
-      "deadline": "2026-08-28",
+      "url": "https://linkareer.com/activity/338153",
+      "summary": "한국언론진흥재단 · activityTypeID: 3 · 스크랩 269",
+      "deadline": "2026-09-21",
       "publishedAt": "",
       "careerTags": [
-        "IT/소프트웨어",
-        "기획/마케팅"
+        "기획/마케팅",
+        "언론고시 (기자/PD)",
+        "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "environment",
-        "architecture",
-        "engineering",
-        "energy",
-        "ai"
+        "marketing",
+        "contents"
       ],
       "weightedTags": {
-        "environment": 7,
-        "architecture": 6,
-        "engineering": 5,
-        "energy": 5,
-        "ai": 4
+        "marketing": 8,
+        "contents": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -889,13 +885,13 @@
       "active": true
     },
     {
-      "id": "e59b1de7de5e25e2",
-      "title": "[드림프렌즈 4기 서포터즈] 모집 안내",
+      "id": "02400d298a174178",
+      "title": "다르다 1기 서포터즈 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/339519",
-      "summary": "드림널스 · activityTypeID: 1 · 스크랩 5",
-      "deadline": "2026-08-13",
+      "url": "https://linkareer.com/activity/339510",
+      "summary": "다르다 스낵 · activityTypeID: 1 · 스크랩 42",
+      "deadline": "2026-08-05",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -925,7 +921,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338229",
-      "summary": "질병관리청 · activityTypeID: 3 · 스크랩 48",
+      "summary": "질병관리청 · activityTypeID: 3 · 스크랩 55",
       "deadline": "2026-08-30",
       "publishedAt": "",
       "careerTags": [
@@ -954,13 +950,13 @@
       "active": true
     },
     {
-      "id": "02400d298a174178",
-      "title": "다르다 1기 서포터즈 모집",
+      "id": "5e1ced4666c6e030",
+      "title": "무신사 스탠다드 서포터즈 2기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/339510",
-      "summary": "다르다 스낵 · activityTypeID: 1 · 스크랩 24",
-      "deadline": "2026-08-05",
+      "url": "https://linkareer.com/activity/339508",
+      "summary": "무신사스탠다드 · activityTypeID: 1 · 스크랩 32",
+      "deadline": "2026-08-02",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -990,7 +986,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/328417",
-      "summary": "한솔그룹 · activityTypeID: 3 · 스크랩 625",
+      "summary": "한솔그룹 · activityTypeID: 3 · 스크랩 620",
       "deadline": "2026-08-02",
       "publishedAt": "",
       "careerTags": [
@@ -1014,13 +1010,13 @@
       "active": true
     },
     {
-      "id": "5e1ced4666c6e030",
-      "title": "무신사 스탠다드 서포터즈 2기 모집",
+      "id": "24efdea56631ab1b",
+      "title": "자유기업원 서포터즈 12기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/339508",
-      "summary": "무신사스탠다드 · activityTypeID: 1 · 스크랩 21",
-      "deadline": "2026-08-02",
+      "url": "https://linkareer.com/activity/339462",
+      "summary": "재단법인 자유기업원 · activityTypeID: 1 · 스크랩 52",
+      "deadline": "2026-08-20",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -1050,7 +1046,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/339124",
-      "summary": "사단법인 제주특별자치도 지속가능환경교육센터 · activityTypeID: 3 · 스크랩 8",
+      "summary": "사단법인 제주특별자치도 지속가능환경교육센터 · activityTypeID: 3 · 스크랩 13",
       "deadline": "2026-10-02",
       "publishedAt": "",
       "careerTags": [
@@ -1084,23 +1080,28 @@
       "active": true
     },
     {
-      "id": "24efdea56631ab1b",
-      "title": "자유기업원 서포터즈 12기 모집",
+      "id": "69412b6a84fa99ff",
+      "title": "[한국투자증권] 한국투자증권 뱅키스 서포터즈 3기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/339462",
-      "summary": "재단법인 자유기업원 · activityTypeID: 1 · 스크랩 31",
-      "deadline": "2026-08-20",
+      "url": "https://linkareer.com/activity/338226",
+      "summary": "한국투자증권 · activityTypeID: 1 · 스크랩 897",
+      "deadline": "2026-08-07",
       "publishedAt": "",
       "careerTags": [
+        "금융/은행",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
         "marketing",
+        "finance",
+        "investment",
         "contents"
       ],
       "weightedTags": {
         "marketing": 8,
+        "finance": 8,
+        "investment": 8,
         "contents": 6
       },
       "recommendationType": "activity",
@@ -1151,29 +1152,29 @@
       "active": true
     },
     {
-      "id": "69412b6a84fa99ff",
-      "title": "[한국투자증권] 한국투자증권 뱅키스 서포터즈 3기 모집",
+      "id": "13665d6a37c644ca",
+      "title": "[동아일보] 대학생 서포터즈 D.A.다이버 3기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338226",
-      "summary": "한국투자증권 · activityTypeID: 1 · 스크랩 842",
-      "deadline": "2026-08-07",
+      "url": "https://linkareer.com/activity/338797",
+      "summary": "동아미디어그룹 · activityTypeID: 1 · 스크랩 713",
+      "deadline": "2026-08-09",
       "publishedAt": "",
       "careerTags": [
-        "금융/은행",
+        "언론고시 (기자/PD)",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
         "marketing",
-        "finance",
-        "investment",
-        "contents"
+        "contents",
+        "media",
+        "writing"
       ],
       "weightedTags": {
         "marketing": 8,
-        "finance": 8,
-        "investment": 8,
-        "contents": 6
+        "contents": 8,
+        "media": 8,
+        "writing": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -1192,7 +1193,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/339022",
-      "summary": "행정안전부 · activityTypeID: 3 · 스크랩 12",
+      "summary": "행정안전부 · activityTypeID: 3 · 스크랩 11",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -1230,7 +1231,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/332141",
-      "summary": "한국능력개발협회 · activityTypeID: 1 · 스크랩 754",
+      "summary": "한국능력개발협회 · activityTypeID: 1 · 스크랩 779",
       "deadline": "2026-08-15",
       "publishedAt": "",
       "careerTags": [
@@ -1264,7 +1265,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/339005",
-      "summary": "김해시청 · activityTypeID: 3 · 스크랩 10",
+      "summary": "김해시청 · activityTypeID: 3 · 스크랩 11",
       "deadline": "2026-08-20",
       "publishedAt": "",
       "careerTags": [
@@ -1301,24 +1302,24 @@
       "active": true
     },
     {
-      "id": "a613947454644794",
-      "title": "우리다문화장학재단X굿네이버스 [2026 우리 UP 학습멘토링] 멘토 모집",
+      "id": "ed2f9c88df76fdae",
+      "title": "제8기 K-애디터즈 서포터즈 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/335942",
-      "summary": "사단법인 굿네이버스 인터내셔날 · activityTypeID: 1 · 스크랩 607",
-      "deadline": "2026-08-02",
+      "url": "https://linkareer.com/activity/339172",
+      "summary": "한국특수판매공제조합 · activityTypeID: 1 · 스크랩 41",
+      "deadline": "2026-08-13",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "education",
-        "management"
+        "marketing",
+        "contents"
       ],
       "weightedTags": {
-        "education": 5,
-        "management": 5
+        "marketing": 8,
+        "contents": 6
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -1337,7 +1338,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338997",
-      "summary": "주식회사 작가컴퍼니 · activityTypeID: 3 · 스크랩 9",
+      "summary": "주식회사 작가컴퍼니 · activityTypeID: 3 · 스크랩 12",
       "deadline": "2026-09-06",
       "publishedAt": "",
       "careerTags": [
@@ -1374,13 +1375,13 @@
       "active": true
     },
     {
-      "id": "ed2f9c88df76fdae",
-      "title": "제8기 K-애디터즈 서포터즈 모집",
+      "id": "4cf2d7c9e5e80594",
+      "title": "핑크폼즈 서포터즈",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/339172",
-      "summary": "한국특수판매공제조합 · activityTypeID: 1 · 스크랩 30",
-      "deadline": "2026-08-13",
+      "url": "https://linkareer.com/activity/339405",
+      "summary": "홈스타 · activityTypeID: 1 · 스크랩 20",
+      "deadline": "2026-08-04",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -1410,7 +1411,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338984",
-      "summary": "청주상당노인복지관 · activityTypeID: 3 · 스크랩 3",
+      "summary": "청주상당노인복지관 · activityTypeID: 3 · 스크랩 4",
       "deadline": "2026-10-08",
       "publishedAt": "",
       "careerTags": [
@@ -1437,13 +1438,13 @@
       "active": true
     },
     {
-      "id": "4cf2d7c9e5e80594",
-      "title": "핑크폼즈 서포터즈",
+      "id": "942e9563b559a5d0",
+      "title": "글램공감 서포터즈 2기",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/339405",
-      "summary": "홈스타 · activityTypeID: 1 · 스크랩 18",
-      "deadline": "2026-08-04",
+      "url": "https://linkareer.com/activity/339402",
+      "summary": "글램공감 · activityTypeID: 1 · 스크랩 22",
+      "deadline": "2026-08-02",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -1473,7 +1474,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338974",
-      "summary": "MnJ문화복지재단 · activityTypeID: 3 · 스크랩 34",
+      "summary": "MnJ문화복지재단 · activityTypeID: 3 · 스크랩 41",
       "deadline": "2026-10-15",
       "publishedAt": "",
       "careerTags": [
@@ -1502,13 +1503,13 @@
       "active": true
     },
     {
-      "id": "942e9563b559a5d0",
-      "title": "글램공감 서포터즈 2기",
+      "id": "f13fd23a59b9131a",
+      "title": "더진스 공식 뷰티 서포터즈 1기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/339402",
-      "summary": "글램공감 · activityTypeID: 1 · 스크랩 22",
-      "deadline": "2026-08-02",
+      "url": "https://linkareer.com/activity/339382",
+      "summary": "더진스 · activityTypeID: 1 · 스크랩 28",
+      "deadline": "2026-08-29",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -1567,76 +1568,12 @@
       "active": true
     },
     {
-      "id": "f13fd23a59b9131a",
-      "title": "더진스 공식 뷰티 서포터즈 1기 모집",
-      "type": "대외활동",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/339382",
-      "summary": "더진스 · activityTypeID: 1 · 스크랩 18",
-      "deadline": "2026-08-29",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "marketing",
-        "contents"
-      ],
-      "weightedTags": {
-        "marketing": 8,
-        "contents": 6
-      },
-      "recommendationType": "activity",
-      "recommendationCat": "activity",
-      "baseWeight": 6,
-      "recommendedGrades": [
-        1,
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "3f070263c7d05623",
-      "title": "[광진구청] 제6회 광진구 영상 공모전",
-      "type": "공모전",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/338957",
-      "summary": "광진구청 · activityTypeID: 3 · 스크랩 7",
-      "deadline": "2026-09-13",
-      "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅",
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "media",
-        "contents",
-        "writing"
-      ],
-      "weightedTags": {
-        "media": 8,
-        "contents": 8,
-        "writing": 5
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
       "id": "5178673868563bbd",
       "title": "[굿네이버스] Environmental Design 커리어 브랜딩 환경캠페인",
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/339372",
-      "summary": "굿네이버스 경기동부사업본부 · activityTypeID: 1 · 스크랩 4",
+      "summary": "굿네이버스 경기동부사업본부 · activityTypeID: 1 · 스크랩 7",
       "deadline": "2026-08-30",
       "publishedAt": "",
       "careerTags": [
@@ -1677,13 +1614,13 @@
       "active": true
     },
     {
-      "id": "7c1bc9fad9b06896",
-      "title": "2026 대한민국 만화평론공모전",
+      "id": "3f070263c7d05623",
+      "title": "[광진구청] 제6회 광진구 영상 공모전",
       "type": "공모전",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338922",
-      "summary": "문화체육관광부, 한국만화영상진흥원 · activityTypeID: 3 · 스크랩 6",
-      "deadline": "2026-09-30",
+      "url": "https://linkareer.com/activity/338957",
+      "summary": "광진구청 · activityTypeID: 3 · 스크랩 8",
+      "deadline": "2026-09-13",
       "publishedAt": "",
       "careerTags": [
         "기획/마케팅",
@@ -1715,8 +1652,72 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/339366",
-      "summary": "굿네이버스 경기동부사업본부 · activityTypeID: 1 · 스크랩 2",
+      "summary": "굿네이버스 경기동부사업본부 · activityTypeID: 1 · 스크랩 5",
       "deadline": "2026-08-30",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents"
+      ],
+      "weightedTags": {
+        "marketing": 8,
+        "contents": 6
+      },
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "7c1bc9fad9b06896",
+      "title": "2026 대한민국 만화평론공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/338922",
+      "summary": "문화체육관광부, 한국만화영상진흥원 · activityTypeID: 3 · 스크랩 7",
+      "deadline": "2026-09-30",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "recommendationTags": [
+        "media",
+        "contents",
+        "writing"
+      ],
+      "weightedTags": {
+        "media": 8,
+        "contents": 8,
+        "writing": 5
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "bdc67438feea83e0",
+      "title": "[픽콘] 세븐일레븐 공식 출력 서비스 '픽콘' 제1기 대학생 홍보대사 「픽콘 캠퍼스 크루」 10명 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/339183",
+      "summary": "픽콘 · activityTypeID: 1 · 스크랩 23",
+      "deadline": "2026-08-17",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -1746,7 +1747,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338919",
-      "summary": "한국환경공단, 그린루틴 · activityTypeID: 3",
+      "summary": "한국환경공단, 그린루틴 · activityTypeID: 3 · 스크랩 1",
       "deadline": "2026-08-16",
       "publishedAt": "",
       "careerTags": [
@@ -1776,77 +1777,12 @@
       "active": true
     },
     {
-      "id": "bdc67438feea83e0",
-      "title": "[픽콘] 세븐일레븐 공식 출력 서비스 '픽콘' 제1기 대학생 홍보대사 「픽콘 캠퍼스 크루」 10명 모집",
-      "type": "대외활동",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/339183",
-      "summary": "픽콘 · activityTypeID: 1 · 스크랩 15",
-      "deadline": "2026-08-17",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "marketing",
-        "contents"
-      ],
-      "weightedTags": {
-        "marketing": 8,
-        "contents": 6
-      },
-      "recommendationType": "activity",
-      "recommendationCat": "activity",
-      "baseWeight": 6,
-      "recommendedGrades": [
-        1,
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "debae162c77f3a78",
-      "title": "한국노인종합복지관협회 로고 디자인 공모전",
-      "type": "공모전",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/338870",
-      "summary": "한국노인종합복지관협회 · activityTypeID: 3 · 스크랩 26",
-      "deadline": "2026-08-31",
-      "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅",
-        "패션/의류",
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "design",
-        "ux",
-        "portfolio"
-      ],
-      "weightedTags": {
-        "design": 8,
-        "ux": 7,
-        "portfolio": 5
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
       "id": "191b6339757aa6f9",
       "title": "[한국가스기술공사] 2026 소통크루 기자단 6기 모집연장",
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/339001",
-      "summary": "(주)디자인아이엠 · activityTypeID: 1 · 스크랩 58",
+      "summary": "(주)디자인아이엠 · activityTypeID: 1 · 스크랩 65",
       "deadline": "2026-08-05",
       "publishedAt": "",
       "careerTags": [
@@ -1882,12 +1818,77 @@
       "active": true
     },
     {
+      "id": "debae162c77f3a78",
+      "title": "한국노인종합복지관협회 로고 디자인 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/338870",
+      "summary": "한국노인종합복지관협회 · activityTypeID: 3 · 스크랩 31",
+      "deadline": "2026-08-31",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "패션/의류",
+        "IT/소프트웨어"
+      ],
+      "recommendationTags": [
+        "design",
+        "ux",
+        "portfolio"
+      ],
+      "weightedTags": {
+        "design": 8,
+        "ux": 7,
+        "portfolio": 5
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "45475bd95bc98237",
+      "title": "마리오아울렛 공식 서포터즈 엠플루언서 7기 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/338959",
+      "summary": "마리오아울렛 · activityTypeID: 1 · 스크랩 41",
+      "deadline": "2026-08-03",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents"
+      ],
+      "weightedTags": {
+        "marketing": 8,
+        "contents": 6
+      },
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
       "id": "ade1f64e478b1e3a",
       "title": "2026 E/S 안전이용 숏폼·포스터 공모전",
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338862",
-      "summary": "행정안전부 · activityTypeID: 3 · 스크랩 15",
+      "summary": "행정안전부 · activityTypeID: 3 · 스크랩 20",
       "deadline": "2026-08-18",
       "publishedAt": "",
       "careerTags": [
@@ -1914,12 +1915,12 @@
       "active": true
     },
     {
-      "id": "45475bd95bc98237",
-      "title": "마리오아울렛 공식 서포터즈 엠플루언서 7기 모집",
+      "id": "d066f8267d5fbc09",
+      "title": "[마리오아울렛] 마리오아울렛 공식 서포터즈 7기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338959",
-      "summary": "마리오아울렛 · activityTypeID: 1 · 스크랩 40",
+      "url": "https://linkareer.com/activity/338945",
+      "summary": "마리오아울렛 · activityTypeID: 1 · 스크랩 24",
       "deadline": "2026-08-03",
       "publishedAt": "",
       "careerTags": [
@@ -1950,7 +1951,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338856",
-      "summary": "진주문화관광재단 · activityTypeID: 3 · 스크랩 11",
+      "summary": "진주문화관광재단 · activityTypeID: 3 · 스크랩 15",
       "deadline": "2026-08-30",
       "publishedAt": "",
       "careerTags": [
@@ -1979,15 +1980,16 @@
       "active": true
     },
     {
-      "id": "d066f8267d5fbc09",
-      "title": "[마리오아울렛] 마리오아울렛 공식 서포터즈 7기 모집",
+      "id": "845db52f7595177c",
+      "title": "단백질쉐이크 브랜드 리앤핏 서포터즈 리앤핏 크루 1기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338945",
-      "summary": "마리오아울렛 · activityTypeID: 1 · 스크랩 25",
-      "deadline": "2026-08-03",
+      "url": "https://linkareer.com/activity/338920",
+      "summary": "리앤핏 (그래디언트) · activityTypeID: 1 · 스크랩 77",
+      "deadline": "2026-08-09",
       "publishedAt": "",
       "careerTags": [
+        "패션/의류",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
@@ -2045,76 +2047,12 @@
       "active": true
     },
     {
-      "id": "845db52f7595177c",
-      "title": "단백질쉐이크 브랜드 리앤핏 서포터즈 리앤핏 크루 1기 모집",
-      "type": "대외활동",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/338920",
-      "summary": "리앤핏 (그래디언트) · activityTypeID: 1 · 스크랩 70",
-      "deadline": "2026-08-09",
-      "publishedAt": "",
-      "careerTags": [
-        "패션/의류",
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "marketing",
-        "contents"
-      ],
-      "weightedTags": {
-        "marketing": 8,
-        "contents": 6
-      },
-      "recommendationType": "activity",
-      "recommendationCat": "activity",
-      "baseWeight": 6,
-      "recommendedGrades": [
-        1,
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "99d8e6c38dbee681",
-      "title": "제24회 한국경제신문 경제논문 공모전",
-      "type": "공모전",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/338691",
-      "summary": "한국경제신문 · activityTypeID: 3 · 스크랩 54",
-      "deadline": "2026-10-07",
-      "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅",
-        "금융/은행",
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "finance",
-        "economics"
-      ],
-      "weightedTags": {
-        "finance": 8,
-        "economics": 7
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
       "id": "e0ee72d5abe651ce",
       "title": "대학생 대외활동 모집 | AI 영상 만들고 포트폴리오까지! 사회공헌 마케팅 서포터즈 5·6·7기",
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338905",
-      "summary": "효림의료재단 효림요양병원 · activityTypeID: 1 · 스크랩 21",
+      "summary": "효림의료재단 효림요양병원 · activityTypeID: 1 · 스크랩 23",
       "deadline": "2026-08-28",
       "publishedAt": "",
       "careerTags": [
@@ -2155,23 +2093,26 @@
       "active": true
     },
     {
-      "id": "5c2cb0fe13b3f518",
-      "title": "[한국산림재난안전기술공단] 대표 캐릭터 공모전",
+      "id": "99d8e6c38dbee681",
+      "title": "제24회 한국경제신문 경제논문 공모전",
       "type": "공모전",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338671",
-      "summary": "한국산림재난안전기술공단 · activityTypeID: 3 · 스크랩 54",
-      "deadline": "2026-08-21",
+      "url": "https://linkareer.com/activity/338691",
+      "summary": "한국경제신문 · activityTypeID: 3 · 스크랩 62",
+      "deadline": "2026-10-07",
       "publishedAt": "",
       "careerTags": [
         "기획/마케팅",
+        "금융/은행",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "engineering"
+        "finance",
+        "economics"
       ],
       "weightedTags": {
-        "engineering": 8
+        "finance": 8,
+        "economics": 7
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -2214,25 +2155,23 @@
       "active": true
     },
     {
-      "id": "394c68d949e973a1",
-      "title": "[크래프톤] 2026 PUBG 모바일 크래프트 그라운드 공모전",
+      "id": "5c2cb0fe13b3f518",
+      "title": "[한국산림재난안전기술공단] 대표 캐릭터 공모전",
       "type": "공모전",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338663",
-      "summary": "크래프톤 · activityTypeID: 3 · 스크랩 8",
-      "deadline": "2026-09-02",
+      "url": "https://linkareer.com/activity/338671",
+      "summary": "한국산림재난안전기술공단 · activityTypeID: 3 · 스크랩 63",
+      "deadline": "2026-08-21",
       "publishedAt": "",
       "careerTags": [
         "기획/마케팅",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "mobile",
-        "software"
+        "engineering"
       ],
       "weightedTags": {
-        "mobile": 9,
-        "software": 8
+        "engineering": 8
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -2250,7 +2189,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338865",
-      "summary": "(주)서큘러스 · activityTypeID: 1 · 스크랩 56",
+      "summary": "(주)서큘러스 · activityTypeID: 1 · 스크랩 60",
       "deadline": "2026-08-07",
       "publishedAt": "",
       "careerTags": [
@@ -2293,12 +2232,74 @@
       "active": true
     },
     {
+      "id": "394c68d949e973a1",
+      "title": "[크래프톤] 2026 PUBG 모바일 크래프트 그라운드 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/338663",
+      "summary": "크래프톤 · activityTypeID: 3 · 스크랩 9",
+      "deadline": "2026-09-02",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "recommendationTags": [
+        "mobile",
+        "software"
+      ],
+      "weightedTags": {
+        "mobile": 9,
+        "software": 8
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "f14c90151fa607e4",
+      "title": "[잠자리컴퍼니] 무제한 숙박 서포터즈 잠자리프렌즈 52기 모집 (8/26)",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/338844",
+      "summary": "잠자리컴퍼니 · activityTypeID: 1 · 스크랩 48",
+      "deadline": "2026-08-26",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents"
+      ],
+      "weightedTags": {
+        "marketing": 8,
+        "contents": 6
+      },
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
       "id": "084081a5be70d1b1",
       "title": "[충청남도] 제11회 충청남도 인권작품 공모전",
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338661",
-      "summary": "충청남도 · activityTypeID: 3 · 스크랩 10",
+      "summary": "충청남도 · activityTypeID: 3 · 스크랩 11",
       "deadline": "2026-09-04",
       "publishedAt": "",
       "careerTags": [
@@ -2325,24 +2326,24 @@
       "active": true
     },
     {
-      "id": "f14c90151fa607e4",
-      "title": "[잠자리컴퍼니] 무제한 숙박 서포터즈 잠자리프렌즈 52기 모집 (8/26)",
+      "id": "14a7c04b15d6a1b2",
+      "title": "[진로진학멘토링] 학교로 직접 찾아가는 진로진학멘토링 오픈스카이 대학생 멘토 모집(상시모집)",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338844",
-      "summary": "잠자리컴퍼니 · activityTypeID: 1 · 스크랩 43",
-      "deadline": "2026-08-26",
+      "url": "https://linkareer.com/activity/338822",
+      "summary": "오픈스카이에듀 · activityTypeID: 1 · 스크랩 47",
+      "deadline": "2026-10-27",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "marketing",
-        "contents"
+        "education",
+        "management"
       ],
       "weightedTags": {
-        "marketing": 8,
-        "contents": 6
+        "education": 5,
+        "management": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -2361,7 +2362,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338636",
-      "summary": "서울물재생시설공단 · activityTypeID: 3 · 스크랩 27",
+      "summary": "서울물재생시설공단 · activityTypeID: 3 · 스크랩 32",
       "deadline": "2026-09-04",
       "publishedAt": "",
       "careerTags": [
@@ -2390,22 +2391,26 @@
       "active": true
     },
     {
-      "id": "14a7c04b15d6a1b2",
-      "title": "[진로진학멘토링] 학교로 직접 찾아가는 진로진학멘토링 오픈스카이 대학생 멘토 모집(상시모집)",
+      "id": "876096f846379efc",
+      "title": "[EBS/교육부] 2026 대한민국 과학・수학・정보 교사 콘퍼런스 서포터즈 3차 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338822",
-      "summary": "오픈스카이에듀 · activityTypeID: 1 · 스크랩 42",
-      "deadline": "2026-10-27",
+      "url": "https://linkareer.com/activity/338799",
+      "summary": "류컴 · activityTypeID: 1 · 스크랩 5",
+      "deadline": "2026-08-02",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
       ],
       "recommendationTags": [
+        "marketing",
+        "contents",
         "education",
         "management"
       ],
       "weightedTags": {
+        "marketing": 8,
+        "contents": 6,
         "education": 5,
         "management": 5
       },
@@ -2426,7 +2431,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338581",
-      "summary": "보건복지부 · activityTypeID: 3 · 스크랩 11",
+      "summary": "보건복지부 · activityTypeID: 3 · 스크랩 13",
       "deadline": "2026-08-21",
       "publishedAt": "",
       "careerTags": [
@@ -2461,28 +2466,24 @@
       "active": true
     },
     {
-      "id": "876096f846379efc",
-      "title": "[EBS/교육부] 2026 대한민국 과학・수학・정보 교사 콘퍼런스 서포터즈 3차 모집",
+      "id": "065339800ac715e5",
+      "title": "더현대서울 ALT.1 온느뮤지엄 서포터즈 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338799",
-      "summary": "류컴 · activityTypeID: 1 · 스크랩 3",
-      "deadline": "2026-08-02",
+      "url": "https://linkareer.com/activity/338731",
+      "summary": "온느뮤지엄 · activityTypeID: 1 · 스크랩 121",
+      "deadline": "2026-08-04",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
       ],
       "recommendationTags": [
         "marketing",
-        "contents",
-        "education",
-        "management"
+        "contents"
       ],
       "weightedTags": {
         "marketing": 8,
-        "contents": 6,
-        "education": 5,
-        "management": 5
+        "contents": 6
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -2501,7 +2502,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338577",
-      "summary": "한국산업인력공단 · activityTypeID: 3 · 스크랩 6",
+      "summary": "한국산업인력공단 · activityTypeID: 3 · 스크랩 7",
       "deadline": "2026-08-14",
       "publishedAt": "",
       "careerTags": [
@@ -2526,29 +2527,24 @@
       "active": true
     },
     {
-      "id": "13665d6a37c644ca",
-      "title": "[동아일보] 대학생 서포터즈 D.A.다이버 3기 모집",
+      "id": "8ddeb4c30f517073",
+      "title": "[한국과학기술한림원&노벨프라이즈 아웃리치] Nobel Prize Dialogue Seoul 2026 서포터즈 모집 안내",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338797",
-      "summary": "동아미디어그룹 · activityTypeID: 1 · 스크랩 597",
-      "deadline": "2026-08-09",
+      "url": "https://linkareer.com/activity/338719",
+      "summary": "코멕스플랜에스 · activityTypeID: 1 · 스크랩 22",
+      "deadline": "2026-10-26",
       "publishedAt": "",
       "careerTags": [
-        "언론고시 (기자/PD)",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
         "marketing",
-        "contents",
-        "media",
-        "writing"
+        "contents"
       ],
       "weightedTags": {
         "marketing": 8,
-        "contents": 8,
-        "media": 8,
-        "writing": 5
+        "contents": 6
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -2567,7 +2563,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338575",
-      "summary": "통일부 · activityTypeID: 3 · 스크랩 37",
+      "summary": "통일부 · activityTypeID: 3 · 스크랩 40",
       "deadline": "2026-08-28",
       "publishedAt": "",
       "careerTags": [
@@ -2600,13 +2596,13 @@
       "active": true
     },
     {
-      "id": "065339800ac715e5",
-      "title": "더현대서울 ALT.1 온느뮤지엄 서포터즈 모집",
+      "id": "5f9314a69fc11186",
+      "title": "[현대성우그룹] 대학생 서포터즈 현대성우 챌린저스 7기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338731",
-      "summary": "온느뮤지엄 · activityTypeID: 1 · 스크랩 107",
-      "deadline": "2026-08-04",
+      "url": "https://linkareer.com/activity/338713",
+      "summary": "현대성우그룹 · activityTypeID: 1 · 스크랩 69",
+      "deadline": "2026-08-09",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -2636,7 +2632,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338494",
-      "summary": "부산광역시 해운대구 · activityTypeID: 3 · 스크랩 15",
+      "summary": "부산광역시 해운대구 · activityTypeID: 3 · 스크랩 18",
       "deadline": "2026-08-21",
       "publishedAt": "",
       "careerTags": [
@@ -2672,24 +2668,24 @@
       "active": true
     },
     {
-      "id": "8ddeb4c30f517073",
-      "title": "[한국과학기술한림원&노벨프라이즈 아웃리치] Nobel Prize Dialogue Seoul 2026 서포터즈 모집 안내",
+      "id": "9d1db02cd6fa3f4a",
+      "title": "[청춘삘딩] 자기소개서, 이력서 작성부터 진로 설계까지! 1:1 현직자 멘토링 참여자 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338719",
-      "summary": "코멕스플랜에스 · activityTypeID: 1 · 스크랩 19",
-      "deadline": "2026-10-26",
+      "url": "https://linkareer.com/activity/338703",
+      "summary": "금천구청년활동공간 청춘삘딩 · activityTypeID: 1 · 스크랩 5",
+      "deadline": "2026-09-29",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "marketing",
-        "contents"
+        "education",
+        "management"
       ],
       "weightedTags": {
-        "marketing": 8,
-        "contents": 6
+        "education": 5,
+        "management": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -2737,24 +2733,27 @@
       "active": true
     },
     {
-      "id": "5f9314a69fc11186",
-      "title": "[현대성우그룹] 대학생 서포터즈 현대성우 챌린저스 7기 모집",
+      "id": "329bc9e71ab6ae36",
+      "title": "The Lodestar 언론사 창립멤버·1기 기자단 공개모집 [“철학투스타는 이렇게 말했다” 6.6만 인스타매거진 X “SKY기반 서울권 대학 학회 총연합체 VAN”]",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338713",
-      "summary": "현대성우그룹 · activityTypeID: 1 · 스크랩 63",
-      "deadline": "2026-08-09",
+      "url": "https://linkareer.com/activity/338674",
+      "summary": "VAN · activityTypeID: 1 · 스크랩 24",
+      "deadline": "2026-08-07",
       "publishedAt": "",
       "careerTags": [
+        "언론고시 (기자/PD)",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "marketing",
-        "contents"
+        "media",
+        "contents",
+        "writing"
       ],
       "weightedTags": {
-        "marketing": 8,
-        "contents": 6
+        "media": 8,
+        "contents": 8,
+        "writing": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -2773,7 +2772,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338421",
-      "summary": "주식회사웰포유 · activityTypeID: 3 · 스크랩 7",
+      "summary": "주식회사웰포유 · activityTypeID: 3 · 스크랩 8",
       "deadline": "2026-09-01",
       "publishedAt": "",
       "careerTags": [
@@ -2804,24 +2803,24 @@
       "active": true
     },
     {
-      "id": "9d1db02cd6fa3f4a",
-      "title": "[청춘삘딩] 자기소개서, 이력서 작성부터 진로 설계까지! 1:1 현직자 멘토링 참여자 모집",
+      "id": "0665d6d709c22be6",
+      "title": "우양 서포터즈 1기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338703",
-      "summary": "금천구청년활동공간 청춘삘딩 · activityTypeID: 1 · 스크랩 4",
-      "deadline": "2026-09-29",
+      "url": "https://linkareer.com/activity/338668",
+      "summary": "우양 · activityTypeID: 1 · 스크랩 125",
+      "deadline": "2026-08-02",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "education",
-        "management"
+        "marketing",
+        "contents"
       ],
       "weightedTags": {
-        "education": 5,
-        "management": 5
+        "marketing": 8,
+        "contents": 6
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -2840,7 +2839,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338419",
-      "summary": "포필러스 · activityTypeID: 3 · 스크랩 10",
+      "summary": "포필러스 · activityTypeID: 3 · 스크랩 11",
       "deadline": "2026-08-03",
       "publishedAt": "",
       "careerTags": [
@@ -2864,27 +2863,24 @@
       "active": true
     },
     {
-      "id": "329bc9e71ab6ae36",
-      "title": "The Lodestar 언론사 창립멤버·1기 기자단 공개모집 [“철학투스타는 이렇게 말했다” 6.6만 인스타매거진 X “SKY기반 서울권 대학 학회 총연합체 VAN”]",
+      "id": "7120ba2f1b2a42d7",
+      "title": "[고양시] 2026 내일꿈제작소 청년 서포터즈 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338674",
-      "summary": "VAN · activityTypeID: 1 · 스크랩 18",
-      "deadline": "2026-08-07",
+      "url": "https://linkareer.com/activity/338650",
+      "summary": "고양시 · activityTypeID: 1 · 스크랩 17",
+      "deadline": "2026-08-03",
       "publishedAt": "",
       "careerTags": [
-        "언론고시 (기자/PD)",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "media",
-        "contents",
-        "writing"
+        "marketing",
+        "contents"
       ],
       "weightedTags": {
-        "media": 8,
-        "contents": 8,
-        "writing": 5
+        "marketing": 8,
+        "contents": 6
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -2903,7 +2899,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338405",
-      "summary": "강화군 · activityTypeID: 3 · 스크랩 2",
+      "summary": "강화군 · activityTypeID: 3 · 스크랩 3",
       "deadline": "2026-09-30",
       "publishedAt": "",
       "careerTags": [
@@ -2932,12 +2928,12 @@
       "active": true
     },
     {
-      "id": "0665d6d709c22be6",
-      "title": "우양 서포터즈 1기 모집",
+      "id": "92d5b1f955f3833e",
+      "title": "2026 애슐리퀸즈 글로벌 서포터즈 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338668",
-      "summary": "우양 · activityTypeID: 1 · 스크랩 117",
+      "url": "https://linkareer.com/activity/338631",
+      "summary": "(주)이랜드이츠 · activityTypeID: 1 · 스크랩 53",
       "deadline": "2026-08-02",
       "publishedAt": "",
       "careerTags": [
@@ -2945,11 +2941,17 @@
       ],
       "recommendationTags": [
         "marketing",
-        "contents"
+        "trade",
+        "logistics",
+        "contents",
+        "global"
       ],
       "weightedTags": {
         "marketing": 8,
-        "contents": 6
+        "trade": 8,
+        "logistics": 7,
+        "contents": 6,
+        "global": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -2968,7 +2970,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338395",
-      "summary": "질병관리청 · activityTypeID: 3 · 스크랩 12",
+      "summary": "질병관리청 · activityTypeID: 3 · 스크랩 13",
       "deadline": "2026-08-30",
       "publishedAt": "",
       "careerTags": [
@@ -2997,13 +2999,13 @@
       "active": true
     },
     {
-      "id": "7120ba2f1b2a42d7",
-      "title": "[고양시] 2026 내일꿈제작소 청년 서포터즈 모집",
+      "id": "68cfe12edb14f9dc",
+      "title": "[라니쥬] 라니쥬 서포터즈 1기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338650",
-      "summary": "고양시 · activityTypeID: 1 · 스크랩 16",
-      "deadline": "2026-08-03",
+      "url": "https://linkareer.com/activity/338587",
+      "summary": "라니쥬 · activityTypeID: 1 · 스크랩 53",
+      "deadline": "2026-08-09",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -3033,7 +3035,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338368",
-      "summary": "한국보건의료정보원 · activityTypeID: 3 · 스크랩 28",
+      "summary": "한국보건의료정보원 · activityTypeID: 3 · 스크랩 29",
       "deadline": "2026-08-24",
       "publishedAt": "",
       "careerTags": [
@@ -3066,30 +3068,24 @@
       "active": true
     },
     {
-      "id": "92d5b1f955f3833e",
-      "title": "2026 애슐리퀸즈 글로벌 서포터즈 모집",
+      "id": "baae74bf82a82731",
+      "title": "[넷마블] 대학생 서포터즈 마블챌린저 26기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338631",
-      "summary": "(주)이랜드이츠 · activityTypeID: 1 · 스크랩 52",
-      "deadline": "2026-08-02",
+      "url": "https://linkareer.com/activity/338565",
+      "summary": "넷마블(주) · activityTypeID: 1 · 스크랩 158",
+      "deadline": "2026-08-10",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
       ],
       "recommendationTags": [
         "marketing",
-        "trade",
-        "logistics",
-        "contents",
-        "global"
+        "contents"
       ],
       "weightedTags": {
         "marketing": 8,
-        "trade": 8,
-        "logistics": 7,
-        "contents": 6,
-        "global": 5
+        "contents": 6
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -3135,13 +3131,13 @@
       "active": true
     },
     {
-      "id": "68cfe12edb14f9dc",
-      "title": "[라니쥬] 라니쥬 서포터즈 1기 모집",
+      "id": "874d6b24313c4712",
+      "title": "퍼플스 서포터즈 - 퍼플스타즈 2기",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338587",
-      "summary": "라니쥬 · activityTypeID: 1 · 스크랩 50",
-      "deadline": "2026-08-09",
+      "url": "https://linkareer.com/activity/338558",
+      "summary": "퍼플스(주) · activityTypeID: 1 · 스크랩 3",
+      "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -3171,7 +3167,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338317",
-      "summary": "남이섬 · activityTypeID: 3 · 스크랩 21",
+      "summary": "남이섬 · activityTypeID: 3 · 스크랩 22",
       "deadline": "2026-08-16",
       "publishedAt": "",
       "careerTags": [
@@ -3203,24 +3199,31 @@
       "active": true
     },
     {
-      "id": "baae74bf82a82731",
-      "title": "[넷마블] 대학생 서포터즈 마블챌린저 26기 모집",
+      "id": "224d7a1fc4809a83",
+      "title": "법무법인 해율 청년봉사단] 4기 브랜드마케팅본부 모집 (~8/9)",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338565",
-      "summary": "넷마블(주) · activityTypeID: 1 · 스크랩 143",
-      "deadline": "2026-08-10",
+      "url": "https://linkareer.com/activity/338479",
+      "summary": "법무법인 해율 · activityTypeID: 1 · 스크랩 57",
+      "deadline": "2026-08-09",
       "publishedAt": "",
       "careerTags": [
+        "기획/마케팅",
+        "패션/의류",
+        "로스쿨 (법조인)",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
         "marketing",
-        "contents"
+        "law",
+        "contents",
+        "public"
       ],
       "weightedTags": {
         "marketing": 8,
-        "contents": 6
+        "law": 8,
+        "contents": 6,
+        "public": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -3267,24 +3270,25 @@
       "active": true
     },
     {
-      "id": "874d6b24313c4712",
-      "title": "퍼플스 서포터즈 - 퍼플스타즈 2기",
+      "id": "22b1ff0b26552d7a",
+      "title": "[법무법인 해율 청년봉사단] 4기 임원진 모집 (~8/9)",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338558",
-      "summary": "퍼플스(주) · activityTypeID: 1 · 스크랩 3",
-      "deadline": "2026-08-31",
+      "url": "https://linkareer.com/activity/338458",
+      "summary": "법무법인 해율 · activityTypeID: 1 · 스크랩 49",
+      "deadline": "2026-08-09",
       "publishedAt": "",
       "careerTags": [
+        "로스쿨 (법조인)",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "marketing",
-        "contents"
+        "law",
+        "public"
       ],
       "weightedTags": {
-        "marketing": 8,
-        "contents": 6
+        "law": 8,
+        "public": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -3331,31 +3335,24 @@
       "active": true
     },
     {
-      "id": "224d7a1fc4809a83",
-      "title": "법무법인 해율 청년봉사단] 4기 브랜드마케팅본부 모집 (~8/9)",
+      "id": "5967fbbd2b4c188a",
+      "title": "2026 금정산성축제 서포터즈 4기 추가 모집!!!",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338479",
-      "summary": "법무법인 해율 · activityTypeID: 1 · 스크랩 48",
-      "deadline": "2026-08-09",
+      "url": "https://linkareer.com/activity/338450",
+      "summary": "재단법인 금정문화재단 · activityTypeID: 1 · 스크랩 8",
+      "deadline": "2026-08-04",
       "publishedAt": "",
       "careerTags": [
-        "기획/마케팅",
-        "패션/의류",
-        "로스쿨 (법조인)",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
         "marketing",
-        "law",
-        "contents",
-        "public"
+        "contents"
       ],
       "weightedTags": {
         "marketing": 8,
-        "law": 8,
-        "contents": 6,
-        "public": 5
+        "contents": 6
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -3374,7 +3371,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338252",
-      "summary": "한국전파진흥협회 · activityTypeID: 3 · 스크랩 24",
+      "summary": "한국전파진흥협회 · activityTypeID: 3 · 스크랩 25",
       "deadline": "2026-10-12",
       "publishedAt": "",
       "careerTags": [
@@ -3402,25 +3399,24 @@
       "active": true
     },
     {
-      "id": "22b1ff0b26552d7a",
-      "title": "[법무법인 해율 청년봉사단] 4기 임원진 모집 (~8/9)",
+      "id": "5b83271693a6a332",
+      "title": "[경기관광공사] 경기도 여행 인증 캠페인",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338458",
-      "summary": "법무법인 해율 · activityTypeID: 1 · 스크랩 40",
-      "deadline": "2026-08-09",
+      "url": "https://linkareer.com/activity/338283",
+      "summary": "경기관광공사 · activityTypeID: 1 · 스크랩 17",
+      "deadline": "2026-08-16",
       "publishedAt": "",
       "careerTags": [
-        "로스쿨 (법조인)",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "law",
-        "public"
+        "marketing",
+        "contents"
       ],
       "weightedTags": {
-        "law": 8,
-        "public": 5
+        "marketing": 8,
+        "contents": 6
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -3439,7 +3435,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338203",
-      "summary": "주식회사 지넥스 · activityTypeID: 3 · 스크랩 37",
+      "summary": "주식회사 지넥스 · activityTypeID: 3 · 스크랩 40",
       "deadline": "2026-09-21",
       "publishedAt": "",
       "careerTags": [
@@ -3472,13 +3468,13 @@
       "active": true
     },
     {
-      "id": "5967fbbd2b4c188a",
-      "title": "2026 금정산성축제 서포터즈 4기 추가 모집!!!",
+      "id": "9d0a3139a08cedce",
+      "title": "포항시 탄소중립지원센터 「PCNC 서포터즈 5기」모집 안내",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338450",
-      "summary": "재단법인 금정문화재단 · activityTypeID: 1 · 스크랩 8",
-      "deadline": "2026-08-04",
+      "url": "https://linkareer.com/activity/338255",
+      "summary": "한동대학교 산학협력단 · activityTypeID: 1 · 스크랩 15",
+      "deadline": "2026-08-23",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -3508,7 +3504,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338200",
-      "summary": "서울물재생시설공단 · activityTypeID: 3 · 스크랩 34",
+      "summary": "서울물재생시설공단 · activityTypeID: 3 · 스크랩 35",
       "deadline": "2026-09-04",
       "publishedAt": "",
       "careerTags": [
@@ -3537,137 +3533,12 @@
       "active": true
     },
     {
-      "id": "5b83271693a6a332",
-      "title": "[경기관광공사] 경기도 여행 인증 캠페인",
-      "type": "대외활동",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/338283",
-      "summary": "경기관광공사 · activityTypeID: 1 · 스크랩 16",
-      "deadline": "2026-08-16",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "marketing",
-        "contents"
-      ],
-      "weightedTags": {
-        "marketing": 8,
-        "contents": 6
-      },
-      "recommendationType": "activity",
-      "recommendationCat": "activity",
-      "baseWeight": 6,
-      "recommendedGrades": [
-        1,
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "b80316afd65c967f",
-      "title": "AI 활용 스포츠 활동 숏폼 공모전",
-      "type": "공모전",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/338169",
-      "summary": "지티커넥트 · activityTypeID: 3 · 스크랩 20",
-      "deadline": "2026-09-15",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어",
-        "기획/마케팅"
-      ],
-      "recommendationTags": [
-        "ai",
-        "software"
-      ],
-      "weightedTags": {
-        "ai": 8,
-        "software": 6
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "9d0a3139a08cedce",
-      "title": "포항시 탄소중립지원센터 「PCNC 서포터즈 5기」모집 안내",
-      "type": "대외활동",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/338255",
-      "summary": "한동대학교 산학협력단 · activityTypeID: 1 · 스크랩 14",
-      "deadline": "2026-08-23",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "marketing",
-        "contents"
-      ],
-      "weightedTags": {
-        "marketing": 8,
-        "contents": 6
-      },
-      "recommendationType": "activity",
-      "recommendationCat": "activity",
-      "baseWeight": 6,
-      "recommendedGrades": [
-        1,
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "cde57d2d1b9d2fdd",
-      "title": "2026 정부광고 아이디어 공모전",
-      "type": "공모전",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/338153",
-      "summary": "한국언론진흥재단 · activityTypeID: 3 · 스크랩 228",
-      "deadline": "2026-09-21",
-      "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅",
-        "언론고시 (기자/PD)",
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "marketing",
-        "contents"
-      ],
-      "weightedTags": {
-        "marketing": 8,
-        "contents": 6
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
       "id": "5e5d438b9696c0d9",
       "title": "[TV CHOSUN] 2026 교육 포럼 대학생 서포터즈 모집",
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338241",
-      "summary": "TV CHOSUN · activityTypeID: 1 · 스크랩 165",
+      "summary": "TV CHOSUN · activityTypeID: 1 · 스크랩 179",
       "deadline": "2026-08-12",
       "publishedAt": "",
       "careerTags": [
@@ -3697,12 +3568,74 @@
       "active": true
     },
     {
+      "id": "b80316afd65c967f",
+      "title": "AI 활용 스포츠 활동 숏폼 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/338169",
+      "summary": "지티커넥트 · activityTypeID: 3 · 스크랩 24",
+      "deadline": "2026-09-15",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "recommendationTags": [
+        "ai",
+        "software"
+      ],
+      "weightedTags": {
+        "ai": 8,
+        "software": 6
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "0601a4ff1d8024d6",
+      "title": "제15회 스웨덴영화제 대구·경북 서포터즈 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/338208",
+      "summary": "삼보모터스(주) · activityTypeID: 1 · 스크랩 38",
+      "deadline": "2026-08-09",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents"
+      ],
+      "weightedTags": {
+        "marketing": 8,
+        "contents": 6
+      },
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
       "id": "f48cc4fed8cc9328",
       "title": "초간단 릴스 공모전 [2026 전주가맥축제 '맥주병 따는 신박한 방법]",
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338142",
-      "summary": "주식회사 시그널 · activityTypeID: 3 · 스크랩 5",
+      "summary": "주식회사 시그널 · activityTypeID: 3 · 스크랩 7",
       "deadline": "2026-10-25",
       "publishedAt": "",
       "careerTags": [
@@ -3726,24 +3659,30 @@
       "active": true
     },
     {
-      "id": "0601a4ff1d8024d6",
-      "title": "제15회 스웨덴영화제 대구·경북 서포터즈 모집",
+      "id": "b17789000a83cb90",
+      "title": "[굿네이버스] 한 달 충분! 핵심 경험·의미 챙겨가는 글로벌 서포터즈ㅣGOAL라잡는 사람들 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338208",
-      "summary": "삼보모터스(주) · activityTypeID: 1 · 스크랩 36",
-      "deadline": "2026-08-09",
+      "url": "https://linkareer.com/activity/338161",
+      "summary": "굿네이버스 경기2사업본부 · activityTypeID: 1 · 스크랩 49",
+      "deadline": "2026-08-27",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
       ],
       "recommendationTags": [
         "marketing",
-        "contents"
+        "trade",
+        "logistics",
+        "contents",
+        "global"
       ],
       "weightedTags": {
         "marketing": 8,
-        "contents": 6
+        "trade": 8,
+        "logistics": 7,
+        "contents": 6,
+        "global": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -3791,80 +3730,12 @@
       "active": true
     },
     {
-      "id": "b17789000a83cb90",
-      "title": "[굿네이버스] 한 달 충분! 핵심 경험·의미 챙겨가는 글로벌 서포터즈ㅣGOAL라잡는 사람들 모집",
-      "type": "대외활동",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/338161",
-      "summary": "굿네이버스 경기2사업본부 · activityTypeID: 1 · 스크랩 46",
-      "deadline": "2026-08-27",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "marketing",
-        "trade",
-        "logistics",
-        "contents",
-        "global"
-      ],
-      "weightedTags": {
-        "marketing": 8,
-        "trade": 8,
-        "logistics": 7,
-        "contents": 6,
-        "global": 5
-      },
-      "recommendationType": "activity",
-      "recommendationCat": "activity",
-      "baseWeight": 6,
-      "recommendedGrades": [
-        1,
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "c74ecc2564d0365b",
-      "title": "일상을 바꾸는 한 줄 SKT 모두의 promp.T 공모전",
-      "type": "공모전",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/338113",
-      "summary": "SK텔레콤 · activityTypeID: 3 · 스크랩 22",
-      "deadline": "2026-08-10",
-      "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅",
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "marketing",
-        "contents"
-      ],
-      "weightedTags": {
-        "marketing": 8,
-        "contents": 6
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
       "id": "4240800236c0972c",
       "title": "대구 국제디자인어워드 2026 DIDA 1기 서포터즈 모집",
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338132",
-      "summary": "(주)예진 · activityTypeID: 1 · 스크랩 37",
+      "summary": "(주)예진 · activityTypeID: 1 · 스크랩 38",
       "deadline": "2026-08-17",
       "publishedAt": "",
       "careerTags": [
@@ -3897,29 +3768,25 @@
       "active": true
     },
     {
-      "id": "ba848fe93d616aee",
-      "title": "2026년 한국에너지공단 Do드림 아이디어 공모전",
+      "id": "c74ecc2564d0365b",
+      "title": "일상을 바꾸는 한 줄 SKT 모두의 promp.T 공모전",
       "type": "공모전",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338014",
-      "summary": "한국에너지공단 · activityTypeID: 3 · 스크랩 21",
-      "deadline": "2026-08-31",
+      "url": "https://linkareer.com/activity/338113",
+      "summary": "SK텔레콤 · activityTypeID: 3 · 스크랩 28",
+      "deadline": "2026-08-10",
       "publishedAt": "",
       "careerTags": [
         "기획/마케팅",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "environment",
-        "architecture",
-        "engineering",
-        "energy"
+        "marketing",
+        "contents"
       ],
       "weightedTags": {
-        "environment": 7,
-        "architecture": 6,
-        "engineering": 5,
-        "energy": 5
+        "marketing": 8,
+        "contents": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -3937,7 +3804,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338007",
-      "summary": "삼성E&A · activityTypeID: 1 · 스크랩 26",
+      "summary": "삼성E&A · activityTypeID: 1 · 스크랩 27",
       "deadline": "2026-08-16",
       "publishedAt": "",
       "careerTags": [
@@ -3974,12 +3841,78 @@
       "active": true
     },
     {
+      "id": "ba848fe93d616aee",
+      "title": "2026년 한국에너지공단 Do드림 아이디어 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/338014",
+      "summary": "한국에너지공단 · activityTypeID: 3 · 스크랩 23",
+      "deadline": "2026-08-31",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "recommendationTags": [
+        "environment",
+        "architecture",
+        "engineering",
+        "energy"
+      ],
+      "weightedTags": {
+        "environment": 7,
+        "architecture": 6,
+        "engineering": 5,
+        "energy": 5
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "647c5b7dffb3e1d9",
+      "title": "조선비즈 대학생 서포터즈 9기 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/338003",
+      "summary": "조선비즈 · activityTypeID: 1 · 스크랩 127",
+      "deadline": "2026-08-02",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents"
+      ],
+      "weightedTags": {
+        "marketing": 8,
+        "contents": 6
+      },
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
       "id": "fb85daaff0551f1d",
       "title": "우리말 상표 및 한글 글자체 디자인, 문화유산 활용 디자인 선정대회",
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/338005",
-      "summary": "지식재산처 · activityTypeID: 3 · 스크랩 5",
+      "summary": "지식재산처 · activityTypeID: 3 · 스크랩 6",
       "deadline": "2026-08-05",
       "publishedAt": "",
       "careerTags": [
@@ -4011,13 +3944,13 @@
       "active": true
     },
     {
-      "id": "647c5b7dffb3e1d9",
-      "title": "조선비즈 대학생 서포터즈 9기 모집",
+      "id": "a6f41c29a5f45fdf",
+      "title": "세대이음 숏폼 클럽 서포터즈 대학생 참여자 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/338003",
-      "summary": "조선비즈 · activityTypeID: 1 · 스크랩 119",
-      "deadline": "2026-08-02",
+      "url": "https://linkareer.com/activity/337970",
+      "summary": "부산광역시다사랑복합문화예술회관 · activityTypeID: 1 · 스크랩 3",
+      "deadline": "2026-08-03",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -4047,7 +3980,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/337987",
-      "summary": "주식회사 디3 · activityTypeID: 3 · 스크랩 11",
+      "summary": "주식회사 디3 · activityTypeID: 3 · 스크랩 14",
       "deadline": "2026-08-07",
       "publishedAt": "",
       "careerTags": [
@@ -4071,24 +4004,30 @@
       "active": true
     },
     {
-      "id": "a6f41c29a5f45fdf",
-      "title": "세대이음 숏폼 클럽 서포터즈 대학생 참여자 모집",
+      "id": "a0317d026bf359c5",
+      "title": "2026 애슐리퀸즈 글로벌 서포터즈 1기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337970",
-      "summary": "부산광역시다사랑복합문화예술회관 · activityTypeID: 1 · 스크랩 2",
-      "deadline": "2026-08-03",
+      "url": "https://linkareer.com/activity/337935",
+      "summary": "이랜드이츠 · activityTypeID: 1 · 스크랩 229",
+      "deadline": "2026-08-02",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
       ],
       "recommendationTags": [
         "marketing",
-        "contents"
+        "trade",
+        "logistics",
+        "contents",
+        "global"
       ],
       "weightedTags": {
         "marketing": 8,
-        "contents": 6
+        "trade": 8,
+        "logistics": 7,
+        "contents": 6,
+        "global": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -4130,82 +4069,12 @@
       "active": true
     },
     {
-      "id": "a0317d026bf359c5",
-      "title": "2026 애슐리퀸즈 글로벌 서포터즈 1기 모집",
-      "type": "대외활동",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/337935",
-      "summary": "이랜드이츠 · activityTypeID: 1 · 스크랩 226",
-      "deadline": "2026-08-02",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "marketing",
-        "trade",
-        "logistics",
-        "contents",
-        "global"
-      ],
-      "weightedTags": {
-        "marketing": 8,
-        "trade": 8,
-        "logistics": 7,
-        "contents": 6,
-        "global": 5
-      },
-      "recommendationType": "activity",
-      "recommendationCat": "activity",
-      "baseWeight": 6,
-      "recommendedGrades": [
-        1,
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "9a7ce2409d9271ac",
-      "title": "2026년 제7회 서울대학교병원 멀티시네마월 영상작품 공모전",
-      "type": "공모전",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/337961",
-      "summary": "서울대학교병원 · activityTypeID: 3 · 스크랩 4",
-      "deadline": "2026-08-31",
-      "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅",
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "media",
-        "contents",
-        "writing"
-      ],
-      "weightedTags": {
-        "media": 8,
-        "contents": 8,
-        "writing": 5
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
       "id": "ebf372723c3ee0bc",
       "title": "대굴대굴 대구온나 SNS 서포터즈 3차 참여자 모집",
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/337932",
-      "summary": "행정안전부/대구광역시 · activityTypeID: 1 · 스크랩 61",
+      "summary": "행정안전부/대구광역시 · activityTypeID: 1 · 스크랩 62",
       "deadline": "2026-08-18",
       "publishedAt": "",
       "careerTags": [
@@ -4236,12 +4105,76 @@
       "active": true
     },
     {
+      "id": "9a7ce2409d9271ac",
+      "title": "2026년 제7회 서울대학교병원 멀티시네마월 영상작품 공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/337961",
+      "summary": "서울대학교병원 · activityTypeID: 3 · 스크랩 6",
+      "deadline": "2026-08-31",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "IT/소프트웨어"
+      ],
+      "recommendationTags": [
+        "media",
+        "contents",
+        "writing"
+      ],
+      "weightedTags": {
+        "media": 8,
+        "contents": 8,
+        "writing": 5
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "c76c61d97a3963e7",
+      "title": "2026 강동구립도서관 홍보 서포터즈 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/337884",
+      "summary": "강동문화재단(강동구립도서관) · activityTypeID: 1 · 스크랩 44",
+      "deadline": "2026-08-02",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents"
+      ],
+      "weightedTags": {
+        "marketing": 8,
+        "contents": 6
+      },
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
       "id": "f464b56fb14652ff",
       "title": "제11회 전국학생스마트폰사진공모전",
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/337937",
-      "summary": "사단법인 한국공간디자인협회 · activityTypeID: 3 · 스크랩 10",
+      "summary": "사단법인 한국공간디자인협회 · activityTypeID: 3 · 스크랩 11",
       "deadline": "2026-08-24",
       "publishedAt": "",
       "careerTags": [
@@ -4270,24 +4203,29 @@
       "active": true
     },
     {
-      "id": "c76c61d97a3963e7",
-      "title": "2026 강동구립도서관 홍보 서포터즈 모집",
+      "id": "30e1892e38d88cb2",
+      "title": "제3기 넷제로 2050 기후재단 SNS 서포터즈(기자단) 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337884",
-      "summary": "강동문화재단(강동구립도서관) · activityTypeID: 1 · 스크랩 43",
-      "deadline": "2026-08-02",
+      "url": "https://linkareer.com/activity/337871",
+      "summary": "넷제로 2050 기후재단 · activityTypeID: 1 · 스크랩 126",
+      "deadline": "2026-10-22",
       "publishedAt": "",
       "careerTags": [
+        "언론고시 (기자/PD)",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
         "marketing",
-        "contents"
+        "contents",
+        "media",
+        "writing"
       ],
       "weightedTags": {
         "marketing": 8,
-        "contents": 6
+        "contents": 8,
+        "media": 8,
+        "writing": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -4332,28 +4270,26 @@
       "active": true
     },
     {
-      "id": "30e1892e38d88cb2",
-      "title": "제3기 넷제로 2050 기후재단 SNS 서포터즈(기자단) 모집",
+      "id": "e5486ce56498e7a1",
+      "title": "2026 국립극장 청년기자단 4기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337871",
-      "summary": "넷제로 2050 기후재단 · activityTypeID: 1 · 스크랩 124",
-      "deadline": "2026-10-22",
+      "url": "https://linkareer.com/activity/337856",
+      "summary": "국립극장 · activityTypeID: 1 · 스크랩 162",
+      "deadline": "2026-08-05",
       "publishedAt": "",
       "careerTags": [
         "언론고시 (기자/PD)",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "marketing",
-        "contents",
         "media",
+        "contents",
         "writing"
       ],
       "weightedTags": {
-        "marketing": 8,
-        "contents": 8,
         "media": 8,
+        "contents": 8,
         "writing": 5
       },
       "recommendationType": "activity",
@@ -4399,27 +4335,24 @@
       "active": true
     },
     {
-      "id": "e5486ce56498e7a1",
-      "title": "2026 국립극장 청년기자단 4기 모집",
+      "id": "19200bd501914322",
+      "title": "[가좌청소년센터] 대학생과 함께하는 진로멘토링 멘토 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337856",
-      "summary": "국립극장 · activityTypeID: 1 · 스크랩 158",
-      "deadline": "2026-08-05",
+      "url": "https://linkareer.com/activity/337849",
+      "summary": "가좌청소년센터 · activityTypeID: 1 · 스크랩 26",
+      "deadline": "2026-08-06",
       "publishedAt": "",
       "careerTags": [
-        "언론고시 (기자/PD)",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "media",
-        "contents",
-        "writing"
+        "education",
+        "management"
       ],
       "weightedTags": {
-        "media": 8,
-        "contents": 8,
-        "writing": 5
+        "education": 5,
+        "management": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -4465,24 +4398,24 @@
       "active": true
     },
     {
-      "id": "19200bd501914322",
-      "title": "[가좌청소년센터] 대학생과 함께하는 진로멘토링 멘토 모집",
+      "id": "ab2c3c46f88f21cf",
+      "title": "[씨게이트] 씨게이트 서포터즈 5기 & 라씨 서포터즈 4기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337849",
-      "summary": "가좌청소년센터 · activityTypeID: 1 · 스크랩 25",
-      "deadline": "2026-08-06",
+      "url": "https://linkareer.com/activity/337777",
+      "summary": "씨게이트 · activityTypeID: 1 · 스크랩 87",
+      "deadline": "2026-08-11",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "education",
-        "management"
+        "marketing",
+        "contents"
       ],
       "weightedTags": {
-        "education": 5,
-        "management": 5
+        "marketing": 8,
+        "contents": 6
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -4501,7 +4434,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/337834",
-      "summary": "키친에이드 / 빠나나AI · activityTypeID: 3 · 스크랩 29",
+      "summary": "키친에이드 / 빠나나AI · activityTypeID: 3 · 스크랩 30",
       "deadline": "2026-08-14",
       "publishedAt": "",
       "careerTags": [
@@ -4529,24 +4462,36 @@
       "active": true
     },
     {
-      "id": "ab2c3c46f88f21cf",
-      "title": "[씨게이트] 씨게이트 서포터즈 5기 & 라씨 서포터즈 4기 모집",
+      "id": "0dc8509fdec91585",
+      "title": "국가통합바이오빅데이터구축사업단 대학생 홍보 서포터즈 2기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337777",
-      "summary": "씨게이트 · activityTypeID: 1 · 스크랩 82",
-      "deadline": "2026-08-11",
+      "url": "https://linkareer.com/activity/337746",
+      "summary": "국가통합바이오빅데이터구축사업단(한국보건산업진흥원) · activityTypeID: 1 · 스크랩 109",
+      "deadline": "2026-08-12",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
       ],
       "recommendationTags": [
+        "data",
         "marketing",
-        "contents"
+        "bio",
+        "statistics",
+        "contents",
+        "healthcare",
+        "food",
+        "research"
       ],
       "weightedTags": {
+        "data": 9,
         "marketing": 8,
-        "contents": 6
+        "bio": 8,
+        "statistics": 7,
+        "contents": 6,
+        "healthcare": 6,
+        "food": 6,
+        "research": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -4565,7 +4510,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/337832",
-      "summary": "서울특별시 · activityTypeID: 3 · 스크랩 25",
+      "summary": "서울특별시 · activityTypeID: 3 · 스크랩 27",
       "deadline": "2026-08-14",
       "publishedAt": "",
       "careerTags": [
@@ -4593,36 +4538,25 @@
       "active": true
     },
     {
-      "id": "0dc8509fdec91585",
-      "title": "국가통합바이오빅데이터구축사업단 대학생 홍보 서포터즈 2기 모집",
+      "id": "704fda1d8f56b1e3",
+      "title": "패션매거진 FASHIONHAKYO 6기 에디터 서포터즈 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337746",
-      "summary": "국가통합바이오빅데이터구축사업단(한국보건산업진흥원) · activityTypeID: 1 · 스크랩 102",
-      "deadline": "2026-08-12",
+      "url": "https://linkareer.com/activity/337740",
+      "summary": "패션학교 · activityTypeID: 1 · 스크랩 84",
+      "deadline": "2026-08-06",
       "publishedAt": "",
       "careerTags": [
+        "패션/의류",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "data",
         "marketing",
-        "bio",
-        "statistics",
-        "contents",
-        "healthcare",
-        "food",
-        "research"
+        "contents"
       ],
       "weightedTags": {
-        "data": 9,
         "marketing": 8,
-        "bio": 8,
-        "statistics": 7,
-        "contents": 6,
-        "healthcare": 6,
-        "food": 6,
-        "research": 5
+        "contents": 6
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -4664,16 +4598,15 @@
       "active": true
     },
     {
-      "id": "704fda1d8f56b1e3",
-      "title": "패션매거진 FASHIONHAKYO 6기 에디터 서포터즈 모집",
+      "id": "c9aab21f233b08db",
+      "title": "제14회 부산국제항만컨퍼런스 (BIPC 2026) 서포터즈",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337740",
-      "summary": "패션학교 · activityTypeID: 1 · 스크랩 77",
-      "deadline": "2026-08-06",
+      "url": "https://linkareer.com/activity/337625",
+      "summary": "마이스플랜즈 · activityTypeID: 1 · 스크랩 82",
+      "deadline": "2026-08-07",
       "publishedAt": "",
       "careerTags": [
-        "패션/의류",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
@@ -4728,24 +4661,27 @@
       "active": true
     },
     {
-      "id": "c9aab21f233b08db",
-      "title": "제14회 부산국제항만컨퍼런스 (BIPC 2026) 서포터즈",
+      "id": "0075fd0b821ef410",
+      "title": "[한국수자원조사기술원] 2026년 대학생 水습기자단 7기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337625",
-      "summary": "마이스플랜즈 · activityTypeID: 1 · 스크랩 79",
-      "deadline": "2026-08-07",
+      "url": "https://linkareer.com/activity/337623",
+      "summary": "한국수자원조사기술원 · activityTypeID: 1 · 스크랩 104",
+      "deadline": "2026-08-05",
       "publishedAt": "",
       "careerTags": [
+        "언론고시 (기자/PD)",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "marketing",
-        "contents"
+        "media",
+        "contents",
+        "writing"
       ],
       "weightedTags": {
-        "marketing": 8,
-        "contents": 6
+        "media": 8,
+        "contents": 8,
+        "writing": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -4764,7 +4700,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/337651",
-      "summary": "인천도시공사 · activityTypeID: 3 · 스크랩 50",
+      "summary": "인천도시공사 · activityTypeID: 3 · 스크랩 54",
       "deadline": "2026-08-10",
       "publishedAt": "",
       "careerTags": [
@@ -4800,27 +4736,24 @@
       "active": true
     },
     {
-      "id": "0075fd0b821ef410",
-      "title": "[한국수자원조사기술원] 2026년 대학생 水습기자단 7기 모집",
+      "id": "7099222b5a72ca0f",
+      "title": "[효성프렌즈] 효성그룹 대학생 서포터즈 8기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337623",
-      "summary": "한국수자원조사기술원 · activityTypeID: 1 · 스크랩 97",
-      "deadline": "2026-08-05",
+      "url": "https://linkareer.com/activity/337463",
+      "summary": "(주)효성 · activityTypeID: 1 · 스크랩 168",
+      "deadline": "2026-08-09",
       "publishedAt": "",
       "careerTags": [
-        "언론고시 (기자/PD)",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "media",
-        "contents",
-        "writing"
+        "marketing",
+        "contents"
       ],
       "weightedTags": {
-        "media": 8,
-        "contents": 8,
-        "writing": 5
+        "marketing": 8,
+        "contents": 6
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -4839,7 +4772,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/337599",
-      "summary": "단국대학교 · activityTypeID: 3 · 스크랩 7",
+      "summary": "단국대학교 · activityTypeID: 3 · 스크랩 9",
       "deadline": "2026-11-01",
       "publishedAt": "",
       "careerTags": [
@@ -4868,13 +4801,13 @@
       "active": true
     },
     {
-      "id": "7099222b5a72ca0f",
-      "title": "[효성프렌즈] 효성그룹 대학생 서포터즈 8기 모집",
+      "id": "66449ca107891fda",
+      "title": "[경동시장 서포터즈] 꼬집스 18기 단원 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337463",
-      "summary": "(주)효성 · activityTypeID: 1 · 스크랩 152",
-      "deadline": "2026-08-09",
+      "url": "https://linkareer.com/activity/337312",
+      "summary": "케이디마켓 · activityTypeID: 1 · 스크랩 65",
+      "deadline": "2026-08-08",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -4904,7 +4837,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/337571",
-      "summary": "서울특별시교육청남산도서관 · activityTypeID: 3 · 스크랩 23",
+      "summary": "서울특별시교육청남산도서관 · activityTypeID: 3 · 스크랩 21",
       "deadline": "2026-08-09",
       "publishedAt": "",
       "careerTags": [
@@ -4930,13 +4863,13 @@
       "active": true
     },
     {
-      "id": "66449ca107891fda",
-      "title": "[경동시장 서포터즈] 꼬집스 18기 단원 모집",
+      "id": "4124030658e5d022",
+      "title": "2026 강북문화재단 블로그 서포터즈 2기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337312",
-      "summary": "케이디마켓 · activityTypeID: 1 · 스크랩 64",
-      "deadline": "2026-08-08",
+      "url": "https://linkareer.com/activity/337296",
+      "summary": "강북문화재단 · activityTypeID: 1 · 스크랩 39",
+      "deadline": "2026-08-03",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -4994,13 +4927,13 @@
       "active": true
     },
     {
-      "id": "4124030658e5d022",
-      "title": "2026 강북문화재단 블로그 서포터즈 2기 모집",
+      "id": "810a85f32bc07ff4",
+      "title": "Odoo 에듀케이션 서포터즈 1기",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337296",
-      "summary": "강북문화재단 · activityTypeID: 1 · 스크랩 40",
-      "deadline": "2026-08-03",
+      "url": "https://linkareer.com/activity/337278",
+      "summary": "Odoo · activityTypeID: 1 · 스크랩 88",
+      "deadline": "2026-08-02",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -5058,13 +4991,13 @@
       "active": true
     },
     {
-      "id": "810a85f32bc07ff4",
-      "title": "Odoo 에듀케이션 서포터즈 1기",
+      "id": "01068c4777e5ff8b",
+      "title": "[KeSPA×POSCO FANTASTEEL] Team Korea of Esports 서포터즈 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337278",
-      "summary": "Odoo · activityTypeID: 1 · 스크랩 89",
-      "deadline": "2026-08-02",
+      "url": "https://linkareer.com/activity/337255",
+      "summary": "한국e스포츠협회(KeSPA) × 포스코(POSCO FANTASTEEL) · activityTypeID: 1 · 스크랩 88",
+      "deadline": "2026-08-10",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -5094,7 +5027,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/337406",
-      "summary": "주식회사 디비월드 · activityTypeID: 3 · 스크랩 17",
+      "summary": "주식회사 디비월드 · activityTypeID: 3 · 스크랩 19",
       "deadline": "2026-09-14",
       "publishedAt": "",
       "careerTags": [
@@ -5125,24 +5058,31 @@
       "active": true
     },
     {
-      "id": "01068c4777e5ff8b",
-      "title": "[KeSPA×POSCO FANTASTEEL] Team Korea of Esports 서포터즈 모집",
+      "id": "7e162574ea7c259c",
+      "title": "2026 서울디자인페스티벌 '디자인 서포터즈' 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337255",
-      "summary": "한국e스포츠협회(KeSPA) × 포스코(POSCO FANTASTEEL) · activityTypeID: 1 · 스크랩 84",
-      "deadline": "2026-08-10",
+      "url": "https://linkareer.com/activity/337205",
+      "summary": "(주)디자인하우스 · activityTypeID: 1 · 스크랩 189",
+      "deadline": "2026-08-21",
       "publishedAt": "",
       "careerTags": [
+        "패션/의류",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
         "marketing",
-        "contents"
+        "design",
+        "ux",
+        "contents",
+        "portfolio"
       ],
       "weightedTags": {
         "marketing": 8,
-        "contents": 6
+        "design": 8,
+        "ux": 7,
+        "contents": 6,
+        "portfolio": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -5161,7 +5101,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/337394",
-      "summary": "사단법인 청년과미래 · activityTypeID: 3 · 스크랩 31",
+      "summary": "사단법인 청년과미래 · activityTypeID: 3 · 스크랩 30",
       "deadline": "2026-08-12",
       "publishedAt": "",
       "careerTags": [
@@ -5188,31 +5128,26 @@
       "active": true
     },
     {
-      "id": "7e162574ea7c259c",
-      "title": "2026 서울디자인페스티벌 '디자인 서포터즈' 모집",
+      "id": "23cb2ae8f8b4c763",
+      "title": "제63회 수원화성문화제 글로벌 통역봉사단 '글링이' 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337205",
-      "summary": "(주)디자인하우스 · activityTypeID: 1 · 스크랩 183",
-      "deadline": "2026-08-21",
+      "url": "https://linkareer.com/activity/337174",
+      "summary": "(주)아트카오스 · activityTypeID: 1 · 스크랩 53",
+      "deadline": "2026-08-14",
       "publishedAt": "",
       "careerTags": [
-        "패션/의류",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "marketing",
-        "design",
-        "ux",
-        "contents",
-        "portfolio"
+        "trade",
+        "logistics",
+        "global"
       ],
       "weightedTags": {
-        "marketing": 8,
-        "design": 8,
-        "ux": 7,
-        "contents": 6,
-        "portfolio": 5
+        "trade": 8,
+        "logistics": 7,
+        "global": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -5258,26 +5193,24 @@
       "active": true
     },
     {
-      "id": "23cb2ae8f8b4c763",
-      "title": "제63회 수원화성문화제 글로벌 통역봉사단 '글링이' 모집",
+      "id": "2ae67b42b666bcee",
+      "title": "국립대학육성사업 대학생 홍보대사 13기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337174",
-      "summary": "(주)아트카오스 · activityTypeID: 1 · 스크랩 50",
-      "deadline": "2026-08-14",
+      "url": "https://linkareer.com/activity/337173",
+      "summary": "국립대학육성사업 발전협의회 · activityTypeID: 1 · 스크랩 143",
+      "deadline": "2026-08-09",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "trade",
-        "logistics",
-        "global"
+        "marketing",
+        "contents"
       ],
       "weightedTags": {
-        "trade": 8,
-        "logistics": 7,
-        "global": 5
+        "marketing": 8,
+        "contents": 6
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -5325,24 +5258,30 @@
       "active": true
     },
     {
-      "id": "2ae67b42b666bcee",
-      "title": "국립대학육성사업 대학생 홍보대사 13기 모집",
+      "id": "f8705ba824334368",
+      "title": "부산글로벌게임센터 서포터즈 10기 모집 (BIC·G-STAR 참관)",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337173",
-      "summary": "국립대학육성사업 발전협의회 · activityTypeID: 1 · 스크랩 137",
-      "deadline": "2026-08-09",
+      "url": "https://linkareer.com/activity/337171",
+      "summary": "부산정보산업진흥원 · activityTypeID: 1 · 스크랩 54",
+      "deadline": "2026-08-03",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
       ],
       "recommendationTags": [
         "marketing",
-        "contents"
+        "trade",
+        "logistics",
+        "contents",
+        "global"
       ],
       "weightedTags": {
         "marketing": 8,
-        "contents": 6
+        "trade": 8,
+        "logistics": 7,
+        "contents": 6,
+        "global": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -5391,30 +5330,29 @@
       "active": true
     },
     {
-      "id": "f8705ba824334368",
-      "title": "부산글로벌게임센터 서포터즈 10기 모집 (BIC·G-STAR 참관)",
+      "id": "836b6897a9dd690b",
+      "title": "[공지] KB-YMCA 대학생경제금융교육봉사단 폴라리스+ 27기 모집 안내",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337171",
-      "summary": "부산정보산업진흥원 · activityTypeID: 1 · 스크랩 51",
+      "url": "https://linkareer.com/activity/337120",
+      "summary": "KB국민은행-YMCA · activityTypeID: 1 · 스크랩 787",
       "deadline": "2026-08-03",
       "publishedAt": "",
       "careerTags": [
+        "금융/은행",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "marketing",
-        "trade",
-        "logistics",
-        "contents",
-        "global"
+        "finance",
+        "economics",
+        "education",
+        "management"
       ],
       "weightedTags": {
-        "marketing": 8,
-        "trade": 8,
-        "logistics": 7,
-        "contents": 6,
-        "global": 5
+        "finance": 8,
+        "economics": 7,
+        "education": 5,
+        "management": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -5462,29 +5400,24 @@
       "active": true
     },
     {
-      "id": "836b6897a9dd690b",
-      "title": "[공지] KB-YMCA 대학생경제금융교육봉사단 폴라리스+ 27기 모집 안내",
+      "id": "fca8701d20185ede",
+      "title": "[달리는커피] 달리는커피 서포터즈 '달커즈' 2기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337120",
-      "summary": "KB국민은행-YMCA · activityTypeID: 1 · 스크랩 764",
-      "deadline": "2026-08-03",
+      "url": "https://linkareer.com/activity/337079",
+      "summary": "(주)달리는커피코리아 · activityTypeID: 1 · 스크랩 155",
+      "deadline": "2026-08-17",
       "publishedAt": "",
       "careerTags": [
-        "금융/은행",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "finance",
-        "economics",
-        "education",
-        "management"
+        "marketing",
+        "contents"
       ],
       "weightedTags": {
-        "finance": 8,
-        "economics": 7,
-        "education": 5,
-        "management": 5
+        "marketing": 8,
+        "contents": 6
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -5503,7 +5436,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/337329",
-      "summary": "주식회사 어치브모먼트 · activityTypeID: 3 · 스크랩 28",
+      "summary": "주식회사 어치브모먼트 · activityTypeID: 3 · 스크랩 29",
       "deadline": "2026-08-02",
       "publishedAt": "",
       "careerTags": [
@@ -5533,13 +5466,13 @@
       "active": true
     },
     {
-      "id": "fca8701d20185ede",
-      "title": "[달리는커피] 달리는커피 서포터즈 '달커즈' 2기 모집",
+      "id": "b181c563910aa648",
+      "title": "해커스잡 SNS 서포터즈 1기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337079",
-      "summary": "(주)달리는커피코리아 · activityTypeID: 1 · 스크랩 149",
-      "deadline": "2026-08-17",
+      "url": "https://linkareer.com/activity/337074",
+      "summary": "챔프스터디 · activityTypeID: 1 · 스크랩 157",
+      "deadline": "2026-08-02",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -5598,24 +5531,30 @@
       "active": true
     },
     {
-      "id": "b181c563910aa648",
-      "title": "해커스잡 SNS 서포터즈 1기 모집",
+      "id": "eee9eb325e63962d",
+      "title": "2026년 WISET-Seegene 글로벌 원데이 멘토링",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337074",
-      "summary": "챔프스터디 · activityTypeID: 1 · 스크랩 159",
-      "deadline": "2026-08-02",
+      "url": "https://linkareer.com/activity/337016",
+      "summary": "한국여성과학기술인육성재단 · activityTypeID: 1 · 스크랩 27",
+      "deadline": "2026-08-04",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "marketing",
-        "contents"
+        "trade",
+        "logistics",
+        "global",
+        "education",
+        "management"
       ],
       "weightedTags": {
-        "marketing": 8,
-        "contents": 6
+        "trade": 8,
+        "logistics": 7,
+        "global": 5,
+        "education": 5,
+        "management": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -5660,30 +5599,24 @@
       "active": true
     },
     {
-      "id": "eee9eb325e63962d",
-      "title": "2026년 WISET-Seegene 글로벌 원데이 멘토링",
+      "id": "9a6e81590f02c113",
+      "title": "국내 트레킹 SNS 서포터즈 9기 저니워커 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337016",
-      "summary": "한국여성과학기술인육성재단 · activityTypeID: 1 · 스크랩 27",
-      "deadline": "2026-08-04",
+      "url": "https://linkareer.com/activity/336924",
+      "summary": "승우여행사 · activityTypeID: 1 · 스크랩 25",
+      "deadline": "2026-08-03",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "trade",
-        "logistics",
-        "global",
-        "education",
-        "management"
+        "marketing",
+        "contents"
       ],
       "weightedTags": {
-        "trade": 8,
-        "logistics": 7,
-        "global": 5,
-        "education": 5,
-        "management": 5
+        "marketing": 8,
+        "contents": 6
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -5731,13 +5664,13 @@
       "active": true
     },
     {
-      "id": "9a6e81590f02c113",
-      "title": "국내 트레킹 SNS 서포터즈 9기 저니워커 모집",
+      "id": "c340a1d8821880c1",
+      "title": "대한민국 클라우드/SaaS 포럼 2026 서포터즈 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/336924",
-      "summary": "승우여행사 · activityTypeID: 1 · 스크랩 25",
-      "deadline": "2026-08-03",
+      "url": "https://linkareer.com/activity/336910",
+      "summary": "KCSF2026 운영사무국 · activityTypeID: 1 · 스크랩 88",
+      "deadline": "2026-08-05",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -5767,7 +5700,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/337191",
-      "summary": "(주)현대리바트 · activityTypeID: 3 · 스크랩 83",
+      "summary": "(주)현대리바트 · activityTypeID: 3 · 스크랩 97",
       "deadline": "2026-09-13",
       "publishedAt": "",
       "careerTags": [
@@ -5800,24 +5733,28 @@
       "active": true
     },
     {
-      "id": "c340a1d8821880c1",
-      "title": "대한민국 클라우드/SaaS 포럼 2026 서포터즈 모집",
+      "id": "c0727c3f7fc7c38f",
+      "title": "[코멘토] 제휴대학 대학생 서포터즈 \"코멘티\" 12기 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/336910",
-      "summary": "KCSF2026 운영사무국 · activityTypeID: 1 · 스크랩 86",
-      "deadline": "2026-08-05",
+      "url": "https://linkareer.com/activity/336864",
+      "summary": "코멘토 · activityTypeID: 1 · 스크랩 89",
+      "deadline": "2026-08-19",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
       ],
       "recommendationTags": [
         "marketing",
-        "contents"
+        "contents",
+        "education",
+        "management"
       ],
       "weightedTags": {
         "marketing": 8,
-        "contents": 6
+        "contents": 6,
+        "education": 5,
+        "management": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -5852,76 +5789,6 @@
         "frontend": 9,
         "software": 8,
         "portfolio": 6
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "c0727c3f7fc7c38f",
-      "title": "[코멘토] 제휴대학 대학생 서포터즈 \"코멘티\" 12기 모집",
-      "type": "대외활동",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/336864",
-      "summary": "코멘토 · activityTypeID: 1 · 스크랩 86",
-      "deadline": "2026-08-19",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "marketing",
-        "contents",
-        "education",
-        "management"
-      ],
-      "weightedTags": {
-        "marketing": 8,
-        "contents": 6,
-        "education": 5,
-        "management": 5
-      },
-      "recommendationType": "activity",
-      "recommendationCat": "activity",
-      "baseWeight": 6,
-      "recommendedGrades": [
-        1,
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "4286e9a77cdc4427",
-      "title": "특허-산업 융합데이터 활용 아이디어 공모전",
-      "type": "공모전",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/337175",
-      "summary": "지식재산처 / 한국특허전략개발원 · activityTypeID: 3 · 스크랩 40",
-      "deadline": "2026-09-11",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어",
-        "기획/마케팅"
-      ],
-      "recommendationTags": [
-        "data",
-        "patent",
-        "statistics",
-        "research"
-      ],
-      "weightedTags": {
-        "data": 9,
-        "patent": 9,
-        "statistics": 7,
-        "research": 5
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -5969,22 +5836,29 @@
       "active": true
     },
     {
-      "id": "16a104022d5ec239",
-      "title": "[마산대학교 재학생 대상] 휴먼케어 AI 챌린지 프로그램",
+      "id": "4286e9a77cdc4427",
+      "title": "특허-산업 융합데이터 활용 아이디어 공모전",
       "type": "공모전",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337152",
-      "summary": "에스이비피 · activityTypeID: 3",
-      "deadline": "2026-08-03",
+      "url": "https://linkareer.com/activity/337175",
+      "summary": "지식재산처 / 한국특허전략개발원 · activityTypeID: 3 · 스크랩 41",
+      "deadline": "2026-09-11",
       "publishedAt": "",
       "careerTags": [
-        "IT/소프트웨어"
+        "IT/소프트웨어",
+        "기획/마케팅"
       ],
       "recommendationTags": [
-        "ai"
+        "data",
+        "patent",
+        "statistics",
+        "research"
       ],
       "weightedTags": {
-        "ai": 4
+        "data": 9,
+        "patent": 9,
+        "statistics": 7,
+        "research": 5
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -6002,7 +5876,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/336643",
-      "summary": "유한회사 케이지미라클 · activityTypeID: 1 · 스크랩 54",
+      "summary": "유한회사 케이지미라클 · activityTypeID: 1 · 스크랩 55",
       "deadline": "2026-08-04",
       "publishedAt": "",
       "careerTags": [
@@ -6028,29 +5902,22 @@
       "active": true
     },
     {
-      "id": "aaec4783813d0333",
-      "title": "1.44MB 게임 개발공모전",
+      "id": "16a104022d5ec239",
+      "title": "[마산대학교 재학생 대상] 휴먼케어 AI 챌린지 프로그램",
       "type": "공모전",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/337063",
-      "summary": "2P GAME ARCADE · activityTypeID: 3 · 스크랩 16",
-      "deadline": "2026-09-04",
+      "url": "https://linkareer.com/activity/337152",
+      "summary": "에스이비피 · activityTypeID: 3",
+      "deadline": "2026-08-03",
       "publishedAt": "",
       "careerTags": [
-        "IT/소프트웨어",
-        "기획/마케팅"
+        "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "environment",
-        "architecture",
-        "engineering",
-        "energy"
+        "ai"
       ],
       "weightedTags": {
-        "environment": 7,
-        "architecture": 6,
-        "engineering": 5,
-        "energy": 5
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -6094,12 +5961,78 @@
       "active": true
     },
     {
+      "id": "aaec4783813d0333",
+      "title": "1.44MB 게임 개발공모전",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/337063",
+      "summary": "2P GAME ARCADE · activityTypeID: 3 · 스크랩 17",
+      "deadline": "2026-09-04",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "recommendationTags": [
+        "environment",
+        "architecture",
+        "engineering",
+        "energy"
+      ],
+      "weightedTags": {
+        "environment": 7,
+        "architecture": 6,
+        "engineering": 5,
+        "energy": 5
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "71931628763618ad",
+      "title": "[도봉중독관리통합지원센터] 청년 중독예방 서포터즈 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/336422",
+      "summary": "도봉중독관리통합지원센터 · activityTypeID: 1 · 스크랩 28",
+      "deadline": "2026-10-04",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents"
+      ],
+      "weightedTags": {
+        "marketing": 8,
+        "contents": 6
+      },
+      "recommendationType": "activity",
+      "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
       "id": "45df7c477758388d",
       "title": "2026 마스턴투자운용 아이디어 공모전 (무신사 성수 E4 개발사업 프로젝트)",
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/337062",
-      "summary": "마스턴투자운용 · activityTypeID: 3 · 스크랩 24",
+      "summary": "마스턴투자운용 · activityTypeID: 3 · 스크랩 25",
       "deadline": "2026-08-11",
       "publishedAt": "",
       "careerTags": [
@@ -6126,13 +6059,13 @@
       "active": true
     },
     {
-      "id": "71931628763618ad",
-      "title": "[도봉중독관리통합지원센터] 청년 중독예방 서포터즈 모집",
+      "id": "6425da6053987049",
+      "title": "2026 광명마당극축제에서 함께할 축제 서포터즈 '반디 8기'를 모집합니다!!",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/336422",
-      "summary": "도봉중독관리통합지원센터 · activityTypeID: 1 · 스크랩 26",
-      "deadline": "2026-10-04",
+      "url": "https://linkareer.com/activity/336418",
+      "summary": "(재)광명문화재단 · activityTypeID: 1 · 스크랩 22",
+      "deadline": "2026-08-17",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -6162,7 +6095,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/336993",
-      "summary": "(사)한국신문협회 · activityTypeID: 3 · 스크랩 24",
+      "summary": "(사)한국신문협회 · activityTypeID: 3 · 스크랩 25",
       "deadline": "2026-10-10",
       "publishedAt": "",
       "careerTags": [
@@ -6192,13 +6125,13 @@
       "active": true
     },
     {
-      "id": "6425da6053987049",
-      "title": "2026 광명마당극축제에서 함께할 축제 서포터즈 '반디 8기'를 모집합니다!!",
+      "id": "3f9b3d5bf113730e",
+      "title": "[CJ대한통운] CJ LOGISTICS 대학생 앰버서더 3기 모집(~8/2)",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/336418",
-      "summary": "(재)광명문화재단 · activityTypeID: 1 · 스크랩 23",
-      "deadline": "2026-08-17",
+      "url": "https://linkareer.com/activity/336340",
+      "summary": "CJ대한통운 · activityTypeID: 1 · 스크랩 1261",
+      "deadline": "2026-08-02",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -6228,7 +6161,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/336939",
-      "summary": "무역위원회 · activityTypeID: 3 · 스크랩 32",
+      "summary": "무역위원회 · activityTypeID: 3 · 스크랩 33",
       "deadline": "2026-10-31",
       "publishedAt": "",
       "careerTags": [
@@ -6255,78 +6188,12 @@
       "active": true
     },
     {
-      "id": "3f9b3d5bf113730e",
-      "title": "[CJ대한통운] CJ LOGISTICS 대학생 앰버서더 3기 모집(~8/2)",
-      "type": "대외활동",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/336340",
-      "summary": "CJ대한통운 · activityTypeID: 1 · 스크랩 1266",
-      "deadline": "2026-08-02",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "marketing",
-        "contents"
-      ],
-      "weightedTags": {
-        "marketing": 8,
-        "contents": 6
-      },
-      "recommendationType": "activity",
-      "recommendationCat": "activity",
-      "baseWeight": 6,
-      "recommendedGrades": [
-        1,
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "5d74187ce4d35cef",
-      "title": "기후에너지환경부 맑은 하늘 공모전",
-      "type": "공모전",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/336882",
-      "summary": "기후에너지환경부 · activityTypeID: 3 · 스크랩 105",
-      "deadline": "2026-08-09",
-      "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅",
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "environment",
-        "architecture",
-        "engineering",
-        "energy"
-      ],
-      "weightedTags": {
-        "environment": 7,
-        "architecture": 6,
-        "engineering": 5,
-        "energy": 5
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
       "id": "1e60c16fef0f0b97",
       "title": "코드하나 SW·AI교육서포터즈 코더스(coderS) 5기 모집",
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/336205",
-      "summary": "(주)코드하나 · activityTypeID: 1 · 스크랩 43",
+      "summary": "(주)코드하나 · activityTypeID: 1 · 스크랩 46",
       "deadline": "2026-08-02",
       "publishedAt": "",
       "careerTags": [
@@ -6358,22 +6225,29 @@
       "active": true
     },
     {
-      "id": "a4a52f95e171ceb4",
-      "title": "전국민 AI 에이전트 챌린지 'MABC 2026'",
+      "id": "5d74187ce4d35cef",
+      "title": "기후에너지환경부 맑은 하늘 공모전",
       "type": "공모전",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/336875",
-      "summary": "업스테이지 · activityTypeID: 3 · 스크랩 64",
-      "deadline": "2026-08-31",
+      "url": "https://linkareer.com/activity/336882",
+      "summary": "기후에너지환경부 · activityTypeID: 3 · 스크랩 111",
+      "deadline": "2026-08-09",
       "publishedAt": "",
       "careerTags": [
+        "기획/마케팅",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "ai"
+        "environment",
+        "architecture",
+        "engineering",
+        "energy"
       ],
       "weightedTags": {
-        "ai": 4
+        "environment": 7,
+        "architecture": 6,
+        "engineering": 5,
+        "energy": 5
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -6391,7 +6265,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/336203",
-      "summary": "(주)아담F&B · activityTypeID: 1 · 스크랩 125",
+      "summary": "(주)아담F&B · activityTypeID: 1 · 스크랩 132",
       "deadline": "2026-08-17",
       "publishedAt": "",
       "careerTags": [
@@ -6414,6 +6288,69 @@
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
+      "baseWeight": 6,
+      "recommendedGrades": [
+        1,
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "a4a52f95e171ceb4",
+      "title": "전국민 AI 에이전트 챌린지 'MABC 2026'",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/336875",
+      "summary": "업스테이지 · activityTypeID: 3 · 스크랩 67",
+      "deadline": "2026-08-31",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "recommendationTags": [
+        "ai"
+      ],
+      "weightedTags": {
+        "ai": 4
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "4b8d3d8dfae9e9a6",
+      "title": "[Wanderat/원더엣] 일본어 로컬 호스트 서포터즈 1기 모집",
+      "type": "대외활동",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/336176",
+      "summary": "원더엣 · activityTypeID: 1 · 스크랩 39",
+      "deadline": "2026-10-15",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "global",
+        "language",
+        "contents"
+      ],
+      "weightedTags": {
+        "marketing": 8,
+        "global": 7,
+        "language": 7,
+        "contents": 6
+      },
+      "recommendationType": "activity",
+      "recommendationCat": "lang",
       "baseWeight": 6,
       "recommendedGrades": [
         1,
@@ -6455,31 +6392,29 @@
       "active": true
     },
     {
-      "id": "4b8d3d8dfae9e9a6",
-      "title": "[Wanderat/원더엣] 일본어 로컬 호스트 서포터즈 1기 모집",
+      "id": "7d94d502b3c8f1f8",
+      "title": "[사야컴퍼니] 서포터즈 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/336176",
-      "summary": "원더엣 · activityTypeID: 1 · 스크랩 38",
-      "deadline": "2026-10-15",
+      "url": "https://linkareer.com/activity/336172",
+      "summary": "주식회사 사야컴퍼니 · activityTypeID: 1 · 스크랩 37",
+      "deadline": "2026-08-02",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
       ],
       "recommendationTags": [
         "marketing",
-        "global",
-        "language",
+        "investment",
         "contents"
       ],
       "weightedTags": {
         "marketing": 8,
-        "global": 7,
-        "language": 7,
+        "investment": 8,
         "contents": 6
       },
       "recommendationType": "activity",
-      "recommendationCat": "lang",
+      "recommendationCat": "activity",
       "baseWeight": 6,
       "recommendedGrades": [
         1,
@@ -6495,7 +6430,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/336812",
-      "summary": "주식회사 디비월드 · activityTypeID: 3 · 스크랩 22",
+      "summary": "주식회사 디비월드 · activityTypeID: 3 · 스크랩 23",
       "deadline": "2026-09-14",
       "publishedAt": "",
       "careerTags": [
@@ -6526,13 +6461,13 @@
       "active": true
     },
     {
-      "id": "7d94d502b3c8f1f8",
-      "title": "[사야컴퍼니] 서포터즈 모집",
+      "id": "5bb766e6f3842230",
+      "title": "T1 WISH RUN 서포터즈 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/336172",
-      "summary": "주식회사 사야컴퍼니 · activityTypeID: 1 · 스크랩 38",
-      "deadline": "2026-08-02",
+      "url": "https://linkareer.com/activity/336061",
+      "summary": "주식회사 리브위드 · activityTypeID: 1 · 스크랩 73",
+      "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어"
@@ -6596,25 +6531,24 @@
       "active": true
     },
     {
-      "id": "5bb766e6f3842230",
-      "title": "T1 WISH RUN 서포터즈 모집",
+      "id": "7d5dddb667bb1c7f",
+      "title": "궁중 간식 브랜드 서포터즈 '서가당 10기' 모집 [모집기간: ~8/2(일)까지 연장]",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/336061",
-      "summary": "주식회사 리브위드 · activityTypeID: 1 · 스크랩 68",
-      "deadline": "2026-08-31",
+      "url": "https://linkareer.com/activity/336023",
+      "summary": "로컬리 · activityTypeID: 1 · 스크랩 80",
+      "deadline": "2026-08-02",
       "publishedAt": "",
       "careerTags": [
+        "패션/의류",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
         "marketing",
-        "investment",
         "contents"
       ],
       "weightedTags": {
         "marketing": 8,
-        "investment": 8,
         "contents": 6
       },
       "recommendationType": "activity",
@@ -6634,7 +6568,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/336795",
-      "summary": "로잇스페이스 · activityTypeID: 3 · 스크랩 17",
+      "summary": "로잇스페이스 · activityTypeID: 3 · 스크랩 18",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -6664,25 +6598,24 @@
       "active": true
     },
     {
-      "id": "7d5dddb667bb1c7f",
-      "title": "궁중 간식 브랜드 서포터즈 '서가당 10기' 모집 [모집기간: ~8/2(일)까지 연장]",
+      "id": "a613947454644794",
+      "title": "우리다문화장학재단X굿네이버스 [2026 우리 UP 학습멘토링] 멘토 모집",
       "type": "대외활동",
       "source": "링커리어",
-      "url": "https://linkareer.com/activity/336023",
-      "summary": "로컬리 · activityTypeID: 1 · 스크랩 76",
+      "url": "https://linkareer.com/activity/335942",
+      "summary": "사단법인 굿네이버스 인터내셔날 · activityTypeID: 1 · 스크랩 619",
       "deadline": "2026-08-02",
       "publishedAt": "",
       "careerTags": [
-        "패션/의류",
         "IT/소프트웨어"
       ],
       "recommendationTags": [
-        "marketing",
-        "contents"
+        "education",
+        "management"
       ],
       "weightedTags": {
-        "marketing": 8,
-        "contents": 6
+        "education": 5,
+        "management": 5
       },
       "recommendationType": "activity",
       "recommendationCat": "activity",
@@ -6701,7 +6634,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/336794",
-      "summary": "보건복지부 · activityTypeID: 3 · 스크랩 3",
+      "summary": "보건복지부 · activityTypeID: 3 · 스크랩 4",
       "deadline": "2026-08-26",
       "publishedAt": "",
       "careerTags": [
@@ -6765,7 +6698,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/336751",
-      "summary": "(사)한국부동산금융투자포럼 · activityTypeID: 3 · 스크랩 81",
+      "summary": "(사)한국부동산금융투자포럼 · activityTypeID: 3 · 스크랩 83",
       "deadline": "2026-10-30",
       "publishedAt": "",
       "careerTags": [
@@ -6796,7 +6729,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335714",
-      "summary": "대구오페라하우스 · activityTypeID: 1 · 스크랩 53",
+      "summary": "대구오페라하우스 · activityTypeID: 1 · 스크랩 55",
       "deadline": "2026-08-07",
       "publishedAt": "",
       "careerTags": [
@@ -6827,7 +6760,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/336659",
-      "summary": "디지털에볼루션 · activityTypeID: 3 · 스크랩 23",
+      "summary": "디지털에볼루션 · activityTypeID: 3 · 스크랩 24",
       "deadline": "2026-08-09",
       "publishedAt": "",
       "careerTags": [
@@ -6860,7 +6793,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335453",
-      "summary": "김대일문화재단 · activityTypeID: 1 · 스크랩 23",
+      "summary": "김대일문화재단 · activityTypeID: 1 · 스크랩 25",
       "deadline": "2026-08-13",
       "publishedAt": "",
       "careerTags": [
@@ -6928,7 +6861,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335266",
-      "summary": "구로교육복지센터(위탁운영법인:아하!열린교육센터) · activityTypeID: 1 · 스크랩 62",
+      "summary": "구로교육복지센터(위탁운영법인:아하!열린교육센터) · activityTypeID: 1 · 스크랩 63",
       "deadline": "2026-10-12",
       "publishedAt": "",
       "careerTags": [
@@ -6959,7 +6892,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/336523",
-      "summary": "서울교통공사 · activityTypeID: 3 · 스크랩 32",
+      "summary": "서울교통공사 · activityTypeID: 3 · 스크랩 34",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -7067,7 +7000,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335023",
-      "summary": "(주)시사아카데미 · activityTypeID: 1 · 스크랩 106",
+      "summary": "(주)시사아카데미 · activityTypeID: 1 · 스크랩 108",
       "deadline": "2026-08-16",
       "publishedAt": "",
       "careerTags": [
@@ -7138,7 +7071,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/334965",
-      "summary": "LG CNS · activityTypeID: 1 · 스크랩 843",
+      "summary": "LG CNS · activityTypeID: 1 · 스크랩 853",
       "deadline": "2026-08-07",
       "publishedAt": "",
       "careerTags": [
@@ -7199,7 +7132,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/334902",
-      "summary": "홈스인코리아 주식회사 · activityTypeID: 1 · 스크랩 83",
+      "summary": "홈스인코리아 주식회사 · activityTypeID: 1 · 스크랩 89",
       "deadline": "2026-08-17",
       "publishedAt": "",
       "careerTags": [
@@ -7233,7 +7166,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/336364",
-      "summary": "사단법인 한국희귀·난치성질환연합회 · activityTypeID: 3 · 스크랩 32",
+      "summary": "사단법인 한국희귀·난치성질환연합회 · activityTypeID: 3 · 스크랩 34",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -7298,7 +7231,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/336352",
-      "summary": "식품의약품안전처 · activityTypeID: 3 · 스크랩 33",
+      "summary": "식품의약품안전처 · activityTypeID: 3 · 스크랩 34",
       "deadline": "2026-08-16",
       "publishedAt": "",
       "careerTags": [
@@ -7363,7 +7296,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/336343",
-      "summary": "포항시 · activityTypeID: 3 · 스크랩 22",
+      "summary": "포항시 · activityTypeID: 3 · 스크랩 25",
       "deadline": "2026-08-14",
       "publishedAt": "",
       "careerTags": [
@@ -7437,7 +7370,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/336320",
-      "summary": "식품의약품안전처 · activityTypeID: 3 · 스크랩 15",
+      "summary": "식품의약품안전처 · activityTypeID: 3 · 스크랩 16",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -7508,7 +7441,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/336315",
-      "summary": "한국산림복지진흥원 · activityTypeID: 3 · 스크랩 29",
+      "summary": "한국산림복지진흥원 · activityTypeID: 3 · 스크랩 31",
       "deadline": "2026-09-13",
       "publishedAt": "",
       "careerTags": [
@@ -7577,7 +7510,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/336135",
-      "summary": "국무조정실/한국환경연구원, 시청자미디어재단 · activityTypeID: 3 · 스크랩 78",
+      "summary": "국무조정실/한국환경연구원, 시청자미디어재단 · activityTypeID: 3 · 스크랩 79",
       "deadline": "2026-09-18",
       "publishedAt": "",
       "careerTags": [
@@ -7689,7 +7622,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/334383",
-      "summary": "시립동대문청소년센터 · activityTypeID: 1 · 스크랩 45",
+      "summary": "시립동대문청소년센터 · activityTypeID: 1 · 스크랩 47",
       "deadline": "2026-10-01",
       "publishedAt": "",
       "careerTags": [
@@ -7753,7 +7686,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/334271",
-      "summary": "만월종합사회복지관 · activityTypeID: 1 · 스크랩 7",
+      "summary": "만월종합사회복지관 · activityTypeID: 1 · 스크랩 8",
       "deadline": "2026-10-07",
       "publishedAt": "",
       "careerTags": [
@@ -7784,7 +7717,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/336099",
-      "summary": "경주스마트미디어센터 · activityTypeID: 3 · 스크랩 25",
+      "summary": "경주스마트미디어센터 · activityTypeID: 3 · 스크랩 26",
       "deadline": "2026-08-15",
       "publishedAt": "",
       "careerTags": [
@@ -7965,7 +7898,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/333197",
-      "summary": "인천시장애인재활협회 · activityTypeID: 1 · 스크랩 23",
+      "summary": "인천시장애인재활협회 · activityTypeID: 1 · 스크랩 24",
       "deadline": "2026-10-04",
       "publishedAt": "",
       "careerTags": [
@@ -7996,7 +7929,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335892",
-      "summary": "(주)에듀넷 · activityTypeID: 3 · 스크랩 42",
+      "summary": "(주)에듀넷 · activityTypeID: 3 · 스크랩 44",
       "deadline": "2026-08-14",
       "publishedAt": "",
       "careerTags": [
@@ -8027,7 +7960,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/333003",
-      "summary": "미디어유스 · activityTypeID: 1 · 스크랩 187",
+      "summary": "미디어유스 · activityTypeID: 1 · 스크랩 191",
       "deadline": "2026-09-30",
       "publishedAt": "",
       "careerTags": [
@@ -8069,7 +8002,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335889",
-      "summary": "경기도 · activityTypeID: 3 · 스크랩 11",
+      "summary": "경기도 · activityTypeID: 3 · 스크랩 12",
       "deadline": "2026-08-07",
       "publishedAt": "",
       "careerTags": [
@@ -8166,7 +8099,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/332569",
-      "summary": "이화담 · activityTypeID: 1 · 스크랩 83",
+      "summary": "이화담 · activityTypeID: 1 · 스크랩 85",
       "deadline": "2026-09-30",
       "publishedAt": "",
       "careerTags": [
@@ -8197,7 +8130,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335880",
-      "summary": "충청북도 · activityTypeID: 3 · 스크랩 22",
+      "summary": "충청북도 · activityTypeID: 3 · 스크랩 23",
       "deadline": "2026-09-30",
       "publishedAt": "",
       "careerTags": [
@@ -8230,7 +8163,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/331854",
-      "summary": "라운드테이블 · activityTypeID: 1 · 스크랩 90",
+      "summary": "라운드테이블 · activityTypeID: 1 · 스크랩 93",
       "deadline": "2026-10-25",
       "publishedAt": "",
       "careerTags": [
@@ -8368,7 +8301,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/329383",
-      "summary": "원투스픽 · activityTypeID: 1 · 스크랩 164",
+      "summary": "원투스픽 · activityTypeID: 1 · 스크랩 168",
       "deadline": "2026-08-18",
       "publishedAt": "",
       "careerTags": [
@@ -8403,7 +8336,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335801",
-      "summary": "성북구도시관리공단 · activityTypeID: 3 · 스크랩 26",
+      "summary": "성북구도시관리공단 · activityTypeID: 3 · 스크랩 27",
       "deadline": "2026-08-14",
       "publishedAt": "",
       "careerTags": [
@@ -8440,7 +8373,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/328418",
-      "summary": "더마테스트 코리아 · activityTypeID: 1 · 스크랩 209",
+      "summary": "더마테스트 코리아 · activityTypeID: 1 · 스크랩 210",
       "deadline": "2026-08-23",
       "publishedAt": "",
       "careerTags": [
@@ -8509,7 +8442,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/328374",
-      "summary": "에스엘씨 주식회사 · activityTypeID: 1 · 스크랩 22",
+      "summary": "에스엘씨 주식회사 · activityTypeID: 1 · 스크랩 23",
       "deadline": "2026-09-13",
       "publishedAt": "",
       "careerTags": [
@@ -8651,7 +8584,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/328095",
-      "summary": "원더엣 · activityTypeID: 1 · 스크랩 247",
+      "summary": "원더엣 · activityTypeID: 1 · 스크랩 249",
       "deadline": "2026-09-10",
       "publishedAt": "",
       "careerTags": [
@@ -8682,7 +8615,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335682",
-      "summary": "주식회사 메쎄이상 · activityTypeID: 3 · 스크랩 130",
+      "summary": "주식회사 메쎄이상 · activityTypeID: 3 · 스크랩 131",
       "deadline": "2026-08-10",
       "publishedAt": "",
       "careerTags": [
@@ -8711,7 +8644,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/327570",
-      "summary": "CJ나눔재단 · activityTypeID: 1 · 스크랩 177",
+      "summary": "CJ나눔재단 · activityTypeID: 1 · 스크랩 178",
       "deadline": "2026-09-09",
       "publishedAt": "",
       "careerTags": [
@@ -8877,7 +8810,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335523",
-      "summary": "아티움그룹 주식회사 (Muzig AI) · activityTypeID: 3 · 스크랩 36",
+      "summary": "아티움그룹 주식회사 (Muzig AI) · activityTypeID: 3 · 스크랩 40",
       "deadline": "2026-10-10",
       "publishedAt": "",
       "careerTags": [
@@ -9003,7 +8936,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335494",
-      "summary": "한남대학교 · activityTypeID: 3 · 스크랩 39",
+      "summary": "한남대학교 · activityTypeID: 3 · 스크랩 41",
       "deadline": "2026-09-20",
       "publishedAt": "",
       "careerTags": [
@@ -9100,7 +9033,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/325712",
-      "summary": "한국문화교류사업단 · activityTypeID: 1 · 스크랩 257",
+      "summary": "한국문화교류사업단 · activityTypeID: 1 · 스크랩 260",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -9131,7 +9064,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335477",
-      "summary": "웅진식품(주) · activityTypeID: 3 · 스크랩 118",
+      "summary": "웅진식품(주) · activityTypeID: 3 · 스크랩 117",
       "deadline": "2026-08-09",
       "publishedAt": "",
       "careerTags": [
@@ -9198,7 +9131,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335426",
-      "summary": "(재)한국정신문화재단 · activityTypeID: 3 · 스크랩 20",
+      "summary": "(재)한국정신문화재단 · activityTypeID: 3 · 스크랩 19",
       "deadline": "2026-09-14",
       "publishedAt": "",
       "careerTags": [
@@ -9362,7 +9295,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/324034",
-      "summary": "대전대학생문화기획단 · activityTypeID: 1 · 스크랩 20",
+      "summary": "대전대학생문화기획단 · activityTypeID: 1 · 스크랩 19",
       "deadline": "2026-08-21",
       "publishedAt": "",
       "careerTags": [
@@ -9397,7 +9330,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335360",
-      "summary": "한국사진작가협회 속초지부 · activityTypeID: 3 · 스크랩 7",
+      "summary": "한국사진작가협회 속초지부 · activityTypeID: 3 · 스크랩 8",
       "deadline": "2026-10-31",
       "publishedAt": "",
       "careerTags": [
@@ -9461,7 +9394,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335325",
-      "summary": "경상남도 · activityTypeID: 3 · 스크랩 24",
+      "summary": "경상남도 · activityTypeID: 3 · 스크랩 26",
       "deadline": "2026-08-12",
       "publishedAt": "",
       "careerTags": [
@@ -9528,7 +9461,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335324",
-      "summary": "CJ CGV · activityTypeID: 3 · 스크랩 47",
+      "summary": "CJ CGV · activityTypeID: 3 · 스크랩 48",
       "deadline": "2026-10-23",
       "publishedAt": "",
       "careerTags": [
@@ -9657,7 +9590,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335192",
-      "summary": "이천시 · activityTypeID: 3 · 스크랩 11",
+      "summary": "이천시 · activityTypeID: 3 · 스크랩 12",
       "deadline": "2026-08-14",
       "publishedAt": "",
       "careerTags": [
@@ -9799,7 +9732,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335182",
-      "summary": "국립환경과학원 · activityTypeID: 3 · 스크랩 55",
+      "summary": "국립환경과학원 · activityTypeID: 3 · 스크랩 57",
       "deadline": "2026-08-07",
       "publishedAt": "",
       "careerTags": [
@@ -9865,7 +9798,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335151",
-      "summary": "(주)위비스 · activityTypeID: 3 · 스크랩 19",
+      "summary": "(주)위비스 · activityTypeID: 3 · 스크랩 18",
       "deadline": "2026-08-02",
       "publishedAt": "",
       "careerTags": [
@@ -10004,7 +9937,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/335045",
-      "summary": "농협경제지주 · activityTypeID: 3 · 스크랩 86",
+      "summary": "농협경제지주 · activityTypeID: 3 · 스크랩 89",
       "deadline": "2026-09-30",
       "publishedAt": "",
       "careerTags": [
@@ -10043,7 +9976,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/299259",
-      "summary": "구립신림청소년독서실 · activityTypeID: 1 · 스크랩 77",
+      "summary": "구립신림청소년독서실 · activityTypeID: 1 · 스크랩 78",
       "deadline": "2026-12-31",
       "publishedAt": "",
       "careerTags": [
@@ -10109,7 +10042,7 @@
       "type": "대외활동",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/296938",
-      "summary": "광진구청소년상담복지센터 · activityTypeID: 1 · 스크랩 72",
+      "summary": "광진구청소년상담복지센터 · activityTypeID: 1 · 스크랩 73",
       "deadline": "2026-12-31",
       "publishedAt": "",
       "careerTags": [
@@ -10270,7 +10203,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/334953",
-      "summary": "주식회사 프롬프트타운 · activityTypeID: 3 · 스크랩 84",
+      "summary": "주식회사 프롬프트타운 · activityTypeID: 3 · 스크랩 86",
       "deadline": "2026-08-21",
       "publishedAt": "",
       "careerTags": [
@@ -10484,7 +10417,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/334819",
-      "summary": "창비교육 · activityTypeID: 3 · 스크랩 32",
+      "summary": "창비교육 · activityTypeID: 3 · 스크랩 33",
       "deadline": "2026-11-30",
       "publishedAt": "",
       "careerTags": [
@@ -10546,7 +10479,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/334786",
-      "summary": "한국만화영상진흥원 · activityTypeID: 3 · 스크랩 1",
+      "summary": "한국만화영상진흥원 · activityTypeID: 3",
       "deadline": "2026-08-17",
       "publishedAt": "",
       "careerTags": [
@@ -10579,7 +10512,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/334755",
-      "summary": "(주)예진 · activityTypeID: 3 · 스크랩 54",
+      "summary": "(주)예진 · activityTypeID: 3 · 스크랩 56",
       "deadline": "2026-10-19",
       "publishedAt": "",
       "careerTags": [
@@ -10643,7 +10576,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/334738",
-      "summary": "해양수산부 · activityTypeID: 3 · 스크랩 16",
+      "summary": "해양수산부 · activityTypeID: 3 · 스크랩 17",
       "deadline": "2026-08-28",
       "publishedAt": "",
       "careerTags": [
@@ -10676,7 +10609,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/334666",
-      "summary": "한국철강협회 · activityTypeID: 3 · 스크랩 69",
+      "summary": "한국철강협회 · activityTypeID: 3 · 스크랩 72",
       "deadline": "2026-08-09",
       "publishedAt": "",
       "careerTags": [
@@ -10713,7 +10646,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/334629",
-      "summary": "꿈툰 · activityTypeID: 3 · 스크랩 12",
+      "summary": "꿈툰 · activityTypeID: 3 · 스크랩 13",
       "deadline": "2026-08-17",
       "publishedAt": "",
       "careerTags": [
@@ -10881,7 +10814,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/334369",
-      "summary": "(주)한국전기신문 · activityTypeID: 3 · 스크랩 29",
+      "summary": "(주)한국전기신문 · activityTypeID: 3 · 스크랩 28",
       "deadline": "2026-10-11",
       "publishedAt": "",
       "careerTags": [
@@ -10909,7 +10842,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/334357",
-      "summary": "한국방송광고진흥공사 · activityTypeID: 3 · 스크랩 92",
+      "summary": "한국방송광고진흥공사 · activityTypeID: 3 · 스크랩 95",
       "deadline": "2026-09-01",
       "publishedAt": "",
       "careerTags": [
@@ -11012,7 +10945,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/334237",
-      "summary": "사)한국뇌성마비복지회 · activityTypeID: 3 · 스크랩 50",
+      "summary": "사)한국뇌성마비복지회 · activityTypeID: 3 · 스크랩 51",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -11149,7 +11082,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/333942",
-      "summary": "국가유산진흥원 · activityTypeID: 3 · 스크랩 45",
+      "summary": "국가유산진흥원 · activityTypeID: 3 · 스크랩 47",
       "deadline": "2026-08-16",
       "publishedAt": "",
       "careerTags": [
@@ -11219,7 +11152,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/333790",
-      "summary": "대전정보문화산업진흥원 · activityTypeID: 3 · 스크랩 127",
+      "summary": "대전정보문화산업진흥원 · activityTypeID: 3 · 스크랩 128",
       "deadline": "2026-08-04",
       "publishedAt": "",
       "careerTags": [
@@ -11297,7 +11230,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/333697",
-      "summary": "행정안전부 지진방재관리과 · activityTypeID: 3 · 스크랩 77",
+      "summary": "행정안전부 지진방재관리과 · activityTypeID: 3 · 스크랩 79",
       "deadline": "2026-08-09",
       "publishedAt": "",
       "careerTags": [
@@ -11556,7 +11489,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/333447",
-      "summary": "(사)세종대왕기념사업회 · activityTypeID: 3 · 스크랩 102",
+      "summary": "(사)세종대왕기념사업회 · activityTypeID: 3 · 스크랩 105",
       "deadline": "2026-08-30",
       "publishedAt": "",
       "careerTags": [
@@ -11655,7 +11588,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/333089",
-      "summary": "시립서대문청소년센터 · activityTypeID: 3 · 스크랩 13",
+      "summary": "시립서대문청소년센터 · activityTypeID: 3 · 스크랩 14",
       "deadline": "2026-08-05",
       "publishedAt": "",
       "careerTags": [
@@ -11691,7 +11624,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/333067",
-      "summary": "인터넷신문윤리위원회 · activityTypeID: 3 · 스크랩 72",
+      "summary": "인터넷신문윤리위원회 · activityTypeID: 3 · 스크랩 75",
       "deadline": "2026-08-10",
       "publishedAt": "",
       "careerTags": [
@@ -11821,7 +11754,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/332879",
-      "summary": "희망브리지 전국재해구호협회 · activityTypeID: 3 · 스크랩 105",
+      "summary": "희망브리지 전국재해구호협회 · activityTypeID: 3 · 스크랩 107",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -11855,7 +11788,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/332875",
-      "summary": "문경시 · activityTypeID: 3 · 스크랩 91",
+      "summary": "문경시 · activityTypeID: 3 · 스크랩 94",
       "deadline": "2026-09-09",
       "publishedAt": "",
       "careerTags": [
@@ -11889,7 +11822,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/332808",
-      "summary": "한전산업개발(주) · activityTypeID: 3 · 스크랩 13",
+      "summary": "한전산업개발(주) · activityTypeID: 3 · 스크랩 14",
       "deadline": "2026-08-18",
       "publishedAt": "",
       "careerTags": [
@@ -11956,7 +11889,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/332801",
-      "summary": "(사)자연의권리찾기 · activityTypeID: 3 · 스크랩 11",
+      "summary": "(사)자연의권리찾기 · activityTypeID: 3 · 스크랩 12",
       "deadline": "2026-08-09",
       "publishedAt": "",
       "careerTags": [
@@ -11997,7 +11930,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/332799",
-      "summary": "「쿠마 켄고＆히가시카와」KAGU디자인 공모전 실행위원회 · activityTypeID: 3 · 스크랩 51",
+      "summary": "「쿠마 켄고＆히가시카와」KAGU디자인 공모전 실행위원회 · activityTypeID: 3 · 스크랩 53",
       "deadline": "2026-09-30",
       "publishedAt": "",
       "careerTags": [
@@ -12031,7 +11964,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/332798",
-      "summary": "인천테크노파크 · activityTypeID: 3 · 스크랩 21",
+      "summary": "인천테크노파크 · activityTypeID: 3 · 스크랩 23",
       "deadline": "2026-08-07",
       "publishedAt": "",
       "careerTags": [
@@ -12065,7 +11998,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/332744",
-      "summary": "다다애드 · activityTypeID: 3 · 스크랩 26",
+      "summary": "다다애드 · activityTypeID: 3 · 스크랩 25",
       "deadline": "2026-08-14",
       "publishedAt": "",
       "careerTags": [
@@ -12202,7 +12135,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/332670",
-      "summary": "아주대학교병원 · activityTypeID: 3 · 스크랩 26",
+      "summary": "아주대학교병원 · activityTypeID: 3 · 스크랩 29",
       "deadline": "2026-08-03",
       "publishedAt": "",
       "careerTags": [
@@ -12261,12 +12194,49 @@
       "active": true
     },
     {
+      "id": "715553776e3ea2f1",
+      "title": "[국토부장관상 포함] 2026 AI 도시지역혁신 아이디어 공모전 (~8/28)",
+      "type": "공모전",
+      "source": "링커리어",
+      "url": "https://linkareer.com/activity/332498",
+      "summary": "2026 도시·지역혁신 산업박람회 · activityTypeID: 3 · 스크랩 269",
+      "deadline": "2026-08-28",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "recommendationTags": [
+        "environment",
+        "architecture",
+        "engineering",
+        "energy",
+        "ai"
+      ],
+      "weightedTags": {
+        "environment": 7,
+        "architecture": 6,
+        "engineering": 5,
+        "energy": 5,
+        "ai": 4
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
       "id": "4a6ad5ee58795c4d",
       "title": "2026년 재난예방 사진 및 영상 공모전",
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/332460",
-      "summary": "행정안전부 · activityTypeID: 3 · 스크랩 19",
+      "summary": "행정안전부 · activityTypeID: 3 · 스크랩 18",
       "deadline": "2026-09-18",
       "publishedAt": "",
       "careerTags": [
@@ -12304,7 +12274,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/332400",
-      "summary": "마이스플랜즈 · activityTypeID: 3 · 스크랩 32",
+      "summary": "마이스플랜즈 · activityTypeID: 3 · 스크랩 31",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -12335,7 +12305,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/332399",
-      "summary": "주) 메타크래프트 · activityTypeID: 3 · 스크랩 7",
+      "summary": "주) 메타크래프트 · activityTypeID: 3 · 스크랩 8",
       "deadline": "2026-08-07",
       "publishedAt": "",
       "careerTags": [
@@ -12393,7 +12363,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/332360",
-      "summary": "서울대학교병원 · activityTypeID: 3 · 스크랩 14",
+      "summary": "서울대학교병원 · activityTypeID: 3 · 스크랩 13",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -12426,7 +12396,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/332343",
-      "summary": "한국자원순환산업진흥협회 · activityTypeID: 3 · 스크랩 43",
+      "summary": "한국자원순환산업진흥협회 · activityTypeID: 3 · 스크랩 42",
       "deadline": "2026-09-30",
       "publishedAt": "",
       "careerTags": [
@@ -12457,7 +12427,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/332245",
-      "summary": "재단법인경기도일자리재단 · activityTypeID: 3 · 스크랩 69",
+      "summary": "재단법인경기도일자리재단 · activityTypeID: 3 · 스크랩 71",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -12631,7 +12601,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/332077",
-      "summary": "기후에너지환경부 · activityTypeID: 3 · 스크랩 159",
+      "summary": "기후에너지환경부 · activityTypeID: 3 · 스크랩 160",
       "deadline": "2026-09-23",
       "publishedAt": "",
       "careerTags": [
@@ -12696,7 +12666,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/332042",
-      "summary": "에이아이어드바이저리그룹(AAG) · activityTypeID: 3 · 스크랩 28",
+      "summary": "에이아이어드바이저리그룹(AAG) · activityTypeID: 3 · 스크랩 29",
       "deadline": "2026-08-03",
       "publishedAt": "",
       "careerTags": [
@@ -12757,7 +12727,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/331924",
-      "summary": "크리에이티브망고 · activityTypeID: 3 · 스크랩 55",
+      "summary": "크리에이티브망고 · activityTypeID: 3 · 스크랩 54",
       "deadline": "2026-08-15",
       "publishedAt": "",
       "careerTags": [
@@ -12890,7 +12860,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/331823",
-      "summary": "사단법인 한일협회 · activityTypeID: 3 · 스크랩 3",
+      "summary": "사단법인 한일협회 · activityTypeID: 3 · 스크랩 2",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -12985,7 +12955,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/331676",
-      "summary": "데이콘 주식회사 · activityTypeID: 3 · 스크랩 55",
+      "summary": "데이콘 주식회사 · activityTypeID: 3 · 스크랩 54",
       "deadline": "2026-08-07",
       "publishedAt": "",
       "careerTags": [
@@ -13118,7 +13088,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/331566",
-      "summary": "주식회사 패스파인더 · activityTypeID: 3 · 스크랩 63",
+      "summary": "주식회사 패스파인더 · activityTypeID: 3 · 스크랩 62",
       "deadline": "2026-09-18",
       "publishedAt": "",
       "careerTags": [
@@ -13146,7 +13116,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/331421",
-      "summary": "중앙일보 · activityTypeID: 3 · 스크랩 36",
+      "summary": "중앙일보 · activityTypeID: 3 · 스크랩 35",
       "deadline": "2026-08-10",
       "publishedAt": "",
       "careerTags": [
@@ -13180,7 +13150,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/331399",
-      "summary": "엘바(ELBA) · activityTypeID: 3 · 스크랩 12",
+      "summary": "엘바(ELBA) · activityTypeID: 3 · 스크랩 13",
       "deadline": "2026-10-16",
       "publishedAt": "",
       "careerTags": [
@@ -13213,7 +13183,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/331303",
-      "summary": "주식회사 비알씨 · activityTypeID: 3 · 스크랩 22",
+      "summary": "주식회사 비알씨 · activityTypeID: 3 · 스크랩 23",
       "deadline": "2026-08-07",
       "publishedAt": "",
       "careerTags": [
@@ -13350,7 +13320,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/331127",
-      "summary": "사단법인 한글문화연대 · activityTypeID: 3 · 스크랩 43",
+      "summary": "사단법인 한글문화연대 · activityTypeID: 3 · 스크랩 44",
       "deadline": "2026-09-20",
       "publishedAt": "",
       "careerTags": [
@@ -13490,7 +13460,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/330824",
-      "summary": "한국도로공사 · activityTypeID: 3 · 스크랩 67",
+      "summary": "한국도로공사 · activityTypeID: 3 · 스크랩 66",
       "deadline": "2026-08-13",
       "publishedAt": "",
       "careerTags": [
@@ -13524,7 +13494,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/330762",
-      "summary": "한국표준협회(표준인증안전학회) · activityTypeID: 3 · 스크랩 52",
+      "summary": "한국표준협회(표준인증안전학회) · activityTypeID: 3 · 스크랩 53",
       "deadline": "2026-10-23",
       "publishedAt": "",
       "careerTags": [
@@ -13591,7 +13561,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/330612",
-      "summary": "통일부 · activityTypeID: 3 · 스크랩 78",
+      "summary": "통일부 · activityTypeID: 3 · 스크랩 79",
       "deadline": "2026-09-06",
       "publishedAt": "",
       "careerTags": [
@@ -13625,7 +13595,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/330575",
-      "summary": "(주)현대불교신문사 · activityTypeID: 3 · 스크랩 63",
+      "summary": "(주)현대불교신문사 · activityTypeID: 3 · 스크랩 64",
       "deadline": "2026-08-05",
       "publishedAt": "",
       "careerTags": [
@@ -13689,7 +13659,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/330026",
-      "summary": "한국태양에너지학회 · activityTypeID: 3 · 스크랩 43",
+      "summary": "한국태양에너지학회 · activityTypeID: 3 · 스크랩 42",
       "deadline": "2026-08-14",
       "publishedAt": "",
       "careerTags": [
@@ -13731,7 +13701,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/329986",
-      "summary": "서울시설공단 · activityTypeID: 3 · 스크랩 260",
+      "summary": "서울시설공단 · activityTypeID: 3 · 스크랩 263",
       "deadline": "2026-08-12",
       "publishedAt": "",
       "careerTags": [
@@ -13788,7 +13758,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/329703",
-      "summary": "한국소아당뇨인협회 · activityTypeID: 3 · 스크랩 43",
+      "summary": "한국소아당뇨인협회 · activityTypeID: 3 · 스크랩 42",
       "deadline": "2026-09-30",
       "publishedAt": "",
       "careerTags": [
@@ -13846,7 +13816,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/329491",
-      "summary": "구미시, 구미상공회의소 · activityTypeID: 3 · 스크랩 38",
+      "summary": "구미시, 구미상공회의소 · activityTypeID: 3 · 스크랩 37",
       "deadline": "2026-08-21",
       "publishedAt": "",
       "careerTags": [
@@ -13875,7 +13845,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/329302",
-      "summary": "한국은행 · activityTypeID: 3 · 스크랩 287",
+      "summary": "한국은행 · activityTypeID: 3 · 스크랩 288",
       "deadline": "2026-08-26",
       "publishedAt": "",
       "careerTags": [
@@ -13941,7 +13911,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/329127",
-      "summary": "(주)아이즈비전 · activityTypeID: 3 · 스크랩 19",
+      "summary": "(주)아이즈비전 · activityTypeID: 3 · 스크랩 18",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -13978,7 +13948,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/329046",
-      "summary": "사단법인 한국미술교육협회 · activityTypeID: 3 · 스크랩 5",
+      "summary": "사단법인 한국미술교육협회 · activityTypeID: 3 · 스크랩 4",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -14009,7 +13979,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/329038",
-      "summary": "방송콘텐츠진흥재단 · activityTypeID: 3 · 스크랩 31",
+      "summary": "방송콘텐츠진흥재단 · activityTypeID: 3 · 스크랩 30",
       "deadline": "2026-08-24",
       "publishedAt": "",
       "careerTags": [
@@ -14177,7 +14147,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/328387",
-      "summary": "한국한복진흥원 · activityTypeID: 3 · 스크랩 111",
+      "summary": "한국한복진흥원 · activityTypeID: 3 · 스크랩 113",
       "deadline": "2026-08-09",
       "publishedAt": "",
       "careerTags": [
@@ -14274,7 +14244,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/328330",
-      "summary": "서울올림픽기념국민체육진흥공단 · activityTypeID: 3 · 스크랩 55",
+      "summary": "서울올림픽기념국민체육진흥공단 · activityTypeID: 3 · 스크랩 56",
       "deadline": "2026-10-02",
       "publishedAt": "",
       "careerTags": [
@@ -14579,7 +14549,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/327505",
-      "summary": "한국생산성본부 · activityTypeID: 3 · 스크랩 131",
+      "summary": "한국생산성본부 · activityTypeID: 3 · 스크랩 133",
       "deadline": "2026-10-31",
       "publishedAt": "",
       "careerTags": [
@@ -14615,7 +14585,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/327420",
-      "summary": "안산시 · activityTypeID: 3 · 스크랩 27",
+      "summary": "안산시 · activityTypeID: 3 · 스크랩 28",
       "deadline": "2026-09-30",
       "publishedAt": "",
       "careerTags": [
@@ -14719,7 +14689,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/326828",
-      "summary": "한국환경공단 · activityTypeID: 3 · 스크랩 150",
+      "summary": "한국환경공단 · activityTypeID: 3 · 스크랩 149",
       "deadline": "2026-08-03",
       "publishedAt": "",
       "careerTags": [
@@ -14754,7 +14724,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/326821",
-      "summary": "나무서원 / 홈그라운드 · activityTypeID: 3 · 스크랩 266",
+      "summary": "나무서원 / 홈그라운드 · activityTypeID: 3 · 스크랩 271",
       "deadline": "2026-08-22",
       "publishedAt": "",
       "careerTags": [
@@ -15473,7 +15443,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/323234",
-      "summary": "부산시독거노인종합지원센터 · activityTypeID: 3 · 스크랩 34",
+      "summary": "부산시독거노인종합지원센터 · activityTypeID: 3 · 스크랩 35",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -15836,7 +15806,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/321019",
-      "summary": "롯데월드 · activityTypeID: 3 · 스크랩 678",
+      "summary": "롯데월드 · activityTypeID: 3 · 스크랩 683",
       "deadline": "2026-09-06",
       "publishedAt": "",
       "careerTags": [
@@ -15976,7 +15946,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/320813",
-      "summary": "하회세계탈박물관 · activityTypeID: 3 · 스크랩 192",
+      "summary": "하회세계탈박물관 · activityTypeID: 3 · 스크랩 194",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -16144,7 +16114,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/319940",
-      "summary": "(주) 문화방송 · activityTypeID: 3 · 스크랩 68",
+      "summary": "(주) 문화방송 · activityTypeID: 3 · 스크랩 69",
       "deadline": "2026-10-25",
       "publishedAt": "",
       "careerTags": [
@@ -16316,7 +16286,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/318172",
-      "summary": "나인플러스IT(주) · activityTypeID: 3 · 스크랩 94",
+      "summary": "나인플러스IT(주) · activityTypeID: 3 · 스크랩 95",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -16411,7 +16381,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/317924",
-      "summary": "LH 한국토지주택공사 · activityTypeID: 3 · 스크랩 172",
+      "summary": "LH 한국토지주택공사 · activityTypeID: 3 · 스크랩 174",
       "deadline": "2026-08-14",
       "publishedAt": "",
       "careerTags": [
@@ -16610,7 +16580,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/316568",
-      "summary": "사)한국뇌성마비복지회 · activityTypeID: 3 · 스크랩 80",
+      "summary": "사)한국뇌성마비복지회 · activityTypeID: 3 · 스크랩 81",
       "deadline": "2026-08-31",
       "publishedAt": "",
       "careerTags": [
@@ -16752,7 +16722,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/314918",
-      "summary": "충청남도 · activityTypeID: 3 · 스크랩 52",
+      "summary": "충청남도 · activityTypeID: 3 · 스크랩 53",
       "deadline": "2026-09-30",
       "publishedAt": "",
       "careerTags": [
@@ -16846,36 +16816,6 @@
         "software": 6,
         "ncs": 6,
         "research": 5
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "e171cc19444265e6",
-      "title": "제26회 대학(원)생 국제법 논문경시대회 개최 안내",
-      "type": "공모전",
-      "source": "링커리어",
-      "url": "https://linkareer.com/activity/312565",
-      "summary": "대한국제법학회 · activityTypeID: 3 · 스크랩 204",
-      "deadline": "2026-08-01",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "law",
-        "public"
-      ],
-      "weightedTags": {
-        "law": 8,
-        "public": 5
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -17036,7 +16976,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/309540",
-      "summary": "서울특별시환경교육센터 · activityTypeID: 3 · 스크랩 136",
+      "summary": "서울특별시환경교육센터 · activityTypeID: 3 · 스크랩 135",
       "deadline": "2026-08-04",
       "publishedAt": "",
       "careerTags": [
@@ -17249,7 +17189,7 @@
       "type": "공모전",
       "source": "링커리어",
       "url": "https://linkareer.com/activity/302669",
-      "summary": "예산군청 · activityTypeID: 3 · 스크랩 51",
+      "summary": "예산군청 · activityTypeID: 3 · 스크랩 52",
       "deadline": "2026-11-06",
       "publishedAt": "",
       "careerTags": [
