@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-02T22:00:19.131Z",
+  "generatedAt": "2026-10-03T20:48:40.819Z",
   "source": "github-actions-static-json",
   "itemCount": 250,
   "items": [
@@ -4357,34 +4357,6 @@
       "active": true
     },
     {
-      "id": "2baf2e1bcfb47c56",
-      "title": "N.O.V.A. 2026 대화형 의료 진단 AI 에이전트 대회",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111155",
-      "summary": "분야 : 과학/공학",
-      "deadline": "2026-10-04",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "ai"
-      ],
-      "weightedTags": {
-        "ai": 4
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
       "id": "d14660c419a54b35",
       "title": "롯데렌터카 T car 숏폼 영상 공모전",
       "type": "공모전",
@@ -8459,6 +8431,43 @@
         "media": 8,
         "contents": 8,
         "writing": 5
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "d43667b3c920548a",
+      "title": "2026 의정부시 Sign-Up 간판 디자인 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=110566",
+      "summary": "분야 : 디자인/캐릭터/웹툰",
+      "deadline": "2026-11-23",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "패션/의류"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "design",
+        "ux",
+        "portfolio"
+      ],
+      "weightedTags": {
+        "frontend": 9,
+        "software": 8,
+        "design": 8,
+        "ux": 7,
+        "portfolio": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
