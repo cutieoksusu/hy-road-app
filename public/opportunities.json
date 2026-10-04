@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-03T20:48:40.819Z",
+  "generatedAt": "2026-10-04T21:04:10.953Z",
   "source": "github-actions-static-json",
-  "itemCount": 250,
+  "itemCount": 248,
   "items": [
     {
       "id": "6e7d0a400874822c",
@@ -5557,36 +5557,6 @@
       "active": true
     },
     {
-      "id": "fa8179003b3d6dd8",
-      "title": "청소년 로봇대회 제2회 유스올림피아드",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=110995",
-      "summary": "분야 : 과학/공학",
-      "deadline": "2026-10-05",
-      "publishedAt": "",
-      "careerTags": [
-        "반도체/엔지니어링"
-      ],
-      "recommendationTags": [
-        "robotics",
-        "engineering"
-      ],
-      "weightedTags": {
-        "robotics": 8,
-        "engineering": 7
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
       "id": "3f385b0ac36f90b5",
       "title": "충청북도사회서비스원 기관 홍보 캐릭터 도민 아이디어 공모전",
       "type": "공모전",
@@ -5605,40 +5575,6 @@
       "weightedTags": {
         "marketing": 8,
         "contents": 6
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "15b6e3375fda9b1a",
-      "title": "디오니 AI 시리즈 콘테스트",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=110988",
-      "summary": "분야 : 영상/UCC/사진",
-      "deadline": "2026-10-05",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "media",
-        "contents",
-        "writing",
-        "ai"
-      ],
-      "weightedTags": {
-        "media": 8,
-        "contents": 8,
-        "writing": 5,
-        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
