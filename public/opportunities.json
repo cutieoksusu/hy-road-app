@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-04T21:04:10.953Z",
+  "generatedAt": "2026-10-05T23:54:02.857Z",
   "source": "github-actions-static-json",
-  "itemCount": 248,
+  "itemCount": 250,
   "items": [
     {
       "id": "6e7d0a400874822c",
@@ -756,22 +756,28 @@
       "active": true
     },
     {
-      "id": "1080540a19c5c88d",
-      "title": "롯데몰 벨리타운 청량리 - AI 뮤직 공모전",
+      "id": "ffaf12da725e5c67",
+      "title": "4.16생명안전비엔날레 생명안전 AI숏폼 공모전",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111455",
-      "summary": "분야 : 예체능/미술/음악",
-      "deadline": "2026-10-14",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111461",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-10-12",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어",
         "기획/마케팅"
       ],
       "recommendationTags": [
+        "media",
+        "contents",
+        "writing",
         "ai"
       ],
       "weightedTags": {
+        "media": 8,
+        "contents": 8,
+        "writing": 5,
         "ai": 4
       },
       "recommendationType": "competition",
@@ -813,35 +819,23 @@
       "active": true
     },
     {
-      "id": "f61a58487e22235a",
-      "title": "2026 시민참여 건축콘텐츠 전 사진, 영상 공모전",
+      "id": "1080540a19c5c88d",
+      "title": "롯데몰 벨리타운 청량리 - AI 뮤직 공모전",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111443",
-      "summary": "분야 : 건축/건설/인테리어",
-      "deadline": "2026-10-15",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111455",
+      "summary": "분야 : 예체능/미술/음악",
+      "deadline": "2026-10-14",
       "publishedAt": "",
       "careerTags": [
-        "기획/마케팅",
-        "언론고시 (기자/PD)"
+        "IT/소프트웨어",
+        "기획/마케팅"
       ],
       "recommendationTags": [
-        "media",
-        "contents",
-        "environment",
-        "architecture",
-        "writing",
-        "engineering",
-        "energy"
+        "ai"
       ],
       "weightedTags": {
-        "media": 8,
-        "contents": 8,
-        "environment": 7,
-        "architecture": 6,
-        "writing": 5,
-        "engineering": 5,
-        "energy": 5
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -901,26 +895,35 @@
       "active": true
     },
     {
-      "id": "b6013c2a5490c988",
-      "title": "2026년 소상공인시장진흥공단 대국민 숏폼 공모전",
+      "id": "f61a58487e22235a",
+      "title": "2026 시민참여 건축콘텐츠 전 사진, 영상 공모전",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111433",
-      "summary": "분야 : 영상/UCC/사진",
-      "deadline": "2026-10-12",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111443",
+      "summary": "분야 : 건축/건설/인테리어",
+      "deadline": "2026-10-15",
       "publishedAt": "",
       "careerTags": [
-        "기획/마케팅"
+        "기획/마케팅",
+        "언론고시 (기자/PD)"
       ],
       "recommendationTags": [
         "media",
         "contents",
-        "writing"
+        "environment",
+        "architecture",
+        "writing",
+        "engineering",
+        "energy"
       ],
       "weightedTags": {
         "media": 8,
         "contents": 8,
-        "writing": 5
+        "environment": 7,
+        "architecture": 6,
+        "writing": 5,
+        "engineering": 5,
+        "energy": 5
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -961,27 +964,26 @@
       "active": true
     },
     {
-      "id": "84044dd358731454",
-      "title": "2026 벨리곰 SPIN-OFF 디자인 공모전",
+      "id": "b6013c2a5490c988",
+      "title": "2026년 소상공인시장진흥공단 대국민 숏폼 공모전",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111432",
-      "summary": "분야 : 예체능/미술/음악",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111433",
+      "summary": "분야 : 영상/UCC/사진",
       "deadline": "2026-10-12",
       "publishedAt": "",
       "careerTags": [
-        "기획/마케팅",
-        "패션/의류"
+        "기획/마케팅"
       ],
       "recommendationTags": [
-        "design",
-        "ux",
-        "portfolio"
+        "media",
+        "contents",
+        "writing"
       ],
       "weightedTags": {
-        "design": 8,
-        "ux": 7,
-        "portfolio": 5
+        "media": 8,
+        "contents": 8,
+        "writing": 5
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -1028,30 +1030,26 @@
       "active": true
     },
     {
-      "id": "c2c4a7b9404bbb2f",
-      "title": "탑승머니 광고 디자인 공모전",
+      "id": "84044dd358731454",
+      "title": "2026 벨리곰 SPIN-OFF 디자인 공모전",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111413",
-      "summary": "분야 : 광고/마케팅",
-      "deadline": "2026-11-01",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111432",
+      "summary": "분야 : 예체능/미술/음악",
+      "deadline": "2026-10-12",
       "publishedAt": "",
       "careerTags": [
         "기획/마케팅",
         "패션/의류"
       ],
       "recommendationTags": [
-        "marketing",
         "design",
         "ux",
-        "contents",
         "portfolio"
       ],
       "weightedTags": {
-        "marketing": 8,
         "design": 8,
         "ux": 7,
-        "contents": 6,
         "portfolio": 5
       },
       "recommendationType": "competition",
@@ -1099,22 +1097,27 @@
       "active": true
     },
     {
-      "id": "b680c29b12d4fde3",
-      "title": "제29회 우리은행 미술대회 (우리 아트콘)",
+      "id": "b1577718356b89ab",
+      "title": "제8회 경기 마을미디어 공모전",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111411",
-      "summary": "분야 : 예체능/미술/음악",
-      "deadline": "2026-10-24",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111418",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-10-19",
       "publishedAt": "",
       "careerTags": [
-        "금융/은행"
+        "기획/마케팅",
+        "언론고시 (기자/PD)"
       ],
       "recommendationTags": [
-        "finance"
+        "media",
+        "contents",
+        "writing"
       ],
       "weightedTags": {
-        "finance": 8
+        "media": 8,
+        "contents": 8,
+        "writing": 5
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -1158,13 +1161,13 @@
       "active": true
     },
     {
-      "id": "6020623987af0ff4",
-      "title": "2026 4TH 메타툰 여성향 성인 단편 노블코믹스 작화 모집 공모전",
+      "id": "8e250cf58c4c9ac3",
+      "title": "청주페이 카드 디자인 공모전",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111403",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111416",
       "summary": "분야 : 디자인/캐릭터/웹툰",
-      "deadline": "2026-11-16",
+      "deadline": "2026-10-31",
       "publishedAt": "",
       "careerTags": [
         "기획/마케팅",
@@ -1242,31 +1245,25 @@
       "active": true
     },
     {
-      "id": "a5d3608070495851",
-      "title": "제11회 한아전 웹툰·일러스트·포스터·영상 공모전",
+      "id": "41a9d7c89eefba07",
+      "title": "2026 서초 웰니스 펫스타 사진 공모전",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111398",
-      "summary": "분야 : 예체능/미술/음악",
-      "deadline": "2026-11-01",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111415",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-10-15",
       "publishedAt": "",
       "careerTags": [
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "frontend",
-        "software",
         "media",
         "contents",
-        "portfolio",
         "writing"
       ],
       "weightedTags": {
-        "frontend": 9,
-        "software": 8,
         "media": 8,
         "contents": 8,
-        "portfolio": 6,
         "writing": 5
       },
       "recommendationType": "competition",
@@ -1314,6 +1311,274 @@
       "active": true
     },
     {
+      "id": "8ef825c38b823923",
+      "title": "2026 지방정부·공공기관 혁신 우수사례 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111414",
+      "summary": "분야 : 기타",
+      "deadline": "2026-10-24",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "공기업 (NCS)"
+      ],
+      "recommendationTags": [
+        "public",
+        "ncs"
+      ],
+      "weightedTags": {
+        "public": 8,
+        "ncs": 6
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "d6f7da438c799f95",
+      "title": "[CCOMA] 여성 패션 브랜드 꼼마 앰버서더·서포터즈 모집",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=110894",
+      "summary": "분야 : 대외활동/서포터즈",
+      "deadline": "2027-01-01",
+      "publishedAt": "",
+      "careerTags": [
+        "패션/의류"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents"
+      ],
+      "weightedTags": {
+        "marketing": 8,
+        "contents": 6
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "c2c4a7b9404bbb2f",
+      "title": "탑승머니 광고 디자인 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111413",
+      "summary": "분야 : 광고/마케팅",
+      "deadline": "2026-11-01",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "패션/의류"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "design",
+        "ux",
+        "contents",
+        "portfolio"
+      ],
+      "weightedTags": {
+        "marketing": 8,
+        "design": 8,
+        "ux": 7,
+        "contents": 6,
+        "portfolio": 5
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "7b157637976b1b1a",
+      "title": "[THUMB] 남성 패션 브랜드 덤 앰버서더·서포터즈 모집",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=110893",
+      "summary": "분야 : 대외활동/서포터즈",
+      "deadline": "2027-01-01",
+      "publishedAt": "",
+      "careerTags": [
+        "패션/의류"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents"
+      ],
+      "weightedTags": {
+        "marketing": 8,
+        "contents": 6
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "b680c29b12d4fde3",
+      "title": "제29회 우리은행 미술대회 (우리 아트콘)",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111411",
+      "summary": "분야 : 예체능/미술/음악",
+      "deadline": "2026-10-24",
+      "publishedAt": "",
+      "careerTags": [
+        "금융/은행"
+      ],
+      "recommendationTags": [
+        "finance"
+      ],
+      "weightedTags": {
+        "finance": 8
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "6020623987af0ff4",
+      "title": "2026 4TH 메타툰 여성향 성인 단편 노블코믹스 작화 모집 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111403",
+      "summary": "분야 : 디자인/캐릭터/웹툰",
+      "deadline": "2026-11-16",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "패션/의류"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "design",
+        "ux",
+        "portfolio"
+      ],
+      "weightedTags": {
+        "frontend": 9,
+        "software": 8,
+        "design": 8,
+        "ux": 7,
+        "portfolio": 6
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "55587d5defb46672",
+      "title": "2028 세계디자인수도 부산 파빌리온 디자인 국제공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111400",
+      "summary": "분야 : 디자인/캐릭터/웹툰",
+      "deadline": "2026-10-27",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "패션/의류"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "design",
+        "ux",
+        "portfolio"
+      ],
+      "weightedTags": {
+        "frontend": 9,
+        "software": 8,
+        "design": 8,
+        "ux": 7,
+        "portfolio": 6
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "a5d3608070495851",
+      "title": "제11회 한아전 웹툰·일러스트·포스터·영상 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111398",
+      "summary": "분야 : 예체능/미술/음악",
+      "deadline": "2026-11-01",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "software",
+        "media",
+        "contents",
+        "portfolio",
+        "writing"
+      ],
+      "weightedTags": {
+        "frontend": 9,
+        "software": 8,
+        "media": 8,
+        "contents": 8,
+        "portfolio": 6,
+        "writing": 5
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
       "id": "b928cbe2df42ebb3",
       "title": "2026년 공유마당 저작권 기증 공모전",
       "type": "공모전",
@@ -1332,34 +1597,6 @@
       "weightedTags": {
         "patent": 9,
         "research": 5
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "4f9c8b45f99eb507",
-      "title": "2026 대한민국 관광기념품 박람회 서포터즈 모집",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111040",
-      "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-10-06",
-      "publishedAt": "",
-      "careerTags": [],
-      "recommendationTags": [
-        "marketing",
-        "contents"
-      ],
-      "weightedTags": {
-        "marketing": 8,
-        "contents": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -1408,36 +1645,6 @@
       "active": true
     },
     {
-      "id": "d6f7da438c799f95",
-      "title": "[CCOMA] 여성 패션 브랜드 꼼마 앰버서더·서포터즈 모집",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=110894",
-      "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2027-01-01",
-      "publishedAt": "",
-      "careerTags": [
-        "패션/의류"
-      ],
-      "recommendationTags": [
-        "marketing",
-        "contents"
-      ],
-      "weightedTags": {
-        "marketing": 8,
-        "contents": 6
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
       "id": "39d9bf7b7762f346",
       "title": "2026 신한 스퀘어브릿지 대학생 창업 공모전 HERO IR",
       "type": "공모전",
@@ -1454,36 +1661,6 @@
       ],
       "weightedTags": {
         "startup": 7
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "7b157637976b1b1a",
-      "title": "[THUMB] 남성 패션 브랜드 덤 앰버서더·서포터즈 모집",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=110893",
-      "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2027-01-01",
-      "publishedAt": "",
-      "careerTags": [
-        "패션/의류"
-      ],
-      "recommendationTags": [
-        "marketing",
-        "contents"
-      ],
-      "weightedTags": {
-        "marketing": 8,
-        "contents": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -1513,40 +1690,6 @@
       ],
       "weightedTags": {
         "ai": 4
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "dd829129e8488299",
-      "title": "2026년 청소년활동 안전캠페인 PLAY SAFF 숏폼 챌린지 공모전",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=110668",
-      "summary": "분야 : 영상/UCC/사진",
-      "deadline": "2026-10-06",
-      "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅"
-      ],
-      "recommendationTags": [
-        "marketing",
-        "contents",
-        "media",
-        "writing"
-      ],
-      "weightedTags": {
-        "marketing": 8,
-        "contents": 8,
-        "media": 8,
-        "writing": 5
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -3939,45 +4082,6 @@
         "writing": 5,
         "education": 5,
         "management": 5
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "f64b4715a34c20eb",
-      "title": "전국우주항공경진대회-AI 활용 우주 SF 웹툰 대회",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111199",
-      "summary": "분야 : 디자인/캐릭터/웹툰",
-      "deadline": "2026-10-06",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어",
-        "패션/의류"
-      ],
-      "recommendationTags": [
-        "frontend",
-        "software",
-        "ai",
-        "design",
-        "ux",
-        "portfolio"
-      ],
-      "weightedTags": {
-        "frontend": 9,
-        "software": 8,
-        "ai": 8,
-        "design": 8,
-        "ux": 7,
-        "portfolio": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -7285,42 +7389,6 @@
         "design": 8,
         "ux": 7,
         "portfolio": 6
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "a18690d44ae718d3",
-      "title": "관계성 범죄 예방 생성형 AI 영상콘텐츠 공모전",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=110776",
-      "summary": "분야 : 영상/UCC/사진",
-      "deadline": "2026-10-06",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어",
-        "기획/마케팅",
-        "언론고시 (기자/PD)"
-      ],
-      "recommendationTags": [
-        "media",
-        "contents",
-        "writing",
-        "ai"
-      ],
-      "weightedTags": {
-        "media": 8,
-        "contents": 8,
-        "writing": 5,
-        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
