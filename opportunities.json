@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-16T20:43:53.106Z",
+  "generatedAt": "2026-10-17T20:20:50.248Z",
   "source": "github-actions-static-json",
-  "itemCount": 245,
+  "itemCount": 244,
   "items": [
     {
       "id": "3b892ffce7a966c6",
@@ -262,92 +262,6 @@
       "active": true
     },
     {
-      "id": "4a1d25f18337bce8",
-      "title": "2026 0924영상제 영상 공모전",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=110585",
-      "summary": "분야 : 광고/마케팅, 영상/UCC/사진, 웹/모바일/IT, 예체능/미술/음악, 기타",
-      "deadline": "2026-10-18",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어",
-        "기획/마케팅"
-      ],
-      "recommendationTags": [
-        "frontend",
-        "mobile",
-        "software",
-        "marketing",
-        "contents",
-        "media",
-        "portfolio",
-        "writing"
-      ],
-      "weightedTags": {
-        "frontend": 9,
-        "mobile": 9,
-        "software": 8,
-        "marketing": 8,
-        "contents": 8,
-        "media": 8,
-        "portfolio": 6,
-        "writing": 5
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "6e7d0a400874822c",
-      "title": "LG 대국민 미소 사진 공모전 - 스마일 모먼트",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111311",
-      "summary": "분야 : 광고/마케팅, 영상/UCC/사진, 웹/모바일/IT, 예체능/미술/음악, 대외활동/서포터즈",
-      "deadline": "2026-10-19",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어",
-        "기획/마케팅"
-      ],
-      "recommendationTags": [
-        "frontend",
-        "mobile",
-        "software",
-        "marketing",
-        "contents",
-        "media",
-        "portfolio",
-        "writing"
-      ],
-      "weightedTags": {
-        "frontend": 9,
-        "mobile": 9,
-        "software": 8,
-        "marketing": 8,
-        "contents": 8,
-        "media": 8,
-        "portfolio": 6,
-        "writing": 5
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
       "id": "eda5a104f8b37614",
       "title": "2026 DATA·AI 분석 경진대회",
       "type": "공모전",
@@ -390,13 +304,13 @@
       "active": true
     },
     {
-      "id": "61252d7eca361a81",
-      "title": "7th Da-Ho Award Asian International Short Film Competition(단편영화 공모전)",
+      "id": "6e7d0a400874822c",
+      "title": "LG 대국민 미소 사진 공모전 - 스마일 모먼트",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=110179",
-      "summary": "분야 : 광고/마케팅, 영상/UCC/사진, 웹/모바일/IT, 예체능/미술/음악, 대외활동/서포터즈, 기타",
-      "deadline": "2027-01-16",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111311",
+      "summary": "분야 : 광고/마케팅, 영상/UCC/사진, 웹/모바일/IT, 예체능/미술/음악, 대외활동/서포터즈",
+      "deadline": "2026-10-19",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어",
@@ -478,22 +392,37 @@
       "active": true
     },
     {
-      "id": "fb7e60d7f17cd7ce",
-      "title": "[서울특별시] 2026년 하반기 시민 서포터즈 모집",
+      "id": "61252d7eca361a81",
+      "title": "7th Da-Ho Award Asian International Short Film Competition(단편영화 공모전)",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111699",
-      "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-10-23",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=110179",
+      "summary": "분야 : 광고/마케팅, 영상/UCC/사진, 웹/모바일/IT, 예체능/미술/음악, 대외활동/서포터즈, 기타",
+      "deadline": "2027-01-16",
       "publishedAt": "",
-      "careerTags": [],
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
       "recommendationTags": [
+        "frontend",
+        "mobile",
+        "software",
         "marketing",
-        "contents"
+        "contents",
+        "media",
+        "portfolio",
+        "writing"
       ],
       "weightedTags": {
+        "frontend": 9,
+        "mobile": 9,
+        "software": 8,
         "marketing": 8,
-        "contents": 6
+        "contents": 8,
+        "media": 8,
+        "portfolio": 6,
+        "writing": 5
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -543,13 +472,13 @@
       "active": true
     },
     {
-      "id": "14b20bbd1c59ff22",
-      "title": "[잠실크루] 롯데월드타워·몰 서포터즈 2기 모집",
+      "id": "fb7e60d7f17cd7ce",
+      "title": "[서울특별시] 2026년 하반기 시민 서포터즈 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111678",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111699",
       "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-11-06",
+      "deadline": "2026-10-23",
       "publishedAt": "",
       "careerTags": [],
       "recommendationTags": [
@@ -603,13 +532,13 @@
       "active": true
     },
     {
-      "id": "232c6c97f6ff8062",
-      "title": "2026 천안시마을공동체지원센터 대학생 서포터즈 모집",
+      "id": "14b20bbd1c59ff22",
+      "title": "[잠실크루] 롯데월드타워·몰 서포터즈 2기 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111659",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111678",
       "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-10-22",
+      "deadline": "2026-11-06",
       "publishedAt": "",
       "careerTags": [],
       "recommendationTags": [
@@ -664,13 +593,13 @@
       "active": true
     },
     {
-      "id": "91c3d0b402a22934",
-      "title": "2027년 서대문구 SNS 서포터즈 모집",
+      "id": "232c6c97f6ff8062",
+      "title": "2026 천안시마을공동체지원센터 대학생 서포터즈 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111658",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111659",
       "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-11-14",
+      "deadline": "2026-10-22",
       "publishedAt": "",
       "careerTags": [],
       "recommendationTags": [
@@ -729,13 +658,13 @@
       "active": true
     },
     {
-      "id": "98e4f79b1e926b59",
-      "title": "[현대자동차] H스타일리스트 14기 모집",
+      "id": "91c3d0b402a22934",
+      "title": "2027년 서대문구 SNS 서포터즈 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111583",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111658",
       "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-10-19",
+      "deadline": "2026-11-14",
       "publishedAt": "",
       "careerTags": [],
       "recommendationTags": [
@@ -789,13 +718,13 @@
       "active": true
     },
     {
-      "id": "2b3e09dd1fd80774",
-      "title": "2026 서울 한강 걷기대회 서포터즈 모집",
+      "id": "98e4f79b1e926b59",
+      "title": "[현대자동차] H스타일리스트 14기 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111580",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111583",
       "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-10-23",
+      "deadline": "2026-10-19",
       "publishedAt": "",
       "careerTags": [],
       "recommendationTags": [
@@ -852,13 +781,13 @@
       "active": true
     },
     {
-      "id": "5c28646259ff5195",
-      "title": "[인디에프] BIND 서포터즈 1기 모집",
+      "id": "2b3e09dd1fd80774",
+      "title": "2026 서울 한강 걷기대회 서포터즈 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111485",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111580",
       "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-10-21",
+      "deadline": "2026-10-23",
       "publishedAt": "",
       "careerTags": [],
       "recommendationTags": [
@@ -914,13 +843,13 @@
       "active": true
     },
     {
-      "id": "bc6463c3ded459ad",
-      "title": "서울리거피부과 아임서울(더마코스메틱) 아임러버 서포터즈12기 모집",
+      "id": "5c28646259ff5195",
+      "title": "[인디에프] BIND 서포터즈 1기 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111475",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111485",
       "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-10-19",
+      "deadline": "2026-10-21",
       "publishedAt": "",
       "careerTags": [],
       "recommendationTags": [
@@ -974,13 +903,13 @@
       "active": true
     },
     {
-      "id": "28299d583e4364e4",
-      "title": "2026 여성리더스포럼 서포터즈 모집",
+      "id": "bc6463c3ded459ad",
+      "title": "서울리거피부과 아임서울(더마코스메틱) 아임러버 서포터즈12기 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111422",
-      "summary": "분야 : 기타",
-      "deadline": "2026-10-24",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111475",
+      "summary": "분야 : 대외활동/서포터즈",
+      "deadline": "2026-10-19",
       "publishedAt": "",
       "careerTags": [],
       "recommendationTags": [
@@ -1034,28 +963,22 @@
       "active": true
     },
     {
-      "id": "7bbe6e58ab119c20",
-      "title": "2026년 제2회 부산RCY HOLD ON 생명존중 자살예방 캠페인 공모전",
+      "id": "28299d583e4364e4",
+      "title": "2026 여성리더스포럼 서포터즈 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111336",
-      "summary": "분야 : 영상/UCC/사진",
-      "deadline": "2026-12-08",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111422",
+      "summary": "분야 : 기타",
+      "deadline": "2026-10-24",
       "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅"
-      ],
+      "careerTags": [],
       "recommendationTags": [
         "marketing",
-        "contents",
-        "media",
-        "writing"
+        "contents"
       ],
       "weightedTags": {
         "marketing": 8,
-        "contents": 8,
-        "media": 8,
-        "writing": 5
+        "contents": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -1098,13 +1021,13 @@
       "active": true
     },
     {
-      "id": "ca0bd1f0385911b0",
-      "title": "1시간대컷 캠페인 영상 공모전",
+      "id": "7bbe6e58ab119c20",
+      "title": "2026년 제2회 부산RCY HOLD ON 생명존중 자살예방 캠페인 공모전",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111212",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111336",
       "summary": "분야 : 영상/UCC/사진",
-      "deadline": "2026-12-01",
+      "deadline": "2026-12-08",
       "publishedAt": "",
       "careerTags": [
         "기획/마케팅"
@@ -1164,28 +1087,31 @@
       "active": true
     },
     {
-      "id": "3f78ad8a813d8bc4",
-      "title": "WFK 해외봉사단 커리어개발 우수사례 공모전",
+      "id": "ca0bd1f0385911b0",
+      "title": "1시간대컷 캠페인 영상 공모전",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111160",
-      "summary": "분야 : 기타",
-      "deadline": "2026-10-19",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111212",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-12-01",
       "publishedAt": "",
       "careerTags": [
-        "IT/소프트웨어",
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "global",
-        "language"
+        "marketing",
+        "contents",
+        "media",
+        "writing"
       ],
       "weightedTags": {
-        "global": 7,
-        "language": 7
+        "marketing": 8,
+        "contents": 8,
+        "media": 8,
+        "writing": 5
       },
       "recommendationType": "competition",
-      "recommendationCat": "lang",
+      "recommendationCat": "project",
       "baseWeight": 7,
       "recommendedGrades": [
         2,
@@ -1239,27 +1165,28 @@
       "active": true
     },
     {
-      "id": "d6f7da438c799f95",
-      "title": "[CCOMA] 여성 패션 브랜드 꼼마 앰버서더·서포터즈 모집",
+      "id": "3f78ad8a813d8bc4",
+      "title": "WFK 해외봉사단 커리어개발 우수사례 공모전",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=110894",
-      "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2027-01-01",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111160",
+      "summary": "분야 : 기타",
+      "deadline": "2026-10-19",
       "publishedAt": "",
       "careerTags": [
-        "패션/의류"
+        "IT/소프트웨어",
+        "기획/마케팅"
       ],
       "recommendationTags": [
-        "marketing",
-        "contents"
+        "global",
+        "language"
       ],
       "weightedTags": {
-        "marketing": 8,
-        "contents": 6
+        "global": 7,
+        "language": 7
       },
       "recommendationType": "competition",
-      "recommendationCat": "project",
+      "recommendationCat": "lang",
       "baseWeight": 7,
       "recommendedGrades": [
         2,
@@ -1301,11 +1228,11 @@
       "active": true
     },
     {
-      "id": "7b157637976b1b1a",
-      "title": "[THUMB] 남성 패션 브랜드 덤 앰버서더·서포터즈 모집",
+      "id": "d6f7da438c799f95",
+      "title": "[CCOMA] 여성 패션 브랜드 꼼마 앰버서더·서포터즈 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=110893",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=110894",
       "summary": "분야 : 대외활동/서포터즈",
       "deadline": "2027-01-01",
       "publishedAt": "",
@@ -1351,6 +1278,36 @@
         "media": 8,
         "contents": 8,
         "writing": 5
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "7b157637976b1b1a",
+      "title": "[THUMB] 남성 패션 브랜드 덤 앰버서더·서포터즈 모집",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=110893",
+      "summary": "분야 : 대외활동/서포터즈",
+      "deadline": "2027-01-01",
+      "publishedAt": "",
+      "careerTags": [
+        "패션/의류"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents"
+      ],
+      "weightedTags": {
+        "marketing": 8,
+        "contents": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
