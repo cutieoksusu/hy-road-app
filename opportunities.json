@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-06T22:53:54.987Z",
+  "generatedAt": "2026-11-07T21:37:55.238Z",
   "source": "github-actions-static-json",
-  "itemCount": 212,
+  "itemCount": 210,
   "items": [
     {
       "id": "61252d7eca361a81",
@@ -2477,40 +2477,6 @@
       "weightedTags": {
         "media": 8,
         "contents": 8,
-        "writing": 5
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "f8083f9acdc792a7",
-      "title": "밀양 매운맛 쇼츠 공모전",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112046",
-      "summary": "분야 : 영상/UCC/사진",
-      "deadline": "2026-11-08",
-      "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅"
-      ],
-      "recommendationTags": [
-        "marketing",
-        "contents",
-        "media",
-        "writing"
-      ],
-      "weightedTags": {
-        "marketing": 8,
-        "contents": 8,
-        "media": 8,
         "writing": 5
       },
       "recommendationType": "competition",
@@ -6845,38 +6811,6 @@
         "design": 8,
         "ux": 7,
         "portfolio": 6
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "7f05e1f537bcfdc7",
-      "title": "YK건기•존디어 트랙터로 활기찬 농촌 전국 사진 공모전",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=110401",
-      "summary": "분야 : 영상/UCC/사진",
-      "deadline": "2026-11-08",
-      "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅"
-      ],
-      "recommendationTags": [
-        "media",
-        "contents",
-        "writing"
-      ],
-      "weightedTags": {
-        "media": 8,
-        "contents": 8,
-        "writing": 5
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
