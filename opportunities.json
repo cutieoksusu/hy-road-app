@@ -1,8 +1,87 @@
 {
-  "generatedAt": "2026-11-15T22:38:41.597Z",
+  "generatedAt": "2026-11-17T01:45:37.562Z",
   "source": "github-actions-static-json",
-  "itemCount": 181,
+  "itemCount": 179,
   "items": [
+    {
+      "id": "b735bc713327d39b",
+      "title": "(4주) 신춘문예 작가님에게 글쓰기를 배워보세요! 참여자 모집 중",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112398",
+      "summary": "분야 : 광고/마케팅, 논문/리포트, 문학/글/시나리오, 예체능/미술/음악, 대외활동/서포터즈, 기타",
+      "deadline": "2026-12-01",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing"
+      ],
+      "weightedTags": {
+        "marketing": 8,
+        "contents": 8,
+        "media": 8,
+        "writing": 5
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "98a35e1d575fd01d",
+      "title": "VIVID RE:PLAY 6개 IP로 만드는 AI영상 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112343",
+      "summary": "분야 : 광고/마케팅, 영상/UCC/사진, 웹/모바일/IT, 예체능/미술/음악, 기타",
+      "deadline": "2026-12-14",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "mobile",
+        "software",
+        "marketing",
+        "contents",
+        "media",
+        "portfolio",
+        "writing",
+        "ai"
+      ],
+      "weightedTags": {
+        "frontend": 9,
+        "mobile": 9,
+        "software": 8,
+        "marketing": 8,
+        "contents": 8,
+        "media": 8,
+        "portfolio": 6,
+        "writing": 5,
+        "ai": 4
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
     {
       "id": "469f80c108813fdc",
       "title": "2027 Sunny Scholar 6기 모집 - Deep Dive into Social Problems",
@@ -34,13 +113,13 @@
       "active": true
     },
     {
-      "id": "98a35e1d575fd01d",
-      "title": "VIVID RE:PLAY 6개 IP로 만드는 AI영상 공모전",
+      "id": "58ba468b887cf8da",
+      "title": "[제3회] 매경 AI 광고 공모전 대한민국 AI 광고대상",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112343",
-      "summary": "분야 : 광고/마케팅, 영상/UCC/사진, 웹/모바일/IT, 예체능/미술/음악, 기타",
-      "deadline": "2026-12-14",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112073",
+      "summary": "분야 : 기획/아이디어, 광고/마케팅, 영상/UCC/사진, 웹/모바일/IT, 예체능/미술/음악",
+      "deadline": "2026-12-01",
       "publishedAt": "",
       "careerTags": [
         "IT/소프트웨어",
@@ -122,79 +201,6 @@
       "active": true
     },
     {
-      "id": "58ba468b887cf8da",
-      "title": "[제3회] 매경 AI 광고 공모전 대한민국 AI 광고대상",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112073",
-      "summary": "분야 : 기획/아이디어, 광고/마케팅, 영상/UCC/사진, 웹/모바일/IT, 예체능/미술/음악",
-      "deadline": "2026-12-01",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어",
-        "기획/마케팅"
-      ],
-      "recommendationTags": [
-        "frontend",
-        "mobile",
-        "software",
-        "marketing",
-        "contents",
-        "media",
-        "portfolio",
-        "writing",
-        "ai"
-      ],
-      "weightedTags": {
-        "frontend": 9,
-        "mobile": 9,
-        "software": 8,
-        "marketing": 8,
-        "contents": 8,
-        "media": 8,
-        "portfolio": 6,
-        "writing": 5,
-        "ai": 4
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "1b0678928b589c42",
-      "title": "26년 하반기 이랜드크루즈 Z세대 서포터즈 모집",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112314",
-      "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-11-21",
-      "publishedAt": "",
-      "careerTags": [],
-      "recommendationTags": [
-        "marketing",
-        "contents"
-      ],
-      "weightedTags": {
-        "marketing": 8,
-        "contents": 6
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
       "id": "6b1e92aac77c32cd",
       "title": "제5회 한국여성작가 회화공모전 & K-WOMEN IN PARIS",
       "type": "공모전",
@@ -238,13 +244,13 @@
       "active": true
     },
     {
-      "id": "7b59f76b341805c9",
-      "title": "[한국건설기술인협회] 제2기 청년홍보대사 모집",
+      "id": "0f927a4164d13fa6",
+      "title": "2026 AJP 창간 2주년 포럼 서포터즈 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112312",
-      "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-12-08",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112393",
+      "summary": "분야 : 기타",
+      "deadline": "2026-11-19",
       "publishedAt": "",
       "careerTags": [],
       "recommendationTags": [
@@ -302,28 +308,22 @@
       "active": true
     },
     {
-      "id": "315f6bdd3cb30439",
-      "title": "수원시 2027 e수원뉴스 시민기자 모집",
+      "id": "1b0678928b589c42",
+      "title": "26년 하반기 이랜드크루즈 Z세대 서포터즈 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112309",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112314",
       "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-12-09",
+      "deadline": "2026-11-21",
       "publishedAt": "",
-      "careerTags": [
-        "언론고시 (기자/PD)"
-      ],
+      "careerTags": [],
       "recommendationTags": [
         "marketing",
-        "contents",
-        "media",
-        "writing"
+        "contents"
       ],
       "weightedTags": {
         "marketing": 8,
-        "contents": 8,
-        "media": 8,
-        "writing": 5
+        "contents": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -369,13 +369,13 @@
       "active": true
     },
     {
-      "id": "cf2c67a9846f61ae",
-      "title": "2027 남이섬세계책나라축제 대학생 홍보 서포터즈 모집 (아임나미)",
+      "id": "7b59f76b341805c9",
+      "title": "[한국건설기술인협회] 제2기 청년홍보대사 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112301",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112312",
       "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-11-26",
+      "deadline": "2026-12-08",
       "publishedAt": "",
       "careerTags": [],
       "recommendationTags": [
@@ -431,22 +431,28 @@
       "active": true
     },
     {
-      "id": "3306be70aee4e699",
-      "title": "큐어소나 대학생 인스타그램 서포터즈 6기 모집",
+      "id": "315f6bdd3cb30439",
+      "title": "수원시 2027 e수원뉴스 시민기자 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112298",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112309",
       "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-11-26",
+      "deadline": "2026-12-09",
       "publishedAt": "",
-      "careerTags": [],
+      "careerTags": [
+        "언론고시 (기자/PD)"
+      ],
       "recommendationTags": [
         "marketing",
-        "contents"
+        "contents",
+        "media",
+        "writing"
       ],
       "weightedTags": {
         "marketing": 8,
-        "contents": 6
+        "contents": 8,
+        "media": 8,
+        "writing": 5
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -500,27 +506,21 @@
       "active": true
     },
     {
-      "id": "774871f343cb444c",
-      "title": "2026 아주경제 국방방산포럼 서포터즈 모집",
+      "id": "cf2c67a9846f61ae",
+      "title": "2027 남이섬세계책나라축제 대학생 홍보 서포터즈 모집 (아임나미)",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112275",
-      "summary": "분야 : 기타",
-      "deadline": "2026-11-19",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112301",
+      "summary": "분야 : 대외활동/서포터즈",
+      "deadline": "2026-11-26",
       "publishedAt": "",
-      "careerTags": [
-        "금융/은행"
-      ],
+      "careerTags": [],
       "recommendationTags": [
         "marketing",
-        "finance",
-        "economics",
         "contents"
       ],
       "weightedTags": {
         "marketing": 8,
-        "finance": 8,
-        "economics": 7,
         "contents": 6
       },
       "recommendationType": "competition",
@@ -579,28 +579,88 @@
       "active": true
     },
     {
-      "id": "08da412b2becf41a",
-      "title": "Show Your Charming 자민경 글로벌 서포터즈 1기 모집",
+      "id": "3306be70aee4e699",
+      "title": "큐어소나 대학생 인스타그램 서포터즈 6기 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112260",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112298",
       "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-11-23",
+      "deadline": "2026-11-26",
       "publishedAt": "",
       "careerTags": [],
       "recommendationTags": [
         "marketing",
-        "trade",
-        "logistics",
-        "contents",
-        "global"
+        "contents"
       ],
       "weightedTags": {
         "marketing": 8,
-        "trade": 8,
-        "logistics": 7,
-        "contents": 6,
-        "global": 5
+        "contents": 6
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "4552c5b9a6fe488f",
+      "title": "2026 힐링충남 관광 정책 아이디어 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112387",
+      "summary": "분야 : 기획/아이디어",
+      "deadline": "2026-12-05",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅",
+        "공기업 (NCS)",
+        "로스쿨 (법조인)"
+      ],
+      "recommendationTags": [
+        "public",
+        "ncs"
+      ],
+      "weightedTags": {
+        "public": 8,
+        "ncs": 6
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "774871f343cb444c",
+      "title": "2026 아주경제 국방방산포럼 서포터즈 모집",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112275",
+      "summary": "분야 : 기타",
+      "deadline": "2026-11-19",
+      "publishedAt": "",
+      "careerTags": [
+        "금융/은행"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "finance",
+        "economics",
+        "contents"
+      ],
+      "weightedTags": {
+        "marketing": 8,
+        "finance": 8,
+        "economics": 7,
+        "contents": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -653,22 +713,28 @@
       "active": true
     },
     {
-      "id": "9f3fe21566cdf488",
-      "title": "2026 아라뱃길 시민 서포터즈 모집",
+      "id": "08da412b2becf41a",
+      "title": "Show Your Charming 자민경 글로벌 서포터즈 1기 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112161",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112260",
       "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-11-19",
+      "deadline": "2026-11-23",
       "publishedAt": "",
       "careerTags": [],
       "recommendationTags": [
         "marketing",
-        "contents"
+        "trade",
+        "logistics",
+        "contents",
+        "global"
       ],
       "weightedTags": {
         "marketing": 8,
-        "contents": 6
+        "trade": 8,
+        "logistics": 7,
+        "contents": 6,
+        "global": 5
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -718,13 +784,13 @@
       "active": true
     },
     {
-      "id": "a3c39730b587dcc6",
-      "title": "국회의원 주진우 청년 명예보좌관 4기 모집",
+      "id": "9f3fe21566cdf488",
+      "title": "2026 아라뱃길 시민 서포터즈 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112149",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112161",
       "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-12-14",
+      "deadline": "2026-11-19",
       "publishedAt": "",
       "careerTags": [],
       "recommendationTags": [
@@ -787,35 +853,22 @@
       "active": true
     },
     {
-      "id": "45233a388c4a8387",
-      "title": "[식품의약품안전처] 제15기 누리소통기자단 모집",
+      "id": "a3c39730b587dcc6",
+      "title": "국회의원 주진우 청년 명예보좌관 4기 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112136",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112149",
       "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-11-26",
+      "deadline": "2026-12-14",
       "publishedAt": "",
-      "careerTags": [
-        "식품/F&B",
-        "언론고시 (기자/PD)"
-      ],
+      "careerTags": [],
       "recommendationTags": [
         "marketing",
-        "contents",
-        "media",
-        "bio",
-        "healthcare",
-        "food",
-        "writing"
+        "contents"
       ],
       "weightedTags": {
         "marketing": 8,
-        "contents": 8,
-        "media": 8,
-        "bio": 8,
-        "healthcare": 6,
-        "food": 6,
-        "writing": 5
+        "contents": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -873,22 +926,35 @@
       "active": true
     },
     {
-      "id": "47c5726c27a4dc01",
-      "title": "편지쓰기 캠페인 - 공익제보자를 응원해 주세요!",
+      "id": "45233a388c4a8387",
+      "title": "[식품의약품안전처] 제15기 누리소통기자단 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112118",
-      "summary": "분야 : 봉사활동",
-      "deadline": "2026-12-09",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112136",
+      "summary": "분야 : 대외활동/서포터즈",
+      "deadline": "2026-11-26",
       "publishedAt": "",
-      "careerTags": [],
+      "careerTags": [
+        "식품/F&B",
+        "언론고시 (기자/PD)"
+      ],
       "recommendationTags": [
         "marketing",
-        "contents"
+        "contents",
+        "media",
+        "bio",
+        "healthcare",
+        "food",
+        "writing"
       ],
       "weightedTags": {
         "marketing": 8,
-        "contents": 6
+        "contents": 8,
+        "media": 8,
+        "bio": 8,
+        "healthcare": 6,
+        "food": 6,
+        "writing": 5
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -929,34 +995,22 @@
       "active": true
     },
     {
-      "id": "590277999bace322",
-      "title": "제 19기 기상청 국민정책기자단 모집",
+      "id": "47c5726c27a4dc01",
+      "title": "편지쓰기 캠페인 - 공익제보자를 응원해 주세요!",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111953",
-      "summary": "분야 : 대외활동/서포터즈",
-      "deadline": "2026-11-20",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112118",
+      "summary": "분야 : 봉사활동",
+      "deadline": "2026-12-09",
       "publishedAt": "",
-      "careerTags": [
-        "공기업 (NCS)",
-        "로스쿨 (법조인)",
-        "언론고시 (기자/PD)"
-      ],
+      "careerTags": [],
       "recommendationTags": [
         "marketing",
-        "contents",
-        "public",
-        "media",
-        "ncs",
-        "writing"
+        "contents"
       ],
       "weightedTags": {
         "marketing": 8,
-        "contents": 8,
-        "public": 8,
-        "media": 8,
-        "ncs": 6,
-        "writing": 5
+        "contents": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -1006,27 +1060,33 @@
       "active": true
     },
     {
-      "id": "7bbe6e58ab119c20",
-      "title": "2026년 제2회 부산RCY HOLD ON 생명존중 자살예방 캠페인 공모전",
+      "id": "590277999bace322",
+      "title": "제 19기 기상청 국민정책기자단 모집",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111336",
-      "summary": "분야 : 영상/UCC/사진",
-      "deadline": "2026-12-08",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111953",
+      "summary": "분야 : 대외활동/서포터즈",
+      "deadline": "2026-11-20",
       "publishedAt": "",
       "careerTags": [
-        "기획/마케팅"
+        "공기업 (NCS)",
+        "로스쿨 (법조인)",
+        "언론고시 (기자/PD)"
       ],
       "recommendationTags": [
         "marketing",
         "contents",
+        "public",
         "media",
+        "ncs",
         "writing"
       ],
       "weightedTags": {
         "marketing": 8,
         "contents": 8,
+        "public": 8,
         "media": 8,
+        "ncs": 6,
         "writing": 5
       },
       "recommendationType": "competition",
@@ -1079,13 +1139,13 @@
       "active": true
     },
     {
-      "id": "ca0bd1f0385911b0",
-      "title": "1시간대컷 캠페인 영상 공모전",
+      "id": "7bbe6e58ab119c20",
+      "title": "2026년 제2회 부산RCY HOLD ON 생명존중 자살예방 캠페인 공모전",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111212",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111336",
       "summary": "분야 : 영상/UCC/사진",
-      "deadline": "2026-12-01",
+      "deadline": "2026-12-08",
       "publishedAt": "",
       "careerTags": [
         "기획/마케팅"
@@ -1158,6 +1218,75 @@
       "active": true
     },
     {
+      "id": "ca0bd1f0385911b0",
+      "title": "1시간대컷 캠페인 영상 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111212",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-12-01",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents",
+        "media",
+        "writing"
+      ],
+      "weightedTags": {
+        "marketing": 8,
+        "contents": 8,
+        "media": 8,
+        "writing": 5
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "36dc974b9f3f4429",
+      "title": "2026 SCENE AI·실사 숏드라마 공모전 (내용 수정)",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112319",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2027-01-01",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "recommendationTags": [
+        "media",
+        "contents",
+        "writing",
+        "ai"
+      ],
+      "weightedTags": {
+        "media": 8,
+        "contents": 8,
+        "writing": 5,
+        "ai": 4
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
       "id": "d6f7da438c799f95",
       "title": "[CCOMA] 여성 패션 브랜드 꼼마 앰버서더·서포터즈 모집",
       "type": "공모전",
@@ -1188,29 +1317,22 @@
       "active": true
     },
     {
-      "id": "36dc974b9f3f4429",
-      "title": "2026 SCENE AI·실사 숏드라마 공모전",
+      "id": "f0b87f53fe6c0f2f",
+      "title": "2027 MOBIS Robotics Challenge - 현대모비스 로보틱스 경진대회",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112319",
-      "summary": "분야 : 영상/UCC/사진",
-      "deadline": "2027-01-01",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112318",
+      "summary": "분야 : 과학/공학",
+      "deadline": "2026-12-05",
       "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어",
-        "기획/마케팅"
-      ],
+      "careerTags": [],
       "recommendationTags": [
-        "media",
-        "contents",
-        "writing",
-        "ai"
+        "robotics",
+        "engineering"
       ],
       "weightedTags": {
-        "media": 8,
-        "contents": 8,
-        "writing": 5,
-        "ai": 4
+        "robotics": 8,
+        "engineering": 7
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -1379,28 +1501,29 @@
       "active": true
     },
     {
-      "id": "1d0e375b00e6bc55",
-      "title": "2026 귀뚜라미 AI 숏폼 영상 챌린지 (내용 수정)",
+      "id": "fc56deee3f5f9ed5",
+      "title": "2026 아동·청소년 공모전 - 건강한 몸 인식 개선 홍보 콘텐츠 공모전",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112307",
-      "summary": "분야 : 영상/UCC/사진",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112310",
+      "summary": "분야 : 광고/마케팅",
       "deadline": "2026-12-01",
       "publishedAt": "",
       "careerTags": [
-        "IT/소프트웨어"
+        "기획/마케팅",
+        "언론고시 (기자/PD)"
       ],
       "recommendationTags": [
-        "media",
+        "marketing",
         "contents",
-        "writing",
-        "ai"
+        "media",
+        "writing"
       ],
       "weightedTags": {
-        "media": 8,
+        "marketing": 8,
         "contents": 8,
-        "writing": 5,
-        "ai": 4
+        "media": 8,
+        "writing": 5
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -1448,26 +1571,28 @@
       "active": true
     },
     {
-      "id": "ff9eccad6645cf14",
-      "title": "2026 김천 삼색이수자율상권 유튜브 공모전",
+      "id": "8878dd26aee142e2",
+      "title": "부천도시공사 2026 ESG 아이디어 공모전",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112297",
-      "summary": "분야 : 영상/UCC/사진",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112308",
+      "summary": "분야 : 기획/아이디어",
       "deadline": "2026-12-01",
       "publishedAt": "",
       "careerTags": [
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "media",
-        "contents",
-        "writing"
+        "environment",
+        "architecture",
+        "engineering",
+        "energy"
       ],
       "weightedTags": {
-        "media": 8,
-        "contents": 8,
-        "writing": 5
+        "environment": 7,
+        "architecture": 6,
+        "engineering": 5,
+        "energy": 5
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -1508,32 +1633,27 @@
       "active": true
     },
     {
-      "id": "b0992945e2c0ada1",
-      "title": "[부산과학기술대학교·KNN] 2026 부산 미래 직업·평생교육 AI 영상 공모전",
+      "id": "1d0e375b00e6bc55",
+      "title": "2026 귀뚜라미 AI 숏폼 영상 챌린지 (내용 수정)",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112295",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112307",
       "summary": "분야 : 영상/UCC/사진",
-      "deadline": "2026-12-24",
+      "deadline": "2026-12-01",
       "publishedAt": "",
       "careerTags": [
-        "IT/소프트웨어",
-        "기획/마케팅"
+        "IT/소프트웨어"
       ],
       "recommendationTags": [
         "media",
         "contents",
         "writing",
-        "education",
-        "management",
         "ai"
       ],
       "weightedTags": {
         "media": 8,
         "contents": 8,
         "writing": 5,
-        "education": 5,
-        "management": 5,
         "ai": 4
       },
       "recommendationType": "competition",
@@ -1575,24 +1695,31 @@
       "active": true
     },
     {
-      "id": "bdbcb54c295b16ee",
-      "title": "제24회 KPR 대학생 PR 아이디어 공모전",
+      "id": "97ec6988b1bb5b99",
+      "title": "2026 국가시범도시 AI 아이디어 · 기술 공모전",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112293",
-      "summary": "분야 : 광고/마케팅",
-      "deadline": "2027-01-06",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112299",
+      "summary": "분야 : 과학/공학",
+      "deadline": "2026-12-15",
       "publishedAt": "",
       "careerTags": [
+        "IT/소프트웨어",
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "marketing",
-        "contents"
+        "environment",
+        "architecture",
+        "engineering",
+        "energy",
+        "ai"
       ],
       "weightedTags": {
-        "marketing": 8,
-        "contents": 6
+        "environment": 7,
+        "architecture": 6,
+        "engineering": 5,
+        "energy": 5,
+        "ai": 4
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -1633,13 +1760,13 @@
       "active": true
     },
     {
-      "id": "af395dd5eb3f50a2",
-      "title": "영동군청소년상담복지센터 2026년 제 12회 UCC공모전",
+      "id": "ff9eccad6645cf14",
+      "title": "2026 김천 삼색이수자율상권 유튜브 공모전",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112292",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112297",
       "summary": "분야 : 영상/UCC/사진",
-      "deadline": "2026-11-28",
+      "deadline": "2026-12-01",
       "publishedAt": "",
       "careerTags": [
         "기획/마케팅"
@@ -1693,31 +1820,34 @@
       "active": true
     },
     {
-      "id": "cdfd4ca465c74b75",
-      "title": "세종사이버대학교 전국민 AI 공모전 (AI 불씨)",
+      "id": "74272c0403aa45fc",
+      "title": "세종사이버대 전기전자공학과 우리 주변의 전기·에너지 이야기 사진 공모전",
       "type": "공모전",
       "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112285",
-      "summary": "분야 : 웹/모바일/IT",
-      "deadline": "2026-12-21",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112296",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-12-05",
       "publishedAt": "",
       "careerTags": [
-        "IT/소프트웨어",
         "기획/마케팅"
       ],
       "recommendationTags": [
-        "frontend",
-        "mobile",
-        "software",
-        "portfolio",
-        "ai"
+        "media",
+        "contents",
+        "engineering",
+        "environment",
+        "architecture",
+        "writing",
+        "energy"
       ],
       "weightedTags": {
-        "frontend": 9,
-        "mobile": 9,
-        "software": 8,
-        "portfolio": 6,
-        "ai": 4
+        "media": 8,
+        "contents": 8,
+        "engineering": 8,
+        "environment": 7,
+        "architecture": 6,
+        "writing": 5,
+        "energy": 5
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -1749,6 +1879,144 @@
       "weightedTags": {
         "marketing": 8,
         "contents": 6,
+        "ai": 4
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "b0992945e2c0ada1",
+      "title": "[부산과학기술대학교·KNN] 2026 부산 미래 직업·평생교육 AI 영상 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112295",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-12-24",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "recommendationTags": [
+        "media",
+        "contents",
+        "writing",
+        "education",
+        "management",
+        "ai"
+      ],
+      "weightedTags": {
+        "media": 8,
+        "contents": 8,
+        "writing": 5,
+        "education": 5,
+        "management": 5,
+        "ai": 4
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "bdbcb54c295b16ee",
+      "title": "제24회 KPR 대학생 PR 아이디어 공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112293",
+      "summary": "분야 : 광고/마케팅",
+      "deadline": "2027-01-06",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "recommendationTags": [
+        "marketing",
+        "contents"
+      ],
+      "weightedTags": {
+        "marketing": 8,
+        "contents": 6
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "af395dd5eb3f50a2",
+      "title": "영동군청소년상담복지센터 2026년 제 12회 UCC공모전",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112292",
+      "summary": "분야 : 영상/UCC/사진",
+      "deadline": "2026-11-28",
+      "publishedAt": "",
+      "careerTags": [
+        "기획/마케팅"
+      ],
+      "recommendationTags": [
+        "media",
+        "contents",
+        "writing"
+      ],
+      "weightedTags": {
+        "media": 8,
+        "contents": 8,
+        "writing": 5
+      },
+      "recommendationType": "competition",
+      "recommendationCat": "project",
+      "baseWeight": 7,
+      "recommendedGrades": [
+        2,
+        3
+      ],
+      "taggedBy": "keyword",
+      "active": true
+    },
+    {
+      "id": "cdfd4ca465c74b75",
+      "title": "세종사이버대학교 전국민 AI 공모전 (AI 불씨)",
+      "type": "공모전",
+      "source": "위비티",
+      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112285",
+      "summary": "분야 : 웹/모바일/IT",
+      "deadline": "2026-12-21",
+      "publishedAt": "",
+      "careerTags": [
+        "IT/소프트웨어",
+        "기획/마케팅"
+      ],
+      "recommendationTags": [
+        "frontend",
+        "mobile",
+        "software",
+        "portfolio",
+        "ai"
+      ],
+      "weightedTags": {
+        "frontend": 9,
+        "mobile": 9,
+        "software": 8,
+        "portfolio": 6,
         "ai": 4
       },
       "recommendationType": "competition",
@@ -2146,38 +2414,6 @@
         "software": 8,
         "ai": 8,
         "portfolio": 6
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "f98aaffc3e434913",
-      "title": "우체국물류지원단 공식 캐릭터 네이밍 공모전",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=112235",
-      "summary": "분야 : 네이밍/슬로건",
-      "deadline": "2026-11-17",
-      "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅"
-      ],
-      "recommendationTags": [
-        "trade",
-        "logistics",
-        "global"
-      ],
-      "weightedTags": {
-        "trade": 8,
-        "logistics": 7,
-        "global": 5
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -3818,34 +4054,6 @@
       "active": true
     },
     {
-      "id": "ccc62cd3b281e6ef",
-      "title": "2026 해양 창업아이디어 공모전 Spark-up 1876",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111964",
-      "summary": "분야 : 기획/아이디어",
-      "deadline": "2026-11-17",
-      "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅"
-      ],
-      "recommendationTags": [
-        "startup"
-      ],
-      "weightedTags": {
-        "startup": 7
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
       "id": "add2afdf0216b491",
       "title": "제2회 잠실 미디어아트 공모전",
       "type": "공모전",
@@ -4218,38 +4426,6 @@
       "active": true
     },
     {
-      "id": "68b28460ce79db13",
-      "title": "제8회 아름다운 해상교량 사진공모전",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111848",
-      "summary": "분야 : 영상/UCC/사진",
-      "deadline": "2026-11-17",
-      "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅"
-      ],
-      "recommendationTags": [
-        "media",
-        "contents",
-        "writing"
-      ],
-      "weightedTags": {
-        "media": 8,
-        "contents": 8,
-        "writing": 5
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
       "id": "da6fdba05001e41b",
       "title": "2026 사회보장 데이터를 활용한 AI 혁신 아이디어 경진대회",
       "type": "공모전",
@@ -4475,45 +4651,6 @@
       "active": true
     },
     {
-      "id": "b3b29a340a407b8b",
-      "title": "[세종사이버대학교 AI실무활용학과] 한국 고전 설화 또는 전래동화 캐릭터의 재해석 공모전",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111797",
-      "summary": "분야 : 웹/모바일/IT",
-      "deadline": "2026-11-17",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어",
-        "기획/마케팅"
-      ],
-      "recommendationTags": [
-        "frontend",
-        "mobile",
-        "software",
-        "ai",
-        "portfolio",
-        "internship"
-      ],
-      "weightedTags": {
-        "frontend": 9,
-        "mobile": 9,
-        "software": 8,
-        "ai": 8,
-        "portfolio": 6,
-        "internship": 5
-      },
-      "recommendationType": "internship",
-      "recommendationCat": "intern",
-      "baseWeight": 8,
-      "recommendedGrades": [
-        3,
-        4
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
       "id": "dda8a078991f8dba",
       "title": "2026 구강보건 작품 공모전",
       "type": "공모전",
@@ -4540,43 +4677,6 @@
         "healthcare": 6,
         "food": 6,
         "writing": 5
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "a614ad39b7d5ef9e",
-      "title": "6G Vision Fest 2026 어린이 미래 상상 그림 공모전",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111776",
-      "summary": "분야 : 디자인/캐릭터/웹툰",
-      "deadline": "2026-11-17",
-      "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅",
-        "패션/의류"
-      ],
-      "recommendationTags": [
-        "frontend",
-        "software",
-        "design",
-        "ux",
-        "portfolio"
-      ],
-      "weightedTags": {
-        "frontend": 9,
-        "software": 8,
-        "design": 8,
-        "ux": 7,
-        "portfolio": 6
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
@@ -5017,39 +5117,6 @@
       "active": true
     },
     {
-      "id": "b7d5128403281c7d",
-      "title": "[서울특별시] 2026 서울라이트 광화문 미디어파사드 작품 공모전",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111591",
-      "summary": "분야 : 예체능/미술/음악",
-      "deadline": "2026-11-17",
-      "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅",
-        "언론고시 (기자/PD)"
-      ],
-      "recommendationTags": [
-        "media",
-        "contents",
-        "writing"
-      ],
-      "weightedTags": {
-        "media": 8,
-        "contents": 8,
-        "writing": 5
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
       "id": "4e887321706fb87d",
       "title": "2026 레진성인공모전",
       "type": "공모전",
@@ -5415,35 +5482,6 @@
       "active": true
     },
     {
-      "id": "934c550193de4251",
-      "title": "제2회 AI전자그림책 공모전 - AI 이야기 숲",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111449",
-      "summary": "분야 : 문학/글/시나리오",
-      "deadline": "2026-11-17",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어",
-        "기획/마케팅"
-      ],
-      "recommendationTags": [
-        "ai"
-      ],
-      "weightedTags": {
-        "ai": 4
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
       "id": "a3aaf2f5f8a63b5d",
       "title": "2026 대한민국 국제 어린이 미술 대회",
       "type": "공모전",
@@ -5648,36 +5686,6 @@
       "active": true
     },
     {
-      "id": "176b737b318cf96a",
-      "title": "제1회 전국 대학생 AI 재무설계 콘테스트 (AFPK 영 플래너 챌린지 2026)",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111059",
-      "summary": "분야 : 기타",
-      "deadline": "2026-11-17",
-      "publishedAt": "",
-      "careerTags": [
-        "IT/소프트웨어"
-      ],
-      "recommendationTags": [
-        "accounting",
-        "ai"
-      ],
-      "weightedTags": {
-        "accounting": 6,
-        "ai": 4
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
       "id": "c6dd3543dbc6db1c",
       "title": "2026년 제2회 김포시 반려동물 사진·영상 콘테스트",
       "type": "공모전",
@@ -5695,40 +5703,6 @@
       "weightedTags": {
         "media": 8,
         "contents": 8,
-        "writing": 5
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "85932dbc4ba5b820",
-      "title": "2026 청송군 SNS 숏폼 영상 공모전",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=110889",
-      "summary": "분야 : 영상/UCC/사진",
-      "deadline": "2026-11-17",
-      "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅"
-      ],
-      "recommendationTags": [
-        "marketing",
-        "contents",
-        "media",
-        "writing"
-      ],
-      "weightedTags": {
-        "marketing": 8,
-        "contents": 8,
-        "media": 8,
         "writing": 5
       },
       "recommendationType": "competition",
@@ -6183,38 +6157,6 @@
       "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=104904",
       "summary": "분야 : 영상/UCC/사진",
       "deadline": "2026-12-02",
-      "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅"
-      ],
-      "recommendationTags": [
-        "media",
-        "contents",
-        "writing"
-      ],
-      "weightedTags": {
-        "media": 8,
-        "contents": 8,
-        "writing": 5
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "cb37f829df965480",
-      "title": "2026 정읍시 관광 유튜브 공모전",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=104634",
-      "summary": "분야 : 영상/UCC/사진",
-      "deadline": "2026-11-17",
       "publishedAt": "",
       "careerTags": [
         "기획/마케팅"
