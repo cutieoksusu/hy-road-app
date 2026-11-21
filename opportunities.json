@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-20T23:48:53.518Z",
+  "generatedAt": "2026-11-21T22:55:25.316Z",
   "source": "github-actions-static-json",
-  "itemCount": 170,
+  "itemCount": 169,
   "items": [
     {
       "id": "b735bc713327d39b",
@@ -4841,47 +4841,6 @@
         "media": 8,
         "contents": 8,
         "writing": 5
-      },
-      "recommendationType": "competition",
-      "recommendationCat": "project",
-      "baseWeight": 7,
-      "recommendedGrades": [
-        2,
-        3
-      ],
-      "taggedBy": "keyword",
-      "active": true
-    },
-    {
-      "id": "0a485bf222585c6c",
-      "title": "제21회 2026년 한국공간디자인 전국공모전",
-      "type": "공모전",
-      "source": "위비티",
-      "url": "https://www.wevity.com/?c=find&gbn=viewok&ix=111703",
-      "summary": "분야 : 건축/건설/인테리어",
-      "deadline": "2026-11-22",
-      "publishedAt": "",
-      "careerTags": [
-        "기획/마케팅",
-        "패션/의류"
-      ],
-      "recommendationTags": [
-        "design",
-        "ux",
-        "environment",
-        "architecture",
-        "portfolio",
-        "engineering",
-        "energy"
-      ],
-      "weightedTags": {
-        "design": 8,
-        "ux": 7,
-        "environment": 7,
-        "architecture": 6,
-        "portfolio": 5,
-        "engineering": 5,
-        "energy": 5
       },
       "recommendationType": "competition",
       "recommendationCat": "project",
